@@ -122,17 +122,15 @@
           </section>
           <section>
             <h2>Why Sencha Touch?</h2>
-            <img class="trans-image" src='images/sencha.png' style='float:left;' />
-            <ul>
+            <img class="trans-image" src='images/sencha.png' style='position:absolute;left:0em;' />
+            <ul style='margin-left: 8em;'>
               <li class='fragment'>Enterprise Web Application Framework</li>
               <li class='fragment'>'Seems' more performant than other frameworks.</li>
               <li class='fragment'>MVC Object Oriented Architecture.</li>
               <li class='fragment'>Beautiful User Interface</li>
               <li class='fragment'>Flexible + Customizable</li>
               <li class='fragment'>Great Documentation</li>
-            </ul>
-            <p class='fragment' style='text-align: left;'>but...</p>
-            <ul style='width:18em;'>
+              <li class="fragment">but...</li>
               <li class="fragment">Steep learning curve.</li>
               <li class='fragment'>JavaScript Heavy.</li>
             </ul>
@@ -178,6 +176,11 @@
               <img style="margin-bottom: 0px;" src="images/tabpanel.png" />
               <small><a href="http://docs.sencha.com/touch/2.2.1/#!/api/Ext.tab.Panel">http://docs.sencha.com/touch/2.2.1/#!/api/Ext.tab.Panel</a></small>
             </span>
+          </section>
+          <section>
+            <h3>Great Documentation</h3>
+            <iframe src='http://docs.sencha.com/touch/2.2.1/' style='width:100%; height: 16em;'></iframe>
+            <a href='http://docs.sencha.com/touch/2.2.1/'>http://docs.sencha.com/touch/2.2.1</a>
           </section>
         </section>
         <section>
@@ -644,9 +647,10 @@
             <p>In order to get POST to work in Sencha Touch, you need to enable Cross-Origin Resource Sharing (CORS).
             Go to <a href='http://enable-cors.org/index.html'>http://enable-cors.org/index.html</a> to find out more.</p>
           </section>
-          <section>
+          <section example='examples/example7/index.html'>
             <h3>Create a NodeForm View</h3>
-            <pre><code contenteditable><small>Ext.define('Example.view.NodeForm', {
+            <span class='sencha-example-info'>
+              <pre><code contenteditable><small>Ext.define('Example.view.NodeForm', {
   extend: 'Ext.form.Panel',
   xtype: 'nodeformpage',
   requires: 'Ext.form.FieldSet',
@@ -682,6 +686,8 @@
   }
 });</small></code></pre>
               <small>examples/example7/app/view/NodeView.js</small>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
           </section>
           <section>
             <h3>Setup the Controller</h3>
