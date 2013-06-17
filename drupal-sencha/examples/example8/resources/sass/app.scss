@@ -1,0 +1,51 @@
+// The following two lines import the default Sencha Touch theme. If you are building
+// a new theme, remove them and the add your own CSS on top of the base CSS (which
+// is already included in your app.json file).
+@import 'sencha-touch/default';
+@import 'sencha-touch/default/all';
+
+// Custom code goes here..
+
+.result-item {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.result-item-img, .node-item-img, .user-picture {
+  float: left;
+  margin: 10px;
+}
+
+.result-item-info {
+  margin-left: 100px;
+}
+
+.node-item-info, .user-info {
+  margin-left: 260px;
+}
+
+.result-item-title, .node-item-title, .user-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #555;
+}
+
+.imageupload, .imageuploadbtn {
+  background-color: #eee;
+  @include border-radius($form-fieldset-radius);
+  width: 200px;
+  height: 300px;
+  margin: 15px;
+}
+
+.articledesc textarea {
+  min-height: 17em;
+}
+
+.x-img.x-img-background.imageupload {
+  background-image: url(../../touch/resources/themes/images/default/pictos/photo1.png);
+  background-size: auto 60%;
+}
+
+// Examples of using the icon mixin:
+@include icon('news', 'N');
