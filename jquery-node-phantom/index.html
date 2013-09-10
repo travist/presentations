@@ -396,15 +396,15 @@
   var $ = require('jquerygo');
   var async = require('async');
   async.series([
-    $.go('visit', 'https://drupal.org/user'),
-    $('#edit-name').go('val', 'travist'),
-    $('#edit-pass').go('val', '123password'),
-    $('#edit-submit').go('click'),
-    $.go('waitForPage')
+    <span class='fragment'>$.go('visit', 'https://drupal.org/user'),</span>
+    <span class='fragment'>$('#edit-name').go('val', 'travist'),</span>
+    <span class='fragment'>$('#edit-pass').go('val', '123password'),</span>
+    <span class='fragment'>$('#edit-submit').go('click'),</span>
+    <span class='fragment'>$.go('waitForPage')</span>
   ], function() {
-    console.log('You are now logged in!');
-    $.capture('loggedin.png');
-    $.close();
+    <span class='fragment'>console.log('You are now logged in!');</span>
+    <span class='fragment'>$.capture('loggedin.png');</span>
+    <span class='fragment'>$.close();</span>
   });
             </code></pre>
           </section>
