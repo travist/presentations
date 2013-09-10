@@ -42,6 +42,11 @@
         </section>
 
         <section>
+          <h3>AllPlayers.com</h3>
+          <img style='height:16em;' src='images/allplayers.jpg' />
+        </section>
+
+        <section>
           <h2>Motivation</h2>
           <p class="fragment">Current testing and automation frameworks...
             <ul style="margin-left:4em;">
@@ -57,12 +62,12 @@
           <img src='images/jquery.png' />
           <h3 class='fragment'>What makes jQuery so friggin' awesome?</h3>
           <p class='fragment'>jQuery changed the paradigm on how we write JavaScript.</p>
-          <pre class='fragment'><code contenteditable style='text-align: center;'><span class='fragment'>$('find something')</span><span class='fragment'>.doThisWithSomething();</span></code></pre>
+          <pre class='fragment'><code contenteditable style='text-align: center;'>$('find something')<span class='fragment'>.doThisWithSomething()<span class='fragment'>.doSomethingElse();</span></span></code></pre>
         </section>
 
         <section>
           <h2>JavaScript is now 'isomorphic'</h2>
-          <img class="trans-image" style="width: 6em; display: inline-block;" src="images/jquery.png" /><span class="plus">&harr;</span>
+          <img class="trans-image" style="width: 10em; display: inline-block;" src="images/browsers.png" /><span class="plus">&harr;</span>
           <img class="trans-image" style="width: 6em; display: inline-block; padding-bottom: 0.3em;" src="images/node.png" />
           <p class='fragment'>Can be used for both browser and server-side development.</p>
           <p class='fragment'>How can we bring the jQuery interface to Node.js?</p>
@@ -70,8 +75,9 @@
         </section>
 
         <section>
-          <p>There is a jQuery project for Node.js</p>
-          <a href='https://github.com/coolaj86/node-jquery'>https://github.com/coolaj86/node-jquery</a>
+          <p><strong>jQuery does more than just flashy UI stuff</strong></p>
+          <div class='fragment'><p>There is a jQuery project for Node.js</p>
+          <a href='https://github.com/coolaj86/node-jquery'>https://github.com/coolaj86/node-jquery</a></div>
           <ul style='margin: 0.8em 0 0 4em;'>
             <li class='fragment'>jQuery wrapper to be used with JSDOM.</li>
             <li class='fragment'>Used for DOM manipulation within Node.js.</li>
@@ -275,7 +281,7 @@
           </section>
           <section>
             <p><strong>Callback hell</strong> anyone?</p>
-            <img src='images/callback_hell.jpg' />
+            <img style='height:14em;' src='images/callback_hell.jpg' />
           </section>
         </section>
 
@@ -546,8 +552,8 @@
             <img src='images/makemeasandwich.jpg' style='height:14em;' />
           </section>
           <section>
+            <h3>Setup</h3>
             <div class="fragment"><pre><code>mac:~ travist$ npm install -g makemeasandwich</code></pre></div>
-            <div class="fragment"><pre><code>mac:~ travist$ makemeasandwich -o config.json</code></pre></div>
             <div class="fragment"><small class="code-header">config.json</small>
             <pre><code contenteditable><small>
     {
@@ -574,6 +580,7 @@
       "billing_zip": "75007"
     }
             </small></code></pre></div>
+            <div class="fragment"><pre><code>mac:~ travist$ makemeasandwich -o config.json</code></pre></div>
           </section>
           <section>
             <video src='videos/makemeasandwich.m4v' controls />
@@ -584,14 +591,14 @@
           <section>
             <h1>Thanks</h1>
             <h3>References</h3>
-            <ul>
+            <small><ul>
               <li>Blog: <a href="http://travistidwell.com">http://travistidwell.com</a></li>
               <li>Presentation: <a href='http://travistidwell.com/presentations/jquery-node-phantom/'>http://travistidwell.com/presentations/jquery-node-phantom/</a></li>
               <li>Source: <a href='https://github.com/travist/presentations/tree/master/jquery-node-phantom'>https://github.com/travist/presentations/tree/master/jquery-node-phantom</a></li>
               <li>Presentation Video: <a href='https://youtube.com/travist349'>https://youtube.com/travist349</a></li>
               <li>jquery.go.js: <a href='http://github.com/travist/jquery.go.js'>http://github.com/travist/drupal.go.js</a></li>
               <li>Github Profile: <a href='https://github.com/travist'>https://github.com/travist</a></li>
-            </ul>
+            </ul></small>
           </section>
         </section>
       </div>
