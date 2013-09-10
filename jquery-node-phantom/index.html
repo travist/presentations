@@ -393,41 +393,45 @@
           <section>
             <p>Example: Login</p>
             <pre><code contenteditable>
-              var $ = require('jquerygo');
-              var async = require('async');
-              async.series([
-                $.go('visit', 'https://drupal.org/user'),
-                $('#edit-name').go('val', 'travist'),
-                $('#edit-pass').go('val', '123password'),
-                $('#edit-submit').go('click'),
-                $.go('waitForPage')
-              ], function() {
-                console.log('You are now logged in!');
-              });
+  var $ = require('jquerygo');
+  var async = require('async');
+  async.series([
+    $.go('visit', 'https://drupal.org/user'),
+    $('#edit-name').go('val', 'travist'),
+    $('#edit-pass').go('val', '123password'),
+    $('#edit-submit').go('click'),
+    $.go('waitForPage')
+  ], function() {
+    console.log('You are now logged in!');
+    $.capture('loggedin.png');
+    $.close();
+  });
             </code></pre>
           </section>
 
           <section>
             <p>Add the login method to the '$' object.</p>
             <pre><code contenteditable>
-              var $ = require('jquerygo');
-              var async = require('async');
+  var $ = require('jquerygo');
+  var async = require('async');
 
-              <span class='fragment'>$.login = function(user, pass, done) {
-                <span class='fragment'>async.series([
-                  $.go('visit', 'https://drupal.org/user'),
-                  $('#edit-name').go('val', user),
-                  $('#edit-pass').go('val', pass),
-                  $('#edit-submit').go('click'),
-                  $.go('waitForPage')
-                ], done);</span>
-              };</span>
+  <span class='fragment'>$.login = function(user, pass, done) {
+    <span class='fragment'>async.series([
+      $.go('visit', 'https://drupal.org/user'),
+      $('#edit-name').go('val', user),
+      $('#edit-pass').go('val', pass),
+      $('#edit-submit').go('click'),
+      $.go('waitForPage')
+    ], done);</span>
+  };</span>
 
-              <span class='fragment'>async.series([
-                $.go('login', 'travist', '123password')
-              ], function() {
-                console.log('You are now logged in!');
-              });</span>
+  <span class='fragment'>async.series([
+    $.go('login', 'travist', '123password')
+  ], function() {
+    console.log('You are now logged in!');
+    $.capture('loggedin.png');
+    $.close();
+  });</span>
             </code></pre>
           </section>
         </section>
@@ -439,24 +443,26 @@
           <section>
             <p>Example: Login</p>
             <pre><code contenteditable>
-              var $ = require('jquerygo');
-              var async = require('async');
+  var $ = require('jquerygo');
+  var async = require('async');
 
-              $.login = function(user, pass, done) {
-                async.series([
-                  $.go('visit', 'https://drupal.org/user'),
-                  $('#edit-name').go('val', user),
-                  $('#edit-pass').go('val', pass),
-                  $('#edit-submit').go('click'),
-                  $.go('waitForPage')
-                ], done);
-              };
+  $.login = function(user, pass, done) {
+    async.series([
+      $.go('visit', 'https://drupal.org/user'),
+      $('#edit-name').go('val', user),
+      $('#edit-pass').go('val', pass),
+      $('#edit-submit').go('click'),
+      $.go('waitForPage')
+    ], done);
+  };
 
-              async.series([
-                $.go('login', 'travist', '123password')
-              ], function() {
-                console.log('You are now logged in!');
-              });
+  async.series([
+    $.go('login', 'travist', '123password')
+  ], function() {
+    console.log('You are now logged in!');
+    $.capture('loggedin.png');
+    $.close();
+  });
             </code></pre>
           </section>
           <section>
@@ -488,20 +494,20 @@
     }
             </small></code></pre>
             <pre><code contenteditable>
-    var $ = require('jquerygo');
-    var async = require('async');
-    var config = require('nconf');
+  var $ = require('jquerygo');
+  var async = require('async');
+  var config = require('nconf');
 
-    <span class='fragment'>config.argv().env().file({file:'config.json'});</span>
+  <span class='fragment'>config.argv().env().file({file:'config.json'});</span>
 
-    <span class='fragment'>$.login = function(user, pass, done) {......};</span>
+  <span class='fragment'>$.login = function(user, pass, done) {......};</span>
 
-    <span class='fragment'>async.series([
-      $.go('login', config.get('user'), config.get('pass'))
-    ], function() {
-      console.log('You are now logged in!');
-      $.close();
-    });</span>
+  <span class='fragment'>async.series([
+    $.go('login', config.get('user'), config.get('pass'))
+  ], function() {
+    console.log('You are now logged in!');
+    $.close();
+  });</span>
             </code></pre>
           </section>
           <section>
