@@ -364,7 +364,7 @@
             <h3>Using the 'go' method</h3>
             <pre><code contenteditable>    $.go()
     $('selector').go()</code></pre>
-            <pre class='fragment'><code contenteditable>  async.series(
+            <pre class='fragment'><code contenteditable>  async.series([
     <span class='fragment'>$.go('visit', 'http://api.jquery.com'),</span>
     <span class='fragment'>$('input[placeholder="Search"]').go('val', 'each'),</span>
     <span class='fragment'>$('button.icon-search').go('click'),</span>
