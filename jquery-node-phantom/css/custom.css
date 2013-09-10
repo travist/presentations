@@ -1,0 +1,58 @@
+.reveal section img.trans-image {
+  display: inline;
+  border: none;
+  background: rgba(255,255,255,0);
+  box-shadow: none;
+}
+
+.reveal .pro-con-header {
+  text-align: left;
+  margin-left: 6em;
+  margin-top:1em;
+}
+
+.reveal .pro-con-list {
+  text-align: left;
+  width:13em;
+  margin-left: 2em;
+}
+
+.reveal iframe.sencha-example {
+  float: right;
+  width: 40%;
+  height: 550px;
+}
+
+.reveal .sencha-example-info {
+  width: 55%;
+  float: left;
+}
+
+.reveal .sencha-example-info pre {
+  width: 100%;
+}
+
+.reveal pre code {
+  max-height: 550px;
+}
+
+.reveal .plus {
+  display: inline-block;
+  font-size: 2em;
+  margin: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+.reveal .slides {
+  max-width: 1024px;
+}
+
+.reveal pre {
+  margin-top: 5px;
+}
+
+.reveal .code-header {
+  text-align: left;
+  width: 100%;
+  margin-left: 2em;
+}

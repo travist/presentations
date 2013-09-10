@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery + Node + Phantom = Automation and Testing Awesomesauce!</title>
+    <meta name="description" content="A presentation about how to integrate Sencha Touch with Drupal">
+    <meta name="author" content="Travis Tidwell">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body>
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <img class="trans-image" style="width: 6em; display: inline-block;" src="images/jquery.png" /><span class="plus">+</span>
+          <img class="trans-image" style="width: 6em; display: inline-block; padding-bottom: 0.3em;" src="images/node.png" /><span class="plus">+</span>
+          <img class="trans-image" style="width: 2em; display: inline-block;" src="images/phantomjs.png" />
+          <h3 style="clear:both;">Automation and Testing Awesomesauce!</h3>
+          <small>by <a href="http://hakim.se">Travis Tidwell</a> | <a href="http://twitter.com/softwaregnome">@softwaregnome</a></small><br/>
+          <small><a href='https://github.com/travist'>https://github.com/travist</a></small><br/>
+          <small>VP of Technology for <a href="https://allplayers.com">AllPlayers.com</a></small><br/>
+        </section>
+
+        <section>
+          <h2>Motivation</h2>
+          <p class="fragment">Current testing and automation frameworks...
+            <ul style="margin-left:4em;">
+              <li class='fragment'>define their own "non-familiar" interfaces.</li>
+              <li class='fragment'>are not particularly suited for automation.</li>
+              <li class='fragment'>usually not able to leverage additional libraries.</li>
+              <li class='fragment'>usually not written in JavaScript.</li>
+            </ul>
+          </p>
+        </section>
+
+        <section>
+          <img src='images/jquery.png' />
+          <h3 class='fragment'>What makes jQuery so friggin' awesome?</h3>
+          <p class='fragment'>jQuery changed the paradigm on how we write JavaScript.</p>
+          <pre class='fragment'><code contenteditable style='text-align: center;'><span class='fragment'>$('find something')</span><span class='fragment'>.doThisWithSomething();</span></code></pre>
+        </section>
+
+        <section>
+          <h2>JavaScript is now 'isomorphic'</h2>
+          <img class="trans-image" style="width: 6em; display: inline-block;" src="images/jquery.png" /><span class="plus">&harr;</span>
+          <img class="trans-image" style="width: 6em; display: inline-block; padding-bottom: 0.3em;" src="images/node.png" />
+          <p class='fragment'>Can be used for both browser and server-side development.</p>
+          <p class='fragment'>How can we bring the jQuery interface to Node.js?</p>
+          <p class='fragment'>And why would we want to do it?</p>
+        </section>
+
+        <section>
+          <p>There is a jQuery project for Node.js</p>
+          <a href='https://github.com/coolaj86/node-jquery'>https://github.com/coolaj86/node-jquery</a>
+          <ul style='margin: 0.8em 0 0 4em;'>
+            <li class='fragment'>jQuery wrapper to be used with JSDOM.</li>
+            <li class='fragment'>Used for DOM manipulation within Node.js.</li>
+            <li class='fragment'>Not intended for automation and testing.</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h3>Using jQuery to Automate the web</h3>
+          </section>
+
+          <section>
+            <p><strong>jquery.go.js</strong></p>
+            <p><a href='https://github.com/travist/jquery.go.js' target='_blank'>https://github.com/travist/jquery.go.js</a></p>
+            <ul>
+              <li class='fragment'>Uses <strong>jQuery interface</strong> for testing and automation.</li>
+              <li class='fragment'>Leverages <strong>Phantom.js</strong> for headless web browsing.</li>
+              <li class='fragment'>Built within <strong>Node.js</strong> for power and flexibility.</li>
+            </ul>
+            <p class='fragment' style='margin-top: 2em;'>A <strong>jQuery</strong> interface between <strong>Node.js</strong> and <strong>Phantom.js</strong></p>
+          </section>
+
+          <section>
+            <h3>Using jquery.go.js</h3>
+            <p><strong>Step 1:</strong> Go to http://nodejs.org/ and download and install.</p>
+            <img src="images/node-js-install.jpg" height="400em" />
+          </section>
+
+          <section>
+            <p><strong>Step 2:</strong> Setup your project</p>
+            <pre><code contenteditable>
+   mac:~ travist$ mkdir jquerygo
+   <span class="fragment">mac:~ travist$ cd jquerygo</span>
+   <span class="fragment">mac:jquerygo travist$ nano package.json</span>
+   <span class="fragment">
+      {
+        "name": "jquerygo",
+        "dependencies": {
+          "jquerygo": ">=0"
+        }
+      }
+   </span>
+   <span class="fragment">mac:jquerygo travist$ npm install</span>
+            </code></pre>
+          </section>
+
+          <section>
+            <p><strong>Step 3:</strong> Create your application.</p>
+            <pre><code contenteditable>
+  mac:jquerygo travist$ nano app.js
+  <span class="fragment">
+    var $ = require('jquerygo');
+    <span class="fragment">$.config.addJQuery = false;</span>
+    <span class="fragment">$.visit("http://api.jquery.com", function() {
+      <span class="fragment">$('input[placeholder="Search"]').val('each', function() {
+        <span class="fragment">$('button.icon-search').click(function() {
+          <span class="fragment">$.waitForElement('div.entry-summary:eq(0) p', function() {
+            <span class="fragment">$('div.entry-summary:eq(0) p').text(function(summary) {
+              <span class="fragment">console.log(summary);</span>
+              <span class="fragment">$.close();</span>
+            });</span>
+          });</span>
+        });</span>
+      });</span>
+    });</span>
+  </span>
+            </code></pre>
+            <pre class='fragment'><code contenteditable>
+   <span class="fragment">mac:jquerygo travist$ node app.js</span>
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Everything is asynchronous</h3>
+            <div class="fragment"><small class='code-header'>jQuery</small>
+            <pre><code contenteditable>
+   var text = $('h1').text();
+   console.log(text);
+            </code></pre></p>
+            <div class="fragment"><small class='code-header'>jquery.go.js</small>
+            <pre><code contenteditable>
+   $('h1').text(function(text) {
+     console.log(text);
+   });
+            </code></pre></p>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>Asynchronous vs. Serial</h2>
+          </section>
+          <section>
+            <h3>Serial Execution</h3>
+            <p>Waits for one operation to end before starting the next.</p>
+            <pre class='fragment'><code contenteditable>
+    function doSomething() {
+      console.log('something');
+    }
+
+    function doSomethingElse() {
+      console.log('something else');
+    }
+
+    <span class='fragment'>doSomething();</span>
+    <span class='fragment'>doSomethingElse();</span>
+            </code></pre>
+            <pre class='fragment'><code contenteditable>
+    'something'
+    'something else'
+            </code></pre>
+          </section>
+          <section>
+            <h3>Serial Execution</h3>
+            <p>It gets interesting when they depend on one another.</p>
+            <pre class='fragment'><code contenteditable>
+    function getSomething() {
+      return 'something';
+    }
+
+    function saySomething(what) {
+      console.log(what);
+    }
+
+    <span class='fragment'>var something = getSomething();</span>
+    <span class='fragment'>saySomething(something);</span>
+            </code></pre>
+            <pre class='fragment'><code contenteditable>
+    'something'
+            </code></pre>
+          </section>
+          <section>
+            <h3>Serial Execution</h3>
+            <p><small>And more interesting when <code>getSomething</code> depends on an asynchronous source.</small></p>
+            <pre><code contenteditable>
+    function getSomething() {
+      <span class='fragment'>http.get('http://google.com', function(response) {
+        <span class='fragment'>return response; // ??????</span>
+      });</span>
+      <span class='fragment'>// returns nothing... NULL</span>
+    }
+
+    function saySomething(what) {
+      console.log(what);
+    }
+
+    var something = getSomething(); <span class='fragment'>// something = NULL</span>
+    saySomething(something);
+            </code></pre>
+            <pre class='fragment'><code contenteditable>
+    NULL
+            </code></pre>
+          </section>
+          <section>
+            <img src='images/mind-blown.gif' width='100%' />
+          </section>
+          <section>
+            <h3>Asynchronous Execution</h3>
+            <pre><code contenteditable>
+    function getSomething(<span class='fragment'>callback</span>) {
+      http.get('http://google.com', function(response) {
+        <span class='fragment'>callback(response);</span>
+      });
+    }
+
+    function saySomething(what) {
+      console.log(what);
+    }
+
+    <span class='fragment'>
+    getSomething<span class='fragment'>(function(what) {
+      <span class='fragment'>saySomething(what);</span>
+    });</span>
+    </span>
+            </code></pre>
+            <pre class='fragment'><code contenteditable>
+    'something'
+            </code></pre>
+          </section>
+          <section>
+            <p><strong>So, let's revisit our example...</strong></p>
+            <pre><code contenteditable>
+    $.visit("http://api.jquery.com", function() {
+      <span class='fragment'>$('input[placeholder="Search"]').val('each', function() {
+        <span class='fragment'>$('button.icon-search').click(function() {
+          <span class='fragment'>$.waitForElement('div.entry-summary:eq(0) p', function() {
+            <span class='fragment'>$('div.entry-summary:eq(0) p').text(function(summary) {
+              <span class="fragment">...
+              ...
+              OMG this goes on forever!
+              ...
+              ...</span>
+            });</span>
+          });</span>
+        });</span>
+      });</span>
+    });
+            </code></pre>
+          </section>
+          <section>
+            <p><strong>Callback hell</strong> anyone?</p>
+            <img src='images/callback_hell.jpg' />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Using async.js</h1>
+            <pre><code contenteditable style='text-align:center;'>https://github.com/caolan/async</code></pre>
+            <ul>
+              <li class='fragment'>Uses asynchronous control flow to provide a serial appearance.</li>
+              <li class='fragment'>Implementation of JavaScript 'promises'.</li>
+              <li class='fragment'>Isomorphic</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Install Async.js</h3>
+            <div class="fragment"><small class='code-header'>package.json</small>
+            <pre><code contenteditable>
+    "dependencies": {
+        "async": ">=0",
+        ...
+            </code></pre></div>
+            <div class="fragment"><pre><code>mac:jquerygo travist$ npm install</code></pre></div>
+          </section>
+          <section>
+            <h3><code>async.series</code> usage</h3>
+            <pre><code contenteditable>
+    var async = require('async');
+
+    async.series([
+      function(done){
+        // do some stuff ...
+        done();
+      },
+      function(done){
+        // do some more stuff ...
+        done();
+      }
+    ], function(err, results){
+      // results is now equal to ['one', 'two']
+    });
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>async.series</code> example</h3>
+            <h4 class='code-header'>Before:</h4>
+  <pre><code contenteditable><small>  $.visit("http://api.jquery.com", function() {
+    $('input[placeholder="Search"]').val('each', function() {
+      $('button.icon-search').click(function() {
+        $.waitForElement('div.entry-summary:eq(0) p', function() {
+          $('div.entry-summary:eq(0) p').text(function(summary) {
+            console.log(summary);
+            $.close();
+          });
+        });
+      });
+    });
+  });</small></code></pre>
+            <div class="fragment"><h4 class='code-header'>After:</h4>
+            <pre><code contenteditable><small>  async.series([
+    function(done) {
+      $.visit("http://api.jquery.com", done);
+    },
+    function(done) {
+      $('input[placeholder="Search"]').val('each', done);
+    },
+    function(done) {
+      $('button.icon-search').click(done);
+    },
+    function(done) {
+      $.waitForElement('div.entry-summary:eq(0) p', done);
+    }
+  ], function() {
+    $('div.entry-summary:eq(0) p').text(function(summary) {
+      console.log(summary);
+      $.close();
+    });
+  });</small></code></pre></div>
+          </section>
+          <section>
+            <h3>Using the 'go' method</h3>
+            <pre><code contenteditable>    $.go()
+    $('selector').go()</code></pre>
+            <pre class='fragment'><code contenteditable>  async.series(
+    <span class='fragment'>$.go('visit', 'http://api.jquery.com'),</span>
+    <span class='fragment'>$('input[placeholder="Search"]').go('val', 'each'),</span>
+    <span class='fragment'>$('button.icon-search').go('click'),</span>
+    <span class='fragment'>$.go('waitForElement', 'div.entry-summary:eq(0) p')</span>
+  ], function() {
+    <span class='fragment'>$('div.entry-summary:eq(0) p').text(function(summary) {
+      <span class='fragment'>console.log(summary);</span>
+      <span class='fragment'>$.close();</span>
+    });</span>
+  });</code></pre>
+          </section>
+          <section>
+            <h3>async.js: Methods to care about</h3>
+            <ul>
+              <li class="fragment"><a href="https://github.com/caolan/async#series">async.series</a> - Run an array of functions in series.</li>
+              <li class="fragment"><a href="https://github.com/caolan/async#eachseriesarr-iterator-callback">async.eachSeries</a> - Iterator is applied to each item in the array in series.</li>
+              <li class="fragment"><a href="https://github.com/caolan/async#whilst">async.whilst</a> - Repeatedly call a function, while test returns true.</li>
+              <li class="fragment"><a href="https://github.com/caolan/async#apply">async.apply</a> - Much like 'go' method but only applies a non-contextual function.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Extending jquery.go.js</h3>
+          </section>
+          <section>
+            <p>Example: Login</p>
+            <pre><code contenteditable>
+              var $ = require('jquerygo');
+              var async = require('async');
+              async.series([
+                $.go('visit', 'https://drupal.org/user'),
+                $('#edit-name').go('val', 'travist'),
+                $('#edit-pass').go('val', '123password'),
+                $('#edit-submit').go('click'),
+                $.go('waitForPage')
+              ], function() {
+                console.log('You are now logged in!');
+              });
+            </code></pre>
+          </section>
+
+          <section>
+            <p>Add the login method to the '$' object.</p>
+            <pre><code contenteditable>
+              var $ = require('jquerygo');
+              var async = require('async');
+
+              <span class='fragment'>$.login = function(user, pass, done) {
+                <span class='fragment'>async.series([
+                  $.go('visit', 'https://drupal.org/user'),
+                  $('#edit-name').go('val', user),
+                  $('#edit-pass').go('val', pass),
+                  $('#edit-submit').go('click'),
+                  $.go('waitForPage')
+                ], done);</span>
+              };</span>
+
+              <span class='fragment'>async.series([
+                $.go('login', 'travist', '123password')
+              ], function() {
+                console.log('You are now logged in!');
+              });</span>
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Leveraging the Node.js ecosystem.</h3>
+          </section>
+          <section>
+            <p>Example: Login</p>
+            <pre><code contenteditable>
+              var $ = require('jquerygo');
+              var async = require('async');
+
+              $.login = function(user, pass, done) {
+                async.series([
+                  $.go('visit', 'https://drupal.org/user'),
+                  $('#edit-name').go('val', user),
+                  $('#edit-pass').go('val', pass),
+                  $('#edit-submit').go('click'),
+                  $.go('waitForPage')
+                ], done);
+              };
+
+              async.series([
+                $.go('login', 'travist', '123password')
+              ], function() {
+                console.log('You are now logged in!');
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h3>Using Configurations</h3>
+            <p>Let's change this code to use a configuration file.</p>
+            <p>Using a library called <a href='https://github.com/flatiron/nconf'>nconf</a>.</p>
+            <div class="fragment"><small style="margin: 1em 0 -1em -35em;">package.json</small>
+            <pre><code contenteditable>
+    "dependencies": {
+        "nconf": ">=0",
+        ...
+            </code></pre></div>
+            <div class="fragment"><pre><code>mac:jquerygo travist$ npm install</code></pre></div>
+            <div class="fragment"><small style="margin: 1em 0 -1em -35em;">config.json</small>
+            <pre><code contenteditable>
+    {
+        "user": "travist",
+        "pass": "123password"
+    }
+            </code></pre></div>
+          </section>
+          <section>
+            <h3>Using Configurations</h3>
+            <small style="margin: 1em 0 -1em -35em;">config.json</small>
+            <pre><code contenteditable><small>
+    {
+        "user": "travist",
+        "pass": "123password"
+    }
+            </small></code></pre>
+            <pre><code contenteditable>
+    var $ = require('jquerygo');
+    var async = require('async');
+    var config = require('nconf');
+
+    <span class='fragment'>config.argv().env().file({file:'config.json'});</span>
+
+    <span class='fragment'>$.login = function(user, pass, done) {......};</span>
+
+    <span class='fragment'>async.series([
+      $.go('login', config.get('user'), config.get('pass'))
+    ], function() {
+      console.log('You are now logged in!');
+      $.close();
+    });</span>
+            </code></pre>
+          </section>
+          <section>
+            <h3>Using Prompt</h3>
+            <p>Change the password so it prompts you for it.</p>
+            <p>Using a library called <a href='https://github.com/flatiron/prompt'>prompt</a>.</p>
+            <div class="fragment"><small style="margin: 1em 0 -1em -35em;">package.json</small>
+            <pre><code contenteditable>
+    "dependencies": {
+        "prompt": ">=0",
+        ...
+            </code></pre></div>
+            <div class="fragment"><pre><code>mac:jquerygo travist$ npm install</code></pre></div>
+          </section>
+          <section>
+            <h3>Using Prompt</h3>
+            <p>Change the password so it prompts you for it.</p>
+            <p>Using a library called <a href='https://github.com/flatiron/prompt'>prompt</a>.</p>
+            <pre><code contenteditable>
+    var prompt = require('prompt');
+    prompt.start();
+
+    <span class='fragment'>$.login = function(user, pass, done) {......};</span>
+
+    <span class='fragment'>async.series([
+      <span class='fragment'>function(done) {
+        <span class='fragment'>prompt.get({name: 'pass', hidden: true}, function(pass) {
+          <span class='fragment'>config.set('pass', pass);</span>
+          <span class='fragment'>done();</span>
+        });</span>
+      },</span>
+      $.go('login', config.get('user'), config.get('pass'))
+    ], function() {
+      console.log('Logged in.');
+      $.close();
+    });</span>
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>A real world example</h2>
+            <img src='images/sandwich.png' />
+          </section>
+          <section>
+            <h3>makemeasandwich.js</h3>
+            <strong><a href='https://github.com/travist/makemeasandwich.js'>https://github.com/travist/makemeasandwich.js</a></strong>
+            <img src='images/makemeasandwich.jpg' style='height:14em;' />
+          </section>
+          <section>
+            <div class="fragment"><pre><code>mac:~ travist$ npm install -g makemeasandwich</code></pre></div>
+            <div class="fragment"><pre><code>mac:~ travist$ makemeasandwich -o config.json</code></pre></div>
+            <div class="fragment"><small class="code-header">config.json</small>
+            <pre><code contenteditable><small>
+    {
+      "email": "",
+      "company": "AllPlayers.com",
+      "address": "14665 Midway Road",
+      "apt/suite": "220",
+      "city": "Addison",
+      "state": "Texas",
+      "zip": "75001",
+      "sandwich": "country club",
+      "who": "Travis",
+      "bread": "French Bread",
+      "cut": true,
+      "drink": "",
+      "chips": "Regular Jimmy Chips",
+      "cookie": "",
+      "pickle": "",
+      "Tomato": "NO",
+      "tip": "2",
+      "billing_address": "123 Main St.",
+      "billing_city": "Carrollton",
+      "billing_state": "Texas",
+      "billing_zip": "75007"
+    }
+            </small></code></pre></div>
+          </section>
+          <section>
+            <video src='videos/makemeasandwich.m4v' controls />
+          </section>
+          <section>
+            <img style='width:20em;' src='images/slowclap.gif' />
+          </section>
+          <section>
+            <h1>Thanks</h1>
+            <h3>References</h3>
+            <ul>
+              <li>Blog: <a href="http://travistidwell.com">http://travistidwell.com</a></li>
+              <li>Presentation: <a href='http://travistidwell.com/presentations/jquery-node-phantom/'>http://travistidwell.com/presentations/jquery-node-phantom/</a></li>
+              <li>Source: <a href='https://github.com/travist/presentations/tree/master/jquery-node-phantom'>https://github.com/travist/presentations/tree/master/jquery-node-phantom</a></li>
+              <li>Presentation Video: <a href='https://youtube.com/travist349'>https://youtube.com/travist349</a></li>
+              <li>jquery.go.js: <a href='http://github.com/travist/jquery.go.js'>http://github.com/travist/drupal.go.js</a></li>
+              <li>Github Profile: <a href='https://github.com/travist'>https://github.com/travist</a></li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+              transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+              // Optional libraries used to extend on reveal.js
+              dependencies: [
+                {src: 'lib/js/classList.js', condition: function() {
+                    return !document.body.classList;
+                  }},
+                {src: 'plugin/markdown/showdown.js', condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                  }},
+                {src: 'plugin/markdown/markdown.js', condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                  }},
+                {src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+                    hljs.initHighlightingOnLoad();
+                  }},
+                {src: 'plugin/zoom-js/zoom.js', async: true, condition: function() {
+                    return !!document.body.classList;
+                  }},
+                {src: 'plugin/notes/notes.js', async: true, condition: function() {
+                    return !!document.body.classList;
+                  }}
+                // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+              ]
+            });
+
+    </script>
+
+    <script>
+      Reveal.addEventListener( 'slidechanged', function(event) {
+        var example = event.currentSlide.getAttribute('example');
+        if (example) {
+          var iframe = event.currentSlide.getElementsByTagName("iframe")[0];
+          iframe.setAttribute('src', example);
+        }
+      });
+    </script>
+
+  </body>
+</html>
