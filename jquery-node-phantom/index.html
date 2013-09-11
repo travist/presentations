@@ -165,7 +165,6 @@
    });
             </code></pre></p>
           </section>
-
         </section>
 
         <section>
@@ -375,6 +374,27 @@
       <span class='fragment'>$.close();</span>
     });</span>
   });</code></pre>
+          </section>
+          <section>
+            <h3>Another Example</h3>
+            <div class="fragment"><h4 class='code-header'>Using each()</h4>
+            <pre class="fragment"><code contenteditable>
+  var $ = require('jquerygo');
+  var async = require('async');
+  async.series([
+    $.go('visit', 'http://api.jquery.com/'),
+    <span class="fragment">function(done) {
+      <span class="fragment">$('h1.entry-title a').each(function(index, item, done) {
+        <span class="fragment">this.text(function(text) {
+          <span class="fragment">console.log(text);</span>
+          <span class="fragment">done();</span>
+        });</span>
+      }, done);</span>
+    }</span>
+  ], function() {
+    $.close();
+  });
+            </code></pre>
           </section>
         </section>
         <section>
