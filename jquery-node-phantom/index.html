@@ -146,6 +146,7 @@
     });</span>
   </span>
             </code></pre>
+            <p class="code-header" style="margin-top:-0.4em; height:0.8em;"><small>examples/example1.js: Search the jQuery API</small></p>
             <pre class='fragment'><code contenteditable>
    mac:jquerygo travist$ node app.js
             </code></pre>
@@ -357,7 +358,8 @@
       console.log(summary);
       $.close();
     });
-  });</small></code></pre></div>
+  });</small></code></pre>
+          <p class="code-header" style="margin-top:-0.4em; height:0.8em;"><small>examples/example2.js: Using async.series</small></p></div>
           </section>
           <section>
             <h3>Using the 'go' method</h3>
@@ -374,11 +376,12 @@
       <span class='fragment'>$.close();</span>
     });</span>
   });</code></pre>
+          <p class="code-header fragment" style="margin-top:-0.4em; height:0.8em;"><small>examples/example3.js: Using async.series</small></p>
           </section>
           <section>
             <h3>Another Example</h3>
             <div class="fragment"><h4 class='code-header'>Using each()</h4>
-            <pre class="fragment"><code contenteditable>
+            <div class="fragment"><pre><code contenteditable>
   var $ = require('jquerygo');
   var async = require('async');
   async.series([
@@ -395,6 +398,7 @@
     $.close();
   });
             </code></pre>
+            <p class="code-header" style="margin-top:-0.4em; height:0.8em;"><small>examples/example4.js: Using each</small></p></div>
           </section>
         </section>
         <section>
@@ -535,8 +539,8 @@
           </section>
           <section>
             <h3>Using Prompt</h3>
-            <p>Change the password so it prompts you for it.</p>
-            <p>Using a library called <a href='https://github.com/flatiron/prompt'>prompt</a>.</p>
+            <small><p>Change the password so it prompts you for it.</p>
+            <p>Using a library called <a href='https://github.com/flatiron/prompt'>prompt</a>.</p></small>
             <pre><code contenteditable>
     var prompt = require('prompt');
     prompt.start();
@@ -545,17 +549,21 @@
 
     <span class='fragment'>async.series([
       <span class='fragment'>function(done) {
-        <span class='fragment'>prompt.get({name: 'pass', hidden: true}, function(pass) {
-          <span class='fragment'>config.set('pass', pass);</span>
-          <span class='fragment'>done();</span>
-        });</span>
+        prompt.get({name: 'pass', hidden: true}, function(err, data) {
+          config.set('pass', data.pass);
+          done();
+        });
       },</span>
-      $.go('login', config.get('user'), config.get('pass'))
+      <span class='fragment'>$.go('login', config.get('user'), <span class='fragment'>function() {
+        return config.get('pass');
+      }</span>)</span>
     ], function() {
-      console.log('Logged in.');
-      $.close();
+      <span class='fragment'>console.log('Logged in.');</span>
+      <span class='fragment'>$.capture('loggedin.png');</span>
+      <span class='fragment'>$.close();</span>
     });</span>
             </code></pre>
+            <p class="code-header" style="margin-top:-0.4em; height:0.8em;"><small>examples/example5.js: Using config and prompt.</small></p>
           </section>
         </section>
         <section>

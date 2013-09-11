@@ -28,6 +28,8 @@
 		"grunt-contrib-mincss": "~0.3.1",
 		"grunt": "~0.3.17",
                 "jquerygo": ">=0",
-                "async": ">=0"
+                "async": ">=0",
+                "prompt": ">=0",
+                "nconf": ">=0"
 	}
 }
