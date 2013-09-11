@@ -310,18 +310,18 @@
             <pre><code contenteditable>
     var async = require('async');
 
-    async.series([
-      function(done){
+    <span class="fragment">async.series([
+      <span class="fragement">function(done){
         // do some stuff ...
         done();
-      },
-      function(done){
+      },</span>
+      <span class="fragment">function(done){
         // do some more stuff ...
         done();
-      }
-    ], function(){
+      }</span>
+    ], <span class="fragment">function(){
       // Called when all callbacks above have finihsed executing.
-    });
+    }</span>);</span>
             </code></pre>
           </section>
           <section>
