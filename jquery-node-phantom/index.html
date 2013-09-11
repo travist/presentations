@@ -147,7 +147,7 @@
   </span>
             </code></pre>
             <pre class='fragment'><code contenteditable>
-   <span class="fragment">mac:jquerygo travist$ node app.js</span>
+   mac:jquerygo travist$ node app.js
             </code></pre>
           </section>
 
@@ -219,18 +219,18 @@
       <span class='fragment'>http.get('http://google.com', function(response) {
         <span class='fragment'>return response; // ??????</span>
       });</span>
-      <span class='fragment'>// returns nothing... NULL</span>
+      <span class='fragment'>// returns nothing... undefined</span>
     }
 
     function saySomething(what) {
       console.log(what);
     }
 
-    var something = getSomething(); <span class='fragment'>// something = NULL</span>
+    var something = getSomething(); <span class='fragment'>// something = undefined</span>
     saySomething(something);
             </code></pre>
             <pre class='fragment'><code contenteditable>
-    NULL
+    undefined
             </code></pre>
           </section>
           <section>
@@ -319,8 +319,8 @@
         // do some more stuff ...
         done();
       }
-    ], function(err, results){
-      // results is now equal to ['one', 'two']
+    ], function(){
+      // Called when all callbacks above have finihsed executing.
     });
             </code></pre>
           </section>
@@ -362,8 +362,8 @@
           </section>
           <section>
             <h3>Using the 'go' method</h3>
-            <pre><code contenteditable>    $.go()
-    $('selector').go()</code></pre>
+            <pre><code contenteditable>    $.go("method")
+    $('selector').go("method")</code></pre>
             <pre class='fragment'><code contenteditable>  async.series([
     <span class='fragment'>$.go('visit', 'http://api.jquery.com'),</span>
     <span class='fragment'>$('input[placeholder="Search"]').go('val', 'each'),</span>
@@ -375,15 +375,6 @@
       <span class='fragment'>$.close();</span>
     });</span>
   });</code></pre>
-          </section>
-          <section>
-            <h3>async.js: Methods to care about</h3>
-            <ul>
-              <li class="fragment"><a href="https://github.com/caolan/async#series">async.series</a> - Run an array of functions in series.</li>
-              <li class="fragment"><a href="https://github.com/caolan/async#eachseriesarr-iterator-callback">async.eachSeries</a> - Iterator is applied to each item in the array in series.</li>
-              <li class="fragment"><a href="https://github.com/caolan/async#whilst">async.whilst</a> - Repeatedly call a function, while test returns true.</li>
-              <li class="fragment"><a href="https://github.com/caolan/async#apply">async.apply</a> - Much like 'go' method but only applies a non-contextual function.</li>
-            </ul>
           </section>
         </section>
         <section>
@@ -593,6 +584,10 @@
           </section>
           <section>
             <img style='width:20em;' src='images/slowclap.gif' />
+          </section>
+          <section>
+            <p>jQuery is more powerful than you realize</p>
+            <p class="fragment">Happy automating!</p>
           </section>
           <section>
             <h1>Thanks</h1>
