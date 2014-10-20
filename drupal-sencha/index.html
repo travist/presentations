@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mobile Drupal with Sencha Touch</title>
+    <meta name="description" content="A presentation about how to integrate Sencha Touch with Drupal">
+    <meta name="author" content="Travis Tidwell">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body>
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <h1>Mobile Drupal with Sencha Touch</h1>
+          <p>
+            <img class="trans-image" style="width: 6em;" src="images/drupalicon.small.png" />
+            <img class="trans-image" style="width: 3em; margin: 0 1em 2em 1em;" src="images/heart.png" />
+            <img class="trans-image" style="width: 5em;" src="images/sencha.png" />
+            <small>
+              <ul>
+                <li><a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+                <li>Lead Developer for <a href="http://www.allplayers.com">AllPlayers.com</a></li>
+                <li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
+              </ul>
+            </small>
+          </p>
+        </section>
+        <section>
+          <section>
+            <h2>Another Mobile Technology?</h2>
+            <p class="fragment">
+              The mobile development landscape is very fractious.
+            </p>
+          </section>
+          <section>
+            <h3>The different paths of mobile development</h3>
+            <ul>
+              <li class='fragment'>Native Development</li>
+              <li class='fragment'>Native Hybrid Frameworks</li>
+              <li class='fragment'>Mobile Web Application + Apache Cordova</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Native Development</h2>
+            <img class="trans-image" style="float:left;" src='images/apple-sdk.png' />
+            <img class="trans-image" style="float:right;" src='images/android-sdk.png' />
+            <h4 class="pro-con-header">Pros:</h4>
+            <ul class="pro-con-list">
+              <li class='fragment'>Performance</li>
+              <li class='fragment'>Small memory footprint</li>
+            </ul>
+            <h4 class="pro-con-header">Cons:</h4>
+            <ul class="pro-con-list">
+              <li class='fragment'>Each platform must be developed individually.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Native Hybrid Frameworks</h2>
+            <p>Utilize a standard SDK that compiles into a Native application.</p>
+            <span style="float:left;"><img class="trans-image" src='images/titanium_logo.png' /><br/><small><a href="http://www.appcelerator.com/platform/titanium-sdk">Titanium</a></small></span>
+            <span style="float:right;"><img class="trans-image" src='images/corona-logo.png' /><br/><small><a href="http://www.coronalabs.com/products/corona-sdk">Corona</a></small></span>
+            <h4 class="pro-con-header">Pros:</h4>
+            <ul class="pro-con-list">
+              <li class='fragment'>Cross Platform.</li>
+              <li class='fragment'>Performance</li>
+            </ul>
+            <h4 class="pro-con-header">Cons:</h4>
+            <ul class="pro-con-list">
+              <li class='fragment'>License constraints.</li>
+              <li class='fragment'>Costs money.</li>
+              <li class="fragment">Cannot be ran as web application.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Mobile Web Apps + Apache Cordova</h2>
+            <p>Wraps a web application in Native Web View.</p>
+            <span style="float:left;"><img class="trans-image" src='images/jquery-mobile-logo.png' width='160px;' /><br/><small><a href="http://jquerymobile.com/">jQuery Mobile</a></small></span>
+            <span style="float:right;"><img class="trans-image" src='images/sencha.png' height='150px;' /><br/><small><a href="http://www.sencha.com/products/touch">Sencha Touch</a></small></span>
+            <h4 class="pro-con-header">Pros:</h4>
+            <ul class="pro-con-list">
+              <li class='fragment'>Uses web technology.</li>
+              <li class='fragment'>Cross platform.</li>
+              <li class='fragment'>Use as your mobile website.</li>
+              <li class='fragment'>Common User Interface</li>
+              <li class='fragment'>Free (kindof)</li>
+            </ul>
+            <h4 class="pro-con-header">Cons:</h4>
+            <ul class="pro-con-list">
+              <li class='fragment'>Performance.</li>
+              <li class='fragment'>Common User Interface (doesn't feel native).</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Which one do I use?</h2>
+            <p class='fragment'>It depends on your requirements...</p>
+            <ul>
+              <li class='fragment'>Performance:  Native</li>
+              <li class='fragment'>Non-Web Application: Native Hybrid Frameworks</li>
+              <li class='fragment'>Web Application: Mobile Web App + Apache Cordova</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Why Sencha Touch?</h2>
+            <img class="trans-image" src='images/sencha.png' style='position:absolute;left:0em;' />
+            <ul style='margin-left: 8em;'>
+              <li class='fragment'>Enterprise Web Application Framework</li>
+              <li class='fragment'>'Seems' more performant than other frameworks.</li>
+              <li class='fragment'>MVC Object Oriented Architecture.</li>
+              <li class='fragment'>Beautiful User Interface</li>
+              <li class='fragment'>Flexible + Customizable</li>
+              <li class='fragment'>Great Documentation</li>
+              <li class="fragment">but...</li>
+              <li class="fragment">Steep learning curve.</li>
+              <li class='fragment'>JavaScript Heavy.</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section example='examples/example1/index.html'>
+            <h2>Sencha Touch: Getting Started</h2>
+            <small><p>
+                <a href='http://docs.sencha.com/touch/2.2.1/#!/guide/getting_started'>http://docs.sencha.com/touch/2.2.1/#!/guide/getting_started</a>
+            </p></small>
+            <span class='sencha-example-info'>
+              <ul>
+                <li class="fragment">Download <a href='http://www.sencha.com/products/touch/download/'>Sencha Touch SDK</a> and <a href='http://www.sencha.com/products/sencha-cmd/download'>Sencha Cmd</a>.</li>
+                <li class="fragment">Extract SDK folder.</li>
+                <li class="fragment">
+                  <small><pre><code contenteditable>
+    $ cd ~/sencha/
+    $ sencha generate app Example ../examples/example1
+                  </code></pre></small>
+                </li>
+              </ul>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
+          </section>
+          <section>
+            <h2>Code Layout</h2>
+            <img src="images/code-layout.png" />
+          </section>
+          <section>
+            <h2>MVC Architecture</h2>
+            <p>Model - View - Controller</p>
+            <img src="images/mvc_role_diagram.png" />
+          </section>
+          <section>
+            <h3>Object Oriented Design</h3>
+            <p>Derive functionality from a base object (class).</p>
+            <pre class="fragment" style="margin-top:0px; margin-bottom: 0px;"><code contenteditable>Ext.define('Example1.view.Main', {
+  extend: 'Ext.tab.Panel'
+});</code></pre>
+            <span class="fragment">
+              <img style="margin-bottom: 0px;" src="images/tabpanel.png" />
+              <small><a href="http://docs.sencha.com/touch/2.2.1/#!/api/Ext.tab.Panel">http://docs.sencha.com/touch/2.2.1/#!/api/Ext.tab.Panel</a></small>
+            </span>
+          </section>
+          <section>
+            <h3>Great Documentation</h3>
+            <iframe src='http://docs.sencha.com/touch/2.2.1/' style='width:100%; height: 16em;'></iframe>
+            <a href='http://docs.sencha.com/touch/2.2.1/'>http://docs.sencha.com/touch/2.2.1</a>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Fun with Views, Layouts & Controllers</h2>
+          </section>
+          <section  example='examples/example2/index.html'>
+            <h3>Creating Layouts</h3>
+            <span class='sencha-example-info'>
+              <pre><code contenteditable>Ext.define('Example.view.Main', {
+  extend: 'Ext.Container',
+  <span class='fragment'>config: {
+    <span class='fragment'>layout: 'vbox',
+    style: 'text-align: center;',
+    <span class='fragment'>items: [
+      <span class='fragment'>{
+        flex: 1,
+        style: 'background-color: #ccc;',
+        html: 'Top'
+      },</span>
+      <span class='fragment'>{
+        flex: 1,
+        style: 'background-color: #ddd;',
+        html: 'Bottom'
+      }</span>
+    ]</span></span>
+  }</span>
+});</code></pre>
+              <small>examples/example2/app/view/Main.js</small>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
+          </section>
+          <section example='examples/example3/index.html'>
+            <h3>Creating a Grid Layout</h3>
+            <span class='sencha-example-info'>
+              <small><pre><code contenteditable>Ext.define('Example.view.Main', {
+  extend: 'Ext.Container',
+  config: {
+    layout: 'vbox',
+    items: [
+      <span class='fragment'>{
+        flex: 1,
+        <span class='fragment'>layout: 'hbox',
+        items: [
+          <span class='fragment'>{
+            flex: 1,
+            style: 'background-color: #aaa;'
+          },
+          {
+            flex: 1,
+            style: 'background-color: #bbb;'
+          }</span>
+        ]</span>
+      },
+      {
+        flex: 1,
+        <span class='fragment'>layout: 'hbox',
+        items: [
+          <span class='fragment'>{
+            flex: 1,
+            style: 'background-color: #ccc;'
+          },
+          {
+            flex: 1,
+            style: 'background-color: #ddd;'
+          }</span>
+        ]</span>
+      }
+    ]</span>
+  }
+});</code></pre></small>
+            <small>examples/example3/app/view/Main.js</small>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
+          </section>
+          <section example='examples/example4/index.html'>
+            <h3>Creating a Home Page</h3>
+            <span class='sencha-example-info'>
+              <small><pre><code contenteditable>Ext.define('Example.view.Main', {
+  extend: 'Ext.tab.Panel',
+  requires: 'Ext.TitleBar',
+  <span class='fragment'>config: {
+    tabBarPosition: 'bottom',
+    items: [
+      {
+        title: 'Home',
+        iconCls: 'home',
+        scrollable: true,
+        layout: 'vbox',
+        items: [
+          {
+            docked: 'top',
+            xtype: 'titlebar',
+            title: 'Home'
+          },
+          <span class='fragment'>{
+            flex: 1,
+            layout: 'hbox',
+            items: [
+              <span class='fragment'>{
+                flex: 1,
+                items: [{
+                  xtype: 'button',
+                  iconCls: 'user',
+                  text: 'Profile',
+                  iconAlign: 'top',
+                  ui: 'action',
+                  padding: '25 0 0 0',
+                  centered: true,
+                  width: 100,
+                  height: 100
+                }]
+              },
+              {
+                flex: 1,
+                style: 'background-color: #ccc;',
+                items: [{
+                  xtype: 'button',
+                  iconCls: 'team',
+                  text: 'Users',
+                  iconAlign: 'top',
+                  ui: 'action',
+                  padding: '25 0 0 0',
+                  centered: true,
+                  width: 100,
+                  height: 100
+                }]
+              }</span>
+            ]
+          },
+          {
+            flex: 1,
+            layout: 'hbox',
+            items: [
+              <span class='fragment'>{
+                flex: 1,
+                style: 'background-color: #ccc;',
+                items: [{
+                  xtype: 'button',
+                  iconCls: 'favorites',
+                  text: 'Favorites',
+                  iconAlign: 'top',
+                  ui: 'action',
+                  padding: '25 0 0 0',
+                  centered: true,
+                  width: 100,
+                  height: 100
+                }]
+              },
+              {
+                flex: 1,
+                items: [{
+                  xtype: 'button',
+                  iconCls: 'settings',
+                  text: 'Settings',
+                  iconAlign: 'top',
+                  ui: 'action',
+                  padding: '25 0 0 0',
+                  centered: true,
+                  width: 100,
+                  height: 100
+                }]
+              }</span>
+            ]
+          }</span>
+        ]
+      }
+    ]
+  }</span>
+});</code></pre></small>
+            <small>examples/example4/app/view/Main.js</small>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
+          </section>
+          <section>
+            <h3>Creating other Views</h3>
+            <pre><code contenteditable>Ext.define('Example.view.User', {
+  extend: 'Ext.Container',
+  xtype: 'userpage',
+  config: {
+    title: 'User',
+    styleHtmlContent: true,
+    html: "&lt;h2&gt;Welcome You!&lt;/h2&gt;"
+  }
+});</code></pre>
+            <small>examples/example5/app/view/User.js</small>
+            <div class='fragment'><pre><code contenteditable>Ext.application({
+  name: 'Example',
+  requires: [
+    'Ext.MessageBox'
+  ],
+  views: [
+    'Main',
+    'User'
+  ],
+  ...
+  ...</code></pre>
+            <small>examples/example5/app/app.js</small></div>
+          </section>
+          <section>
+            <h3>Creating a Controller</h3>
+            <pre><code contenteditable>Ext.define('Example.controller.Main', {
+  extend: 'Ext.app.Controller',
+  <span class='fragment'>config: {
+    <span class='fragment'>refs: {
+      mainPage: 'mainpage'
+    },</span>
+    <span class='fragment'>control: {
+      'button[action=user]': {
+        tap: 'onButton'
+      },
+      ...
+      ...
+    }</span>
+  },</span>
+  <span class='fragment'>onButton: function(event) {
+    <span class='fragment'>this.getMainPage().push({
+      xtype: event.action + 'page'
+    });</span>
+  }</span>
+});</code></pre>
+            <small>examples/example5/app/controller/Main.js</small>
+          </section>
+          <section example='examples/example5/index.html'>
+            <h3>Creating a Controller: Part II</h3>
+            <span class='sencha-example-info'>
+              <pre><code contenteditable>Ext.application({
+  name: 'Example',
+  requires: [
+    'Ext.MessageBox'
+  ],
+  <span class='fragment'>controllers: [
+    'Main'
+  ],</span>
+  <span class='fragment'>views: [
+    'Main',
+    'User',
+    'Users',
+    'Favorites',
+    'Settings'
+  ],</span>
+  ...
+  ...</code></pre>
+              <small>examples/example5/app/controller/Main.js</small>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
+          </section>
+          <section>
+            <h3>Sencha Architect: GUI Editor</h3>
+            <p>A visual application builder for Sencha Touch.</p>
+            <img src='images/architect-hero.png' />
+            <a href='http://www.sencha.com/products/architect/'>http://www.sencha.com/products/architect</a>
+          </section>
+          <section>
+            <h3>Sencha Architect Pricing</h3>
+            <img src='images/architect_pricing.jpg' />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Drupal as the backend to Sencha Touch</h2>
+          </section>
+          <section>
+            <h3>Drupal: Services Module</h3>
+            <img src='images/services_module.png' />
+            <a href='https://drupal.org/project/services'>https://drupal.org/project/services</a>
+          </section>
+          <section>
+            <h3>Installation</h3>
+            <img src='images/services_enable.png' style='height:15em;' /><br/>
+            <a href='/admin/modules'>/admin/modules</a>
+          </section>
+          <section>
+            <h3>Add New Service</h3>
+            <img src='images/services_add.jpg' />
+            <a href='/admin/structure/services'>/admin/structure/services</a>
+          </section>
+          <section>
+            <h3>Service Settings</h3>
+            <img src='images/services_add_settings.jpg' />
+            <a href='/admin/structure/services/add'>/admin/structure/services/add</a>
+          </section>
+          <section>
+            <h3>Service Endpoint Formats</h3>
+            <img src='images/services_endpoint_formats.jpg' />
+            <a href='/admin/structure/services/list/api/server'>/admin/structure/services/list/api/server</a>
+          </section>
+          <section>
+            <h3>Service Endpoint Formats</h3>
+            <img src='images/services_endpoint_resources.jpg' />
+            <a href='/admin/structure/services/list/api/resources'>/admin/structure/services/list/api/resources</a>
+          </section>
+          <section>
+            <h3>Quick Test</h3>
+            <p>Open your Drupal website in Chrome.  In the Console of the Developer Tools, type the following...</p>
+<pre><code contenteditable>jQuery.get('/api/user.json', function(users) {
+  console.log(users);
+});</pre></code>
+            <img class='fragment' src='images/console_test.jpg' />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Connecting Sencha to Drupal.</h2>
+            <p>Creating a User List view.</p>
+          </section>
+          <section>
+            <h3>Define the Model</h3>
+            <p class='fragment'>The model represents a single 'object'.</p>
+            <pre class='fragment'><code contenteditable>Ext.define('Example.model.User', {
+  extend: 'Ext.data.Model',
+  <span class='fragment'>config: {
+    fields: [
+      <span class='fragment'>{ name: 'uid', type: 'int' },
+      { name: 'name', type: 'string' },
+      { name: 'sid', type: 'string' },
+      { name: 'mail', type: 'string' },
+      { name: 'access', type: 'date', dateFormat: 'U' },
+      { name: 'created', type: 'date', dateFormat: 'U' },
+      { name: 'picture', type: 'string' }</span>
+    ]
+  }</span>
+});</code></pre>
+            <small class='fragment'>examples/example6/app/model/User.js</small>
+            <pre class='fragment'><code contenteditable>Ext.application({
+  name: 'Example',
+  models: [
+    'User'
+  ],</code></pre>
+            <small class='fragment'>examples/example6/app/app.js</small>
+          </section>
+          <section>
+            <h3>Define the Store</h3>
+            <p class='fragment'>A store represents a list of objects (views module).</p>
+            <pre class='fragment'><code contenteditable>Ext.define('Example.store.Users', {
+  extend: 'Ext.data.Store',
+  requires: ['Ext.data.proxy.JsonP'],
+  config: {
+    autoLoad: true,
+    model: 'Example.model.User',
+    <span class='fragment'>proxy: {
+      type: 'jsonp',
+      url: 'http://www.example.com/api/user.jsonp',
+      reader: {
+        type: 'json'
+      }
+    }</span>
+  }
+});</code></pre>
+            <small class='fragment'>examples/example6/app/store/Users.js</small>
+            <p class='fragment'>But there is a problem...</p>
+          </section>
+          <section>
+            <h3>Define a custom Proxy</h3>
+            <p>Sencha Touch makes assumptions about the paging parameters. To fix this, we will create our own custom proxy and derive from JsonP.</p>
+            <pre class='fragment'><code contenteditable>Ext.define('Example.proxy.Drupal', {
+  extend: 'Ext.data.proxy.JsonP',
+  alias: 'proxy.drupal',
+  <span class='fragment'>getParams: function(operation) {
+    return {
+      page: operation.getPage() - 1,
+      limit: operation.getLimit()
+    };
+  }</span>
+});</code></pre>
+            <small class='fragment'>examples/example6/app/proxy/Drupal.js</small>
+          </section>
+          <section>
+            <h3>Fixing the Users Store.</h3>
+            <pre class='fragment'><code contenteditable>Ext.define('Example.store.Users', {
+  extend: 'Ext.data.Store',
+  <span class='fragment'>requires: ['Example.proxy.Drupal'],</span>
+  <span class='fragment'>config: {
+    autoLoad: true,
+    model: 'Example.model.User',
+    proxy: {
+      <span class='fragment'>type: 'drupal',</span>
+      url: 'http://localhost:8888/api/user.jsonp',
+      reader: {
+        type: 'json'
+      }
+    }
+  }</span>
+});</code></pre>
+            <small class='fragment'>examples/example6/app/store/Users.js</small>
+            <pre class='fragment'><code contenteditable>Ext.application({
+  name: 'Example',
+  stores: [
+    'Users'
+  ],</code></pre>
+            <small class='fragment'>examples/example6/app/app.js</small>
+          </section>
+          <section example='examples/example6/index.html'>
+            <h3>Create the User List view</h3>
+            <span class='sencha-example-info'>
+              <pre><code contenteditable>Ext.define('Example.view.Users', {
+  extend: 'Ext.List',
+  xtype: 'userspage',
+  <span class="fragment">requires: ['Example.store.Users'],</span>
+  config: {
+    <span class='fragment'>store: 'Users',</span>
+    <span class='fragment'>styleHtmlContent: true,
+    itemTpl: new Ext.XTemplate(
+      '&lt;strong&gt;{name}&lt;/strong&gt;',
+      '&lt;p&gt;{mail}&lt;/p&gt;'
+    ),</span>
+    <span class='fragment'>onItemDisclosure: true</span>
+  }
+});</code></pre>
+              <small>examples/example6/app/view/Users.js</small>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
+          </section>
+          <section>
+            <h3>Setup the User view</h3>
+            <pre><code contenteditable>Ext.define('Example.view.User', {
+  extend: 'Ext.Container',
+  xtype: 'userpage',
+  config: {
+    title: 'User',
+    styleHtmlContent: true,
+    <span class="fragment">tpl: new Ext.XTemplate('{name} - {mail}'),</span>
+  }
+});</code></pre>
+            <small>examples/example6/app/view/User.js</small>
+          </section>
+          <section example='examples/example6/index.html'>
+            <h3>Hook up the Controller</h3>
+            <span class='sencha-example-info'>
+              <pre><code contenteditable>Ext.define('Example.controller.Main', {
+  extend: 'Ext.app.Controller',
+  config: {
+    refs: {
+      mainPage: 'mainpage',
+      <span class='fragment'>usersPage: 'userspage'</span>
+    },
+    control: {
+      ...
+      <span class='fragment'>'userspage': {
+        itemtap: 'showUser'
+      }</span>
+    }
+  },
+  ...
+  <span class='fragment'>showUser: function(list, index, target, record) {
+    this.getMainPage()<span class='fragment'>.push(<span class='fragment'>{
+      xtype: 'userpage',
+      title: record.get('name'),
+      <span class='fragment'>data: record.data</span>
+    }</span>);</span>
+  }</span>
+});</code></pre>
+              <small>examples/example6/app/controller/Main.js</small>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Form Handling</h2>
+          </section>
+          <section>
+            <h3>Enable CORS on your server.</h3>
+            <p>In order to get POST to work in Sencha Touch, you need to enable Cross-Origin Resource Sharing (CORS).
+            Go to <a href='http://enable-cors.org/index.html'>http://enable-cors.org/index.html</a> to find out more.</p>
+          </section>
+          <section example='examples/example7/index.html'>
+            <h3>Create a NodeForm View</h3>
+            <span class='sencha-example-info'>
+              <pre><code contenteditable><small>Ext.define('Example.view.NodeForm', {
+  extend: 'Ext.form.Panel',
+  xtype: 'nodeformpage',
+  requires: 'Ext.form.FieldSet',
+  config: {
+    title: 'New Article',
+    items: [
+      {
+        xtype: 'fieldset',
+        flex: 1,
+        items: [
+          {
+            xtype: 'textfield',
+            name: 'title',
+            label: 'Title:'
+          },
+          {
+            xtype: 'textareafield',
+            name: 'description',
+            label: 'Description:',
+            cls: 'nodedesc',
+            flex: 1
+          }
+        ]
+      },
+      {
+        xtype: 'button',
+        text: 'Save',
+        ui: 'action',
+        margin: '10px',
+        action: 'nodeSave'
+      }
+    ]
+  }
+});</small></code></pre>
+              <small>examples/example7/app/view/NodeView.js</small>
+            </span>
+            <iframe class='fragment sencha-example'></iframe>
+          </section>
+          <section>
+            <h3>Setup the Controller</h3>
+            <pre><code contenteditable><small>Ext.define('Example.controller.Main', {
+  extend: 'Ext.app.Controller',
+  requires: ['Ext.device.Notification'],
+  config: {
+    refs: {
+      ...
+      nodeForm: 'nodeformpage'
+    },
+    control: {
+      'button[action=nodeform]': {
+        tap: 'onButton'
+      },
+      'button[action=nodeSave]': {
+        tap: 'onNodeSave'
+      },
+      ...
+    }
+  },
+  ...
+});</small></code></pre>
+              <small>examples/example7/app/controller/Main.js</small>
+          </section>
+          <section example='examples/example7/index.html'>
+            <h3>Saving a node</h3>
+            <span class='sencha-example-info'>
+              <pre><code contenteditable><small>onNodeSave: function() {
+  var self = this;
+
+  <span class='fragment'>// Get the node values.
+  var values = this.getNodeForm().getValues();</span>
+
+  <span class='fragment'>// Set the POST params.
+  var params = {
+    'node[type]': 'article',
+    'node[title]': values.title,
+    'node[body][und][0][value]': values.description
+  };</span>
+
+  <span class='fragment'>// Get the request token.
+  Ext.Ajax.request({
+    url: 'http://localhost:8888/services/session/token',
+    method: 'GET',
+    withCredentials: true,
+    success: function(response) {
+      var token = response.responseText;
+      <span class='fragment'>Ext.Ajax.request({
+        method: 'POST',
+        url: 'http://localhost:8888/api/node.json',
+        withCredentials: true,
+        headers: {'X-CSRF-Token': token},
+        params: params,
+        success: function(response) {
+          <span class='fragment'>response = Ext.JSON.decode(response.responseText);
+          Ext.Msg.alert(response.title, 'Node created!', Ext.emptyFn);
+          self.getMainPage().pop();</span>
+        }
+      });</span>
+    }
+  });</span>
+}</small></code></pre>
+                <small>examples/example7/app/controller/Main.js</small>
+              </span>
+              <iframe class='fragment sencha-example'></iframe>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>DrupalTouch.js</h2>
+            <img src='images/drupaltouch.jpg' style='height:15em;'/>
+            <small><a href='https://github.com/travist/drupaltouch'>https://github.com/travist/drupaltouch</a></small>
+          </section>
+          <section example='examples/drupaltouch/index.html'>
+            <h3>Walkthough</h3>
+            <iframe class='sencha-example' style='width:15em; height: 18em; float:none;'></iframe>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Apache Cordova (PhoneGap)</h2>
+            <img src='images/cordova_bot.png' />
+            <p class='fragment'>Provides a way to deploy a web application as a Native App.</p>
+          </section>
+          <section>
+            <h2>Setup</h2>
+            <ul>
+              <li>Download at <a href='http://cordova.apache.org/#download'>http://cordova.apache.org/#download</a></li>
+              <li>Walk through the <a href="http://cordova.apache.org/docs/en/2.6.0/guide_getting-started_android_index.md.html">Getting Started Guide</a></li>
+              <li>Upgrade Android Tools
+                <pre><code contenteditable>$ android update sdk -u</code></pre>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Create Project</h2>
+            <pre><code contenteditable>$ cd ~/Documents/cordova/cordova-android/bin
+$ ./create ~/Documents/projects/cordova-sencha com.TravisTidwell.CordovaSencha CordovaSencha</code></pre>
+            <img src="images/eclipse_new_project.png" />
+          </section>
+          <section>
+            <h2>Symlink Sencha Application to Cordova</h2>
+            <pre><code contenteditable>$ rm -rf ~/Documents/projects/cordova-sencha/assets/www
+$ ln -s ~/Documents/projects/drupal-sencha ~/Documents/projects/cordova-sencha/assets/www
+</code></pre>
+          </section>
+          <section>
+            <h2>Build and Deploy</h2>
+            <p>Sencha Command allows you to build your application and make it ready for production.</p>
+            <pre><code contenteditable>$ sencha app build production</code></pre>
+            <p class="fragment">Now enable USB Debugging on your phone and you can deploy on your Android!</p>
+          </section>
+        </section>
+        <section>
+          <h1>Thanks</h1>
+        </section>
+      </div>
+
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+              transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+              // Optional libraries used to extend on reveal.js
+              dependencies: [
+                {src: 'lib/js/classList.js', condition: function() {
+                    return !document.body.classList;
+                  }},
+                {src: 'plugin/markdown/showdown.js', condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                  }},
+                {src: 'plugin/markdown/markdown.js', condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                  }},
+                {src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+                    hljs.initHighlightingOnLoad();
+                  }},
+                {src: 'plugin/zoom-js/zoom.js', async: true, condition: function() {
+                    return !!document.body.classList;
+                  }},
+                {src: 'plugin/notes/notes.js', async: true, condition: function() {
+                    return !!document.body.classList;
+                  }}
+                // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+              ]
+            });
+
+    </script>
+
+    <script>
+      Reveal.addEventListener( 'slidechanged', function(event) {
+        var example = event.currentSlide.getAttribute('example');
+        if (example) {
+          var iframe = event.currentSlide.getElementsByTagName("iframe")[0];
+          iframe.setAttribute('src', example);
+        }
+      });
+    </script>
+
+  </body>
+</html>
