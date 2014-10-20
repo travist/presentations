@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>When to NOT use Drupal</title>
+		<meta name="description" content="A presentation on when it is pragmatic to use Drupal and when it is not.">
+		<meta name="author" content="Travis Tidwell">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.min.css">
+		<style> .reveal i.fa { font-family:FontAwesome; font-style: normal; } </style>
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>When to <u style="color:red;">NOT</u> use Drupal</h2>
+					<p>
+						<small>Created by <a href="http://www.travistidwell.com">Travis Tidwell</a> / <a href="http://github.com/travist">travist</a> / <a href="http://twitter.com/softwaregnome">@softwaregnome</a></small>
+					</p>
+				</section>
+				<section>
+					<h2>I'm not hatin'. I <span style="color:red"><i class="fa fa-heart fa-5x"></i></span> Drupal.</h2>
+					<p>Drupal is an amazing tool. "It can do everything"!</p>
+					<p class="fragment">... but that is kind of the problem.</p>
+				</section>
+				<section>
+					<span>Customer says... <blockquote>"I need a web application that does _____."</blockquote></span>
+					<span class="fragment">You say...<blockquote class="fragment">"Yeah, Drupal can do that!"</blockquote></span>
+				</section>
+				<section>
+					<span>We need to start saying...<blockquote>"Yeah, Drupal <u>SHOULD</u> do that!"</blockquote></span>
+				</section>
+				<section>
+					<h3>So, what should Drupal do?</h3>
+					<h3><span class="fragment">What should it <u>NOT</u> do?</span></h3>
+					<div class="fragment">
+						<img src="http://i.ytimg.com/vi/0IcFNiNDb8E/hqdefault.jpg" />
+						<p><em>Let's start using the right tools for the right job!</em></p>
+					</div>
+				</section>
+				<section>
+					<h2>Drupal's intentions</h2>
+					<p>Drupal is and was intended to be a Content Management System.</p>
+				</section>
+				<section>
+					<blockquote>"Just because you have content to manage, does NOT mean you need a Content Management System."</blockquote>
+					<br/>
+					<p class="fragment">Drupal is really a Content <u>Workflow</u> Management System.</p>
+					<br/>
+					<p class="fragment">Drupal makes sense when your system is concerned with managing content workflows between multiple users.</p>
+				</section>
+				<section>
+					<blockquote>"The majority of Drupal websites should not have been built with Drupal."</blockquote>
+				</section>
+				<section>
+					<section>
+						<h3>Examples</h3>
+						<p>Let's take a look at <a href="http://www.drupalshowcase.com">http://www.drupalshowcase.com</a></p>
+					</section>
+					<section>
+						<h3>Brochure Websites</h3>
+						<p>These are the majority...</p>
+						<img class="fragment" src="http://www.drupalshowcase.com/sites/g/files/g93571/f/styles/large_scale_crop/public/FireShot%20capture%20-%20www_trhomes_com_au_0.png?itok=geesykjx" />
+					</section>
+					<section>
+						<h3>Brochure Websites</h3>
+						<p>What should I use instead?</p>
+						<p class="fragment">Static Site Generator</p>
+						<div class="fragment">
+							<img width="50%" src="https://api.monosnap.com/image/download?id=C1eKhtKCIrNDRDbd3w1c3MENloo7IP" />
+							<p>https://www.staticgen.com/</p>
+						</div>
+					</section>
+					<section>
+						<h3>My favorite static site generator</h3>
+						<div class="fragment">
+							<img src="https://api.monosnap.com/image/download?id=KhsSbLmN0HQkz0lFDq9fs8HAQvvmbT" />
+							<p>http://wintersmith.io/</p>
+						</div>
+						<div class="fragment">
+							<em>I would recommend using Nunjucks templating language (Twig like) https://github.com/jbuck/wintersmith-nunjucks.</em>
+						</div>
+					</section>
+					<section>
+						<h3>Bootstrapping your project with Yeoman</h3>
+						<img src="https://blog.openshift.com/wp-content/uploads/imported/yeoman-logo.png" />
+						<p>http://yeoman.io/</p>
+						<pre class="fragment"><code>npm install -g yo</code></pre>
+						<pre class="fragment"><code>npm install -g generator-metalsmith</code></pre>
+						<pre class="fragment"><code>yo metalsmith</code></pre>
+					</section>
+					<section>
+						<h3>Shameless plug</h3>
+						<p class="fragment">I created a project that combines<br/><a target="_blank" href="http://wintersmith.io/">Wintersmith</a> + <a target="_blank" href="http://mozilla.github.io/nunjucks/">Nunjucks</a> + <a target="_blank" href="http://getbootstrap.com/">Bootstrap</a> = <span class="fragment"><a target="_blank" href="https://github.com/travist/juckstrap">Juckstrap</a></span></p>
+						<pre class="fragment"><code>npm install -g generator-juckstrap</code></pre>
+						<pre class="fragment"><code>yo juckstrap</code></pre>
+					</section>
+					<section>
+						<h3>Static Sites</h3>
+						<p>You can build a brochure website in an afternoon.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>What about mobile?</h3>
+						<img style="padding: 20px 0 20px 24%" src="http://www.cheek.com/sites/default/files/iphone4s-drupal-smaller_2.png" />
+					</section>
+					<section>
+						<p>The web is moving to "API first" methodology</p>
+					</section>
+					<section>
+						<p>Drupal's response to that is the "Headless Drupal" movement.</p>
+						<img src="https://www.ostraining.com/cdn/images/steve/logo-headless-drupal1.png" />
+						<p class="fragment"><em><small>Using Drupal as a backend API server to front end applications and Mobile apps.</small></em></p>
+					</section>
+					<section>
+						<h3>Drupal 8 gives us a fighting chance</h3>
+						<img src="http://www.drupalons.fr/sites/default/files/fichiers/images/Drupal-Symfony.jpg" />
+						<p class="fragment"><em>Symfony allows for easy API development.</em></p>
+					</section>
+					<section>
+						<p>But even with that do you still need Drupal?...</p>
+						<p class="fragment"><em>Depends on what your mobile app needs to do</em></p>
+					</section>
+					<section>
+						<p>Cases when you really don't need Drupal as a backend.</p>
+						<ul>
+							<li>Simple "brochure" apps.</li>
+							<li>Single purpose apps</li>
+							<li>Gaming apps</li>
+						</ul>
+					</section>
+					<section>
+						<p>When does it make sense to use Drupal?</p>
+						<ul>
+							<li>Multi-user publishing apps.</li>
+							<li>News apps</li>
+							<li>When it is a "mobile" version of a Drupal site.</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Other contenders for "API first" applications.</h3>
+						<p class="fragment">
+							<ul>
+								<li><a href="http://laravel.com/">Laravel (Symfony PHP)</a></li>
+								<li><a href="http://flatironjs.org/">Flatiron (Node.js)</a></li>
+								<li><a href="http://sailsjs.org/#/">Sails.js (Node.js)</a></li>
+								<li>and many others...</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h3>My personal favorite contender</h3>
+						<img src="https://camo.githubusercontent.com/bf88a03ab97881ced0b0ac67bb3747a1260ae170/687474703a2f2f692e696d6775722e636f6d2f546a394e6b2e706e67" />
+					</section>
+					<section>
+						<strong>Why I love node.js for API development.</strong>
+						<ul>
+							<li class="fragment">Built in HTTP layer (no need for Apache or NGINX)</li>
+							<li class="fragment">Loves high concurrency situations (Mobile).</li>
+							<li class="fragment">Works seamlessly with static sites.</li>
+							<li class="fragment">"Build up instead of Chisel away" development.</li>
+						</ul>
+					</section>
+					<section>
+						<strong>Example: An API to fetch a list of static users.</strong>
+						<pre><code>
+// Require the application.
+var app = require('express')();
+
+// Get the users endpoint.
+app.get('/users.json', function(req, res) {
+	res.json([
+		{ first: 'Travis', last: 'Tidwell'},
+		{ first: 'Joe', last: 'Smith' },
+		{ first: 'Sam', last: 'Roberts' }
+	]);
+});
+
+// Listen to port 4000
+app.listen(4000);
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<strong>Closing comments</strong>
+					<ul>
+						<li class="fragment">Use Drupal how it was intended and you will be happy.</li>
+						<li class="fragment">Stop saying "CAN" and start saying "SHOULD".</li>
+						<li class="fragment">Never stop exploring other alternatives.</li>
+						<li class="fragment">Drupal 8 will solve many things but should still be evaluated when deciding platforms.</li>
+					</ul>
+					<br/><br/>
+					<div class="fragment">
+						<p>I look forward to the day when... <blockquote>Drupal <u>SHOULD</u> do everything!</blockquote>
+					</div>
+				</section>
+				<section>
+					<p>Go forth and build something cool...<br/><h3>Thank you</h3></p>
+				</section>
+				<section>
+					<h3>Thank you</h3>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
