@@ -49,7 +49,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h2>Using Angular.js with Drupal</h2>
+					<h2>Using Angular.js with Drupal 8</h2>
 					<p>
 						<img class="trans-image" style="width: 4em; margin-bottom: 1em;" src="images/drupal8.png" />
 						<img class="trans-image" style="width: 3em; margin: 0 1em 1.3em 0.5em;" src="images/heart.png" />
@@ -222,7 +222,15 @@ drush dl drupal --default-major=8 --select --all
 					<section>
 						<h3>Adding and Configuring Restangular</h3>
 						<pre class="fragment"><code>bower install --save restangular</code></pre>
-						<pre class="fragment"><strong>app/scripts/app.js</strong><code>
+						<pre class="fragment"><strong>app/index.html</strong><code data-trim>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+						</code></pre>
+						<pre class="fragment"><strong>app/scripts/app.js</strong><code data-trim>
+angular.module('drupalAngularApp', [
+  'ngCookies',
+  'ngRoute',
+  'restangular'
+])
 .config(function ($routeProvider, RestangularProvider) {
   RestangularProvider.setBaseUrl('http://drupal8');
   ...
