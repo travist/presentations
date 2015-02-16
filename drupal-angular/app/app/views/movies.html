@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="movie in movies">
+      <td><a ng-href="#/movie/{{ movie.uuid[0].value }}">
+        {{ movie.title[0].value }}
+      </td>
+      <td>{{ movie.field_youtube_url[0].uri }}</td>
+    </tr>
+  </tbody>
+</table>

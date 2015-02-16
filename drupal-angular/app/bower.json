@@ -1,0 +1,16 @@
+{
+  "name": "drupal-angular",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.3.0",
+    "bootstrap-sass-official": "^3.2.0",
+    "angular-cookies": "^1.3.0",
+    "angular-route": "^1.3.0",
+    "restangular": "~1.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.3.0"
+  },
+  "appPath": "app",
+  "moduleName": "drupalAngularApp"
+}
