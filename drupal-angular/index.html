@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>How to build a M.E.A.N web application.</title>
+		<meta name="description" content="Angular + Drupal">
+		<meta name="author" content="Travis Tidwell">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style type="text/css">
+			.reveal div.listsmall {
+				margin-left: 10px;
+				display: inline-block;
+				font-size: 0.6em;
+			}
+			.reveal .fullwidth, .reveal .fullwidth code {
+				width: 100%;
+			}
+		</style>
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Using Angular.js with Drupal</h2>
+					<p>
+						<img class="trans-image" style="width: 4em; margin-bottom: 1em;" src="images/drupal8.png" />
+						<img class="trans-image" style="width: 3em; margin: 0 1em 1.3em 0.5em;" src="images/heart.png" />
+						<img class="trans-image" style="width: 5em;" src="images/angularjs-logo-trans.png" />
+					</p>
+					<small>
+						<ul>
+							<li><a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+							<li><a href="http://www.travistidwell.com">http://travistidwell.com</a></li>
+							<li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
+							<li><a ref="https://github.com/travist">https://github.com/travist</a></li>
+						</ul>
+					</small>
+				</section>
+
+				<section>
+					<h2>Presentation Materials</h2>
+					<p>
+						<ul>
+							<li><a href="http://travistidwell.com/presentations/drupal-angular">http://travistidwell.com/presentations/drupal-angular</a></li>
+							<li><a href="http://travistidwell.com">http://travistidwell.com</a></li>
+						</ul>
+					</p>
+				</section>
+
+				<section>
+					<h3>Why Angular?</h3>
+					<p class="fragment">Let's look at how the web has evolved.</p>
+				</section>
+				<section>
+					<h2>Web 1.0</h2>
+					<small>The static web</small><br/>
+					<img class="trans-image" src="images/web1.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>The dynamic web</small><br/>
+					<img class="trans-image" style="width: 20em;" src="images/web2.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>Drupal and other CMS' proliferated</small><br/>
+					<img class="trans-image" style="width: 20em;" src="images/drupal-web2.svg" />
+				</section>
+				<section>
+					<h2>Web 3.0</h2>
+					<small>The semantic web</small><br/>
+				</section>
+				<section>
+					<h2>Web 3.0</h2>
+					<small>The semantic web</small><br/>
+					<img class="trans-image" style="height: 15em;" src="images/web3.svg" />
+				</section>
+				<section>
+					<h3>Web 3.0</h3>
+					<small>Its affect on Drupal</small><br/>
+					<img class="trans-image" style="height: 15em;" src="images/drupal-web3.svg" />
+				</section>
+				<section>
+					<h3>Web 3.0</h3>
+					<small>Drupal 8 solves this problem</small>
+					<img class="trans-image" style="height: 17em; margin-top: -1em;" src="images/drupal8-web3.svg" />
+				</section>
+				<section>
+					<h3>The Future</h3>
+					<p>Drupal as a Hub?</p>
+					<img class="trans-image" src="images/hub_web.png" />
+				</section>
+				<section>
+					<h3>Why Angular.js?</h3>
+					<p class="fragment" style="font-size:0.9em;"><u>Forces</u> us to develop our Drupal website like a web application.</p>
+				</section>
+				<section>
+					<h3>A Web Application</h3>
+					<img class="trans-image" src="images/angular-web3.svg" />
+				</section>
+				<section>
+					<h3>The Future</h3>
+					<p>Multi-Service Applications</p>
+					<img class="trans-image fragment" style="height: 16em; margin-top: -0.5em;" src="images/multiservice.svg" />
+				</section>
+				<section>
+					<section>
+						<h2>Let's build the future</h2>
+						<p>Configure Drupal 8 for Web Services</p>
+					</section>
+					<section>
+						<h3>Configure your server for CORS</h3>
+						<pre class="fullwidth fragment" style="font-size: 0.3em;">/etc/apache2/sites-available/drupal8<code data-trim>
+<Directory /var/www/drupal8>
+  Options Indexes FollowSymLinks MultiViews
+  AllowOverride All
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Credentials "true"
+  Header set Access-Control-Allow-Methods "GET, PUT, POST, DELETE, OPTIONS"
+  Header set Access-Control-Allow-Headers "DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type"
+  Order allow,deny
+  allow from all
+</Directory>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Install Drupal 8</h3>
+						<ul>
+							<li class="fragment">Install Drupal by following <a href="https://api.drupal.org/api/drupal/core!INSTALL.txt/8">https://api.drupal.org/api/drupal/core!INSTALL.txt/8</a>
+								<pre class="fullwidth"><code data-trim>
+drush dl drupal --default-major=8 --select --all
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Add a URL field to the "Article" content type</h3>
+						<img src="images/addfield.png" />
+					</section>
+					<section>
+						<h3>Enable REST modules</h3>
+						<div style="float:left">/admin/modules</div>
+						<img src="images/webservices.png" />
+					</section>
+					<section>
+						<h3>Create a View</h3>
+						<img src="images/movieview.png" />
+					</section>
+					<section>
+						<h3>Create a View: Style Options</h3>
+						<img src="images/reststyle.png" />
+					</section>
+					<section>
+						<h3>Create the single movie page.</h3>
+						<img src="images/moviesingle.jpg" />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Building the Client</h2>
+						<p>in AngularJS</p>
+					</section>
+					<section>
+						<h3>Bootstrapping the client with Yeoman</h3>
+						<img width="300px" src="https://blog.openshift.com/wp-content/uploads/imported/yeoman-logo.png" />
+						<p>http://yeoman.io/</p>
+						<pre class="fragment"><code>mkdir drupal-angular</code><code class="fragment">cd drupal-angular</code><code class="fragment">npm install -g yo</code><code class="fragment">npm install -g generator-angular</code><code class="fragment">yo angular</code></pre>
+					</section>
+					<section>
+						<h3>Yeoman Installation</h3>
+						<img style="height: 14em;" src="images/yeoman-install.png" />
+					</section>
+					<section>
+						<h3>Fix Navigation</h3>
+						<pre style="font-size: 0.5em;" class="fullwidth fragment">app/index.html<code data-trim>
+<div class="collapse navbar-collapse" id="js-navbar-collapse">
+  <ul class="nav navbar-nav">
+    <li ng-class="{active:activeNav == 'home'}"><a href="#/">Home</a></li>
+    <li ng-class="{active:activeNav == 'about'}"><a ng-href="#/about">About</a></li>
+  </ul>
+</div>
+						</code></pre>
+						<pre class="fullwidth fragment">app/scripts/controllers/about.js<code data-trim>
+.controller('AboutCtrl', function ($scope, $rootScope) {
+  $rootScope.activeNav = 'about';
+});
+						</code></pre>
+						<pre class="fullwidth fragment">app/scripts/controllers/main.js<code data-trim>
+.controller('MainCtrl', function ($scope, $rootScope) {
+  $rootScope.activeNav = 'home';
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Adding and Configuring Restangular</h3>
+						<pre class="fragment"><code>bower install --save restangular</code></pre>
+						<pre class="fragment"><strong>app/scripts/app.js</strong><code>
+.config(function ($routeProvider, RestangularProvider) {
+  RestangularProvider.setBaseUrl('http://drupal8');
+  ...
+						</code></pre>
+					</section>
+					<section>
+						<h3>Generate the movies route</h3>
+						<pre class="fragment"><code>yo angular:route movies</code></pre>
+						<div class="fragment">
+							<h3>Add Movies to the navigation</h3>
+							<pre class="fragment" style="font-size: 0.4em;"><strong>app/index.html</strong><code data-trim>
+<div class="collapse navbar-collapse" id="js-navbar-collapse">
+  <ul class="nav navbar-nav">
+    <li ng-class="{active: activeNav == 'home'}"><a href="#/">Home</a></li>
+    <li ng-class="{active: activeNav == 'movies'}"><a ng-href="#/movies">Movies</a></li>
+  </ul>
+</div>
+							</code></pre>
+							<pre class="fragment"><strong>app/scripts/controllers/movies.js</strong><code data-trim>
+.controller('MoviesCtrl', function ($rootScope) {
+  $rootScope.activeNav = 'movies';
+});
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<h3>Create a table list of Movies</h3>
+						<pre class="fragment" style="font-size: 0.5em;">app/views/movies.html<code data-trim>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="movie in movies">
+      <td><a ng-href="#/movie/{{ movie.uuid[0].value }}">
+        {{ movie.title[0].value }}
+      </td>
+      <td>{{ movie.field_youtube_url[0].uri }}</td>
+    </tr>
+  </tbody>
+</table>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Add movies to the scope</h3>
+						<pre class="fragment"><strong>app/scripts/controllers/movies.js</strong><code data-trim>
+.controller('MoviesCtrl', function ($scope, $rootScope, Restangular) {
+  $rootScope.activeNav = 'movies';
+  $scope.movies = Restangular.all('movie').getList().$object;
+});
+						</code></pre>
+						<img class="fragment" src="images/moviestable.png" />
+					</section>
+					<section>
+						<h3>Create the Movie Page</h3>
+						<pre class="fragment"><code data-trim>
+yo angular:route movie-view --uri=movie/:id
+						</code></pre>
+						<pre class="fragment">app/views/movie-view.html<code data-trim>
+<h3>{{ movie.title[0].value }}</h3>
+<p>{{ movie.field_youtube_url[0].uri }}</p>
+						</code></pre>
+						<pre class="fragment" style="font-size: 0.5em;">app/scripts/controllers/movie-add.js<code data-trim>
+.controller('MovieViewCtrl', function ($scope, $routeParams, Restangular) {
+  $scope.movie = {};
+  Restangular.one('movie', $routeParams.id).get().then(function(result) {
+    $scope.movie = result[0];
+  });
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Adding a YouTube Player directive</h3>
+						<pre class="fragment">app/scripts/app.js<code>
+.directive('youtube', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      src: '='
+    },
+    templateUrl: 'views/youtube.html'
+  };
+})</code><code class="fragment">.filter('trusted', function ($sce) {
+  return function(url) {
+    return $sce.trustAsResourceUrl(url);
+  };
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Adding a YouTube Player directive</h3>
+						<pre class="fragment" style="font-size: 0.5em;">app/views/youtube.html<code data-trim>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="{{ src | trusted }}"></iframe>
+</div>
+						</code></pre>
+						<pre class="fragment">app/views/movie-view.html<code data-trim>
+<ng-include src="'views/movie-nav.html'"></ng-include>
+<h3>{{ movie.title[0].value }}</h3></code><code class="fragment"><youtube src="movie.field_youtube_url[0].uri"></youtube></code></pre>
+					</section>
+					<section>
+						<h3>Amazing!</h3>
+						<img src="images/youtube-view.png" width="80%" />
+					</section>
+				</section>
+				<section>
+					<h3>THANK YOU!</h3>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
