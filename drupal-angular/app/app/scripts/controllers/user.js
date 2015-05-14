@@ -16,7 +16,7 @@ angular.module('drupalAngularApp')
       $scope.user['form_id'] = 'user_login_form';
       $http({
         method: 'POST',
-        url: $rootScope.drupalServer + '/user/login',
+        url: 'http://drupal8/user/login',
         data: $scope.user,
         headers: {
           'Accept': 'application/json',

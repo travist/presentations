@@ -1,0 +1,52 @@
+{
+    "locals": {
+        "name": "MySite",
+        "analytics": "UA-XXXXX-X",
+        "copyright": "AllPlayers",
+        "navigation": {
+            "class": "navbar-inverse navbar-fixed-top",
+            "links": [
+                {
+                    "name": "Home",
+                    "href": "#home"
+                },
+                {
+                    "name": "About",
+                    "href": "#about"
+                },
+                {
+                    "name": "Contact",
+                    "href": "#contact"
+                },
+                {
+                    "name": "Dropdown",
+                    "links": [
+                        {
+                            "name": "Action",
+                            "href": "#"
+                        },
+                        {
+                            "name": "Another action",
+                            "href": "#"
+                        },
+                        {
+                            "name": "Something else here",
+                            "href": "#"
+                        },
+                        {
+                            "header": "Navigation Header"
+                        },
+                        {
+                            "name": "Separated Link",
+                            "href": "#"
+                        },
+                        {
+                            "name": "One more separated link",
+                            "href": "#"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

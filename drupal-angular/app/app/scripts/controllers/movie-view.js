@@ -8,10 +8,9 @@
  * Controller of the drupalAngularApp
  */
 angular.module('drupalAngularApp')
-  .controller('MovieViewCtrl', function ($scope, $routeParams, Restangular) {
+  .controller('MovieViewCtrl', function ($scope, $rootScope, $routeParams, $http) {
     $scope.movie = {};
-    Restangular.one('movie', $routeParams.id).get()
-    .then(function(result) {
+    $http.get($rootScope.baseUrl + '/movie/' + $routeParams.id).success(function(result) {
       $scope.movie = result[0];
     });
   });

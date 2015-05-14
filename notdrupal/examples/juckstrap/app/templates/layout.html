@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "includes/header.html" %}
+  </head>
+  <body>
+    {% from "includes/jumbotron.html" import jumbotron %}
+    {% include "includes/browsehappy.html" %}
+    {% block nav %}{% endblock %}
+    {% block jumbotron %}{% endblock %}
+    <div class="container">
+      <div class="row">
+        {% block content %}{% endblock %}
+      </div>
+      <hr>
+      <footer>
+        {% block footer %}{% endblock %}
+      </footer>
+    </div>
+    {% include "includes/analytics.html" %}
+    {% include "includes/scripts.html" %}
+  </body>
+</html>

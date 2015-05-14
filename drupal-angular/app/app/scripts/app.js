@@ -11,11 +11,9 @@
 angular
   .module('drupalAngularApp', [
     'ngCookies',
-    'ngRoute',
-    'restangular'
+    'ngRoute'
   ])
-  .config(function ($routeProvider, RestangularProvider) {
-    RestangularProvider.setBaseUrl('http://drupal8');
+  .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -42,6 +40,9 @@ angular
         redirectTo: '/'
       });
   })
+  .run(function($rootScope) {
+    $rootScope.baseUrl = 'http://drupal8';
+  })
   .directive('youtube', function() {
     return {
       restrict: 'E',
@@ -49,6 +50,11 @@ angular
         src: '='
       },
       templateUrl: 'views/youtube.html'
+    };
+  })
+  .filter('safe', function($sce) {
+    return function(html) {
+      return $sce.trustAsHtml(html);
     };
   })
   .filter('trusted', function ($sce) {

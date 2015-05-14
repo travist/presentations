@@ -1,0 +1,64 @@
+{
+  "name": "juckstrap",
+  "version": "0.0.1",
+  "description": "Site building bliss with Nunjucks + Bootstrap + Wintermith.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:travist/juckstrap.git"
+  },
+  "keywords": [
+    "nunjucks",
+    "bootstrap",
+    "wintersmith"
+  ],
+  "author": {
+    "name": "Travis Tidwell"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/travist/juckstrap/issues"
+  },
+  "homepage": "https://github.com/travist/juckstrap",
+  "devDependencies": {
+    "apache-server-configs": "^2.7.1",
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^1.0.0",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.10.0",
+    "grunt-contrib-htmlmin": "^0.3.0",
+    "grunt-contrib-imagemin": "^0.8.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha": "^0.4.10",
+    "grunt-newer": "^0.7.0",
+    "grunt-rev": "^0.1.0",
+    "grunt-svgmin": "^0.4.0",
+    "grunt-usemin": "^2.3.0",
+    "grunt-wintersmith": "0.0.2",
+    "grunt-wiredep": "^1.7.0",
+    "jshint-stylish": "^0.4.0",
+    "load-grunt-tasks": "^0.4.0",
+    "nunjucks": "^1.1.0",
+    "time-grunt": "^0.4.0",
+    "wintersmith": "^2.1.0",
+    "wintersmith-nunjucks": "git://github.com/travist/wintersmith-nunjucks.git#c3cc698e0911f9bfab966dfe12c059cf5afe040a"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "readme": "JuckStrap - Static site generation bliss with [Nunjucks](http://mozilla.github.io/nunjucks/) + [Bootstrap](http://getbootstrap.com/) + [Wintersmith.js](http://wintersmith.io/)\n==================================================================================\n\nThis is a project that aims to quickly bootstrap a new web application project \"the right way\". This includes using [Bootstrap](http://getbootstrap.com/) within [Nunjucks](http://mozilla.github.io/nunjucks/) templating system, all statically generated with [Wintersmith.js](http://wintersmith.io/).  This project also includes all of the necessary Grunt tools to make your life easier as you build a new web application rapidly and properly.\n\nPrerequisites\n---------------\nThere are a few things you will need to get started.\n  - **[Node.js](http://nodejs.org/)** - Go to http://nodejs.org/ and follow the installation instructions.\n  - **[Grunt CLI](http://gruntjs.com/getting-started)**\n\n  ```\n  npm install -g grunt-cli\n  ```\n  - **[Bower](http://bower.io/)**\n\n  ```\n  npm install -g bower\n  ```\n\nInstallation\n---------------\n\nTo install, first clone this repo, and then type the following in the directory.\n\n```\nnpm install\n```\n\nNext you will need to make sure you install Bower components in both the root and test folders.\n\n```\nbower install\ncd test\nbower install\n```\n\nConfiguration\n---------------------\nA lot of the site configuration can be found within the **config.json** file in the root of the project.  You can use this to edit configurations that Wintersmith uses to build the web appication.\n\nThe Web Application\n---------------------\nAll of the changes that you need to make are within the **app** folder.  This contains the Wintermith setup for a Nunjucks templated site.  Go to http://wintersmith.io/ to learn more about editing a Wintersmith application and also go to http://mozilla.github.io/nunjucks to learn about the Nunjucks templating language.\n\nRunning\n---------------------\nYou can run this web application by typing the following in your terminal.\n\n```\ngrunt serve\n```\n\nThis also watches all the files within the *app* directory and when a change is made re-compiles the application and automatically updates the site in your browser.\n\n\nCompiling\n---------------------\nThis project compiles and runs using Grunt. You can compile the application using the simple grunt command.\n\n```\ngrunt\n```\n\nThis creates a **dist** folder that you can use to copy to your webserver.\n",
+  "readmeFilename": "Readme.md",
+  "gitHead": "368674ad40db8b901c2218facbd58d71785717b5",
+  "_id": "juckstrap@0.0.1",
+  "_shasum": "9564659cff57f6308d3f38b41181425e95b19b2b",
+  "_from": "juckstrap@>=0.0.1 <0.0.2"
+}

@@ -1,0 +1,8 @@
+{% macro jumbotron(headline) %}
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{ headline }}</h1>
+    {{ caller() }}
+  </div>
+</div>
+{% endmacro %}

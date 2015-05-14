@@ -8,7 +8,11 @@
  * Controller of the drupalAngularApp
  */
 angular.module('drupalAngularApp')
-  .controller('MoviesCtrl', function ($scope, $rootScope, Restangular) {
+  .controller('MoviesCtrl', function ($scope, $rootScope, $http) {
     $rootScope.activeNav = 'movies';
-    $scope.movies = Restangular.all('movie').getList().$object;
+    $scope.movies = [];
+    $http.get($rootScope.baseUrl + '/movie').success(function(result) {
+      console.log(result);
+      $scope.movies = result;
+    });
   });
