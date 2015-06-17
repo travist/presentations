@@ -112,6 +112,7 @@
  *  - Functions encapsulate and capture context.
  *  - Closures
  *  - Module pattern
+ *  - Node.js modules
  */
 
 

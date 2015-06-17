@@ -216,15 +216,61 @@ console.log(Module.publicVar);
 					</code></pre>
 				</section>
 				<section>
-					<h3>Object Oriented Javacript: Example</h3>
+					<h3>Common.JS Modules</h3>
+					<p>Used in Node.js and other JS libraries.</p>
+					<pre class="fragment">splitter.js<code data-trim contenteditable>
+module.exports = function(options) {
+   options = options || {};
+   options.separator = options.separator || '-';
+   return {
+      split: function(input) {
+         return input.split(options.separator);
+      }
+   };
+};
+					</code></pre>
+					<pre class="fragment">index.js<code data-trim contenteditable>
+var splitter = require('splitter')({
+   separator: '_'
+});
+console.log(splitter.split('The_cow_jumped_over_the_moon'));
+					</code></pre>
+				</section>
+				<section>
+					<h3>Understanding 'this'</h3>
+					<ul>
+						<li><a href="http://bit.ly/VHXAYB">http://bit.ly/VHXAYB</a></li>
+						<li><a href="http://bit.ly/1SourKC">http://bit.ly/1SourKC</a></li>
+					</ul>
+					<ul>
+						<li class="fragment">Difference between context and scope.</li>
+						<li class="fragment">'new' objects create context</li>
+						<li class="fragment">'this' is assigned to the object instance that 'invokes' a method.</li>
+						<li class="fragment">You can bind context with 'bind'</li>
+						<li class="fragment">You can call a method with context using 'call' or 'apply'</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Object Oriented JavaScript</h3>
+				</section>
+				<section>
+					<h3>Prototype Inheritance</h3>
+					<ul>
+						<li class="fragment">The prototype serves as the 'blueprint' for object instances.</li>
+						<li class="fragment">Each object instance "inherits" the prototype.</li>
+						<li class="fragment">Class extending supported through prototype cloning.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Object Oriented JavaScript: Example</h3>
 					<iframe width="100%" height="500" src="//jsfiddle.net/travistidwell/oof95er4/11/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 				</section>
 				<section>
-					<h3>Object Oriented Javacript: Extending Classes</h3>
+					<h3>Object Oriented JavaScript: Extending Classes</h3>
 					<iframe width="100%" height="500" src="//jsfiddle.net/travistidwell/oof95er4/12/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 				</section>
 				<section>
-					<h3>Object Oriented Javacript: jQuery Plugin</h3>
+					<h3>Object Oriented JavaScript: jQuery Plugin</h3>
 					<iframe width="100%" height="500" src="//jsfiddle.net/travistidwell/oof95er4/13/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 				</section>
 				<section>
