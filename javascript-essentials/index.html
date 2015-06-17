@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Using Angular.js with Drupal 8</title>
+		<meta name="description" content="Angular + Drupal">
+		<meta name="author" content="Travis Tidwell">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+		<link href='fonts/comfortaa.css' rel='stylesheet' type='text/css'>
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style type="text/css">
+			.reveal div.listsmall {
+				margin-left: 10px;
+				display: inline-block;
+				font-size: 0.6em;
+			}
+			.reveal .fullwidth, .reveal .fullwidth code {
+				width: 100%;
+			}
+		</style>
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Javascript Essentials</h2>
+					<p>
+						<img class="trans-image" style="width: 6em;" src="images/javascript_logo.png" />
+					</p>
+					<small>
+						<ul>
+							<li><a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+							<li>CTO @ <a href="https://form.io">https://form.io</a></li>
+							<li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
+							<li><a ref="https://github.com/travist">https://github.com/travist</a></li>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<img class="trans-image" style="height: 10em; margin-top: -1em;" src="images/formio-tree.png" /><br/>
+					<img class="trans-image" style="width: 10em; margin-top: -0.4em;" src="images/formio-logo-full.png" />
+					<p style="margin-top: -0.4em;"><a target="_blank" href="https://form.io">https://form.io</a></p>
+					<p style="color:#ddd;">&lt;<span style="color: #127abe">form</span>.<span style="color:#6eb246">io</span>&gt; provides developers an easy drag & drop interface that creates both forms and the REST API's in one easy step!</p>
+				</section>
+				<section>
+					<img class='trans-image' style="height:2em;" src="images/formio-logo.png" />
+					<p style="margin-top: -0.5em;">creates both the form interface and the API in one step</p>
+					<img class="trans-image" style="height:12em" src="images/formio-api.jpg" />
+				</section>
+				<section>
+					<img class='trans-image' style="height:2em;" src="images/formio-logo.png" />
+					<p style="margin-top: -0.5em;">provides you with a &lt;formio&gt; tag to embed your form</p>
+					<img class="trans-image" style="height:13em" src="images/formio-embed.jpg" />
+				</section>
+				<section>
+					<p>instead of &lt;form&gt;</p>
+					<p><span class="fragment">form + I/O = </span><strong class="fragment" style="font-family: 'Comfortaa', cursive; font-size:1.5em; color:#eee;">&lt;<span style="color:#3071a9">form</span><span style="color:#eee;"></span><span style="color:#449d44">io</span> <span style="color:#aaa;">src="..."</span>&gt;</strong></p>
+				</section>
+				<section>
+					<p>Application integration with <strong style="font-family: 'Comfortaa', cursive;"><span style="color:#3071a9">form</span><span style="color:#eee;">.</span><span style="color:#449d44">io</span></strong></p>
+					<p>"You build the app, we handle the Form I/O"</p>
+					<img class="trans-image" src="images/formio-appembed.jpg" />
+				</section>
+				<section>
+					<h2>Presentation Materials</h2>
+					<p>
+						<ul>
+							<li>Presentation: <a href="http://travistidwell.com/presentations/javascript-essentials">http://bit.ly/1QBMC1U</a></li>
+						</ul>
+					</p>
+				</section>
+				<section>
+					<h2>Who is this for?</h2>
+					<ul>
+						<li class="fragment">Developers who want to learn Javascript.</li>
+						<li class="fragment">JavaScript gurus who are looking for a few "nuggets"</li>
+					</ul>
+				</section>
+				<section>
+					<h2>What will we learn?</h2>
+					<ul>
+						<li class="fragment">"Must-know" items to be an effective JS developer.</li>
+						<li class="fragment">Common gotcha's with Javascript.</li>
+						<li class="fragment">Accepted development patterns</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Why should we learn it?</h2>
+					<div class="fragment">
+						<p>JavaScript is rapidly becoming the ubiquitous programming language for the web.</p>
+						<p>
+							<img class="trans-image" style="height:4em;" src="images/javascript_logo.png" />
+							<img class="trans-image" style="height:4em;" src="images/logo-node.png" />
+							<img class="trans-image" style="height:4em;" src="images/angularjs-logo-trans.png" />
+							<img class="trans-image" style="height:4em;" src="images/mongodb-logo.png" />
+							<img class="trans-image" style="height:4em;" src="images/d3-logo.svg" />
+							<img class="trans-image" style="height:4em;" src="images/jquery-logo.png" />
+						</p>
+					</div>
+				</section>
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li class="fragment">Syntax (brief)</li>
+						<li class="fragment">JavaScript Patterns</li>
+						<li class="fragment">Objects</li>
+						<li class="fragment">Functions</li>
+						<li class="fragment">Understanding 'this'</li>
+						<li class="fragment">Object Oriented JavaScript</li>
+						<li class="fragment">jQuery Plugins</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Syntax</h2>
+					<ul>
+						<li class="fragment">Dynamically typed</li>
+						<li class="fragment">Everything is an object... even primitives</li>
+						<li class="fragment">Functions are "first-class" objects</li>
+						<li class="fragment">Multi-paradigm language
+							<ul>
+								<li>Object oriented (prototype)</li>
+								<li>Imperitive (procedural)</li>
+								<li>Functional (lambda)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Patterns are just as important as Syntax</h3>
+					<p><strong>Online Free Books</strong></p>
+					<ul>
+						<li><a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/">http://bit.ly/1de5qfT</a></li>
+						<li><a href="http://bit.ly/1atTe8t">http://bit.ly/1atTe8t</a></li>
+					</ul>
+				</section>
+				<section>
+					<h3>Objects in JavaScript</h3>
+					<ul>
+						<li>An object is an unordered collection of key-value pairs.</li>
+					</ul>
+					<pre><code data-trim contenteditable>
+var person = {
+   first: 'Travis',
+   last: 'Tidwell'
+};
+					</code></pre>
+				</section>
+				<section>
+					<h3>Functions in JavaScript</h3>
+					<ul>
+						<li class="fragment">Functions are first-class objects.</li>
+						<li class="fragment">Functions can be anonymous.</li>
+						<li class="fragment">Functions can be "self-executing"</li>
+						<li class="fragment">Functions encapsulate and capture context.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Function Closures</h3>
+					<pre><code data-trim contenteditable>
+var say = function(what) {
+   return function() {
+      console.log(what);
+   };
+};
+
+setTimeout(say('hello'), 1000);
+setTimeout(say('there'), 2000);
+					</code></pre>
+				</section>
+				<section>
+					<h3>Modules</h3>
+					<pre><code data-trim contenteditable>
+var Module = (function() {
+   var privateVar = 'secret';
+   var privateMethod = function() {
+      console.log('I am private!');
+   };
+
+   return {
+      publicVar: 'public',
+      publicMethod: function() {
+         console.log('I am public!');
+      }
+   };
+})();
+
+Module.publicMethod();
+console.log(Module.publicVar);
+					</code></pre>
+				</section>
+				<section>
+					<h3>Object Oriented Javacript: Example</h3>
+					<iframe width="100%" height="500" src="//jsfiddle.net/travistidwell/oof95er4/11/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+				</section>
+				<section>
+					<h3>Object Oriented Javacript: Extending Classes</h3>
+					<iframe width="100%" height="500" src="//jsfiddle.net/travistidwell/oof95er4/12/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+				</section>
+				<section>
+					<h3>Object Oriented Javacript: jQuery Plugin</h3>
+					<iframe width="100%" height="500" src="//jsfiddle.net/travistidwell/oof95er4/13/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+				</section>
+				<section>
+					<h3>JavaScript Module Class</h3>
+					<pre><code data-trim contenteditable>
+var Person = (function() {
+
+   var privateVar = 'private';
+   var privateMethod = function() {
+      console.log('I am private!');
+   };
+
+   var Person = function(first, last) {
+      this.first = first;
+      this.last = last;
+   };
+
+   Person.prototype.getName = function() {
+      return this.first + ' ' + this.last;
+   };
+
+   return Person;
+})();
+
+var person = new Person('Travis', 'Tidwell');
+console.log(person.getName());
+					</code></pre>
+				</section>
+				<section>
+					<h2>Thank you!</h2>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

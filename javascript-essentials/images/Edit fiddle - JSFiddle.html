@@ -1,0 +1,3708 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://jsfiddle.net/travistidwell/oof95er4/ -->
+<html slick-uniqueid="3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="description" content="Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.">
+    <meta name="keywords" content="online javascript editor, testing javascript online, online ide, online code editor, html, css, coffeescript, scss online editor">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="author" content="JSFiddle">
+    <meta name="copyright" content="share alike">
+
+    
+
+    <meta name="google-site-verification" content="9m4aWTtDLfQ1kJNm3NtNsCrtpsOx_QoOPQRJ7jAwup8">
+    <script type="text/javascript" async="" src="./Edit fiddle - JSFiddle_files/ga.js"></script><script type="text/javascript" id="www-widgetapi-script" src="./Edit fiddle - JSFiddle_files/www-widgetapi.js" async=""></script><script src="./Edit fiddle - JSFiddle_files/iframe_api"></script><script type="text/javascript" async="" src="./Edit fiddle - JSFiddle_files/wafdmsew"></script><script id="twitter-wjs" src="./Edit fiddle - JSFiddle_files/widgets.js"></script><script async="" src="./Edit fiddle - JSFiddle_files/prum.min.js"></script><script type="text/javascript" async="" src="./Edit fiddle - JSFiddle_files/ga.js"></script><script type="text/javascript" src="./Edit fiddle - JSFiddle_files/moo-clientcide-1.3.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/codemirror.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/javascript.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/css.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/xml.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/htmlmixed.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/coffeescript.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/searchcursor.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/matchbrackets.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/jshint.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/emmet.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/Sidebar.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/LayoutCM.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/Actions.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/Resources.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/EditorCM.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/Settings.js"></script>
+<script type="text/javascript" src="./Edit fiddle - JSFiddle_files/heyoffline.js"></script>
+
+    <!-- script src="/mooshellmedia/js/clientcide.2.2.0.js" type="text/javascript" charset="utf-8"></script -->
+
+
+<script type="text/javascript" charset="utf-8">
+
+	// switch this to false once on production
+	var disqus_developer = false;
+
+	// uniqie shell ID
+	var disqus_identifier = 'oof95er4';
+
+	// title
+	var disqus_title = '';
+
+</script>
+
+<!--meta name="viewport" content="width=device-width, maximum-scale=0.5" /-->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+
+    
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/normalize.css">
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/tricks.css">
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/elusive-webfont.css">
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/codemirror.css">
+    <link rel="icon" href="http://jsfiddle.net/favicon.png">
+
+    <!--[if lte IE 7]>
+      <script src="/js/lte-ie7.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/screen.css">
+
+    <link rel="stylesheet" type="text/css" href="./Edit fiddle - JSFiddle_files/light.css">
+
+    <script type="text/javascript">
+      var csspath = "/css/",
+        jspath = "/js/",
+        imgpath = "/img/",
+        mediapath = "/mooshellmedia/",
+        codemirrorpath = "/codemirror/",
+        panel_html = 'html',
+        panel_css = 'css',
+        panel_js = 'javascript',
+        makefavouritepath = "/_make_favourite/",
+        example_server = "//jsfiddle.net",
+        username = "travistidwell",
+        static_hash = "twitterbutton",
+        csrfToken = Cookie.read('csrftoken'),
+        mooshell,
+        preload_resources;
+      
+      Layout.skin = "";// "light"
+      window.addEvent('domready', function() {
+        if (panel_js != 'javascript' && $('jslint')) {
+          $('jslint').getParent('li').hide();
+        }
+
+        $extend(Layout, new Events());
+        mooshell = new MooShellActions({
+          example_id: '241492490',
+          exampleURL: "//jsfiddle.net/travistidwell/oof95er4/",
+          exampleSaveUrl: '/_save/',
+          // sendCallbackURL: '',
+          loadDependenciesURL: '/_get_dependencies/{lib_id}/',
+          loadLibraryVersionsURL: '/_get_library_versions/{group_id}/'
+        });
+        new MooShellEditor.JS(document.id('id_code_js'), {
+          language: panel_js
+        }); // add user defined parameters
+        new MooShellEditor.HTML(document.id('id_code_html'), {
+          language: panel_html
+        }); // add user defined parameters
+        new MooShellEditor.CSS(document.id('id_code_css'), {
+          language: panel_css
+        }); // add user defined parameters
+        Layout.render();
+        
+      });
+      window.addEvent('load', function(){
+        
+
+        // show editors and content when the last editor loads
+        // this will prevent flickering, plus looks nice
+        document.id('content').setStyle('opacity', 1);
+        document.id('sidebar').setStyle('opacity', 1);
+
+        // always keep this at the bottom
+        $$('select.panelChoice').each(function(sel) {
+          this.switchLanguage(sel);
+        }, mooshell);
+      });
+      
+    </script>
+    
+
+    
+    <script type="text/javascript">
+      var pixelRatio = (window.devicePixelRatio >= 1.5) ? "High" : "Normal";
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-366077-13']);
+      _gaq.push(['_setCustomVar', 1, 'Pixel Ratio', pixelRatio, 2]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      var _prum = [['id', '526a363eabe53df827000000'],
+                   ['mark', 'firstbyte', (new Date()).getTime()]];
+      (function() {
+          var s = document.getElementsByTagName('script')[0]
+            , p = document.createElement('script');
+          p.async = 'async';
+          p.src = '//rum-static.pingdom.net/prum.min.js';
+          s.parentNode.insertBefore(p, s);
+      })();
+    </script>
+    <!-- <script>
+      (function(f,b){
+        var c;
+        f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+        f._hjSettings={hjid:13981, hjsv:3};
+        c=b.createElement("script");c.async=1;
+        c.src="//static.hotjar.com/c/hotjar-13981.js?sv=3";
+        b.getElementsByTagName("head")[0].appendChild(c);
+      })(window,document);
+    </script>  -->
+      
+
+
+  <script>
+    window.intercomSettings = {
+      user_id: 63203,
+      
+        name: "Travis Tidwell",
+      
+      
+        email: "travis@form.io",
+      
+      created_at: 1333043795,
+      custom_attributes: {
+        
+          username: "travistidwell",
+        
+        
+      },
+      avatar: {
+        type: "avatar",
+        image_url: "http://www.gravatar.com/avatar/d95fcfb7a117a72389aa8149ad8617ad/?default=&amp;s=160"
+      },
+      
+      social_profiles: {
+        type: "social_profile.list",
+        social_profiles: [
+          
+          
+        ]
+      },
+      app_id: "wafdmsew"
+    };
+  </script>
+
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/wafdmsew';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+
+      
+        <script>
+          Intercom('trackEvent', 'viewed-editor');
+        </script>
+      
+    
+
+    <title>Edit fiddle - JSFiddle</title>
+  <link id="togetherjs-stylesheet" rel="stylesheet" href="https://togetherjs.com/togetherjs/togetherjs.css?bust=1434487614379"><script src="./Edit fiddle - JSFiddle_files/require.js"></script><style id="defaultStickyWinStyle">div.DefaultStickyWin {font-family:verdana; font-size:11px; line-height: 13px;position: relative;}div.DefaultStickyWin div.top{-moz-user-select: none;-khtml-user-select: none;}div.DefaultStickyWin div.top_ul{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/full.png) top left no-repeat; height:30px; width:15px; float:left}div.DefaultStickyWin div.top_ur{position:relative; left:0px !important; left:-4px; background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/full.png) top right !important; height:30px; margin:0px 0px 0px 15px !important; margin-right:-4px; padding:0px}div.DefaultStickyWin h1.caption{clear: none !important; margin:0px !important; overflow: hidden; padding:0 !important; font-weight:bold; color:#555; font-size:14px !important; position:relative; top:8px !important; left:5px !important; float: left; height: 22px !important;}div.DefaultStickyWin div.middle, div.DefaultStickyWin div.closeBody {background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/body.png) top left repeat-y; margin:0px 20px 0px 0px !important;	margin-bottom: -3px; position: relative;	top: 0px !important; top: -3px;}div.DefaultStickyWin div.body{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/body.png) top right repeat-y; padding:8px 23px 8px 0px !important; margin-left:5px !important; position:relative; right:-20px !important; z-index: 1;}div.DefaultStickyWin div.bottom{clear:both;}div.DefaultStickyWin div.bottom_ll{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/full.png) bottom left no-repeat; width:15px; height:15px; float:left}div.DefaultStickyWin div.bottom_lr{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/full.png) bottom right; position:relative; left:0px !important; left:-4px; margin:0px 0px 0px 15px !important; margin-right:-4px; height:15px}div.DefaultStickyWin div.closeButtons{text-align: center; background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/body.png) top right repeat-y; padding: 4px 30px 8px 0px; margin-left:5px; position:relative; right:-20px}div.DefaultStickyWin a.button:hover{background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/big_button_over.gif) repeat-x}div.DefaultStickyWin a.button {background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/big_button.gif) repeat-x; margin: 2px 8px 2px 8px; padding: 2px 12px; cursor:pointer; border: 1px solid #999 !important; text-decoration:none; color: #000 !important;}div.DefaultStickyWin div.closeButton{width:13px; height:13px; background:url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/closebtn.gif) no-repeat; position: absolute; right: 0px; margin:10px 15px 0px 0px !important; cursor:pointer;top:0px}div.DefaultStickyWin div.dragHandle {	width: 11px;	height: 25px;	position: relative;	top: 5px;	left: -3px;	cursor: move;	background: url(http://github.com/anutron/clientcide/raw/master/Assets/stickyWinHTML/drag_corner.gif); float: left;}</style><script src="./Edit fiddle - JSFiddle_files/beautifier.js" type="text/javascript"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="session" src="./Edit fiddle - JSFiddle_files/session.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="jquery" src="./Edit fiddle - JSFiddle_files/jquery-1.8.3.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="util" src="./Edit fiddle - JSFiddle_files/util.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="channels" src="./Edit fiddle - JSFiddle_files/channels.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="storage" src="./Edit fiddle - JSFiddle_files/storage.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="jqueryPlugins" src="./Edit fiddle - JSFiddle_files/jqueryPlugins.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="ui" src="./Edit fiddle - JSFiddle_files/ui.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="templates" src="./Edit fiddle - JSFiddle_files/templates.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="templating" src="./Edit fiddle - JSFiddle_files/templating.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="linkify" src="./Edit fiddle - JSFiddle_files/linkify.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="peers" src="./Edit fiddle - JSFiddle_files/peers.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="windowing" src="./Edit fiddle - JSFiddle_files/windowing.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="tinycolor" src="./Edit fiddle - JSFiddle_files/tinycolor.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="elementFinder" src="./Edit fiddle - JSFiddle_files/elementFinder.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="visibilityApi" src="./Edit fiddle - JSFiddle_files/visibilityApi.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="chat" src="./Edit fiddle - JSFiddle_files/chat.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="webrtc" src="./Edit fiddle - JSFiddle_files/webrtc.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="cursor" src="./Edit fiddle - JSFiddle_files/cursor.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="startup" src="./Edit fiddle - JSFiddle_files/startup.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="videos" src="./Edit fiddle - JSFiddle_files/videos.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="forms" src="./Edit fiddle - JSFiddle_files/forms.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="youtubeVideos" src="./Edit fiddle - JSFiddle_files/youtubeVideos.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="playback" src="./Edit fiddle - JSFiddle_files/playback.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="eventMaker" src="./Edit fiddle - JSFiddle_files/eventMaker.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="ot" src="./Edit fiddle - JSFiddle_files/ot.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="togetherjs" data-requiremodule="analytics" src="./Edit fiddle - JSFiddle_files/analytics.js"></script></head>
+  <body data-twttr-rendered="true" cz-shortcut-listen="true">
+    <h1>Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle code editor.</h1>
+    <h2>online javascript editor, testing javascript online, online ide, online code editor, html, css, coffeescript, scss online editor</h2>
+    <form method="post" id="show-result" target="result" action="./Edit fiddle - JSFiddle_files/saved_resource.html">
+      
+      <input type="hidden" name="username" value="travistidwell">
+      <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="Pm3AqsvQbI47x8GM2FEJQiaOKaFJfruE"></div>
+      <div id="header">
+        <div id="branding">
+          <p id="name"><a title="JSFiddle " href="http://jsfiddle.net/" id="home">JSFiddle <span>α</span></a></p>
+        </div>
+        <div id="actions">
+	<ul class="actionCont collapsed" id="toggleSidebarUl">
+		<li class="actionItem"><a class="aiButton" id="toggleSidebar" title="Toggle sidebar" href="http://jsfiddle.net/travistidwell/oof95er4/#toggle-sidebar"><span>Hide sidebar</span></a></li>
+  </ul>
+	<ul class="actionCont collapsed">
+		<li class="actionItem">
+			<a class="aiButton" id="run" title="Run (CTRL + Return)" href="http://jsfiddle.net/travistidwell/oof95er4/#run"><span class="icon-caret-right"></span>Run</a>
+		</li>
+    
+	    <li class="actionItem">
+	    	<a data-draft="1" class="aiButton" id="mobile" title="Debug on mobile" href="http://jsfiddle.net/travistidwell/oof95er4/#mobile"><span class="icon-signal"></span></a>
+	    </li>
+		
+
+    
+    
+
+    
+     
+      
+        <li class="actionItem">
+          <a class="aiButton" id="update" title="Update (CTRL + S)" href="http://jsfiddle.net/travistidwell/oof95er4/#update"><span class="icon-pencil"></span>Update</a>
+        </li>
+        <li class="actionItem">
+          <a class="aiButton" id="savenew" title="Fork into a new Fiddle" href="http://jsfiddle.net/travistidwell/oof95er4/#fork"><span class="icon-fork"></span>Fork</a>
+        </li>
+      
+    
+
+		
+			<li class="actionItem">
+				
+					<a class="aiButton" id="is_favourite" title="This is the base version" href="http://jsfiddle.net/travistidwell/oof95er4/#base"><span class="icon-star"></span>Base</a>
+				
+			</li>
+		
+
+    <li class="actionItem">
+    	<a class="aiButton" id="tidy" title="Re-indent messy code" href="http://jsfiddle.net/travistidwell/oof95er4/#tidy"><span class="icon-broom"></span>TidyUp</a>
+    </li>
+    <li class="actionItem">
+    	<a class="aiButton" id="jslint" title="Run JSHint on the code" href="http://jsfiddle.net/travistidwell/oof95er4/#jshint"><span class="icon-ok"></span>JSHint</a>
+    </li>
+    <li class="actionItem" style="display: none;">
+    	<a class="aiButton" id="showjscode" title="Show JavaScript code" href="http://jsfiddle.net/travistidwell/oof95er4/#showjs"><span class="icon-pencil"></span>Show JS</a>
+    </li>
+    <li class="actionItem">
+    	<a class="aiButton" id="collaborate" title="" href="http://jsfiddle.net/travistidwell/oof95er4/#collaborate"><span class="icon-group"></span>Collaboration</a>
+    </li>
+  </ul>
+
+	
+		<ul class="actionCont dropdown">
+			<li class="actionItem">
+				<a class="aiButton dropdownTrigger" id="share" title="Share this Fiddle" href="http://jsfiddle.net/travistidwell/oof95er4/#share">Share<span class="icon-caret-down"></span></a>
+				<div class="dropdownCont" style="opacity: 0; visibility: hidden;">
+					<div class="dcWrapper">
+						
+						<div id="share_links_dropdown">
+							<p>
+								<label for="share_link_dropdown">Share link</label>
+								<input id="share_link_dropdown" type="text" class="share" value="https://jsfiddle.net/travistidwell/oof95er4/">
+							</p>
+							<p>
+								<label for="share_result_dropdown">Share full screen result</label>
+								<input id="share_result_dropdown" type="text" class="share" value="https://jsfiddle.net/travistidwell/oof95er4/embedded/result/">
+							</p>
+							<p>
+								<label for="share_embedded_dropdown">Embed on your page (<a href="http://doc.jsfiddle.net/use/embedding.html">embed options</a>)</label>
+								<input id="share_embedded_dropdown" type="text" class="share" value="&lt;iframe width=&quot;100%&quot; height=&quot;300&quot; src=&quot;//jsfiddle.net/travistidwell/oof95er4/embedded/&quot; allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;">
+							</p>
+						</div>
+
+						<ul id="share-social">
+							<li class="ssItem twitter"><span class="icon-twitter"></span><a href="http://twitter.com/home?status=Check%20out%20my%20fiddle:%20%20https://jsfiddle.net/travistidwell/oof95er4/" title="Click to send this page to Twitter!" target="_blank">Share on Twitter</a></li>
+							<li class="ssItem facebook"><span class="icon-facebook"></span><a href="javascript:var%20d=document,f='http://www.facebook.com/share',l=d.location,e=encodeURIComponent,p='.php?src=bm&v=4&i=1244125276&u='+e(l.href)+'&t='+e(d.title);1;try%7Bif%20(!/%5E(.*%5C.)?facebook%5C.%5B%5E.%5D*$/.test(l.host))throw(0);share_internal_bookmarklet(p)%7Dcatch(z)%20%7Ba=function()%20%7Bif%20(!window.open(f+'r'+p,'sharer','toolbar=0,status=0,resizable=1,width=626,height=436'))l.href=f+p%7D;if%20(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%7Ba()%7D%7Dvoid(0)" title="Post to Facebook">Post to Facebook</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	
+	
+	<ul class="actionCont dropdown right">
+		<!-- <li class="actionItem jobboard"><a class="aiButton" href="http://jobs.jsfiddle.net"><span class="icon-bullhorn"></span>JSFiddle Job Board</a></li> -->
+		<li class="actionItem">
+			<a class="aiButton dropdownTrigger" id="usermenu" title="You&#39;re logged in as travistidwell" href="http://jsfiddle.net/travistidwell/oof95er4/#username">travistidwell<span class="icon-user"></span></a>
+			<div class="dropdownCont" style="opacity: 0; visibility: hidden;">
+				<div class="dcWrapper">
+					<ul>
+						<li><a id="dashboard" title="Dashboard" href="http://jsfiddle.net/user/dashboard/">Dashboard</a></li>
+						<li><a id="fiddles" title="Your Public Dashboard" href="http://jsfiddle.net/user/travistidwell/fiddles/">Your Public Dashboard</a></li>
+						<li><a id="personal-settings" title="Personal Settings" href="http://jsfiddle.net/user/dashboard/edit/">Personal Settings</a></li>
+            <li><a id="change-password" title="Change password" href="http://jsfiddle.net/user/change_password/">Change password</a></li>
+						<li><a id="logout" title="Logout" href="http://jsfiddle.net/user/logout/">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+
+</div>
+
+
+      </div>
+      <div id="sidebar" style="opacity: 1;">
+        
+
+<script type="text/javascript">
+  var DP;
+
+  window.addEvent('domready', function(){
+    DP = new Dropdown();
+  });
+</script>
+
+<h3 class="toggler " id="settings_toggler">Frameworks &amp; Extensions</h3>
+<div class="element" id="shell_settings">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+      
+        
+          
+<select name="js_lib" id="js_lib">
+	
+		<optgroup label="Mootools">
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="59">Mootools (nightly)</option>
+			
+				<option value="218">Mootools 1.5.1 (nocompat)</option>
+			
+				<option value="216">Mootools 1.5.1</option>
+			
+				<option value="210">Mootools 1.5.0 (nocompat)</option>
+			
+				<option value="208">Mootools 1.5.0</option>
+			
+				<option value="96">Mootools 1.4.5 (compat)</option>
+			
+				<option value="95">Mootools 1.4.5</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="63">Mootools 1.3.2 (compat)</option>
+			
+				<option value="62">Mootools 1.3.2</option>
+			
+				
+			
+				
+			
+				
+			
+				<option value="144">Mootools 1.2.6</option>
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="jQuery">
+			
+				<option value="146">jQuery Compat (edge)</option>
+			
+				
+			
+				<option value="46">jQuery (edge)</option>
+			
+				<option value="248">jQuery 2.1.3</option>
+			
+				<option value="188">jQuery 2.1.0</option>
+			
+				<option value="157">jQuery 2.0.2</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="186">jQuery 1.11.0</option>
+			
+				<option value="156">jQuery 1.10.1</option>
+			
+				
+			
+				<option value="131">jQuery 1.9.1</option>
+			
+				<option value="112">jQuery 1.8.3</option>
+			
+				<option value="101">jQuery 1.7.2</option>
+			
+				
+			
+				
+			
+				<option value="75">jQuery 1.6.4</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Prototype">
+			
+				
+			
+				<option value="254">Prototype 1.7.2</option>
+			
+				<option value="54">Prototype 1.7.1</option>
+			
+				<option value="4">Prototype 1.6.1.0</option>
+			
+		</optgroup>
+	
+		<optgroup label="YUI">
+			
+				
+			
+				<option value="230">YUI 3.17.2</option>
+			
+				<option value="204">YUI 3.16.0</option>
+			
+				<option value="182">YUI 3.14.0</option>
+			
+				<option value="153">YUI 3.10.1</option>
+			
+				
+			
+				<option value="130">YUI 3.8.0</option>
+			
+				<option value="123">YUI 3.7.3</option>
+			
+				<option value="118">YUI 3.6.0</option>
+			
+				<option value="102">YUI 3.5.0</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="9">YUI 2.8.0r4</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Glow">
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="No-Library">
+			
+				<option value="11" selected="selected">No-Library (pure JS)</option>
+			
+		</optgroup>
+	
+		<optgroup label="Dojo">
+			
+				<option value="87">Dojo (nightly)</option>
+			
+				<option value="240">Dojo 1.10.4</option>
+			
+				
+			
+				
+			
+				<option value="242">Dojo 1.9.7</option>
+			
+				
+			
+				
+			
+				
+			
+				<option value="244">Dojo 1.8.10</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="246">Dojo 1.7.8</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				<option value="196">Dojo 1.6.2</option>
+			
+				
+			
+				
+			
+				<option value="194">Dojo 1.5.3</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Processing.js">
+			
+				<option value="206">Processing.js 1.4.7</option>
+			
+				<option value="135">Processing.js 1.4.1</option>
+			
+				<option value="81">Processing.js 1.3.6</option>
+			
+				<option value="67">Processing.js 1.2.3</option>
+			
+				
+			
+				
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="ExtJS">
+			
+				<option value="147">ExtJS 4.2.0</option>
+			
+				<option value="80">ExtJS 4.1.1</option>
+			
+				<option value="107">ExtJS 4.1.0</option>
+			
+				
+			
+				<option value="109">ExtJS 3.4.0</option>
+			
+				<option value="23">ExtJS 3.1.0</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Raphael">
+			
+				<option value="76">Raphael 2.1.0</option>
+			
+				<option value="36">Raphael 1.5.2 (min)</option>
+			
+				<option value="30">Raphael 1.4</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="RightJS">
+			
+				<option value="136">RightJS 2.3.1</option>
+			
+				<option value="45">RightJS 2.1.1</option>
+			
+		</optgroup>
+	
+		<optgroup label="Three.js">
+			
+				<option value="82">Three.js r54</option>
+			
+		</optgroup>
+	
+		<optgroup label="Zepto">
+			
+				<option value="90">Zepto 1.0rc1</option>
+			
+		</optgroup>
+	
+		<optgroup label="Enyo">
+			
+				<option value="115">Enyo (nightly)</option>
+			
+				<option value="238">Enyo 2.5.1</option>
+			
+				<option value="214">Enyo 2.4.0</option>
+			
+				<option value="145">Enyo 2.2.0</option>
+			
+				<option value="121">Enyo 2.1</option>
+			
+				<option value="116">Enyo 2.0.1</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Shipyard">
+			
+				<option value="99">Shipyard (nightly)</option>
+			
+				<option value="105">Shipyard 0.2</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Knockout.js">
+			
+				<option value="172">Knockout.js 3.0.0</option>
+			
+				<option value="163">Knockout.js 2.3.0</option>
+			
+				<option value="122">Knockout.js 2.2.1</option>
+			
+				<option value="117">Knockout.js 2.1.0</option>
+			
+				<option value="104">Knockout.js 2.0.0</option>
+			
+		</optgroup>
+	
+		<optgroup label="The X Toolkit">
+			
+				<option value="106">The X Toolkit edge</option>
+			
+		</optgroup>
+	
+		<optgroup label="AngularJS">
+			
+				<option value="180">AngularJS 1.2.1</option>
+			
+				<option value="137">AngularJS 1.1.1</option>
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Ember">
+			
+				<option value="190">Ember 1.3.1</option>
+			
+				
+			
+				
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="Underscore">
+			
+				<option value="160">Underscore 1.4.4</option>
+			
+				<option value="133">Underscore 1.4.3</option>
+			
+				<option value="111">Underscore 1.3.3</option>
+			
+		</optgroup>
+	
+		<optgroup label="Bonsai">
+			
+				<option value="120">Bonsai 0.4.1</option>
+			
+		</optgroup>
+	
+		<optgroup label="KineticJS">
+			
+				<option value="139">KineticJS 4.3.1</option>
+			
+				<option value="124">KineticJS 4.0.5</option>
+			
+		</optgroup>
+	
+		<optgroup label="FabricJS">
+			
+				<option value="250">FabricJS 1.5.0</option>
+			
+				<option value="178">FabricJS 1.4.0</option>
+			
+				<option value="161">FabricJS 1.2.0</option>
+			
+				<option value="125">FabricJS 0.9</option>
+			
+		</optgroup>
+	
+		<optgroup label="qooxdoo">
+			
+				<option value="126">qooxdoo 2.1</option>
+			
+				<option value="127">qooxdoo 2.0.3</option>
+			
+		</optgroup>
+	
+		<optgroup label="D3">
+			
+				<option value="134">D3 3.0.4</option>
+			
+		</optgroup>
+	
+		<optgroup label="CreateJS">
+			
+				<option value="170">CreateJS 2013.09.25</option>
+			
+				
+			
+		</optgroup>
+	
+		<optgroup label="WebApp Install">
+			
+				<option value="142">WebApp Install 0.1</option>
+			
+		</optgroup>
+	
+		<optgroup label="Thorax">
+			
+				<option value="174">Thorax 2.0.0rc6</option>
+			
+				<option value="143">Thorax 2.0.0rc3</option>
+			
+		</optgroup>
+	
+		<optgroup label="Paper.js">
+			
+				<option value="158">Paper.js 0.22</option>
+			
+		</optgroup>
+	
+		<optgroup label="React">
+			
+				<option value="192">React 0.9.0</option>
+			
+				<option value="184">React 0.8.0</option>
+			
+				<option value="166">React 0.4.0</option>
+			
+				<option value="159">React 0.3.2</option>
+			
+		</optgroup>
+	
+		<optgroup label="svg.js">
+			
+				<option value="162">svg.js 0.x (latest)</option>
+			
+		</optgroup>
+	
+		<optgroup label="Minified">
+			
+				<option value="164">Minified 1.0 beta1</option>
+			
+		</optgroup>
+	
+		<optgroup label="jTypes">
+			
+				<option value="165">jTypes 2.1.0</option>
+			
+		</optgroup>
+	
+		<optgroup label="Lo-Dash">
+			
+				<option value="167">Lo-Dash 2.2.1</option>
+			
+		</optgroup>
+	
+		<optgroup label="Brick">
+			
+				<option value="176">Brick edge</option>
+			
+		</optgroup>
+	
+		<optgroup label="RactiveJS">
+			
+				<option value="220">RactiveJS Latest</option>
+			
+				<option value="232">RactiveJS Edge</option>
+			
+		</optgroup>
+	
+		<optgroup label="Vue">
+			
+				<option value="236">Vue (edge)</option>
+			
+				<option value="234">Vue 0.11.0</option>
+			
+		</optgroup>
+	
+		<optgroup label="JSBlocks">
+			
+				<option value="252">JSBlocks (edge)</option>
+			
+		</optgroup>
+	
+</select>
+
+<ul id="js_dependency"></ul>
+
+        
+      
+
+      <select name="js_wrap" id="id_js_wrap">
+<option value="l" selected="selected">onLoad</option>
+<option value="d">onDomready</option>
+<option value="h">No wrap - in &lt;head&gt;</option>
+<option value="b">No wrap - in &lt;body&gt;</option>
+</select>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.addEvent('load', function() {
+    $('js_lib').addEvent('change', function() {
+      mooshell.loadDependencies(this.value);
+    })
+    if ($('library_group')) $('library_group').addEvent('change', function() {
+      mooshell.loadLibraryVersions(this.value);
+    })
+  });
+</script>
+
+        <h3 id="about_toggler" class="toggler ">Fiddle Options</h3>
+<div class="element">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+      <p>
+        <label>
+          <input id="id_title" type="text" name="title" maxlength="255" value="" placeholder="Name your fiddle">
+        </label>
+      </p>
+      <p>
+        <label>
+          <textarea id="id_description" rows="10" cols="40" name="description" placeholder="Description"></textarea>
+        </label>
+      </p>
+      <p id="normalize_check">
+        <input type="checkbox" name="normalize_css" id="id_normalize_css"> <label for="id_normalize_css">Normalized CSS</label><br>
+        
+      </p>
+      <p>
+        <label>
+          Body tag
+          <input id="id_body_tag" type="text" name="body_tag" maxlength="255">
+        </label>
+      </p>
+      <p>
+        <label>DTD
+          <select name="doctype">
+            
+              <option id="dtd_XHTML 1.0 Strict" value="1">XHTML 1.0 Strict</option>
+            
+              <option id="dtd_XHTML 1.0 Transitional" value="2">XHTML 1.0 Transitional</option>
+            
+              <option selected="" id="dtd_HTML 5" value="3">HTML 5</option>
+            
+              <option id="dtd_HTML 4.01 Strict" value="4">HTML 4.01 Strict</option>
+            
+              <option id="dtd_HTML 4.01 Transitional" value="5">HTML 4.01 Transitional</option>
+            
+              <option id="dtd_HTML 4.01 Frameset" value="6">HTML 4.01 Frameset</option>
+            
+          </select>
+        </label>
+      </p>
+      
+        <p class="libraryTagAttributes">
+          <label>
+            Framework &lt;script&gt; attribute
+            <input id="id_js_lib_option" type="text" name="js_lib_option" maxlength="255" placeholder="ie. data-type=&quot;&quot;" value="">
+          </label>
+        </p>
+      
+    </div>
+  </div>
+</div>
+
+        
+
+<h3 class="toggler active" id="resources_toggler">
+  External Resources
+</h3>
+
+
+<div class="element" id="resources_element">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 1; height: auto;">
+    <div class="ebCont">
+      <div id="external-resources-form">
+        <input id="external_resource" type="text" value="" placeholder="JavaScript/CSS URI" class="">
+        <a id="add_external_resource" class="submit" href="http://jsfiddle.net/travistidwell/oof95er4/#" title="Add resource"><span class="icon-plus"></span></a>
+      </div>
+      <input type="hidden" value="1215148,1215212" id="external_resources_id" name="add_external_resources">
+
+      <ul id="external_resources_list">
+      <script type="text/javascript">var resources = [];</script>
+      
+      <li id="external_resource_1215148"><a title="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" class="filename" href="./Edit fiddle - JSFiddle_files/bootstrap.min.css" target="_blank">bootstrap.min.css</a><a rel="1215148" class="remove">Remove</a></li><li id="external_resource_1215212"><a title="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" class="filename" href="./Edit fiddle - JSFiddle_files/bootstrap.min.js" target="_blank">bootstrap.min.js</a><a rel="1215212" class="remove">Remove</a></li></ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var default_text = 'JavaScript/CSS URL',
+      add_external_resource_url = "/_add_external_resource/";
+</script>
+
+        
+<h3 class="toggler " id="pannels_toggler">Languages</h3>
+<div class="element" id="panels_settings">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+      <div class="selectPanel">
+          <select name="panel_html" class="panelChoice panelChoiceSelect html" id="panel_html_choice" disabled="disabled" data-panel_id="id_code_html" data-panel="html">
+        
+          <option data-mime-type="text/xml" value="0" selected="">HTML</option>
+        
+        </select>
+
+        <select name="panel_css" class="panelChoice panelChoiceSelect css" id="panel_css_choice" data-panel_id="id_code_css" data-panel="css">
+          
+            <option data-mime-type="text/css" value="0" selected="">CSS</option>
+          
+            <option data-mime-type="text/css" value="1">SCSS</option>
+          
+        </select>
+
+        <select name="panel_js" class="panelChoice panelChoiceSelect js" id="panel_js_choice" data-panel_id="id_code_js" data-panel="js">
+          
+            <option data-mime-type="text/javascript" value="0" selected="">JavaScript</option>
+          
+            <option data-mime-type="text/x-coffeescript" value="1">CoffeeScript</option>
+          
+            <option data-mime-type="application/javascript;version=1.7" value="2">JavaScript 1.7</option>
+          
+        </select>
+        <span class="selectFake panelChoice result">Results</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <h3 class="toggler ">Ajax Requests</h3>
+<div class="element">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+
+      <p>Echo apis are created to simulate Ajax calls:
+        <code>/echo/json/</code> for JSON,
+        <code>//jsfiddle.net/echo/jsonp/</code> for JSONP,
+        <code>/echo/html/</code> for HTML and
+        <code>/echo/xml/</code> for XML.
+      </p>
+      <p>Please <a href="http://doc.jsfiddle.net/use/echo.html" target="_new">read API documentation</a> and follow
+        <a onclick="Layout.sidebar.accordion.display(Layout.sidebar.accordion.togglers.indexOf($(&#39;examples_toggler&#39;)))" href="http://jsfiddle.net/travistidwell/oof95er4/#">examples</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+        
+        <h3 class="toggler">Legal, Credits and Links</h3>
+<div class="element">
+  <div class="elementBody" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; opacity: 0; height: 0px;">
+    <div class="ebCont">
+      <p>Created and maintained by <a title="Piotr&#39;s homepage" href="http://twitter.com/zalun" target="_blank">Piotr</a> and <a title="UX and UI Designer" href="https://twitter.com/oskar" target="_blank">Oskar</a>.</p>
+      <p>Hosted by <a href="https://www.digitalocean.com/" target="_credits"><strong>DigitalOcean</strong></a></p>
+      <p>Powered by <a href="http://customer.io/" target="_credits"><strong>Customer.io</strong></a></p>
+      <!-- <p>Special thanks to <a href="http://mootools.net" target="_blank">MooTools</a> community.</p> -->
+      <p><strong>License</strong></p>
+      <p>All code belongs to the poster and no license is enforced.</p>
+      <p>JSFiddle or its authors are not responsible or liable for any loss or damage of any kind during the usage of provided code.</p>
+      <p><strong>Links</strong></p>
+      <p>
+        Please read the <a href="http://doc.jsfiddle.net/" target="_blank">documentation</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+        
+
+        <div class="twitterCont">
+          <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Edit fiddle - JSFiddle_files/follow_button.0b0ceee8fa9e1bde648efd58520a750f.en.html" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="position: static; visibility: visible; width: 138px; height: 20px;"></iframe>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+        <a class="keyActions" href="http://jsfiddle.net/travistidwell/oof95er4/#keyboard">Keyboard shortcuts</a>
+      </div>
+      <div id="content" style="height: 637px; opacity: 1;">
+        
+        
+
+<input type="hidden" name="version" value="0" id="id_version">
+<input type="hidden" id="id_slug" name="slug" value="oof95er4">
+<fieldset class="column left" style="width: 41.5126050420168%;">
+    <div class="window top" id="panel_html" data-panel_type="html">
+		<textarea id="id_code_html" rows="10" cols="40" name="code_html" style="display: none;"></textarea>
+		<span class="window_label" style="opacity: 0.8;">HTML</span>
+	<div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" tabindex="0" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 28px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="false"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="margin-left: 28px; min-height: 25px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span class="cm-tag">&lt;</span><span class="cm-tag">a</span><span> </span><span class="cm-attribute">c</span><span class="cm-attribute">l</span><span class="cm-attribute">a</span><span class="cm-attribute">s</span><span class="cm-attribute">s</span><span>=</span><span class="cm-string">"</span><span class="cm-string">b</span><span class="cm-string">t</span><span class="cm-string">n</span><span class="cm-string"> </span><span class="cm-string">b</span><span class="cm-string">t</span><span class="cm-string">n</span><span class="cm-string">-</span><wbr><span class="cm-string">d</span><span class="cm-string">e</span><span class="cm-string">f</span><span class="cm-string">a</span><span class="cm-string">u</span><span class="cm-string">l</span><span class="cm-string">t</span><span class="cm-string">"</span><span class="cm-tag">&gt;</span><span>C</span><span>l</span><span>i</span><span>c</span><span>k</span><span> </span><span>M</span><span>e</span><span class="cm-tag">&lt;</span><span class="cm-tag">/</span><span class="cm-tag">a</span><span class="cm-tag">&gt;</span></pre></div><div style="position: relative; z-index: 1;"><div class="CodeMirror-selected" style="position: absolute; left: 4px; top: 1px; width: 278.505249023438px; height: 15px;"></div></div><div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-tag">&lt;a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"btn btn-default"</span><span class="cm-tag">&gt;</span>Click Me<span class="cm-tag">&lt;/a&gt;</span></pre></div></div><div class="CodeMirror-cursor" style="left: 282.505249023438px; top: 1px; height: 15px; display: none;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 25px;">&nbsp;</div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter note-gutter"></div><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div></div></div></div></div><ul class="warningTooltip"></ul></div>
+	<div class="handler handler_horizontal" style="top: 155px;"></div>
+	<div class="window bottom" id="panel_js" data-panel_type="javascript">
+		<textarea id="id_code_js" rows="10" cols="40" name="code_js" style="display: none;">var </textarea>
+		<span class="window_label" style="opacity: 0;">JavaScript</span>
+	<div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-focused"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 39px; left: 181.96435546875px;"><textarea autocorrect="off" autocapitalize="off" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 28px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="bottom: 0px; min-width: 18px;"><div style="width: 1px; height: 25px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="margin-left: 28px; min-height: 297px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span> </span><span> </span><span> </span><span> </span><span class="cm-variable-2">t</span><span class="cm-variable-2">h</span><span class="cm-variable-2">i</span><span class="cm-variable-2">s</span><span>.</span><span class="cm-property">t</span><span class="cm-property">y</span><span class="cm-property">p</span><span class="cm-property">e</span><span> </span><span>=</span><span> </span><span class="cm-variable">t</span><span class="cm-variable">y</span><span class="cm-variable">p</span><span class="cm-variable">e</span><span>;</span></pre></div><div style="position: relative; z-index: 1; display: none;"><div class="CodeMirror-selected" style="position: absolute; left: 125.399719238281px; top: 103px; width: 57.1292724609375px; height: 15px;"></div></div><div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-keyword">var</span> <span class="cm-variable">Button</span> = <span class="cm-keyword">function</span>(<span class="cm-def">element</span>) {</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-variable-2">this</span>.<span class="cm-property">element</span> = <span class="cm-variable-2">element</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-variable-2">this</span>.<span class="cm-property">type</span> = <span class="cm-variable">type</span>;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-variable-2">this</span>.<span class="cm-property">element</span>.<span class="cm-property">addClass</span>(<span class="cm-string">'btn'</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>};</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre><span class="cm-variable">Button</span>.<span class="cm-property">prototype</span>.<span class="cm-property">type</span> = <span class="cm-keyword">function</span>(<span class="cm-def">type</span>) {</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-variable-2">this</span>.<span class="cm-property">element</span>.<span class="cm-property">addClass</span>(<span class="cm-string">'btn-'</span> + <span class="cm-variable-2">type</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>};</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre><span class="cm-variable">Button</span>.<span class="cm-property">prototype</span>.<span class="cm-property">width</span> = <span class="cm-keyword">function</span>(<span class="cm-def">width</span>) {</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-variable-2">this</span>.<span class="cm-property">element</span>.<span class="cm-property">width</span>(<span class="cm-variable-2">width</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>};</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre><span class="cm-variable">Button</span>.<span class="cm-property">prototype</span>.<span class="cm-property">height</span> = <span class="cm-keyword">function</span>(<span class="cm-def">height</span>) {</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">16</div></div><pre>    <span class="cm-variable-2">this</span>.<span class="cm-property">element</span>.<span class="cm-property">height</span>(<span class="cm-variable-2">height</span>);</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">17</div></div><pre>}</pre></div></div><div class="CodeMirror-cursor" style="left: 153.96435546875px; top: 35px; height: 15px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 297px;">&nbsp;</div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter note-gutter"></div><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div></div></div></div></div><ul class="warningTooltip"></ul></div>
+	<div class="shim"></div>
+</fieldset>
+
+<div class="handler" id="handler_vertical" style="left: 491px;"></div>
+
+<fieldset class="column right" style="width: 58.4873949579832%;">
+	<div class="window top" id="panel_css" data-panel_type="css">
+		<textarea id="id_code_css" rows="10" cols="40" name="code_css" style="display: none;"></textarea>
+		<span class="window_label" style="opacity: 0.8;">CSS</span>
+	<div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" tabindex="0" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 28px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="margin-left: 28px; min-height: 25px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>&nbsp;</span></pre></div><div style="position: relative; z-index: 1; display: none;"></div><div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>&nbsp;</pre></div></div><div class="CodeMirror-cursor" style="left: 4px; top: 1px; height: 15px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 25px;">&nbsp;</div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter note-gutter"></div><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div></div></div></div></div></div>
+	<div class="handler handler_horizontal" style="top: 155px;"></div>
+	<div id="result" class="window bottom">
+      <iframe name="result" sandbox="allow-forms allow-popups allow-scripts allow-same-origin" frameborder="0" src="./Edit fiddle - JSFiddle_files/saved_resource.html"></iframe>
+		<span class="window_label" style="opacity: 0.3;">Result</span>
+	</div>
+	<div class="shim"></div>
+</fieldset>
+
+      </div>
+    </form>
+
+    
+
+<script>
+  TogetherJSConfig_enableAnalytics = true;
+  TogetherJSConfig_cloneClicks = "#run, .toggler";
+  TogetherJSConfig_toolName = "Collaboration"
+</script>
+<script src="./Edit fiddle - JSFiddle_files/togetherjs.js"></script>
+
+  
+
+<span class="CodeMirror-error-tooltip"></span><div id="intercom-container" class="intercom-container intercom-reset"><style type="text/css" id="intercom-styles">#intercom-container .intercom-sheet-loading .intercom-sheet-spinner, #intercom-container .intercom-conversations-fetching .intercom-conversations-spinner {
+  background-image: url(https://js.intercomcdn.com/images/spinner.png);
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  display: block;
+  width: 28px;
+  height: 28px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-sheet-loading .intercom-sheet-spinner, #intercom-container .intercom-conversations-fetching .intercom-conversations-spinner {
+      background-image: url(https://js.intercomcdn.com/images/spinner@2x.png); } }
+
+.intercom-reset div, .intercom-reset span, .intercom-reset applet, .intercom-reset object, .intercom-reset iframe, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset p, .intercom-reset blockquote, .intercom-reset pre, .intercom-reset a, .intercom-reset abbr, .intercom-reset acronym, .intercom-reset address, .intercom-reset big, .intercom-reset cite, .intercom-reset code, .intercom-reset del, .intercom-reset dfn, .intercom-reset em, .intercom-reset img, .intercom-reset ins, .intercom-reset kbd, .intercom-reset q, .intercom-reset s, .intercom-reset samp, .intercom-reset small, .intercom-reset strike, .intercom-reset strong, .intercom-reset sub, .intercom-reset sup, .intercom-reset tt, .intercom-reset var, .intercom-reset b, .intercom-reset u, .intercom-reset i, .intercom-reset center, .intercom-reset dl, .intercom-reset dt, .intercom-reset dd, .intercom-reset ol, .intercom-reset ul, .intercom-reset li, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset label, .intercom-reset legend, .intercom-reset table, .intercom-reset caption, .intercom-reset tbody, .intercom-reset tfoot, .intercom-reset thead, .intercom-reset tr, .intercom-reset th, .intercom-reset td, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary, .intercom-reset time, .intercom-reset mark, .intercom-reset audio, .intercom-reset video, .intercom-reset button, .intercom-reset textarea, .intercom-reset input, .intercom-reset input[type] {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size-adjust: none;
+  font-size: 100%;
+  font-style: normal;
+  letter-spacing: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font: normal normal 100% "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: left;
+  -moz-text-align-last: initial;
+       text-align-last: initial;
+  text-decoration: none;
+  -webkit-text-emphasis: none;
+          text-emphasis: none;
+  text-height: auto;
+  text-indent: 0;
+  text-justify: auto;
+  text-outline: none;
+  text-shadow: none;
+  text-transform: none;
+  text-wrap: normal;
+  alignment-adjust: auto;
+  alignment-baseline: baseline;
+  -webkit-animation: none 0 ease 0 1 normal;
+          animation: none 0 ease 0 1 normal;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+  appearance: normal;
+  azimuth: center;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
+  background: none 0 0 auto repeat scroll padding-box transparent;
+  background-color: transparent;
+  background-image: none;
+  baseline-shift: baseline;
+  binding: none;
+  bleed: 6pt;
+  bookmark-label: content();
+  bookmark-level: none;
+  bookmark-state: open;
+  bookmark-target: none;
+  border: 0 none transparent;
+  border-radius: 0;
+  bottom: auto;
+  box-align: stretch;
+  -webkit-box-decoration-break: slice;
+          box-decoration-break: slice;
+  box-direction: normal;
+  box-flex: 0.0;
+  box-flex-group: 1;
+  box-lines: single;
+  box-ordinal-group: 1;
+  box-orient: inline-axis;
+  box-pack: start;
+  box-shadow: none;
+  box-sizing: content-box;
+  -webkit-break-after: auto;
+     -moz-break-after: auto;
+          break-after: auto;
+  -webkit-break-before: auto;
+     -moz-break-before: auto;
+          break-before: auto;
+  -webkit-column-break-inside: auto;
+     page-break-inside: auto;
+          break-inside: auto;
+  caption-side: top;
+  clear: none;
+  clip: auto;
+  color: inherit;
+  color-profile: auto;
+  -webkit-column-count: auto;
+     -moz-column-count: auto;
+          column-count: auto;
+  -webkit-column-fill: balance;
+     -moz-column-fill: balance;
+          column-fill: balance;
+  -webkit-column-gap: normal;
+     -moz-column-gap: normal;
+          column-gap: normal;
+  -webkit-column-rule: medium medium #1f1f1f;
+     -moz-column-rule: medium medium #1f1f1f;
+          column-rule: medium medium #1f1f1f;
+  -webkit-column-span: 1;
+     -moz-column-span: 1;
+          column-span: 1;
+  -webkit-column-width: auto;
+     -moz-column-width: auto;
+          column-width: auto;
+  -webkit-columns: auto auto;
+     -moz-columns: auto auto;
+          columns: auto auto;
+  content: normal;
+  counter-increment: none;
+  counter-reset: none;
+  crop: auto;
+  cursor: auto;
+  direction: ltr;
+  display: inline;
+  dominant-baseline: auto;
+  drop-initial-after-adjust: text-after-edge;
+  drop-initial-after-align: baseline;
+  drop-initial-before-adjust: text-before-edge;
+  drop-initial-before-align: caps-height;
+  drop-initial-size: auto;
+  drop-initial-value: initial;
+  elevation: level;
+  empty-cells: show;
+  fit: fill;
+  fit-position: 0% 0%;
+  float: none;
+  float-offset: 0 0;
+  grid-columns: none;
+  grid-rows: none;
+  hanging-punctuation: none;
+  height: auto;
+  hyphenate-after: auto;
+  hyphenate-before: auto;
+  hyphenate-character: auto;
+  hyphenate-lines: no-limit;
+  hyphenate-resource: none;
+  -webkit-hyphens: manual;
+     -moz-hyphens: manual;
+      -ms-hyphens: manual;
+          hyphens: manual;
+  icon: auto;
+  image-orientation: auto;
+  image-rendering: auto;
+  image-resolution: normal;
+  inline-box-align: last;
+  left: auto;
+  line-height: inherit;
+  line-stacking: inline-line-height exclude-ruby consider-shifts;
+  list-style: disc outside none;
+  margin: 0;
+  marks: none;
+  marquee-direction: forward;
+  marquee-loop: 1;
+  marquee-play-count: 1;
+  marquee-speed: normal;
+  marquee-style: scroll;
+  max-height: none;
+  max-width: none;
+  min-height: 0;
+  min-width: 0;
+  move-to: normal;
+  nav-down: auto;
+  nav-index: auto;
+  nav-left: auto;
+  nav-right: auto;
+  nav-up: auto;
+  opacity: 1;
+  orphans: 2;
+  outline: invert none medium;
+  outline-offset: 0;
+  overflow: visible;
+  overflow-style: auto;
+  padding: 0;
+  page: auto;
+  page-break-after: auto;
+  page-break-before: auto;
+  page-break-inside: auto;
+  page-policy: start;
+  -webkit-perspective: none;
+          perspective: none;
+  -webkit-perspective-origin: 50% 50%;
+          perspective-origin: 50% 50%;
+  position: static;
+  presentation-level: 0;
+  punctuation-trim: none;
+  quotes: none;
+  rendering-intent: auto;
+  resize: none;
+  right: auto;
+  rotation: 0;
+  rotation-point: 50% 50%;
+  ruby-align: auto;
+  ruby-overhang: none;
+  ruby-position: before;
+  ruby-span: none;
+  size: auto;
+  string-set: none;
+  table-layout: auto;
+  top: auto;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  -webkit-transform-origin: 50% 50% 0;
+      -ms-transform-origin: 50% 50% 0;
+          transform-origin: 50% 50% 0;
+  -webkit-transform-style: flat;
+          transform-style: flat;
+  transition: all 0 ease 0;
+  unicode-bidi: normal;
+  vertical-align: baseline;
+  white-space: normal;
+  white-space-collapse: collapse;
+  widows: 2;
+  width: auto;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  z-index: auto;
+  text-align: start;
+  /* And disable MS gradients */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+.intercom-reset address, .intercom-reset blockquote, .intercom-reset dd, .intercom-reset div, .intercom-reset dl, .intercom-reset dt, .intercom-reset fieldset, .intercom-reset form, .intercom-reset div.form, .intercom-reset frame, .intercom-reset frameset, .intercom-reset h1, .intercom-reset h2, .intercom-reset h3, .intercom-reset h4, .intercom-reset h5, .intercom-reset h6, .intercom-reset noframes, .intercom-reset ol, .intercom-reset p, .intercom-reset ul, .intercom-reset center, .intercom-reset dir, .intercom-reset hr, .intercom-reset menu, .intercom-reset pre, .intercom-reset article, .intercom-reset aside, .intercom-reset canvas, .intercom-reset details, .intercom-reset figcaption, .intercom-reset figure, .intercom-reset footer, .intercom-reset header, .intercom-reset hgroup, .intercom-reset menu, .intercom-reset nav, .intercom-reset section, .intercom-reset summary {
+  display: block; }
+.intercom-reset li {
+  display: list-item; }
+.intercom-reset table {
+  display: table; }
+.intercom-reset tr {
+  display: table-row; }
+.intercom-reset thead {
+  display: table-header-group; }
+.intercom-reset tbody {
+  display: table-row-group; }
+.intercom-reset tfoot {
+  display: table-footer-group; }
+.intercom-reset col {
+  display: table-column; }
+.intercom-reset colgroup {
+  display: table-column-group; }
+.intercom-reset td, .intercom-reset th {
+  display: table-cell; }
+.intercom-reset caption {
+  display: table-caption; }
+.intercom-reset input, .intercom-reset select {
+  display: inline-block; }
+.intercom-reset b, .intercom-reset strong {
+  font-weight: bold; }
+.intercom-reset textarea, .intercom-reset input {
+  cursor: text; }
+  .intercom-reset textarea::-webkit-input-placeholder, .intercom-reset input::-webkit-input-placeholder {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size-adjust: none;
+    font-size: 100%;
+    font-style: normal;
+    letter-spacing: normal;
+    font-stretch: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font: normal normal 100% "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: left;
+    text-align-last: initial;
+    text-decoration: none;
+    -webkit-text-emphasis: none;
+            text-emphasis: none;
+    text-height: auto;
+    text-indent: 0;
+    text-justify: auto;
+    text-outline: none;
+    text-shadow: none;
+    text-transform: none;
+    text-wrap: normal;
+    background-color: inherit;
+    color: inherit; }
+  .intercom-reset textarea::-moz-placeholder, .intercom-reset input::-moz-placeholder {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size-adjust: none;
+    font-size: 100%;
+    font-style: normal;
+    letter-spacing: normal;
+    font-stretch: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font: normal normal 100% "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: left;
+    -moz-text-align-last: initial;
+         text-align-last: initial;
+    text-decoration: none;
+    text-emphasis: none;
+    text-height: auto;
+    text-indent: 0;
+    text-justify: auto;
+    text-outline: none;
+    text-shadow: none;
+    text-transform: none;
+    text-wrap: normal;
+    background-color: inherit;
+    color: inherit; }
+  .intercom-reset textarea:-ms-input-placeholder, .intercom-reset input:-ms-input-placeholder {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size-adjust: none;
+    font-size: 100%;
+    font-style: normal;
+    letter-spacing: normal;
+    font-stretch: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font: normal normal 100% "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: left;
+    text-align-last: initial;
+    text-decoration: none;
+    text-emphasis: none;
+    text-height: auto;
+    text-indent: 0;
+    text-justify: auto;
+    text-outline: none;
+    text-shadow: none;
+    text-transform: none;
+    text-wrap: normal;
+    background-color: inherit;
+    color: inherit; }
+  .intercom-reset textarea::-moz-selection, .intercom-reset input::-moz-selection {
+    background-color: #b3d4fc; }
+  .intercom-reset textarea::selection, .intercom-reset input::selection {
+    background-color: #b3d4fc; }
+  .intercom-reset textarea::-moz-selection, .intercom-reset input::-moz-selection {
+    background-color: #b3d4fc; }
+.intercom-reset input[type=checkbox], .intercom-reset input[type=radio] {
+  cursor: default; }
+.intercom-reset a, .intercom-reset a *, .intercom-reset a span, .intercom-reset button, .intercom-reset button *, .intercom-reset button span, .intercom-reset input[type=submit], .intercom-reset input[type=reset] {
+  cursor: pointer; }
+.intercom-reset a:link, .intercom-reset a:visited, .intercom-reset a:hover, .intercom-reset a:active {
+  color: inherit;
+  background: transparent;
+  text-shadow: none; }
+.intercom-reset button::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+#intercom-container .intercom-conversations-new-conversation-button, #intercom-container .intercom-announcement-body-container a.intercom-h2b-button, #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button, #intercom-container .intercom-new-anonymous-user input[type="submit"], #intercom-container .intercom-composer-send-button {
+  box-shadow: inset 0 1px 0px 0 rgba(255, 255, 255, 0.17);
+  background: #333333;
+  background-image: linear-gradient(to bottom, #474747, #333333);
+  border-radius: 3px;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 25px;
+  padding: 0 9px;
+  display: inline-block;
+  color: white;
+  border: 1px solid #1f1f1f; }
+  #intercom-container .intercom-conversations-new-conversation-button:hover, #intercom-container .intercom-announcement-body-container a.intercom-h2b-button:hover, #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button:hover, #intercom-container .intercom-new-anonymous-user input[type="submit"]:hover, #intercom-container .intercom-composer-send-button:hover {
+    background: #1f1f1f;
+    background-image: linear-gradient(to bottom, #333333, #1f1f1f);
+    border-color: #0b0b0b; }
+  #intercom-container .intercom-conversations-new-conversation-button:active, #intercom-container .intercom-announcement-body-container a.intercom-h2b-button:active, #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button:active, #intercom-container .intercom-new-anonymous-user input[type="submit"]:active, #intercom-container .intercom-composer-send-button:active {
+    background: #0b0b0b;
+    border-color: #0b0b0b; }
+  #intercom-container .intercom-conversations-new-conversation-button:disabled, #intercom-container .intercom-announcement-body-container a.intercom-h2b-button:disabled, #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button:disabled, #intercom-container .intercom-new-anonymous-user input[type="submit"]:disabled, #intercom-container .intercom-composer-send-button:disabled {
+    box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.11), inset 0px 0px 1px 1px rgba(255, 255, 255, 0.08);
+    background: #acbbc2;
+    background-image: linear-gradient(to bottom, #b6c5cb, #acbbc2);
+    border-color: #a0aeb4; }
+
+#intercom-container .intercom-conversations-new-conversation-button {
+  padding: 2px 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px; }
+
+@media print {
+  #intercom-container {
+    display: none; } }
+
+#intercom-container .intercom-launcher {
+  z-index: 2147483000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  visibility: hidden;
+  -webkit-transform: translateZ(0); }
+#intercom-container .intercom-launcher-enabled {
+  visibility: visible; }
+#intercom-container .intercom-launcher-inactive {
+  visibility: hidden; }
+#intercom-container .intercom-launcher-preview, #intercom-container .intercom-launcher-badge {
+  opacity: 0;
+  visibility: hidden; }
+#intercom-container .intercom-launcher-inactive.intercom-launcher-maximized {
+  opacity: 1;
+  visibility: visible; }
+#intercom-container .intercom-launcher-inactive.intercom-launcher-minimized {
+  opacity: 0; }
+#intercom-container .intercom-launcher-maximized.intercom-launcher-with-preview .intercom-launcher-preview, #intercom-container .intercom-launcher-active.intercom-launcher-with-preview .intercom-launcher-preview {
+  opacity: 1;
+  visibility: visible; }
+#intercom-container .intercom-launcher-maximized.intercom-launcher-with-badge .intercom-launcher-badge, #intercom-container .intercom-launcher-active.intercom-launcher-with-badge .intercom-launcher-badge {
+  opacity: 1;
+  visibility: visible; }
+#intercom-container .intercom-launcher.intercom-launcher-with-avatar .intercom-launcher-button {
+  border-width: 0;
+  background-size: 48px 48px; }
+#intercom-container .intercom-launcher-active.intercom-launcher-with-message .intercom-launcher-button {
+  visibility: visible; }
+#intercom-container .intercom-launcher-button {
+  background-image: url(https://js.intercomcdn.com/images/icon-launcher.png);
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  background-position: center;
+  background-color: #333333;
+  border-color: #0b0b0b; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-launcher-button {
+      background-image: url(https://js.intercomcdn.com/images/icon-launcher@2x.png); } }
+#intercom-container.intercom-acquire .intercom-launcher-button {
+  background-image: url(https://js.intercomcdn.com/images/acquire.png);
+  background-size: 22px 22px;
+  background-repeat: no-repeat; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container.intercom-acquire .intercom-launcher-button {
+      background-image: url(https://js.intercomcdn.com/images/acquire@2x.png); } }
+#intercom-container.intercom-learn .intercom-launcher-button {
+  background-image: url(https://js.intercomcdn.com/images/inbox.png);
+  background-size: 22px 20px;
+  background-repeat: no-repeat; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container.intercom-learn .intercom-launcher-button {
+      background-image: url(https://js.intercomcdn.com/images/inbox@2x.png); } }
+#intercom-container .intercom-launcher-maximized .intercom-launcher-button {
+  background-image: url(https://js.intercomcdn.com/images/icon-launcher-minimized.png);
+  background-size: 22px 22px;
+  background-repeat: no-repeat; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-launcher-maximized .intercom-launcher-button {
+      background-image: url(https://js.intercomcdn.com/images/icon-launcher-minimized@2x.png); } }
+#intercom-container .intercom-launcher-badge {
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 18px;
+  background-color: #ff3c00;
+  text-align: center;
+  color: white;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 0;
+  right: -7px;
+  cursor: pointer; }
+#intercom-container .intercom-launcher-preview {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.07);
+  font-size: 14px;
+  font-weight: 400;
+  color: #455A64;
+  line-height: 20px;
+  position: absolute;
+  top: -8px;
+  right: 60px;
+  width: 240px;
+  padding: 12px 14px;
+  color: #333333;
+  border: 1px solid #e4e5e7;
+  border-radius: 10px;
+  background: white; }
+  #intercom-container .intercom-launcher-preview .intercom-comment-body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px; }
+  #intercom-container .intercom-launcher-preview p, #intercom-container .intercom-launcher-preview ul, #intercom-container .intercom-launcher-preview ol, #intercom-container .intercom-launcher-preview blockquote, #intercom-container .intercom-launcher-preview h1, #intercom-container .intercom-launcher-preview h2, #intercom-container .intercom-launcher-preview h3, #intercom-container .intercom-launcher-preview h4, #intercom-container .intercom-launcher-preview h5, #intercom-container .intercom-launcher-preview h6, #intercom-container .intercom-launcher-preview a, #intercom-container .intercom-launcher-preview a.intercom-h2b-button, #intercom-container .intercom-launcher-preview code {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    word-wrap: break-word;
+    margin: 20px 0; }
+    #intercom-container .intercom-launcher-preview p:first-child, #intercom-container .intercom-launcher-preview ul:first-child, #intercom-container .intercom-launcher-preview ol:first-child, #intercom-container .intercom-launcher-preview blockquote:first-child, #intercom-container .intercom-launcher-preview h1:first-child, #intercom-container .intercom-launcher-preview h2:first-child, #intercom-container .intercom-launcher-preview h3:first-child, #intercom-container .intercom-launcher-preview h4:first-child, #intercom-container .intercom-launcher-preview h5:first-child, #intercom-container .intercom-launcher-preview h6:first-child, #intercom-container .intercom-launcher-preview a:first-child, #intercom-container .intercom-launcher-preview a.intercom-h2b-button:first-child, #intercom-container .intercom-launcher-preview code:first-child {
+      margin-top: 0; }
+    #intercom-container .intercom-launcher-preview p:last-child, #intercom-container .intercom-launcher-preview ul:last-child, #intercom-container .intercom-launcher-preview ol:last-child, #intercom-container .intercom-launcher-preview blockquote:last-child, #intercom-container .intercom-launcher-preview h1:last-child, #intercom-container .intercom-launcher-preview h2:last-child, #intercom-container .intercom-launcher-preview h3:last-child, #intercom-container .intercom-launcher-preview h4:last-child, #intercom-container .intercom-launcher-preview h5:last-child, #intercom-container .intercom-launcher-preview h6:last-child, #intercom-container .intercom-launcher-preview a:last-child, #intercom-container .intercom-launcher-preview a.intercom-h2b-button:last-child, #intercom-container .intercom-launcher-preview code:last-child {
+      margin-bottom: 0; }
+  #intercom-container .intercom-launcher-preview h1, #intercom-container .intercom-launcher-preview h1 a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: normal;
+    margin: 27px 0;
+    color: inherit; }
+  #intercom-container .intercom-launcher-preview h2, #intercom-container .intercom-launcher-preview h2 a {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: inherit; }
+  #intercom-container .intercom-launcher-preview ul, #intercom-container .intercom-launcher-preview ol {
+    font-size: 14px;
+    -moz-padding-start: 40px;
+    -webkit-padding-start: 40px;
+    -khtml-padding-start: 40px;
+    -o-padding-start: 40px;
+    padding-start: 40px;
+    padding-left: 30px; }
+  #intercom-container .intercom-launcher-preview [dir=ltr] ul, #intercom-container .intercom-launcher-preview [dir=ltr] ol {
+    padding-left: 30px; }
+  #intercom-container .intercom-launcher-preview [dir=rtl] ul, #intercom-container .intercom-launcher-preview [dir=rtl] ol {
+    padding-right: 30px; }
+  #intercom-container .intercom-launcher-preview ul > li {
+    list-style-type: disc; }
+  #intercom-container .intercom-launcher-preview ol > li {
+    list-style-type: decimal; }
+  #intercom-container .intercom-launcher-preview li {
+    display: list-item;
+    line-height: 20px;
+    margin-bottom: 10px;
+    font-weight: 400; }
+  #intercom-container .intercom-launcher-preview em, #intercom-container .intercom-launcher-preview i {
+    font-style: italic; }
+  #intercom-container .intercom-launcher-preview strong, #intercom-container .intercom-launcher-preview b {
+    font-weight: bold;
+    line-height: 100%; }
+  #intercom-container .intercom-launcher-preview pre {
+    font-size: 14px;
+    padding: 0 0 10px 0;
+    white-space: pre-wrap; }
+  #intercom-container .intercom-launcher-preview img {
+    display: block;
+    max-width: 100%;
+    margin: 10px auto 10px;
+    cursor: pointer; }
+  #intercom-container .intercom-launcher-preview p + br {
+    display: none; }
+  #intercom-container .intercom-launcher-preview a:link, #intercom-container .intercom-launcher-preview a:visited, #intercom-container .intercom-launcher-preview a:hover, #intercom-container .intercom-launcher-preview a:active {
+    text-decoration: underline; }
+  #intercom-container .intercom-launcher-preview a:link, #intercom-container .intercom-launcher-preview a:visited {
+    color: #333333; }
+  #intercom-container .intercom-launcher-preview a:hover, #intercom-container .intercom-launcher-preview a:active {
+    color: #0b0b0b; }
+  #intercom-container .intercom-launcher-preview h2 + p, #intercom-container .intercom-launcher-preview h2 + ul, #intercom-container .intercom-launcher-preview h2 + ol, #intercom-container .intercom-launcher-preview h2 + blockquote, #intercom-container .intercom-launcher-preview h2 + .ic_button_in_content, #intercom-container .intercom-launcher-preview h2 + .ic_social_block, #intercom-container .intercom-launcher-preview h3 + p, #intercom-container .intercom-launcher-preview h3 + ul, #intercom-container .intercom-launcher-preview h3 + ol, #intercom-container .intercom-launcher-preview h3 + blockquote, #intercom-container .intercom-launcher-preview h3 + .ic_button_in_content, #intercom-container .intercom-launcher-preview h3 + .ic_social_block, #intercom-container .intercom-launcher-preview h4 + p, #intercom-container .intercom-launcher-preview h4 + ul, #intercom-container .intercom-launcher-preview h4 + ol, #intercom-container .intercom-launcher-preview h4 + blockquote, #intercom-container .intercom-launcher-preview h4 + .ic_button_in_content, #intercom-container .intercom-launcher-preview h4 + .ic_social_block, #intercom-container .intercom-launcher-preview h5 + p, #intercom-container .intercom-launcher-preview h5 + ul, #intercom-container .intercom-launcher-preview h5 + ol, #intercom-container .intercom-launcher-preview h5 + blockquote, #intercom-container .intercom-launcher-preview h5 + .ic_button_in_content, #intercom-container .intercom-launcher-preview h5 + .ic_social_block, #intercom-container .intercom-launcher-preview h6 + p, #intercom-container .intercom-launcher-preview h6 + ul, #intercom-container .intercom-launcher-preview h6 + ol, #intercom-container .intercom-launcher-preview h6 + blockquote, #intercom-container .intercom-launcher-preview h6 + .ic_button_in_content, #intercom-container .intercom-launcher-preview h6 + .ic_social_block {
+    margin-top: 0; }
+  #intercom-container .intercom-launcher-preview .intercom-h2b-twitter, #intercom-container .intercom-launcher-preview .intercom-h2b-facebook {
+    max-width: 100%; }
+  #intercom-container .intercom-launcher-preview iframe[src*="vimeo.com"], #intercom-container .intercom-launcher-preview iframe[src*="wistia.net"], #intercom-container .intercom-launcher-preview iframe[src*="youtube.com"] {
+    width: 100%;
+    height: 149px;
+    margin: 20px auto; }
+  #intercom-container .intercom-launcher-preview iframe[src*='wistia.net'], #intercom-container .intercom-launcher-preview a.intercom-h2b-button {
+    text-transform: capitalize; }
+  #intercom-container .intercom-launcher-preview:hover .intercom-launcher-preview-close {
+    opacity: 1; }
+#intercom-container .intercom-launcher-preview-caret:after, #intercom-container .intercom-launcher-preview-caret:before {
+  left: 100%;
+  top: 24px;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+#intercom-container .intercom-launcher-preview-caret:after {
+  border-width: 5px;
+  margin-top: -5px;
+  border-left-color: white; }
+#intercom-container .intercom-launcher-preview-caret:before {
+  border-width: 6px;
+  margin-top: -6px;
+  border-left-color: #e4e5e7; }
+#intercom-container .intercom-launcher-preview-body {
+  cursor: pointer; }
+  #intercom-container .intercom-launcher-preview-body a.intercom-h2b-button, #intercom-container .intercom-launcher-preview-body div.intercom-h2b-video, #intercom-container .intercom-launcher-preview-body div.intercom-h2b-facebook, #intercom-container .intercom-launcher-preview-body div.intercom-h2b-twitter, #intercom-container .intercom-launcher-preview-body img, #intercom-container .intercom-launcher-preview-body video, #intercom-container .intercom-launcher-preview-body ul, #intercom-container .intercom-launcher-preview-body ol {
+    display: none; }
+  #intercom-container .intercom-launcher-preview-body h1, #intercom-container .intercom-launcher-preview-body h2, #intercom-container .intercom-launcher-preview-body p, #intercom-container .intercom-launcher-preview-body a, #intercom-container .intercom-launcher-preview-body b, #intercom-container .intercom-launcher-preview-body i {
+    word-wrap: break-word;
+    cursor: pointer;
+    display: inline;
+    margin: 0; }
+  #intercom-container .intercom-launcher-preview-body h1, #intercom-container .intercom-launcher-preview-body h2, #intercom-container .intercom-launcher-preview-body p, #intercom-container .intercom-launcher-preview-body a, #intercom-container .intercom-launcher-preview-body i, #intercom-container .intercom-launcher-preview-body b {
+    font-weight: normal;
+    font-style: normal; }
+  #intercom-container .intercom-launcher-preview-body.intercom-launcher-preview-metadata {
+    font-style: italic; }
+#intercom-container .intercom-launcher-preview-close {
+  background-image: url(https://js.intercomcdn.com/images/icon-preview-close.png);
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 18px;
+  height: 18px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-launcher-preview-close {
+      background-image: url(https://js.intercomcdn.com/images/icon-preview-close@2x.png); } }
+@media (max-width: 480px) {
+  #intercom-container .intercom-launcher-preview {
+    max-width: 200px; } }
+
+#intercom-container .intercom-messenger {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+#intercom-container .intercom-sheet {
+  z-index: 2147483000;
+  visibility: hidden;
+  position: fixed;
+  height: 100%;
+  width: 370px;
+  bottom: 0;
+  right: 0; }
+#intercom-container .intercom-sheet-active {
+  visibility: visible; }
+#intercom-container .intercom-sheet-header {
+  z-index: 2147483002;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+  background: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 48px; }
+#intercom-container .intercom-sheet-footer {
+  z-index: 2147483002;
+  box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.06);
+  background: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 48px;
+  text-align: center;
+  -moz-text-align-last: center;
+       text-align-last: center; }
+#intercom-container .intercom-sheet-body {
+  z-index: 2147483000;
+  background: #fafafb;
+  background: rgba(250, 250, 251, 0.98);
+  border-left: 1px solid #dadee2;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%; }
+#intercom-container .intercom-sheet-active .intercom-sheet-content {
+  overflow-y: auto; }
+#intercom-container .intercom-sheet-content {
+  z-index: 2147483001;
+  position: absolute;
+  top: 48px;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  -webkit-transform: translateZ(0); }
+#intercom-container .intercom-sheet-content-container {
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100%;
+  max-width: 620px;
+  margin: 0 auto; }
+#intercom-container .intercom-sheet-header-title-container {
+  z-index: 2147483000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -moz-text-align-last: center;
+       text-align-last: center;
+  pointer-events: none; }
+#intercom-container .intercom-sheet-header-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 48px;
+  font-weight: 500;
+  color: #465C66;
+  letter-spacing: 0.2px;
+  display: inline-block;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  #intercom-container .intercom-sheet-header-title.intercom-sheet-header-with-presence {
+    line-height: 20px;
+    padding-top: 7px; }
+#intercom-container .intercom-last-active {
+  position: absolute;
+  z-index: 0;
+  text-align: center;
+  color: #90A4AE;
+  font-size: 12px;
+  left: 0;
+  right: 0;
+  bottom: 7px;
+  line-height: 14px; }
+#intercom-container .intercom-sheet-header-app-name {
+  font-weight: bold; }
+#intercom-container .intercom-sheet-header-button {
+  z-index: 2147483001;
+  position: relative;
+  margin: 0 20px;
+  height: 48px; }
+#intercom-container .intercom-sheet-header-button-icon {
+  height: 100%;
+  background-position: center center; }
+#intercom-container .intercom-sheet-header-conversations-button {
+  float: left; }
+  #intercom-container .intercom-sheet-header-conversations-button .intercom-sheet-header-button-icon {
+    background-image: url(https://js.intercomcdn.com/images/icon-conversations.png);
+    background-size: 15px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 18px;
+    float: left; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      #intercom-container .intercom-sheet-header-conversations-button .intercom-sheet-header-button-icon {
+        background-image: url(https://js.intercomcdn.com/images/icon-conversations@2x.png); } }
+#intercom-container .intercom-sheet-header-close-button {
+  float: right;
+  margin-left: 15px; }
+  #intercom-container .intercom-sheet-header-close-button .intercom-sheet-header-button-icon {
+    background-image: url(https://js.intercomcdn.com/images/icon-close.png);
+    background-size: 13px 13px;
+    background-repeat: no-repeat;
+    width: 16px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      #intercom-container .intercom-sheet-header-close-button .intercom-sheet-header-button-icon {
+        background-image: url(https://js.intercomcdn.com/images/icon-close@2x.png); } }
+#intercom-container .intercom-sheet-header-minimize-button {
+  float: right;
+  margin-right: 0; }
+  #intercom-container .intercom-sheet-header-minimize-button .intercom-sheet-header-button-icon {
+    background-image: url(https://js.intercomcdn.com/images/icon-minimize.png);
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    width: 16px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      #intercom-container .intercom-sheet-header-minimize-button .intercom-sheet-header-button-icon {
+        background-image: url(https://js.intercomcdn.com/images/icon-minimize@2x.png); } }
+#intercom-container .intercom-sheet-loading .intercom-sheet-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -14px;
+  margin-top: 14px; }
+#intercom-container .intercom-sheet-minimized {
+  opacity: 0;
+  visibility: hidden; }
+#intercom-container .intercom-sheet-maximized {
+  width: 100%; }
+@media (max-width: 460px) {
+  #intercom-container .intercom-sheet {
+    width: 100%; } }
+@media (-ms-high-contrast: none) {
+  #intercom-container .intercom-sheet {
+    width: 370px; }
+  #intercom-container .intercom-sheet-maximized {
+    width: 100%; } }
+
+#intercom-container .intercom-conversation-parts-container {
+  padding: 17px; }
+#intercom-container .intercom-conversation-part {
+  padding-bottom: 17px; }
+  #intercom-container .intercom-conversation-part:before, #intercom-container .intercom-conversation-part:after {
+    content: " ";
+    display: table; }
+  #intercom-container .intercom-conversation-part:after {
+    clear: both; }
+#intercom-container .intercom-conversation-part-unread .intercom-comment-by-admin .intercom-comment-timestamp {
+  color: #93979f; }
+#intercom-container .intercom-conversation-part-unread .intercom-comment-by-admin .intercom-comment-readstate {
+  border-radius: 50%;
+  background-color: #333333;
+  width: 7px;
+  height: 7px;
+  margin-top: 6px;
+  overflow: auto; }
+#intercom-container .intercom-conversation-part-failed .intercom-comment-body-container {
+  opacity: 0.6; }
+#intercom-container .intercom-conversation-part-failed .intercom-comment-state, #intercom-container .intercom-conversation-part-failed .intercom-comment-body {
+  cursor: pointer; }
+#intercom-container .intercom-conversation-part-failed .intercom-comment-metadata {
+  color: #c00; }
+#intercom-container .intercom-sheet-loading .intercom-conversation-parts, #intercom-container .intercom-sheet-loading .intercom-powered-by-container {
+  opacity: 0; }
+#intercom-container .intercom-conversation-preview {
+  pointer-events: none; }
+  #intercom-container .intercom-conversation-preview .intercom-sheet-header, #intercom-container .intercom-conversation-preview .intercom-sheet-body, #intercom-container .intercom-conversation-preview .intercom-composer {
+    opacity: 0; }
+  #intercom-container .intercom-conversation-preview .intercom-sheet-content {
+    overflow-y: hidden; }
+  #intercom-container .intercom-conversation-preview .intercom-small-announcement {
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+    pointer-events: auto; }
+#intercom-container .intercom-conversation-part-grouped-first, #intercom-container .intercom-conversation-part-grouped {
+  padding-bottom: 2px; }
+  #intercom-container .intercom-conversation-part-grouped-first .intercom-comment-metadata, #intercom-container .intercom-conversation-part-grouped-first .intercom-comment-readstate, #intercom-container .intercom-conversation-part-grouped .intercom-comment-metadata, #intercom-container .intercom-conversation-part-grouped .intercom-comment-readstate {
+    display: none; }
+#intercom-container .intercom-conversation-part-grouped .intercom-comment-avatar, #intercom-container .intercom-conversation-part-grouped .intercom-comment-caret, #intercom-container .intercom-conversation-part-grouped-last .intercom-comment-avatar, #intercom-container .intercom-conversation-part-grouped-last .intercom-comment-caret {
+  display: none; }
+
+#intercom-container .intercom-conversations-item {
+  display: block;
+  padding-top: 17px;
+  padding-left: 17px;
+  text-decoration: none; }
+  #intercom-container .intercom-conversations-item:hover {
+    background-color: rgba(0, 0, 0, 0.02); }
+#intercom-container .intercom-conversations-item-user-avatar, #intercom-container .intercom-conversations-item-admin-avatar {
+  border-radius: 50%;
+  float: left;
+  margin-top: 5px;
+  display: inline-block;
+  width: 42px;
+  height: 42px; }
+#intercom-container .intercom-conversations-item-user-avatar {
+  background-color: #333333;
+  background-image: url(https://js.intercomcdn.com/images/icon-user-avatar.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 18px; }
+#intercom-container .intercom-conversations-item-body-container {
+  margin-left: 55px;
+  padding-right: 17px;
+  border-bottom: 1px solid #e7e7e7;
+  height: 80px; }
+#intercom-container .intercom-conversations-item-header {
+  margin-bottom: 5px; }
+#intercom-container .intercom-conversations-item-title {
+  margin: 0 50px 0 0; }
+  #intercom-container .intercom-conversations-item-title span {
+    color: #60686e;
+    color: rgba(96, 104, 110, 0.8);
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+#intercom-container .intercom-conversations-item-timestamp {
+  float: right;
+  font-size: 12px;
+  line-height: 20px;
+  color: #aaaaaa;
+  width: 50px;
+  text-align: right; }
+#intercom-container .intercom-conversations-item-summary {
+  color: #60686e;
+  color: rgba(96, 104, 110, 0.8);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  padding-right: 15px;
+  word-break: break-word; }
+  #intercom-container .intercom-conversations-item-summary.intercom-conversations-item-summary-metadata {
+    font-style: italic; }
+#intercom-container .intercom-conversations-new-conversation-button {
+  margin: 8px;
+  font-weight: 500;
+  padding: 0 18px; }
+  #intercom-container .intercom-conversations-new-conversation-button i {
+    background: url(https://js.intercomcdn.com/images/icon-compose.svg) 0 0/15px 15px no-repeat;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 8px -2px 0; }
+#intercom-container .intercom-conversations-item-unread .intercom-conversations-item-header span {
+  color: #3d4347;
+  font-weight: 500;
+  white-space: nowrap; }
+#intercom-container .intercom-conversations-item-unread .intercom-conversations-item-summary {
+  color: #3d4347; }
+#intercom-container .intercom-conversations-item-unread .intercom-conversations-item-readstate {
+  border-radius: 50%;
+  background-color: #333333;
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  bottom: 27px;
+  right: 0; }
+#intercom-container .intercom-no-conversations {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: -38px auto 0;
+  text-align: center;
+  color: #e4e5e7;
+  display: none; }
+  #intercom-container .intercom-no-conversations .intercom-no-conversations-icon {
+    background-image: url(https://js.intercomcdn.com/images/icon-no-conversations.png);
+    background-size: 79px 59px;
+    background-repeat: no-repeat;
+    display: block;
+    width: 79px;
+    height: 59px;
+    margin: 0 auto 10px auto; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      #intercom-container .intercom-no-conversations .intercom-no-conversations-icon {
+        background-image: url(https://js.intercomcdn.com/images/icon-no-conversations@2x.png); } }
+#intercom-container.intercom-learn .intercom-no-conversations .intercom-no-conversations-icon {
+  height: 46px;
+  background-image: url(https://js.intercomcdn.com/images/empty-inbox.png);
+  background-size: 79px 46px;
+  background-repeat: no-repeat; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container.intercom-learn .intercom-no-conversations .intercom-no-conversations-icon {
+      background-image: url(https://js.intercomcdn.com/images/empty-inbox@2x.png); } }
+#intercom-container .intercom-conversations-empty .intercom-no-conversations {
+  display: block; }
+#intercom-container .intercom-new-message-enabled .intercom-conversations-content {
+  bottom: 48px; }
+#intercom-container .intercom-conversations-fetching .intercom-conversations-spinner {
+  position: relative;
+  left: 50%;
+  margin-left: -14px;
+  margin-top: 40px;
+  margin-bottom: 40px; }
+
+#intercom-container .intercom-attachments {
+  border-top: 1px solid #e4e5e7;
+  padding: 11px 14px; }
+#intercom-container .intercom-attachment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  font-size: 14px; }
+#intercom-container .intercom-comment-by-user .intercom-attachments {
+  border-top: 1px solid #1f1f1f; }
+
+#intercom-container .intercom-comment {
+  line-height: 20px;
+  position: relative;
+  clear: both;
+  max-width: 296px; }
+#intercom-container .intercom-comment-by-user {
+  float: right; }
+#intercom-container .intercom-comment-by-admin {
+  float: left;
+  padding-left: 38px; }
+#intercom-container .intercom-comment-is-typing-icon {
+  display: none; }
+#intercom-container .intercom-comment-avatar {
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 0;
+  top: 5px; }
+#intercom-container .intercom-comment-body-container {
+  font-size: 14px;
+  font-weight: 400;
+  color: #455A64;
+  line-height: 20px;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  position: relative;
+  max-width: 100%; }
+  #intercom-container .intercom-comment-body-container .intercom-comment-body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px; }
+  #intercom-container .intercom-comment-body-container p, #intercom-container .intercom-comment-body-container ul, #intercom-container .intercom-comment-body-container ol, #intercom-container .intercom-comment-body-container blockquote, #intercom-container .intercom-comment-body-container h1, #intercom-container .intercom-comment-body-container h2, #intercom-container .intercom-comment-body-container h3, #intercom-container .intercom-comment-body-container h4, #intercom-container .intercom-comment-body-container h5, #intercom-container .intercom-comment-body-container h6, #intercom-container .intercom-comment-body-container a, #intercom-container .intercom-comment-body-container a.intercom-h2b-button, #intercom-container .intercom-comment-body-container code {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    word-wrap: break-word;
+    margin: 20px 0; }
+    #intercom-container .intercom-comment-body-container p:first-child, #intercom-container .intercom-comment-body-container ul:first-child, #intercom-container .intercom-comment-body-container ol:first-child, #intercom-container .intercom-comment-body-container blockquote:first-child, #intercom-container .intercom-comment-body-container h1:first-child, #intercom-container .intercom-comment-body-container h2:first-child, #intercom-container .intercom-comment-body-container h3:first-child, #intercom-container .intercom-comment-body-container h4:first-child, #intercom-container .intercom-comment-body-container h5:first-child, #intercom-container .intercom-comment-body-container h6:first-child, #intercom-container .intercom-comment-body-container a:first-child, #intercom-container .intercom-comment-body-container a.intercom-h2b-button:first-child, #intercom-container .intercom-comment-body-container code:first-child {
+      margin-top: 0; }
+    #intercom-container .intercom-comment-body-container p:last-child, #intercom-container .intercom-comment-body-container ul:last-child, #intercom-container .intercom-comment-body-container ol:last-child, #intercom-container .intercom-comment-body-container blockquote:last-child, #intercom-container .intercom-comment-body-container h1:last-child, #intercom-container .intercom-comment-body-container h2:last-child, #intercom-container .intercom-comment-body-container h3:last-child, #intercom-container .intercom-comment-body-container h4:last-child, #intercom-container .intercom-comment-body-container h5:last-child, #intercom-container .intercom-comment-body-container h6:last-child, #intercom-container .intercom-comment-body-container a:last-child, #intercom-container .intercom-comment-body-container a.intercom-h2b-button:last-child, #intercom-container .intercom-comment-body-container code:last-child {
+      margin-bottom: 0; }
+  #intercom-container .intercom-comment-body-container h1, #intercom-container .intercom-comment-body-container h1 a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: normal;
+    margin: 27px 0;
+    color: inherit; }
+  #intercom-container .intercom-comment-body-container h2, #intercom-container .intercom-comment-body-container h2 a {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: inherit; }
+  #intercom-container .intercom-comment-body-container ul, #intercom-container .intercom-comment-body-container ol {
+    font-size: 14px;
+    -moz-padding-start: 40px;
+    -webkit-padding-start: 40px;
+    -khtml-padding-start: 40px;
+    -o-padding-start: 40px;
+    padding-start: 40px;
+    padding-left: 30px; }
+  #intercom-container .intercom-comment-body-container [dir=ltr] ul, #intercom-container .intercom-comment-body-container [dir=ltr] ol {
+    padding-left: 30px; }
+  #intercom-container .intercom-comment-body-container [dir=rtl] ul, #intercom-container .intercom-comment-body-container [dir=rtl] ol {
+    padding-right: 30px; }
+  #intercom-container .intercom-comment-body-container ul > li {
+    list-style-type: disc; }
+  #intercom-container .intercom-comment-body-container ol > li {
+    list-style-type: decimal; }
+  #intercom-container .intercom-comment-body-container li {
+    display: list-item;
+    line-height: 20px;
+    margin-bottom: 10px;
+    font-weight: 400; }
+  #intercom-container .intercom-comment-body-container em, #intercom-container .intercom-comment-body-container i {
+    font-style: italic; }
+  #intercom-container .intercom-comment-body-container strong, #intercom-container .intercom-comment-body-container b {
+    font-weight: bold;
+    line-height: 100%; }
+  #intercom-container .intercom-comment-body-container pre {
+    font-size: 14px;
+    padding: 0 0 10px 0;
+    white-space: pre-wrap; }
+  #intercom-container .intercom-comment-body-container img {
+    display: block;
+    max-width: 100%;
+    margin: 10px auto 10px;
+    cursor: pointer; }
+  #intercom-container .intercom-comment-body-container p + br {
+    display: none; }
+  #intercom-container .intercom-comment-body-container a:link, #intercom-container .intercom-comment-body-container a:visited, #intercom-container .intercom-comment-body-container a:hover, #intercom-container .intercom-comment-body-container a:active {
+    text-decoration: underline; }
+  #intercom-container .intercom-comment-body-container a:link, #intercom-container .intercom-comment-body-container a:visited {
+    color: #333333; }
+  #intercom-container .intercom-comment-body-container a:hover, #intercom-container .intercom-comment-body-container a:active {
+    color: #0b0b0b; }
+  #intercom-container .intercom-comment-body-container h2 + p, #intercom-container .intercom-comment-body-container h2 + ul, #intercom-container .intercom-comment-body-container h2 + ol, #intercom-container .intercom-comment-body-container h2 + blockquote, #intercom-container .intercom-comment-body-container h2 + .ic_button_in_content, #intercom-container .intercom-comment-body-container h2 + .ic_social_block, #intercom-container .intercom-comment-body-container h3 + p, #intercom-container .intercom-comment-body-container h3 + ul, #intercom-container .intercom-comment-body-container h3 + ol, #intercom-container .intercom-comment-body-container h3 + blockquote, #intercom-container .intercom-comment-body-container h3 + .ic_button_in_content, #intercom-container .intercom-comment-body-container h3 + .ic_social_block, #intercom-container .intercom-comment-body-container h4 + p, #intercom-container .intercom-comment-body-container h4 + ul, #intercom-container .intercom-comment-body-container h4 + ol, #intercom-container .intercom-comment-body-container h4 + blockquote, #intercom-container .intercom-comment-body-container h4 + .ic_button_in_content, #intercom-container .intercom-comment-body-container h4 + .ic_social_block, #intercom-container .intercom-comment-body-container h5 + p, #intercom-container .intercom-comment-body-container h5 + ul, #intercom-container .intercom-comment-body-container h5 + ol, #intercom-container .intercom-comment-body-container h5 + blockquote, #intercom-container .intercom-comment-body-container h5 + .ic_button_in_content, #intercom-container .intercom-comment-body-container h5 + .ic_social_block, #intercom-container .intercom-comment-body-container h6 + p, #intercom-container .intercom-comment-body-container h6 + ul, #intercom-container .intercom-comment-body-container h6 + ol, #intercom-container .intercom-comment-body-container h6 + blockquote, #intercom-container .intercom-comment-body-container h6 + .ic_button_in_content, #intercom-container .intercom-comment-body-container h6 + .ic_social_block {
+    margin-top: 0; }
+  #intercom-container .intercom-comment-body-container .intercom-h2b-twitter, #intercom-container .intercom-comment-body-container .intercom-h2b-facebook {
+    max-width: 100%; }
+  #intercom-container .intercom-comment-body-container iframe[src*="vimeo.com"], #intercom-container .intercom-comment-body-container iframe[src*="wistia.net"], #intercom-container .intercom-comment-body-container iframe[src*="youtube.com"] {
+    width: 100%;
+    height: 149px;
+    margin: 20px auto; }
+  #intercom-container .intercom-comment-body-container iframe[src*='wistia.net'], #intercom-container .intercom-comment-body-container a.intercom-h2b-button {
+    text-transform: capitalize; }
+#intercom-container .intercom-comment .intercom-lwr-composer {
+  border-radius: 0 0 4px 4px; }
+#intercom-container .intercom-comment-body {
+  padding: 10px 14px; }
+  #intercom-container .intercom-comment-body p {
+    margin: 1em 0 0; }
+    #intercom-container .intercom-comment-body p:first-child {
+      margin-top: 0; }
+  #intercom-container .intercom-comment-body pre span {
+    color: inherit !important;
+    background-color: inherit !important;
+    font-weight: inherit !important;
+    word-wrap: break-word; }
+#intercom-container .intercom-comment-metadata-container {
+  padding: 4px 4px 0; }
+#intercom-container .intercom-comment-metadata {
+  font-size: 12px;
+  line-height: 20px;
+  color: #c9cbcf;
+  margin-right: 6px;
+  float: left; }
+#intercom-container .intercom-comment-caret:after, #intercom-container .intercom-comment-caret:before {
+  top: 19px;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+#intercom-container .intercom-comment-caret:after {
+  border-width: 3px;
+  margin-top: -3px; }
+#intercom-container .intercom-comment-caret:before {
+  border-width: 4px;
+  margin-top: -4px; }
+#intercom-container .intercom-comment-by-user {
+  text-align: right; }
+  #intercom-container .intercom-comment-by-user .intercom-comment-body-container {
+    display: inline-block;
+    background-color: #333333;
+    color: white; }
+    #intercom-container .intercom-comment-by-user .intercom-comment-body-container a, #intercom-container .intercom-comment-by-user .intercom-comment-body-container a:link, #intercom-container .intercom-comment-by-user .intercom-comment-body-container a:visited, #intercom-container .intercom-comment-by-user .intercom-comment-body-container a:hover, #intercom-container .intercom-comment-by-user .intercom-comment-body-container a:active {
+      color: white; }
+  #intercom-container .intercom-comment-by-user .intercom-comment-metadata {
+    float: right; }
+  #intercom-container .intercom-comment-by-user .intercom-comment-caret:before, #intercom-container .intercom-comment-by-user .intercom-comment-caret:after {
+    left: 100%; }
+  #intercom-container .intercom-comment-by-user .intercom-comment-caret:after {
+    border-width: 4px;
+    margin-top: -4px;
+    border-left-color: #333333; }
+#intercom-container .intercom-comment-by-admin .intercom-comment-body-container {
+  box-shadow: 0 1px 2px 0 rgba(234, 236, 238, 0.8);
+  background-color: white;
+  border-color: #dadee2; }
+#intercom-container .intercom-comment-by-admin .intercom-comment-caret:after, #intercom-container .intercom-comment-by-admin .intercom-comment-caret:before {
+  right: 100%; }
+#intercom-container .intercom-comment-by-admin .intercom-comment-caret:after {
+  border-right-color: white; }
+#intercom-container .intercom-comment-by-admin .intercom-comment-caret:before {
+  border-right-color: #dadee2; }
+#intercom-container .intercom-upload-comment.intercom-upload-is-uploading .intercom-comment-body-container {
+  opacity: 0.6; }
+  #intercom-container .intercom-upload-comment.intercom-upload-is-uploading .intercom-comment-body-container a, #intercom-container .intercom-upload-comment.intercom-upload-is-uploading .intercom-comment-body-container a:link, #intercom-container .intercom-upload-comment.intercom-upload-is-uploading .intercom-comment-body-container a:visited, #intercom-container .intercom-upload-comment.intercom-upload-is-uploading .intercom-comment-body-container a:hover, #intercom-container .intercom-upload-comment.intercom-upload-is-uploading .intercom-comment-body-container a:active {
+    text-decoration: none;
+    cursor: default; }
+#intercom-container .intercom-upload-comment .intercom-upload-body {
+  padding-left: 50px; }
+  #intercom-container .intercom-upload-comment .intercom-upload-body:before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 37px;
+    border-right: 1px solid #fff;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    background-image: url(https://js.intercomcdn.com/images/icon-upload-white.png);
+    background-size: 16px 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      #intercom-container .intercom-upload-comment .intercom-upload-body:before {
+        background-image: url(https://js.intercomcdn.com/images/icon-upload-white@2x.png); } }
+#intercom-container .intercom-upload-comment.intercom-upload-image {
+  max-width: 266px; }
+  #intercom-container .intercom-upload-comment.intercom-upload-image .intercom-comment-body-container {
+    background-color: transparent; }
+  #intercom-container .intercom-upload-comment.intercom-upload-image .intercom-comment-caret {
+    display: none; }
+  #intercom-container .intercom-upload-comment.intercom-upload-image .intercom-upload-body {
+    padding: 0; }
+    #intercom-container .intercom-upload-comment.intercom-upload-image .intercom-upload-body:before {
+      display: none; }
+    #intercom-container .intercom-upload-comment.intercom-upload-image .intercom-upload-body img {
+      margin: 0;
+      border-radius: 4px; }
+#intercom-container .intercom-upload-comment .intercom-attachment-progress-bar {
+  border-radius: 4px;
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 6px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  background-color: #fff;
+  margin: 0 5px; }
+#intercom-container .intercom-upload-comment .intercom-attachment-progress-percentage {
+  transition: width 0.4s;
+  width: 0%;
+  border-radius: 3px;
+  background-color: #333333;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+#intercom-container .intercom-conversation-preview .intercom-comment-metadata {
+  display: none; }
+
+#intercom-container .intercom-auto-response {
+  display: none;
+  margin-bottom: 24px;
+  padding: 15px 20px;
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-top: 1px solid #e4e5e7;
+  border-bottom: 1px solid #e4e5e7;
+  border-image: linear-gradient(to right, #edf0f2, #d9dfe3 18%, #d9dfe3 82%, #edf0f2) 1; }
+#intercom-container .intercom-auto-response-active {
+  display: block; }
+#intercom-container .intercom-auto-response p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #455A64;
+  line-height: 20px;
+  font-size: 14px;
+  color: #adbbc2;
+  line-height: 18px;
+  text-align: center;
+  padding: 5px 0; }
+  #intercom-container .intercom-auto-response p .intercom-comment-body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px; }
+  #intercom-container .intercom-auto-response p p, #intercom-container .intercom-auto-response p ul, #intercom-container .intercom-auto-response p ol, #intercom-container .intercom-auto-response p blockquote, #intercom-container .intercom-auto-response p h1, #intercom-container .intercom-auto-response p h2, #intercom-container .intercom-auto-response p h3, #intercom-container .intercom-auto-response p h4, #intercom-container .intercom-auto-response p h5, #intercom-container .intercom-auto-response p h6, #intercom-container .intercom-auto-response p a, #intercom-container .intercom-auto-response p a.intercom-h2b-button, #intercom-container .intercom-auto-response p code {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    word-wrap: break-word;
+    margin: 20px 0; }
+    #intercom-container .intercom-auto-response p p:first-child, #intercom-container .intercom-auto-response p ul:first-child, #intercom-container .intercom-auto-response p ol:first-child, #intercom-container .intercom-auto-response p blockquote:first-child, #intercom-container .intercom-auto-response p h1:first-child, #intercom-container .intercom-auto-response p h2:first-child, #intercom-container .intercom-auto-response p h3:first-child, #intercom-container .intercom-auto-response p h4:first-child, #intercom-container .intercom-auto-response p h5:first-child, #intercom-container .intercom-auto-response p h6:first-child, #intercom-container .intercom-auto-response p a:first-child, #intercom-container .intercom-auto-response p a.intercom-h2b-button:first-child, #intercom-container .intercom-auto-response p code:first-child {
+      margin-top: 0; }
+    #intercom-container .intercom-auto-response p p:last-child, #intercom-container .intercom-auto-response p ul:last-child, #intercom-container .intercom-auto-response p ol:last-child, #intercom-container .intercom-auto-response p blockquote:last-child, #intercom-container .intercom-auto-response p h1:last-child, #intercom-container .intercom-auto-response p h2:last-child, #intercom-container .intercom-auto-response p h3:last-child, #intercom-container .intercom-auto-response p h4:last-child, #intercom-container .intercom-auto-response p h5:last-child, #intercom-container .intercom-auto-response p h6:last-child, #intercom-container .intercom-auto-response p a:last-child, #intercom-container .intercom-auto-response p a.intercom-h2b-button:last-child, #intercom-container .intercom-auto-response p code:last-child {
+      margin-bottom: 0; }
+  #intercom-container .intercom-auto-response p h1, #intercom-container .intercom-auto-response p h1 a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: normal;
+    margin: 27px 0;
+    color: inherit; }
+  #intercom-container .intercom-auto-response p h2, #intercom-container .intercom-auto-response p h2 a {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: inherit; }
+  #intercom-container .intercom-auto-response p ul, #intercom-container .intercom-auto-response p ol {
+    font-size: 14px;
+    -moz-padding-start: 40px;
+    -webkit-padding-start: 40px;
+    -khtml-padding-start: 40px;
+    -o-padding-start: 40px;
+    padding-start: 40px;
+    padding-left: 30px; }
+  #intercom-container .intercom-auto-response p [dir=ltr] ul, #intercom-container .intercom-auto-response p [dir=ltr] ol {
+    padding-left: 30px; }
+  #intercom-container .intercom-auto-response p [dir=rtl] ul, #intercom-container .intercom-auto-response p [dir=rtl] ol {
+    padding-right: 30px; }
+  #intercom-container .intercom-auto-response p ul > li {
+    list-style-type: disc; }
+  #intercom-container .intercom-auto-response p ol > li {
+    list-style-type: decimal; }
+  #intercom-container .intercom-auto-response p li {
+    display: list-item;
+    line-height: 20px;
+    margin-bottom: 10px;
+    font-weight: 400; }
+  #intercom-container .intercom-auto-response p em, #intercom-container .intercom-auto-response p i {
+    font-style: italic; }
+  #intercom-container .intercom-auto-response p strong, #intercom-container .intercom-auto-response p b {
+    font-weight: bold;
+    line-height: 100%; }
+  #intercom-container .intercom-auto-response p pre {
+    font-size: 14px;
+    padding: 0 0 10px 0;
+    white-space: pre-wrap; }
+  #intercom-container .intercom-auto-response p img {
+    display: block;
+    max-width: 100%;
+    margin: 10px auto 10px;
+    cursor: pointer; }
+  #intercom-container .intercom-auto-response p p + br {
+    display: none; }
+  #intercom-container .intercom-auto-response p a:link, #intercom-container .intercom-auto-response p a:visited, #intercom-container .intercom-auto-response p a:hover, #intercom-container .intercom-auto-response p a:active {
+    text-decoration: underline; }
+  #intercom-container .intercom-auto-response p a:link, #intercom-container .intercom-auto-response p a:visited {
+    color: #333333; }
+  #intercom-container .intercom-auto-response p a:hover, #intercom-container .intercom-auto-response p a:active {
+    color: #0b0b0b; }
+  #intercom-container .intercom-auto-response p h2 + p, #intercom-container .intercom-auto-response p h2 + ul, #intercom-container .intercom-auto-response p h2 + ol, #intercom-container .intercom-auto-response p h2 + blockquote, #intercom-container .intercom-auto-response p h2 + .ic_button_in_content, #intercom-container .intercom-auto-response p h2 + .ic_social_block, #intercom-container .intercom-auto-response p h3 + p, #intercom-container .intercom-auto-response p h3 + ul, #intercom-container .intercom-auto-response p h3 + ol, #intercom-container .intercom-auto-response p h3 + blockquote, #intercom-container .intercom-auto-response p h3 + .ic_button_in_content, #intercom-container .intercom-auto-response p h3 + .ic_social_block, #intercom-container .intercom-auto-response p h4 + p, #intercom-container .intercom-auto-response p h4 + ul, #intercom-container .intercom-auto-response p h4 + ol, #intercom-container .intercom-auto-response p h4 + blockquote, #intercom-container .intercom-auto-response p h4 + .ic_button_in_content, #intercom-container .intercom-auto-response p h4 + .ic_social_block, #intercom-container .intercom-auto-response p h5 + p, #intercom-container .intercom-auto-response p h5 + ul, #intercom-container .intercom-auto-response p h5 + ol, #intercom-container .intercom-auto-response p h5 + blockquote, #intercom-container .intercom-auto-response p h5 + .ic_button_in_content, #intercom-container .intercom-auto-response p h5 + .ic_social_block, #intercom-container .intercom-auto-response p h6 + p, #intercom-container .intercom-auto-response p h6 + ul, #intercom-container .intercom-auto-response p h6 + ol, #intercom-container .intercom-auto-response p h6 + blockquote, #intercom-container .intercom-auto-response p h6 + .ic_button_in_content, #intercom-container .intercom-auto-response p h6 + .ic_social_block {
+    margin-top: 0; }
+  #intercom-container .intercom-auto-response p .intercom-h2b-twitter, #intercom-container .intercom-auto-response p .intercom-h2b-facebook {
+    max-width: 100%; }
+  #intercom-container .intercom-auto-response p iframe[src*="vimeo.com"], #intercom-container .intercom-auto-response p iframe[src*="wistia.net"], #intercom-container .intercom-auto-response p iframe[src*="youtube.com"] {
+    width: 100%;
+    height: 149px;
+    margin: 20px auto; }
+  #intercom-container .intercom-auto-response p iframe[src*='wistia.net'], #intercom-container .intercom-auto-response p a.intercom-h2b-button {
+    text-transform: capitalize; }
+  #intercom-container .intercom-auto-response p a:link, #intercom-container .intercom-auto-response p a:visited {
+    color: #adbbc2; }
+  #intercom-container .intercom-auto-response p a:hover, #intercom-container .intercom-auto-response p a:active {
+    color: #85939a; }
+
+#intercom-container .intercom-announcement {
+  overflow: hidden; }
+#intercom-container .intercom-announcement-body-container {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  font-size: 16px;
+  font-weight: 400;
+  color: #455A64;
+  line-height: 23px;
+  /* ALIGNMENT STYLES */
+  border-radius: 5px;
+  border: 1px solid #e4e4e4;
+  background-color: white; }
+  #intercom-container .intercom-announcement-body-container .intercom-comment-body {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23px; }
+  #intercom-container .intercom-announcement-body-container p, #intercom-container .intercom-announcement-body-container ul, #intercom-container .intercom-announcement-body-container ol, #intercom-container .intercom-announcement-body-container blockquote, #intercom-container .intercom-announcement-body-container h1, #intercom-container .intercom-announcement-body-container h2, #intercom-container .intercom-announcement-body-container h3, #intercom-container .intercom-announcement-body-container h4, #intercom-container .intercom-announcement-body-container h5, #intercom-container .intercom-announcement-body-container h6, #intercom-container .intercom-announcement-body-container a, #intercom-container .intercom-announcement-body-container a.intercom-h2b-button, #intercom-container .intercom-announcement-body-container code {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23px;
+    word-wrap: break-word;
+    margin: 20px 0; }
+    #intercom-container .intercom-announcement-body-container p:first-child, #intercom-container .intercom-announcement-body-container ul:first-child, #intercom-container .intercom-announcement-body-container ol:first-child, #intercom-container .intercom-announcement-body-container blockquote:first-child, #intercom-container .intercom-announcement-body-container h1:first-child, #intercom-container .intercom-announcement-body-container h2:first-child, #intercom-container .intercom-announcement-body-container h3:first-child, #intercom-container .intercom-announcement-body-container h4:first-child, #intercom-container .intercom-announcement-body-container h5:first-child, #intercom-container .intercom-announcement-body-container h6:first-child, #intercom-container .intercom-announcement-body-container a:first-child, #intercom-container .intercom-announcement-body-container a.intercom-h2b-button:first-child, #intercom-container .intercom-announcement-body-container code:first-child {
+      margin-top: 0; }
+    #intercom-container .intercom-announcement-body-container p:last-child, #intercom-container .intercom-announcement-body-container ul:last-child, #intercom-container .intercom-announcement-body-container ol:last-child, #intercom-container .intercom-announcement-body-container blockquote:last-child, #intercom-container .intercom-announcement-body-container h1:last-child, #intercom-container .intercom-announcement-body-container h2:last-child, #intercom-container .intercom-announcement-body-container h3:last-child, #intercom-container .intercom-announcement-body-container h4:last-child, #intercom-container .intercom-announcement-body-container h5:last-child, #intercom-container .intercom-announcement-body-container h6:last-child, #intercom-container .intercom-announcement-body-container a:last-child, #intercom-container .intercom-announcement-body-container a.intercom-h2b-button:last-child, #intercom-container .intercom-announcement-body-container code:last-child {
+      margin-bottom: 0; }
+  #intercom-container .intercom-announcement-body-container h1, #intercom-container .intercom-announcement-body-container h1 a {
+    font-size: 37px;
+    font-weight: 300;
+    line-height: 48px;
+    letter-spacing: 0.35px;
+    margin: 27px 0;
+    color: #333333; }
+  #intercom-container .intercom-announcement-body-container h1:first-child {
+    text-align: center;
+    -moz-text-align-last: center;
+         text-align-last: center; }
+  #intercom-container .intercom-announcement-body-container h2, #intercom-container .intercom-announcement-body-container h2 a {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    margin: 20px 0 10px;
+    color: #333333; }
+  #intercom-container .intercom-announcement-body-container ul, #intercom-container .intercom-announcement-body-container ol {
+    font-size: 16px;
+    -moz-padding-start: 40px;
+    -webkit-padding-start: 40px;
+    -khtml-padding-start: 40px;
+    -o-padding-start: 40px;
+    padding-start: 40px;
+    padding-left: 40px; }
+  #intercom-container .intercom-announcement-body-container [dir=ltr] ul, #intercom-container .intercom-announcement-body-container [dir=ltr] ol {
+    padding-left: 40px; }
+  #intercom-container .intercom-announcement-body-container [dir=rtl] ul, #intercom-container .intercom-announcement-body-container [dir=rtl] ol {
+    padding-right: 40px; }
+  #intercom-container .intercom-announcement-body-container ul > li {
+    list-style-type: disc; }
+  #intercom-container .intercom-announcement-body-container ol > li {
+    list-style-type: decimal; }
+  #intercom-container .intercom-announcement-body-container li {
+    display: list-item;
+    line-height: 26px;
+    margin-bottom: 10px;
+    font-weight: 400; }
+  #intercom-container .intercom-announcement-body-container em, #intercom-container .intercom-announcement-body-container i {
+    font-style: italic; }
+  #intercom-container .intercom-announcement-body-container strong, #intercom-container .intercom-announcement-body-container b {
+    font-weight: bold;
+    line-height: 100%; }
+  #intercom-container .intercom-announcement-body-container pre {
+    font-size: 16px;
+    padding: 0 0 10px 0;
+    white-space: pre-wrap; }
+  #intercom-container .intercom-announcement-body-container img {
+    display: block;
+    max-width: 100%;
+    margin: 10px auto 10px;
+    cursor: pointer; }
+  #intercom-container .intercom-announcement-body-container p + br {
+    display: none; }
+  #intercom-container .intercom-announcement-body-container a:link, #intercom-container .intercom-announcement-body-container a:visited, #intercom-container .intercom-announcement-body-container a:hover, #intercom-container .intercom-announcement-body-container a:active {
+    text-decoration: underline; }
+  #intercom-container .intercom-announcement-body-container a:link, #intercom-container .intercom-announcement-body-container a:visited {
+    color: #333333; }
+  #intercom-container .intercom-announcement-body-container a:hover, #intercom-container .intercom-announcement-body-container a:active {
+    color: #0b0b0b; }
+  #intercom-container .intercom-announcement-body-container h2 + p, #intercom-container .intercom-announcement-body-container h2 + ul, #intercom-container .intercom-announcement-body-container h2 + ol, #intercom-container .intercom-announcement-body-container h2 + blockquote, #intercom-container .intercom-announcement-body-container h2 + .ic_button_in_content, #intercom-container .intercom-announcement-body-container h2 + .ic_social_block, #intercom-container .intercom-announcement-body-container h3 + p, #intercom-container .intercom-announcement-body-container h3 + ul, #intercom-container .intercom-announcement-body-container h3 + ol, #intercom-container .intercom-announcement-body-container h3 + blockquote, #intercom-container .intercom-announcement-body-container h3 + .ic_button_in_content, #intercom-container .intercom-announcement-body-container h3 + .ic_social_block, #intercom-container .intercom-announcement-body-container h4 + p, #intercom-container .intercom-announcement-body-container h4 + ul, #intercom-container .intercom-announcement-body-container h4 + ol, #intercom-container .intercom-announcement-body-container h4 + blockquote, #intercom-container .intercom-announcement-body-container h4 + .ic_button_in_content, #intercom-container .intercom-announcement-body-container h4 + .ic_social_block, #intercom-container .intercom-announcement-body-container h5 + p, #intercom-container .intercom-announcement-body-container h5 + ul, #intercom-container .intercom-announcement-body-container h5 + ol, #intercom-container .intercom-announcement-body-container h5 + blockquote, #intercom-container .intercom-announcement-body-container h5 + .ic_button_in_content, #intercom-container .intercom-announcement-body-container h5 + .ic_social_block, #intercom-container .intercom-announcement-body-container h6 + p, #intercom-container .intercom-announcement-body-container h6 + ul, #intercom-container .intercom-announcement-body-container h6 + ol, #intercom-container .intercom-announcement-body-container h6 + blockquote, #intercom-container .intercom-announcement-body-container h6 + .ic_button_in_content, #intercom-container .intercom-announcement-body-container h6 + .ic_social_block {
+    margin-top: 0; }
+  #intercom-container .intercom-announcement-body-container .intercom-h2b-twitter, #intercom-container .intercom-announcement-body-container .intercom-h2b-facebook {
+    max-width: 100%; }
+  #intercom-container .intercom-announcement-body-container iframe[src*="vimeo.com"], #intercom-container .intercom-announcement-body-container iframe[src*="wistia.net"], #intercom-container .intercom-announcement-body-container iframe[src*="youtube.com"] {
+    width: 100%;
+    height: 272px;
+    margin: 20px auto; }
+  #intercom-container .intercom-announcement-body-container iframe[src*='wistia.net'], #intercom-container .intercom-announcement-body-container a.intercom-h2b-button {
+    text-transform: capitalize; }
+  #intercom-container .intercom-announcement-body-container a.intercom-h2b-button {
+    text-decoration: none;
+    padding: 6px 18px;
+    font-weight: 500;
+    display: table;
+    margin: 40px auto;
+    font-size: 15px;
+    line-height: 31px;
+    color: white; }
+  #intercom-container .intercom-announcement-body-container .intercom-align-right {
+    text-align: right !important; }
+    #intercom-container .intercom-announcement-body-container .intercom-align-right img, #intercom-container .intercom-announcement-body-container .intercom-align-right .intercom-h2b-button {
+      margin-right: 0 !important; }
+  #intercom-container .intercom-announcement-body-container .intercom-align-center {
+    text-align: center !important; }
+  #intercom-container .intercom-announcement-body-container .intercom-align-left {
+    text-align: left !important; }
+    #intercom-container .intercom-announcement-body-container .intercom-align-left img, #intercom-container .intercom-announcement-body-container .intercom-align-left .intercom-h2b-button {
+      margin-left: 0 !important; }
+#intercom-container .intercom-announcement .intercom-lwr-composer {
+  border-radius: 0 0 5px 5px; }
+#intercom-container .intercom-announcement-avatar-container {
+  height: 30px; }
+#intercom-container .intercom-announcement-avatar {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border: 3px solid white;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  margin-left: -30px; }
+#intercom-container .intercom-announcement-body {
+  padding: 50px; }
+#intercom-container .intercom-conversation-announcement .intercom-comment {
+  max-width: 400px; }
+
+#intercom-container .intercom-small-announcement {
+  z-index: 2147483000;
+  overflow: hidden; }
+#intercom-container .intercom-small-announcement-body-container {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+  font-size: 15px;
+  font-weight: 400;
+  color: #455A64;
+  line-height: 23px;
+  /* ALIGNMENT STYLES */
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  background-color: white;
+  position: relative; }
+  #intercom-container .intercom-small-announcement-body-container .intercom-comment-body {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 23px; }
+  #intercom-container .intercom-small-announcement-body-container p, #intercom-container .intercom-small-announcement-body-container ul, #intercom-container .intercom-small-announcement-body-container ol, #intercom-container .intercom-small-announcement-body-container blockquote, #intercom-container .intercom-small-announcement-body-container h1, #intercom-container .intercom-small-announcement-body-container h2, #intercom-container .intercom-small-announcement-body-container h3, #intercom-container .intercom-small-announcement-body-container h4, #intercom-container .intercom-small-announcement-body-container h5, #intercom-container .intercom-small-announcement-body-container h6, #intercom-container .intercom-small-announcement-body-container a, #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button, #intercom-container .intercom-small-announcement-body-container code {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 23px;
+    word-wrap: break-word;
+    margin: 20px 0; }
+    #intercom-container .intercom-small-announcement-body-container p:first-child, #intercom-container .intercom-small-announcement-body-container ul:first-child, #intercom-container .intercom-small-announcement-body-container ol:first-child, #intercom-container .intercom-small-announcement-body-container blockquote:first-child, #intercom-container .intercom-small-announcement-body-container h1:first-child, #intercom-container .intercom-small-announcement-body-container h2:first-child, #intercom-container .intercom-small-announcement-body-container h3:first-child, #intercom-container .intercom-small-announcement-body-container h4:first-child, #intercom-container .intercom-small-announcement-body-container h5:first-child, #intercom-container .intercom-small-announcement-body-container h6:first-child, #intercom-container .intercom-small-announcement-body-container a:first-child, #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button:first-child, #intercom-container .intercom-small-announcement-body-container code:first-child {
+      margin-top: 0; }
+    #intercom-container .intercom-small-announcement-body-container p:last-child, #intercom-container .intercom-small-announcement-body-container ul:last-child, #intercom-container .intercom-small-announcement-body-container ol:last-child, #intercom-container .intercom-small-announcement-body-container blockquote:last-child, #intercom-container .intercom-small-announcement-body-container h1:last-child, #intercom-container .intercom-small-announcement-body-container h2:last-child, #intercom-container .intercom-small-announcement-body-container h3:last-child, #intercom-container .intercom-small-announcement-body-container h4:last-child, #intercom-container .intercom-small-announcement-body-container h5:last-child, #intercom-container .intercom-small-announcement-body-container h6:last-child, #intercom-container .intercom-small-announcement-body-container a:last-child, #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button:last-child, #intercom-container .intercom-small-announcement-body-container code:last-child {
+      margin-bottom: 0; }
+  #intercom-container .intercom-small-announcement-body-container h1, #intercom-container .intercom-small-announcement-body-container h1 a {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 28px;
+    letter-spacing: 0.3px;
+    margin: 27px 0;
+    color: #333333; }
+  #intercom-container .intercom-small-announcement-body-container h1:first-child {
+    text-align: center;
+    -moz-text-align-last: center;
+         text-align-last: center; }
+  #intercom-container .intercom-small-announcement-body-container h2, #intercom-container .intercom-small-announcement-body-container h2 a {
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: #455A64; }
+  #intercom-container .intercom-small-announcement-body-container ul, #intercom-container .intercom-small-announcement-body-container ol {
+    font-size: 15px;
+    -moz-padding-start: 40px;
+    -webkit-padding-start: 40px;
+    -khtml-padding-start: 40px;
+    -o-padding-start: 40px;
+    padding-start: 40px;
+    padding-left: 30px; }
+  #intercom-container .intercom-small-announcement-body-container [dir=ltr] ul, #intercom-container .intercom-small-announcement-body-container [dir=ltr] ol {
+    padding-left: 30px; }
+  #intercom-container .intercom-small-announcement-body-container [dir=rtl] ul, #intercom-container .intercom-small-announcement-body-container [dir=rtl] ol {
+    padding-right: 30px; }
+  #intercom-container .intercom-small-announcement-body-container ul > li {
+    list-style-type: disc; }
+  #intercom-container .intercom-small-announcement-body-container ol > li {
+    list-style-type: decimal; }
+  #intercom-container .intercom-small-announcement-body-container li {
+    display: list-item;
+    line-height: 22px;
+    margin-bottom: 10px;
+    font-weight: 400; }
+  #intercom-container .intercom-small-announcement-body-container em, #intercom-container .intercom-small-announcement-body-container i {
+    font-style: italic; }
+  #intercom-container .intercom-small-announcement-body-container strong, #intercom-container .intercom-small-announcement-body-container b {
+    font-weight: bold;
+    line-height: 100%; }
+  #intercom-container .intercom-small-announcement-body-container pre {
+    font-size: 15px;
+    padding: 0 0 10px 0;
+    white-space: pre-wrap; }
+  #intercom-container .intercom-small-announcement-body-container img {
+    display: block;
+    max-width: 100%;
+    margin: 10px auto 10px;
+    cursor: pointer; }
+  #intercom-container .intercom-small-announcement-body-container p + br {
+    display: none; }
+  #intercom-container .intercom-small-announcement-body-container a:link, #intercom-container .intercom-small-announcement-body-container a:visited, #intercom-container .intercom-small-announcement-body-container a:hover, #intercom-container .intercom-small-announcement-body-container a:active {
+    text-decoration: underline; }
+  #intercom-container .intercom-small-announcement-body-container a:link, #intercom-container .intercom-small-announcement-body-container a:visited {
+    color: #333333; }
+  #intercom-container .intercom-small-announcement-body-container a:hover, #intercom-container .intercom-small-announcement-body-container a:active {
+    color: #0b0b0b; }
+  #intercom-container .intercom-small-announcement-body-container h2 + p, #intercom-container .intercom-small-announcement-body-container h2 + ul, #intercom-container .intercom-small-announcement-body-container h2 + ol, #intercom-container .intercom-small-announcement-body-container h2 + blockquote, #intercom-container .intercom-small-announcement-body-container h2 + .ic_button_in_content, #intercom-container .intercom-small-announcement-body-container h2 + .ic_social_block, #intercom-container .intercom-small-announcement-body-container h3 + p, #intercom-container .intercom-small-announcement-body-container h3 + ul, #intercom-container .intercom-small-announcement-body-container h3 + ol, #intercom-container .intercom-small-announcement-body-container h3 + blockquote, #intercom-container .intercom-small-announcement-body-container h3 + .ic_button_in_content, #intercom-container .intercom-small-announcement-body-container h3 + .ic_social_block, #intercom-container .intercom-small-announcement-body-container h4 + p, #intercom-container .intercom-small-announcement-body-container h4 + ul, #intercom-container .intercom-small-announcement-body-container h4 + ol, #intercom-container .intercom-small-announcement-body-container h4 + blockquote, #intercom-container .intercom-small-announcement-body-container h4 + .ic_button_in_content, #intercom-container .intercom-small-announcement-body-container h4 + .ic_social_block, #intercom-container .intercom-small-announcement-body-container h5 + p, #intercom-container .intercom-small-announcement-body-container h5 + ul, #intercom-container .intercom-small-announcement-body-container h5 + ol, #intercom-container .intercom-small-announcement-body-container h5 + blockquote, #intercom-container .intercom-small-announcement-body-container h5 + .ic_button_in_content, #intercom-container .intercom-small-announcement-body-container h5 + .ic_social_block, #intercom-container .intercom-small-announcement-body-container h6 + p, #intercom-container .intercom-small-announcement-body-container h6 + ul, #intercom-container .intercom-small-announcement-body-container h6 + ol, #intercom-container .intercom-small-announcement-body-container h6 + blockquote, #intercom-container .intercom-small-announcement-body-container h6 + .ic_button_in_content, #intercom-container .intercom-small-announcement-body-container h6 + .ic_social_block {
+    margin-top: 0; }
+  #intercom-container .intercom-small-announcement-body-container .intercom-h2b-twitter, #intercom-container .intercom-small-announcement-body-container .intercom-h2b-facebook {
+    max-width: 100%; }
+  #intercom-container .intercom-small-announcement-body-container iframe[src*="vimeo.com"], #intercom-container .intercom-small-announcement-body-container iframe[src*="wistia.net"], #intercom-container .intercom-small-announcement-body-container iframe[src*="youtube.com"] {
+    width: 100%;
+    height: 162px;
+    margin: 20px auto; }
+  #intercom-container .intercom-small-announcement-body-container iframe[src*='wistia.net'], #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button {
+    text-transform: capitalize; }
+  #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button {
+    text-decoration: none;
+    padding: 6px 18px;
+    font-weight: 500;
+    display: table;
+    margin: 20px auto;
+    font-size: 15px;
+    line-height: 31px;
+    color: white; }
+  #intercom-container .intercom-small-announcement-body-container .intercom-align-right {
+    text-align: right !important; }
+    #intercom-container .intercom-small-announcement-body-container .intercom-align-right img, #intercom-container .intercom-small-announcement-body-container .intercom-align-right .intercom-h2b-button {
+      margin-right: 0 !important; }
+  #intercom-container .intercom-small-announcement-body-container .intercom-align-center {
+    text-align: center !important; }
+  #intercom-container .intercom-small-announcement-body-container .intercom-align-left {
+    text-align: left !important; }
+    #intercom-container .intercom-small-announcement-body-container .intercom-align-left img, #intercom-container .intercom-small-announcement-body-container .intercom-align-left .intercom-h2b-button {
+      margin-left: 0 !important; }
+#intercom-container .intercom-small-announcement .intercom-lwr-composer {
+  border-radius: 0 0 5px 5px; }
+#intercom-container .intercom-small-announcement-avatar-container {
+  height: 20px; }
+#intercom-container .intercom-small-announcement-avatar {
+  z-index: 2147483001;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border: 2px solid white;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 50%;
+  margin-left: -22px; }
+#intercom-container .intercom-small-announcement-body {
+  padding: 26px 23px; }
+#intercom-container .intercom-conversation-preview .intercom-small-announcement-body-container {
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.08);
+  max-height: 320px; }
+  #intercom-container .intercom-conversation-preview .intercom-small-announcement-body-container:after {
+    z-index: 2147483002;
+    background: linear-gradient(rgba(255, 255, 255, 0), #ffffff 47px);
+    border-radius: 0 0 5px 5px;
+    content: "";
+    position: absolute;
+    top: 240px;
+    height: 80px;
+    width: 100%; }
+
+#intercom-container .intercom-new-anonymous-user-disabled {
+  opacity: 0.5; }
+#intercom-container .intercom-new-anonymous-user-input-container {
+  position: relative;
+  margin: 0 auto;
+  padding: 5px 0;
+  width: 240px; }
+#intercom-container .intercom-new-anonymous-user, #intercom-container .intercom-new-anonymous-user p {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0); }
+#intercom-container .intercom-new-anonymous-user input[type="text"] {
+  appearance: none;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 32px;
+  color: #60686e;
+  height: 34px;
+  width: 100%;
+  padding: 0 42px 0 8px;
+  border: 1px solid #e4e5e7;
+  border-radius: 2px;
+  background-color: white; }
+  #intercom-container .intercom-new-anonymous-user input[type="text"]::-webkit-input-placeholder {
+    color: #aeb4b9;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 32px; }
+  #intercom-container .intercom-new-anonymous-user input[type="text"]::-moz-placeholder {
+    color: #aeb4b9;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 32px; }
+  #intercom-container .intercom-new-anonymous-user input[type="text"]:-ms-input-placeholder {
+    color: #aeb4b9;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 32px; }
+  #intercom-container .intercom-new-anonymous-user input[type="text"].intercom-new-anonymous-user-email-invalid {
+    border-color: #d76060;
+    background-color: #fcedee; }
+#intercom-container .intercom-new-anonymous-user input[type="submit"] {
+  background: #333333;
+  background-image: url(https://js.intercomcdn.com/images/icon-tick.svg), linear-gradient(to bottom, #474747, #333333);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 9px;
+  right: 4px;
+  width: 34px;
+  height: 24px; }
+  #intercom-container .intercom-new-anonymous-user input[type="submit"]:hover {
+    background: #1f1f1f;
+    background-image: url(https://js.intercomcdn.com/images/icon-tick.svg), linear-gradient(to bottom, #333333, #1f1f1f);
+    background-repeat: no-repeat;
+    background-position: center; }
+  #intercom-container .intercom-new-anonymous-user input[type="submit"]:disabled {
+    background: #acbbc2;
+    background-image: url(https://js.intercomcdn.com/images/icon-tick.svg), linear-gradient(to bottom, #b6c5cb, #acbbc2);
+    background-repeat: no-repeat;
+    background-position: center; }
+
+#intercom-container .intercom-composer {
+  z-index: 2147483001;
+  box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.04);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 620px;
+  margin: 0 auto;
+  border-top: 1px solid #dadee2;
+  background-color: #fff;
+  padding: 8px; }
+  #intercom-container .intercom-composer.intercom-composer-inactive {
+    display: none; }
+#intercom-container .intercom-powered-by-enabled .intercom-composer {
+  padding: 8px 8px 0; }
+#intercom-container .intercom-composer-upload-error {
+  display: none;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #c00;
+  font-size: 13px; }
+#intercom-container .intercom-composer-textarea-container {
+  min-height: 32px; }
+#intercom-container .intercom-composer-disabled .intercom-composer-textarea-container {
+  opacity: .5; }
+#intercom-container .intercom-composer-textarea {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid #e4e4e4; }
+  #intercom-container .intercom-composer-textarea textarea, #intercom-container .intercom-composer-textarea pre {
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    min-height: 30px;
+    max-height: 200px;
+    width: 100%;
+    height: 100%;
+    padding: 5px 50px 5px 10px;
+    border-radius: 4px; }
+  #intercom-container .intercom-composer-textarea textarea {
+    transition: background-color 0.2s linear;
+    background: rgba(250, 250, 251, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 400;
+    color: #60686e;
+    resize: none;
+    border: none; }
+    #intercom-container .intercom-composer-textarea textarea::-webkit-input-placeholder {
+      color: #aeb4b9;
+      font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 20px; }
+    #intercom-container .intercom-composer-textarea textarea::-moz-placeholder {
+      color: #aeb4b9;
+      font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 20px; }
+    #intercom-container .intercom-composer-textarea textarea:-ms-input-placeholder {
+      color: #aeb4b9;
+      font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 20px; }
+    #intercom-container .intercom-composer-textarea textarea:focus {
+      background: #fff; }
+  #intercom-container .intercom-composer-textarea textarea, #intercom-container .intercom-composer-textarea pre > span {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word; }
+  #intercom-container .intercom-composer-textarea pre {
+    margin: 0; }
+    #intercom-container .intercom-composer-textarea pre > span {
+      visibility: hidden; }
+#intercom-container .intercom-composer-send-button {
+  border-radius: 2px;
+  font-size: 13px;
+  margin-left: 8px;
+  height: 30px;
+  float: right;
+  display: none; }
+#intercom-container .intercom-composer-upload-button {
+  z-index: 2147483001;
+  opacity: 0.6;
+  background-image: url(https://js.intercomcdn.com/images/icon-upload.png);
+  background-size: 15px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+  height: 15px;
+  width: 14px;
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  right: 26px;
+  padding: 5px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-composer-upload-button {
+      background-image: url(https://js.intercomcdn.com/images/icon-upload@2x.png); } }
+  #intercom-container .intercom-composer-upload-button:hover {
+    opacity: 1; }
+#intercom-container .intercom-composer-emoji-button {
+  z-index: 2147483001;
+  opacity: 0.6;
+  background-image: url(https://js.intercomcdn.com/images/icon-emoji.png);
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  display: none;
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  padding: 5px;
+  background-position: center;
+  cursor: pointer; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-composer-emoji-button {
+      background-image: url(https://js.intercomcdn.com/images/icon-emoji@2x.png); } }
+  #intercom-container .intercom-composer-emoji-button:hover, #intercom-container .intercom-composer-emoji-button.intercom-composer-emoji-button-active {
+    opacity: 1; }
+#intercom-container .intercom-conversation-announcement .intercom-composer {
+  border: 1px solid #dadee2;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0; }
+
+#intercom-container .intercom-emoji-selector {
+  z-index: 2147483001;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 3px;
+  border: 1px #D0D4D8 solid;
+  position: absolute;
+  bottom: calc(100% - 13px);
+  right: 10px;
+  margin: 0px 0px 5px 0px;
+  display: none;
+  font-size: 22px; }
+  #intercom-container .intercom-emoji-selector:after, #intercom-container .intercom-emoji-selector:before {
+    top: 100%;
+    right: 21px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  #intercom-container .intercom-emoji-selector:after {
+    border-color: rgba(240, 240, 240, 0);
+    border-top-color: #ffffff;
+    border-width: 7px;
+    margin-right: -12px; }
+  #intercom-container .intercom-emoji-selector:before {
+    border-color: rgba(170, 170, 170, 0);
+    border-top-color: #aaaaaa;
+    border-width: 8px;
+    margin-right: -13px; }
+#intercom-container .intercom-emoji-selector-panel-small {
+  background-color: #FFFFFF;
+  width: 144px;
+  line-height: 0;
+  bottom: 0px;
+  border-radius: 3px; }
+  #intercom-container .intercom-emoji-selector-panel-small .intercom-emoji-image {
+    background-image: url(https://js.intercomcdn.com/images/emoji-spritemap-16.png);
+    background-size: 464px 464px;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    border: 10px solid;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    cursor: pointer; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      #intercom-container .intercom-emoji-selector-panel-small .intercom-emoji-image {
+        background-image: url(https://js.intercomcdn.com/images/emoji-spritemap-32.png); } }
+    #intercom-container .intercom-emoji-selector-panel-small .intercom-emoji-image:hover {
+      background-color: #EDEDED;
+      border-color: #EDEDED;
+      color: #EDEDED; }
+#intercom-container .intercom-emoji-selector-panel-large {
+  box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+  height: 200px;
+  width: 322px;
+  overflow-y: auto;
+  display: none;
+  border-radius: 0px 0px 3px 3px; }
+  #intercom-container .intercom-emoji-selector-panel-large.active {
+    display: block; }
+  #intercom-container .intercom-emoji-selector-panel-large .intercom-emoji-icon {
+    color: #60686e;
+    margin: 5px 5px 5px 5px;
+    width: 30px;
+    line-height: 30px;
+    display: inline-table;
+    text-align: center;
+    cursor: pointer; }
+    #intercom-container .intercom-emoji-selector-panel-large .intercom-emoji-icon:hover {
+      background-color: #EDEDED; }
+#intercom-container .intercom-large-emoji-panel-top-mask {
+  background: linear-gradient(#ffffff, rgba(255, 255, 255, 0) 20px);
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  content: "";
+  pointer-events: none;
+  display: none; }
+#intercom-container .intercom-large-emoji-panel-bottom-mask {
+  background: linear-gradient(rgba(255, 255, 255, 0), #ffffff 20px);
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  border-radius: 0 0 3px 3px;
+  pointer-events: none;
+  display: block; }
+#intercom-container .intercom-emoji-selector-panel-header {
+  background-color: #FAFAFB;
+  height: 35px;
+  width: 322px;
+  text-align: center;
+  border-radius: 3px; }
+  #intercom-container .intercom-emoji-selector-panel-header .intercom-emoji-group-icon {
+    z-index: 2147483001;
+    position: relative;
+    color: #60686e;
+    line-height: 30px;
+    width: 45px;
+    margin-top: 5px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 3px 3px 0px 0px;
+    cursor: pointer; }
+    #intercom-container .intercom-emoji-selector-panel-header .intercom-emoji-group-icon:hover {
+      background-color: #EDEDED; }
+    #intercom-container .intercom-emoji-selector-panel-header .intercom-emoji-group-icon.active {
+      z-index: 2147483002;
+      background-color: #FFFFFF;
+      box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.1);
+      border-bottom: none; }
+
+#intercom-container .intercom-lwr-composer {
+  width: 100%;
+  height: 54px;
+  border-top: 1px solid #e4e5e7;
+  display: none;
+  overflow: hidden;
+  min-width: 120px; }
+#intercom-container .intercom-lwr-composer-active {
+  display: block; }
+#intercom-container .intercom-lwr-composer-options:before, #intercom-container .intercom-lwr-composer-options:after {
+  content: " ";
+  display: table; }
+#intercom-container .intercom-lwr-composer-options:after {
+  clear: both; }
+#intercom-container .intercom-lwr-composer-option {
+  background-color: #fdfdfd;
+  position: relative;
+  float: left;
+  height: 54px; }
+#intercom-container .intercom-lwr-composer-enabled .intercom-lwr-composer-option {
+  cursor: pointer; }
+  #intercom-container .intercom-lwr-composer-enabled .intercom-lwr-composer-option svg {
+    cursor: pointer; }
+#intercom-container .intercom-lwr-composer-enabled .intercom-lwr-composer-option:hover {
+  background-color: #f7f7f7; }
+#intercom-container .intercom-lwr-composer-option svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  margin-top: -8px;
+  background-color: transparent; }
+#intercom-container .intercom-lwr-composer-options-thumbs .intercom-lwr-composer-option {
+  width: 50%; }
+#intercom-container .intercom-lwr-composer-options-emotions .intercom-lwr-composer-option {
+  width: 33.33%; }
+#intercom-container .intercom-lwr-composer-option-selected .intercom-lwr-composer-icon {
+  fill: #333333; }
+#intercom-container .intercom-lwr-composer-option .intercom-lwr-option-background {
+  fill: #fdfdfd; }
+#intercom-container .intercom-lwr-composer-enabled .intercom-lwr-composer-option:hover .intercom-lwr-option-background {
+  fill: #f7f7f7; }
+
+#intercom-container .intercom-welcome-message {
+  clear: both;
+  position: relative;
+  margin-bottom: 24px;
+  padding: 0 20px 20px;
+  overflow: hidden;
+  border-bottom: 1px solid #e4e5e7;
+  border-image: linear-gradient(to right, #edf0f2, #d9dfe3 18%, #d9dfe3 82%, #edf0f2) 1; }
+#intercom-container .intercom-welcome-message-icon {
+  background-image: url(https://js.intercomcdn.com/images/icon-message-responder.png);
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 15px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-welcome-message-icon {
+      background-image: url(https://js.intercomcdn.com/images/icon-message-responder@2x.png); } }
+#intercom-container .intercom-welcome-message-body p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #455A64;
+  line-height: 20px;
+  font-size: 14px;
+  color: #adbbc2;
+  line-height: 18px;
+  text-align: center; }
+  #intercom-container .intercom-welcome-message-body p .intercom-comment-body {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px; }
+  #intercom-container .intercom-welcome-message-body p p, #intercom-container .intercom-welcome-message-body p ul, #intercom-container .intercom-welcome-message-body p ol, #intercom-container .intercom-welcome-message-body p blockquote, #intercom-container .intercom-welcome-message-body p h1, #intercom-container .intercom-welcome-message-body p h2, #intercom-container .intercom-welcome-message-body p h3, #intercom-container .intercom-welcome-message-body p h4, #intercom-container .intercom-welcome-message-body p h5, #intercom-container .intercom-welcome-message-body p h6, #intercom-container .intercom-welcome-message-body p a, #intercom-container .intercom-welcome-message-body p a.intercom-h2b-button, #intercom-container .intercom-welcome-message-body p code {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    word-wrap: break-word;
+    margin: 20px 0; }
+    #intercom-container .intercom-welcome-message-body p p:first-child, #intercom-container .intercom-welcome-message-body p ul:first-child, #intercom-container .intercom-welcome-message-body p ol:first-child, #intercom-container .intercom-welcome-message-body p blockquote:first-child, #intercom-container .intercom-welcome-message-body p h1:first-child, #intercom-container .intercom-welcome-message-body p h2:first-child, #intercom-container .intercom-welcome-message-body p h3:first-child, #intercom-container .intercom-welcome-message-body p h4:first-child, #intercom-container .intercom-welcome-message-body p h5:first-child, #intercom-container .intercom-welcome-message-body p h6:first-child, #intercom-container .intercom-welcome-message-body p a:first-child, #intercom-container .intercom-welcome-message-body p a.intercom-h2b-button:first-child, #intercom-container .intercom-welcome-message-body p code:first-child {
+      margin-top: 0; }
+    #intercom-container .intercom-welcome-message-body p p:last-child, #intercom-container .intercom-welcome-message-body p ul:last-child, #intercom-container .intercom-welcome-message-body p ol:last-child, #intercom-container .intercom-welcome-message-body p blockquote:last-child, #intercom-container .intercom-welcome-message-body p h1:last-child, #intercom-container .intercom-welcome-message-body p h2:last-child, #intercom-container .intercom-welcome-message-body p h3:last-child, #intercom-container .intercom-welcome-message-body p h4:last-child, #intercom-container .intercom-welcome-message-body p h5:last-child, #intercom-container .intercom-welcome-message-body p h6:last-child, #intercom-container .intercom-welcome-message-body p a:last-child, #intercom-container .intercom-welcome-message-body p a.intercom-h2b-button:last-child, #intercom-container .intercom-welcome-message-body p code:last-child {
+      margin-bottom: 0; }
+  #intercom-container .intercom-welcome-message-body p h1, #intercom-container .intercom-welcome-message-body p h1 a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: normal;
+    margin: 27px 0;
+    color: inherit; }
+  #intercom-container .intercom-welcome-message-body p h2, #intercom-container .intercom-welcome-message-body p h2 a {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: inherit; }
+  #intercom-container .intercom-welcome-message-body p ul, #intercom-container .intercom-welcome-message-body p ol {
+    font-size: 14px;
+    -moz-padding-start: 40px;
+    -webkit-padding-start: 40px;
+    -khtml-padding-start: 40px;
+    -o-padding-start: 40px;
+    padding-start: 40px;
+    padding-left: 30px; }
+  #intercom-container .intercom-welcome-message-body p [dir=ltr] ul, #intercom-container .intercom-welcome-message-body p [dir=ltr] ol {
+    padding-left: 30px; }
+  #intercom-container .intercom-welcome-message-body p [dir=rtl] ul, #intercom-container .intercom-welcome-message-body p [dir=rtl] ol {
+    padding-right: 30px; }
+  #intercom-container .intercom-welcome-message-body p ul > li {
+    list-style-type: disc; }
+  #intercom-container .intercom-welcome-message-body p ol > li {
+    list-style-type: decimal; }
+  #intercom-container .intercom-welcome-message-body p li {
+    display: list-item;
+    line-height: 20px;
+    margin-bottom: 10px;
+    font-weight: 400; }
+  #intercom-container .intercom-welcome-message-body p em, #intercom-container .intercom-welcome-message-body p i {
+    font-style: italic; }
+  #intercom-container .intercom-welcome-message-body p strong, #intercom-container .intercom-welcome-message-body p b {
+    font-weight: bold;
+    line-height: 100%; }
+  #intercom-container .intercom-welcome-message-body p pre {
+    font-size: 14px;
+    padding: 0 0 10px 0;
+    white-space: pre-wrap; }
+  #intercom-container .intercom-welcome-message-body p img {
+    display: block;
+    max-width: 100%;
+    margin: 10px auto 10px;
+    cursor: pointer; }
+  #intercom-container .intercom-welcome-message-body p p + br {
+    display: none; }
+  #intercom-container .intercom-welcome-message-body p a:link, #intercom-container .intercom-welcome-message-body p a:visited, #intercom-container .intercom-welcome-message-body p a:hover, #intercom-container .intercom-welcome-message-body p a:active {
+    text-decoration: underline; }
+  #intercom-container .intercom-welcome-message-body p a:link, #intercom-container .intercom-welcome-message-body p a:visited {
+    color: #333333; }
+  #intercom-container .intercom-welcome-message-body p a:hover, #intercom-container .intercom-welcome-message-body p a:active {
+    color: #0b0b0b; }
+  #intercom-container .intercom-welcome-message-body p h2 + p, #intercom-container .intercom-welcome-message-body p h2 + ul, #intercom-container .intercom-welcome-message-body p h2 + ol, #intercom-container .intercom-welcome-message-body p h2 + blockquote, #intercom-container .intercom-welcome-message-body p h2 + .ic_button_in_content, #intercom-container .intercom-welcome-message-body p h2 + .ic_social_block, #intercom-container .intercom-welcome-message-body p h3 + p, #intercom-container .intercom-welcome-message-body p h3 + ul, #intercom-container .intercom-welcome-message-body p h3 + ol, #intercom-container .intercom-welcome-message-body p h3 + blockquote, #intercom-container .intercom-welcome-message-body p h3 + .ic_button_in_content, #intercom-container .intercom-welcome-message-body p h3 + .ic_social_block, #intercom-container .intercom-welcome-message-body p h4 + p, #intercom-container .intercom-welcome-message-body p h4 + ul, #intercom-container .intercom-welcome-message-body p h4 + ol, #intercom-container .intercom-welcome-message-body p h4 + blockquote, #intercom-container .intercom-welcome-message-body p h4 + .ic_button_in_content, #intercom-container .intercom-welcome-message-body p h4 + .ic_social_block, #intercom-container .intercom-welcome-message-body p h5 + p, #intercom-container .intercom-welcome-message-body p h5 + ul, #intercom-container .intercom-welcome-message-body p h5 + ol, #intercom-container .intercom-welcome-message-body p h5 + blockquote, #intercom-container .intercom-welcome-message-body p h5 + .ic_button_in_content, #intercom-container .intercom-welcome-message-body p h5 + .ic_social_block, #intercom-container .intercom-welcome-message-body p h6 + p, #intercom-container .intercom-welcome-message-body p h6 + ul, #intercom-container .intercom-welcome-message-body p h6 + ol, #intercom-container .intercom-welcome-message-body p h6 + blockquote, #intercom-container .intercom-welcome-message-body p h6 + .ic_button_in_content, #intercom-container .intercom-welcome-message-body p h6 + .ic_social_block {
+    margin-top: 0; }
+  #intercom-container .intercom-welcome-message-body p .intercom-h2b-twitter, #intercom-container .intercom-welcome-message-body p .intercom-h2b-facebook {
+    max-width: 100%; }
+  #intercom-container .intercom-welcome-message-body p iframe[src*="vimeo.com"], #intercom-container .intercom-welcome-message-body p iframe[src*="wistia.net"], #intercom-container .intercom-welcome-message-body p iframe[src*="youtube.com"] {
+    width: 100%;
+    height: 149px;
+    margin: 20px auto; }
+  #intercom-container .intercom-welcome-message-body p iframe[src*='wistia.net'], #intercom-container .intercom-welcome-message-body p a.intercom-h2b-button {
+    text-transform: capitalize; }
+  #intercom-container .intercom-welcome-message-body p a:link, #intercom-container .intercom-welcome-message-body p a:visited {
+    color: #adbbc2; }
+  #intercom-container .intercom-welcome-message-body p a:hover, #intercom-container .intercom-welcome-message-body p a:active {
+    color: #85939a; }
+#intercom-container .intercom-welcome-message {
+  display: none; }
+  #intercom-container .intercom-welcome-message.intercom-welcome-message-active {
+    display: block; }
+
+#intercom-container .intercom-powered-by {
+  width: 100%;
+  background-color: #fff;
+  color: #b6c2c9;
+  text-align: center;
+  clear: both;
+  font-weight: 500;
+  line-height: 22px; }
+  #intercom-container .intercom-powered-by span {
+    font-size: 13px;
+    text-decoration: none; }
+  #intercom-container .intercom-powered-by u {
+    text-decoration: underline; }
+  #intercom-container .intercom-powered-by a:hover, #intercom-container .intercom-powered-by a:active {
+    color: #b6c2c9; }
+    #intercom-container .intercom-powered-by a:hover u, #intercom-container .intercom-powered-by a:active u {
+      color: #8e9aa1; }
+
+#intercom-container .intercom-upload-remove {
+  background-image: url(https://js.intercomcdn.com/images/icon-upload-remove.png);
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  opacity: .8;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  right: -22px;
+  top: 2px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-upload-remove {
+      background-image: url(https://js.intercomcdn.com/images/icon-upload-remove@2x.png); } }
+  #intercom-container .intercom-upload-remove:hover {
+    opacity: 1; }
+
+#intercom-container .intercom-unread-counter {
+  border-radius: 50%;
+  border: 2px solid white;
+  font-size: 11px;
+  line-height: 16px;
+  background-color: #333333;
+  text-align: center;
+  color: white;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 11px;
+  left: 11px;
+  cursor: pointer;
+  display: none; }
+  #intercom-container .intercom-unread-counter.intercom-unread-counter-active {
+    display: block; }
+
+#intercom-container .intercom-is-typing:before, #intercom-container .intercom-is-typing:after {
+  content: " ";
+  display: table; }
+#intercom-container .intercom-is-typing:after {
+  clear: both; }
+#intercom-container .intercom-is-typing-icon {
+  background-image: url(https://js.intercomcdn.com/images/icon-is-typing.gif);
+  background-size: 38px 18px;
+  background-repeat: no-repeat;
+  height: 18px;
+  cursor: default; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-is-typing-icon {
+      background-image: url(https://js.intercomcdn.com/images/icon-is-typing@2x.gif); } }
+#intercom-container .intercom-is-typing .intercom-comment-body {
+  min-width: 38px;
+  padding-left: 12px; }
+
+#intercom-container.intercom-ie8 .intercom-sheet-content {
+  clip: rect(-9999px, 9999px, 9999px, -9999px); }
+#intercom-container.intercom-ie8 .intercom-launcher.intercom-launcher-with-notification .intercom-launcher-button-with-avatar {
+  display: none; }
+#intercom-container.intercom-ie8 .intercom-launcher.intercom-launcher-with-notification .intercom-launcher-button-without-avatar {
+  visibility: visible; }
+#intercom-container.intercom-ie8 .intercom-launcher.intercom-launcher-with-notification .intercom-launcher-badge {
+  right: 0; }
+#intercom-container.intercom-ie8 .intercom-lwr-composer-option-selected.intercom-lwr-composer-option, #intercom-container.intercom-ie8 .intercom-lwr-composer-enabled .intercom-lwr-composer-option:hover {
+  background-color: #f7f7f7; }
+#intercom-container.intercom-ie8 .intercom-lwr-composer-option svg {
+  display: none; }
+#intercom-container.intercom-ie8 .intercom-lwr-composer-option .intercom-lwr-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  margin-top: -9px;
+  background-repeat: no-repeat; }
+#intercom-container.intercom-ie8 .intercom-lwr-composer-option.intercom-lwr-composer-option-thumbs-up .intercom-lwr-icon {
+  background-image: url(https://js.intercomcdn.com/images/icon-thumbs-up.png); }
+#intercom-container.intercom-ie8 .intercom-lwr-composer-option.intercom-lwr-composer-option-thumbs-down .intercom-lwr-icon {
+  background-image: url(https://js.intercomcdn.com/images/icon-thumbs-down.png); }
+#intercom-container.intercom-ie8 .intercom-lwr-composer-option.intercom-lwr-composer-option-happy .intercom-lwr-icon {
+  background-image: url(https://js.intercomcdn.com/images/icon-emotion-happy.png); }
+#intercom-container.intercom-ie8 .intercom-lwr-composer-option.intercom-lwr-composer-option-neutral .intercom-lwr-icon {
+  background-image: url(https://js.intercomcdn.com/images/icon-emotion-neutral.png); }
+#intercom-container.intercom-ie8 .intercom-lwr-composer-option.intercom-lwr-composer-option-sad .intercom-lwr-icon {
+  background-image: url(https://js.intercomcdn.com/images/icon-emotion-sad.png); }
+#intercom-container.intercom-ie8 .intercom-autoresponse-icon {
+  border: none;
+  background-color: #fafafa; }
+  #intercom-container.intercom-ie8 .intercom-autoresponse-icon i {
+    background: url(https://js.intercomcdn.com/images/icon-info.png);
+    width: 32px;
+    height: 32px;
+    margin: 2px; }
+#intercom-container.intercom-ie8 .intercom-conversations-new-conversation-button i {
+  background-image: url(https://js.intercomcdn.com/images/icon-compose.png);
+  height: 14px; }
+#intercom-container.intercom-ie8 .intercom-conversations-item-user-avatar {
+  background-image: url(https://js.intercomcdn.com/images/icon-user-avatar.png); }
+
+@-webkit-keyframes intercom-launcher-show-avatar {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2); }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-keyframes intercom-launcher-show-avatar {
+  0% {
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0); }
+
+  80% {
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2); }
+
+  100% {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes intercom-launcher-hide-and-show-avatar {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2); }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-keyframes intercom-launcher-hide-and-show-avatar {
+  0% {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0); }
+
+  80% {
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2); }
+
+  100% {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes intercom-launcher-show-badge {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+
+  50% {
+    opacity: 0; }
+
+  75% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1); }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-keyframes intercom-launcher-show-badge {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0); }
+
+  50% {
+    opacity: 0; }
+
+  75% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1); }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes intercom-launcher-show-preview {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(10px, 0);
+            transform: translate(10px, 0); }
+
+  50% {
+    -webkit-transform: translate(-5px, 0) scale(1.05);
+            transform: translate(-5px, 0) scale(1.05); }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1); } }
+
+@-keyframes intercom-launcher-show-preview {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(10px, 0);
+        -ms-transform: translate(10px, 0);
+            transform: translate(10px, 0); }
+
+  50% {
+    -webkit-transform: translate(-5px, 0) scale(1.05);
+        -ms-transform: translate(-5px, 0) scale(1.05);
+            transform: translate(-5px, 0) scale(1.05); }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0) scale(1);
+        -ms-transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1); } }
+
+@-webkit-keyframes intercom-launcher-update-preview {
+  0% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1); }
+
+  50% {
+    -webkit-transform: translate(-5px, 0) scale(.95);
+            transform: translate(-5px, 0) scale(.95); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(10px, 0) scale(0);
+            transform: translate(10px, 0) scale(0); } }
+
+@-keyframes intercom-launcher-update-preview {
+  0% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0) scale(1);
+        -ms-transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1); }
+
+  50% {
+    -webkit-transform: translate(-5px, 0) scale(.95);
+        -ms-transform: translate(-5px, 0) scale(.95);
+            transform: translate(-5px, 0) scale(.95); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(10px, 0) scale(0);
+        -ms-transform: translate(10px, 0) scale(0);
+            transform: translate(10px, 0) scale(0); } }
+
+@-webkit-keyframes intercom-launcher-minimize {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0); } }
+
+@-keyframes intercom-launcher-minimize {
+  0% {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); }
+
+  100% {
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0); } }
+
+@-webkit-keyframes intercom-launcher-maximize {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-keyframes intercom-launcher-maximize {
+  0% {
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0); }
+
+  100% {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); } }
+
+#intercom-container .intercom-launcher.intercom-launcher-minimized {
+  transition: opacity, .1s; }
+#intercom-container .intercom-launcher.intercom-launcher-minimized .intercom-launcher-button {
+  -webkit-animation: intercom-launcher-minimize .1s linear 0s both;
+          animation: intercom-launcher-minimize .1s linear 0s both;
+  transition: background-image 0s linear .1s; }
+#intercom-container .intercom-launcher.intercom-launcher-maximized .intercom-launcher-button {
+  -webkit-animation: intercom-launcher-maximize .1s linear 0s both;
+          animation: intercom-launcher-maximize .1s linear 0s both; }
+#intercom-container .intercom-launcher.intercom-launcher-with-updated-avatar .intercom-launcher-button {
+  -webkit-animation: intercom-launcher-show-avatar .15s ease-out 1s both;
+          animation: intercom-launcher-show-avatar .15s ease-out 1s both; }
+#intercom-container .intercom-launcher-maximized.intercom-launcher-with-updated-avatar .intercom-launcher-button, #intercom-container .intercom-launcher-enabled.intercom-launcher-with-updated-avatar .intercom-launcher-button {
+  -webkit-animation: intercom-launcher-hide-and-show-avatar .3s ease-out 1s both;
+          animation: intercom-launcher-hide-and-show-avatar .3s ease-out 1s both;
+  transition: background-image 0s linear 1.15s, background-size 0s linear 1.15s, border-width 0s linear 1.15s; }
+#intercom-container .intercom-launcher.intercom-launcher-with-badge .intercom-launcher-badge {
+  -webkit-animation: intercom-launcher-show-badge .3s ease-out 1.5s both;
+          animation: intercom-launcher-show-badge .3s ease-out 1.5s both; }
+#intercom-container .intercom-launcher.intercom-launcher-with-preview .intercom-launcher-preview {
+  -webkit-animation: intercom-launcher-show-preview .3s ease-in-out 1.5s both;
+          animation: intercom-launcher-show-preview .3s ease-in-out 1.5s both; }
+#intercom-container .intercom-launcher.intercom-launcher-with-preview .intercom-launcher-update-preview {
+  -webkit-animation: intercom-launcher-update-preview .3s ease-out 1s both;
+          animation: intercom-launcher-update-preview .3s ease-out 1s both; }
+#intercom-container .intercom-launcher.intercom-launcher-with-preview .intercom-launcher-preview-close {
+  transition: opacity .1s ease-in; }
+
+#intercom-container .intercom-conversation-parts {
+  transition: opacity .2s; }
+#intercom-container .intercom-sheet-loading .intercom-conversation-parts {
+  transition: none; }
+#intercom-container .intercom-conversation-preview .intercom-sheet-header {
+  transition: none; }
+
+@-webkit-keyframes intercom-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@-keyframes intercom-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+            transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+#intercom-container .intercom-sheet-loading .intercom-sheet-spinner, #intercom-container .intercom-conversations-fetching .intercom-conversations-spinner {
+  -webkit-animation: intercom-spin 1s infinite linear;
+          animation: intercom-spin 1s infinite linear; }
+
+@-webkit-keyframes intercom-lwr-composer-option-bounce {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5); }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-keyframes intercom-lwr-composer-option-bounce {
+  0% {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+            transform: scale(1.5); }
+
+  100% {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1); } }
+
+#intercom-container .intercom-lwr-composer-option-pop svg {
+  -webkit-animation: intercom-lwr-composer-option-bounce .2s ease-in 0 both;
+          animation: intercom-lwr-composer-option-bounce .2s ease-in 0 both; }
+
+#intercom-container .intercom-announcement a.intercom-h2b-button, #intercom-container .intercom-small-announcement a.intercom-h2b-button {
+  transition: background-color 0.05s linear; }
+  #intercom-container .intercom-announcement a.intercom-h2b-button:hover, #intercom-container .intercom-small-announcement a.intercom-h2b-button:hover {
+    transition: background-color 0.05s linear; }
+
+#intercom-container .intercom-conversations-new-conversation-button, #intercom-container .intercom-announcement-body-container a.intercom-h2b-button, #intercom-container .intercom-small-announcement-body-container a.intercom-h2b-button, #intercom-container .intercom-new-anonymous-user input[type="submit"], #intercom-container .intercom-composer-send-button {
+  transition: background-color 100ms linear; }
+
+#intercom-container .intercom-sheet {
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+  -webkit-transform-origin: bottom right;
+      -ms-transform-origin: bottom right;
+          transform-origin: bottom right;
+  transition: -webkit-transform 250ms ease-in-out, opacity 100ms linear 150ms;
+  transition: transform 250ms ease-in-out, opacity 100ms linear 150ms; }
+#intercom-container .intercom-sheet-minimized {
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+  transition: -webkit-transform 250ms ease-in-out, opacity 100ms linear, visibility 0s linear 250ms;
+  transition: transform 250ms ease-in-out, opacity 100ms linear, visibility 0s linear 250ms; }
+
+#intercom-container .intercom-conversation-embed .intercom-embed-no-header {
+  top: 0;
+  padding-top: 0; }
+#intercom-container .intercom-conversation-embed .intercom-sheet-content {
+  overflow: auto;
+  z-index: 1; }
+#intercom-container .intercom-conversation-embed .intercom-sheet-header, #intercom-container .intercom-conversation-embed .intercom-sheet-body, #intercom-container .intercom-conversation-embed .intercom-sheet-content, #intercom-container .intercom-conversation-embed .intercom-sheet-footer {
+  position: absolute;
+  width: 100%; }
+#intercom-container .intercom-conversation-embed .intercom-small-announcement-avatar, #intercom-container .intercom-conversation-embed .intercom-sheet-header {
+  z-index: 1; }
+#intercom-container .intercom-conversation-embed .intercom-small-announcement, #intercom-container .intercom-conversation-embed .intercom-sheet-body {
+  z-index: initial; }
+#intercom-container .intercom-conversation-embed .intercom-sheet-body {
+  border: none;
+  z-index: 0; }
+#intercom-container .intercom-conversation-embed .intercom-comment-timestamp {
+  display: none; }
+#intercom-container .intercom-conversation-embed .intercom-composer {
+  z-index: 0; }
+
+#intercom-container #intercom-embedded-launcher {
+  z-index: 2147483000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 48px;
+  width: 48px;
+  position: relative; }
+#intercom-container #intercom-embedded-launcher.intercom-launcher-with-preview {
+  width: 340px; }
+
+#intercom-container .intercom-emoji-sub-icon {
+  background-image: url(https://js.intercomcdn.com/images/emoji-spritemap-16.png);
+  background-size: 464px 464px;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 2px;
+  margin: 1px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    #intercom-container .intercom-emoji-sub-icon {
+      background-image: url(https://js.intercomcdn.com/images/emoji-spritemap-32.png); } }
+
+#intercom-container .intercom-sticker-comment-body {
+  padding: 0; }
+#intercom-container .intercom-sticker-user-comment {
+  float: right; }
+  #intercom-container .intercom-sticker-user-comment .intercom-comment-metadata {
+    float: right; }
+#intercom-container .intercom-sticker-admin-comment {
+  padding-left: 38px; }
+#intercom-container .intercom-sticker-image {
+  width: 128px;
+  height: 128px;
+  min-width: 128px;
+  min-height: 128px; }
+#intercom-container .intercom-sticker-native {
+  font-size: 128px;
+  line-height: 1.1; }
+</style><div id="intercom-launcher" class="intercom-launcher intercom-launcher-active"><div class="intercom-launcher-button"></div>
+<div class="intercom-launcher-badge"></div>
+<div class="intercom-launcher-preview">
+  <div class="intercom-launcher-preview-body"></div>
+  <div class="intercom-launcher-preview-caret"></div>
+  <div class="intercom-launcher-preview-close"></div>
+</div>
+</div><div id="intercom-messenger" class="intercom-messenger intercom-messenger-inactive"></div></div></body></html>
