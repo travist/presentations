@@ -175,7 +175,7 @@ var person = {
 						<li class="fragment">Functions are "first-class" objects.</li>
 						<li class="fragment">Functions can be anonymous.</li>
 						<li class="fragment">Functions can be "self-executing"</li>
-						<li class="fragment">Functions encapsulate and capture context.</li>
+						<li class="fragment">Functions encapsulate and capture scope.</li>
 					</ul>
 				</section>
 				<section>
@@ -194,41 +194,54 @@ setTimeout(say('there'), 2000);
 				<section>
 					<h3>Modules</h3>
 					<pre><code data-trim contenteditable>
-var Module = (function() {
-   var privateVar = 'secret';
-   var privateMethod = function() {
-      console.log('I am private!');
+var Alert = (function() {
+
+   var messages = [];
+   var getMessage = function() {
+      return messages.join(' ');
    };
 
    return {
-      publicVar: 'public',
-      publicMethod: function() {
-         console.log('I am public!');
+      version: '0.0.1',
+      add: function(message) {
+         messages.push(message);
+      },
+      log: function() {
+         console.log(getMessage());
       }
    };
 })();
 
-Module.publicMethod();
-console.log(Module.publicVar);
+Alert.add('hello');
+Alert.add('there');
+Alert.log();
 					</code></pre>
 				</section>
 				<section>
 					<h3>Common.JS Modules</h3>
-					<p>Used in Node.js and other JS libraries.</p>
-					<pre class="fragment">splitter.js<code data-trim contenteditable>
+					<pre class="fragment">alert.js<code data-trim contenteditable>
 module.exports = function(options) {
-   options = options || {};
-   options.separator = options.separator || '-';
-   return function(input) {
-      return input.split(options.separator);
+   var messages = [];
+   var getMessage = function() {
+      return messages.join(options.separator);
+   };
+
+   return {
+      version: '0.0.1',
+      add: function(message) {
+         messages.push(message);
+      },
+      log: function() {
+         console.log(getMessage());
+      }
    };
 };
 					</code></pre>
 					<pre class="fragment">index.js<code data-trim contenteditable>
-var split = require('splitter')({
-   separator: '_'
-});
-console.log(split('The_cow_jumped_over_the_moon'));
+var myAlert = require('alert')({separator: '-'});
+myAlert.add('hello');
+myAlert.add('there');
+myAlert.log();
 					</code></pre>
 				</section>
 				<section>
@@ -238,7 +251,7 @@ console.log(split('The_cow_jumped_over_the_moon'));
 						<li><a href="http://bit.ly/1SourKC">http://bit.ly/1SourKC</a></li>
 					</ul>
 					<ul>
-						<li class="fragment">Difference between context and scope.</li>
+						<li class="fragment">Difference between scope and context.</li>
 						<li class="fragment">'new' objects create context</li>
 						<li class="fragment">'this' is assigned to the object instance that 'invokes' a method.</li>
 						<li class="fragment">You can bind context with 'bind'</li>
