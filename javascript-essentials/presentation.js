@@ -1,20 +1,8 @@
-
-
-
-
-
-
-
 /**
  * Syntax
  *
  *   - Dynamically typed
  *   - Everything is an object... even primitives
- *   - Functions are "first-class" objects
- *   - Multi-paradigm language
- *      - Object oriented (prototype)
- *      - Imperative (procedural)
- *      - Functional (lambda)
  */
 
 
@@ -43,8 +31,8 @@
 /**
  * Patterns are just as important as Syntax.
  *
- *  - http://addyosmani.com/resources/essentialjsdesignpatterns/book/
- *  - http://shichuan.github.io/javascript-patterns/
+ *  - http://bit.ly/1de5qfT
+ *  - http://bit.ly/1atTe8t
  */
 
 
@@ -101,19 +89,18 @@
 
 
 
-
-
 /**
  * Functions in JavaScript
  *
- *  - Functions are first-class objects.
+ *  - Functions are "first-class" objects.
  *  - Functions can be anonymous.
  *  - Functions can be "self-executing"
  *  - Functions encapsulate and capture context.
  *  - Closures
  *  - Module pattern
- *  - Node.js modules
+ *  - Common.JS modules
  */
+
 
 
 
@@ -143,8 +130,8 @@
 /**
  * Understanding 'this'
  *
- *  - http://ryanmorr.com/understanding-scope-and-context-in-javascript/
- *  - http://www.quirksmode.org/js/this.html
+ *  - http://bit.ly/VHXAYB
+ *  - http://bit.ly/1SourKC
  *
  *  - Difference between context and scope.
  *  - 'new' objects create context
@@ -184,7 +171,7 @@
  *  - The prototype serves as the 'blueprint' for object instances.
  *  - Each object instance "inherits" the prototype.
  *  - You can create jQuery plugins using jQuery.fn and point to your class.
- *  - Module Classes
+ *  - "Module Classes" combine Module pattern with OOP pattern.
  */
 
 

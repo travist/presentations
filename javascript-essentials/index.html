@@ -71,6 +71,11 @@
 				</section>
 				<section>
 					<img class='trans-image' style="height:2em;" src="images/formio-logo.png" />
+					<p style="margin-top: -0.5em;">uses a form builder to create dyanamic forms</p>
+					<img class="trans-image" style="height:12em" src="images/formio-form-builder.png" />
+				</section>
+				<section>
+					<img class='trans-image' style="height:2em;" src="images/formio-logo.png" />
 					<p style="margin-top: -0.5em;">creates both the form interface and the API in one step</p>
 					<img class="trans-image" style="height:12em" src="images/formio-api.jpg" />
 				</section>
@@ -142,14 +147,6 @@
 					<ul>
 						<li class="fragment">Dynamically typed</li>
 						<li class="fragment">Everything is an object... even primitives</li>
-						<li class="fragment">Functions are "first-class" objects</li>
-						<li class="fragment">Multi-paradigm language
-							<ul>
-								<li>Object oriented (prototype)</li>
-								<li>Imperitive (procedural)</li>
-								<li>Functional (lambda)</li>
-							</ul>
-						</li>
 					</ul>
 				</section>
 				<section>
@@ -175,7 +172,7 @@ var person = {
 				<section>
 					<h3>Functions in JavaScript</h3>
 					<ul>
-						<li class="fragment">Functions are first-class objects.</li>
+						<li class="fragment">Functions are "first-class" objects.</li>
 						<li class="fragment">Functions can be anonymous.</li>
 						<li class="fragment">Functions can be "self-executing"</li>
 						<li class="fragment">Functions encapsulate and capture context.</li>
@@ -222,18 +219,16 @@ console.log(Module.publicVar);
 module.exports = function(options) {
    options = options || {};
    options.separator = options.separator || '-';
-   return {
-      split: function(input) {
-         return input.split(options.separator);
-      }
+   return function(input) {
+      return input.split(options.separator);
    };
 };
 					</code></pre>
 					<pre class="fragment">index.js<code data-trim contenteditable>
-var splitter = require('splitter')({
+var split = require('splitter')({
    separator: '_'
 });
-console.log(splitter.split('The_cow_jumped_over_the_moon'));
+console.log(split('The_cow_jumped_over_the_moon'));
 					</code></pre>
 				</section>
 				<section>
