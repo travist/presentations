@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The M.E.A.N stack, and the rise of the machines.</title>
+		<meta name="description" content="The M.E.A.N stack, and the rise of the machines.">
+		<meta name="author" content="Travis Tidwell">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link href='fonts/comfortaa.css' rel='stylesheet' type='text/css'>
+
+		<style type="text/css">
+			.reveal div.listsmall {
+				margin-left: 10px;
+				display: inline-block;
+				font-size: 0.6em;
+			}
+			.reveal .fullwidth, .reveal .fullwidth code {
+				width: 100%;
+			}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3 style="margin-bottom:0; line-height: 1em;">The M.E.A.N stack</h3>
+					<p style="margin-top: 0; margin-bottom: 0;">
+						<em>and the rise of the machines</em>
+						<img class="trans-image" style="margin-bottom: 0;" src="images/mean-machine.jpg" />
+					</p>
+					<small>
+						<ul>
+							<li>by <a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+							<li>CTO | <a href="https://form.io">https://form.io</a></li>
+							<li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
+							<li><a ref="https://github.com/travist">https://github.com/travist</a></li>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<img class="trans-image" style="height: 10em; margin-top: -1em;" src="images/formio-tree.png" /><br/>
+					<img class="trans-image" style="width: 10em; margin-top: -0.4em;" src="images/formio-logo-full.png" />
+					<p style="margin-top: -0.4em;"><a target="_blank" href="https://form.io">https://form.io</a></p>
+					<p style="color:#ddd;">&lt;<span style="color: #127abe">form</span>.<span style="color:#6eb246">io</span>&gt; provides developers an easy drag & drop interface that creates both forms and the REST API's in one easy step!</p>
+				</section>
+				<section>
+					<p>instead of &lt;form&gt;</p>
+					<p><span class="fragment">form + I/O = </span><strong class="fragment" style="font-family: 'Comfortaa', cursive; font-size:1.5em; color:#eee;">&lt;<span style="color:#3071a9">form</span><span style="color:#eee;"></span><span style="color:#449d44">io</span> <span style="color:#aaa;">src="..."</span>&gt;</strong></p>
+				</section>
+				<section>
+					<p>Application integration with <strong style="font-family: 'Comfortaa', cursive;"><span style="color:#3071a9">form</span><span style="color:#eee;">.</span><span style="color:#449d44">io</span></strong></p>
+					<p>"You build the app, we handle the Form I/O"</p>
+					<img class="trans-image" src="images/formio-appembed.jpg" />
+				</section>
+				<section>
+					<h2>Presentation Materials</h2>
+					<p>
+						<ul>
+							<li><a href="http://travistidwell.com/presentations/meanapp">http://travistidwell.com/presentations/mean</a></li>
+							<li><a href="http://travistidwell.com">http://travistidwell.com</a></li>
+							<li><a href="https://github.com/travist/meanapp">https://github.com/travist/meanapp</a></li>
+						</ul>
+					</p>
+				</section>
+				<section>
+					<strong>Let's start with Angular.js</strong>
+					<p><img class="trans-image" style="height: 8em;" src="images/angularjs-logo-trans.png" /></p>
+					<p class="fragment"><em>what makes it so darn special?</em></p>
+				</section>
+				<section>
+					<p>Let's look at how the web has evolved.</p>
+				</section>
+				<section>
+					<h2>Web 1.0</h2>
+					<small>The static web</small><br/>
+					<img class="trans-image" src="images/web1.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>The dynamic web</small><br/>
+					<img class="trans-image" style="width: 20em;" src="images/web2.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>The rise of the CMS</small><br/>
+					<img class="trans-image" style="width: 20em;" src="images/cms-web2.svg" />
+				</section>
+				<section>
+					<h2>Web 3.0</h2>
+					<small>The rise of the machines</small><br/>
+				</section>
+				<section>
+					<h2>Web 3.0</h2>
+					<small>The rise of the machines</small><br/>
+					<img class="trans-image" style="height: 15em;" src="images/web3.svg" />
+				</section>
+				<section>
+					<h2>Developer Mandates</h2>
+					<p>Applications must be made differently.</p>
+				</section>
+				<section>
+					<h2>API-first Development</h2>
+					<ul>
+						<li class="fragment">Build your REST platform first.</li>
+						<li class="fragment">Your first "app" should be the API test.</li>
+						<li class="fragment">Build your app or website on top of those API's.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Why Angular.js?</h3>
+					<p><img class="trans-image" style="height: 8em;" src="images/angularjs-logo-trans.png" /></p>
+					<p class="fragment" style="font-size:0.9em;"><u>Forces</u> us to develop our websites like a web application.</p>
+				</section>
+				<section>
+					<h3>Next generation web application</h3>
+					<img class="trans-image" style="height: 15em;" src="images/angular-web3.svg" />
+				</section>
+				<section>
+					<p><strong>Angular.js enables</strong></p>
+					<p style="margin-top: -0.5em;">Multi-Service Applications</p>
+					<img class="trans-image fragment" style="height: 14em; margin-top: -0.5em;" src="images/multiservice.svg" />
+				</section>
+				<section>
+					<p><strong>Helping us go from this...</strong></p>
+					<img class="trans-image" style="height: 14em;" src="images/legacyapps.svg"/>
+				</section>
+				<section>
+					<p><strong>To this...</strong></p>
+					<p style="margin-top: -0.5em;">Micro-service architecture</p>
+					<img class="trans-image" style="height: 14em;" src="images/microserviceapp.svg"/>
+				</section>
+				<section>
+					<p><strong>To adapt, we should get M.E.A.N</strong></p>
+					<img class="trans-image" style="height: 8em;" src="images/mean.png" />
+				</section>
+				<section>
+					<h3>What is a M.E.A.N web application?</h3>
+					<ul>
+						<li class="fragment"><strong>M</strong>:<div class="listsmall">MongoDB - A NoSQL database powered by JavaScript.</div></li>
+						<li class="fragment"><strong>E</strong>:<div class="listsmall">ExpressJS - A Node.js application framework.</div></li>
+						<li class="fragment"><strong>A</strong>:<div class="listsmall">AngularJS - A front-end javascript application framework.</div></li>
+						<li class="fragment"><strong>N</strong>:<div class="listsmall">Node.js - A server-side javascript application engine.</div></li>
+					</ul>
+				</section>
+				<section>
+					<p><strong>Why M.E.A.N?</strong></p>
+					<ul>
+						<li class="fragment">Event-driven I/O for high concurrency.</li>
+						<li class="fragment">Simple and repeatable architecture.</li>
+						<li class="fragment">Large Open Source community</li>
+						<li class="fragment">Full stack JavaScript</li>
+					</ul>
+				</section>
+				<section>
+					<p>An entire ecosystem of JavaScript</p>
+					<img class="trans-image" style="height: 15em;" src="images/js-infrastructure.svg" />
+				</section>
+				<section>
+					<h3>Javascript FTW!</h3>
+					<img class="trans-image" src="images/javascript_logo.png" />
+				</section>
+				<section>
+					<h3>Let's build an App!</h3>
+					<ul>
+						<li class="fragment">A movie trailer application</li>
+						<li class="fragment">Full CRUD capabilities</li>
+						<li class="fragment">Total separation between API server and AngularJS front-end.</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>Building the Server</h2>
+						<p>"API first"</p>
+					</section>
+					<section>
+						<h3>Setup Node.js project</h3>
+						<strong>Initialize the app</strong>
+						<pre class="fullwidth fragment"><code>mkdir server
+cd server
+npm init</code></pre>
+					</section>
+					<section>
+						<h3>Installing Node.js modules</h3>
+						<pre class="fullwidth fragment"><code data-trim>
+							npm install --save express</code><code class="fragment" data-trim>
+npm install --save mongoose</code><code class="fragment" data-trim>
+npm install --save resourcejs</code><code class="fragment" data-trim>
+npm install --save method-override</code><code class="fragment" data-trim>
+npm install --save body-parser</code><code class="fragment" data-trim>
+npm install --save lodash</code></pre>
+					</section>
+					<section>
+						<h3>Writing the bootstrap</h3>
+							<pre class="fragment"><strong>server/index.js</strong><code class="fragment" data-trim>
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var _ = require('lodash');</code><code class="fragment">
+// Create the application.
+var app = express();</code><code class="fragment">
+// Add Middleware necessary for REST API's
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(methodOverride('X-HTTP-Method-Override'));</code><code class="fragment">
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/meanapp');
+mongoose.connection.once('open', function() {
+								</code><code class="fragment">  console.log('Listening on port 3000...');
+  app.listen(3000);
+});</code></pre>
+					</section>
+					<section>
+						<h3>Running the app</h3>
+						<pre><small>Shell</small><code data-trim>
+  node index.js
+						</code></pre>
+						<pre><small>Output</small><code data-trim>
+  Listening on port 3000...
+						</code></pre>
+						<p class="fragment">If you to to http://localhost:3000 you will see the server is running, but nothing shows up. This is expected.</p>
+					</section>
+					<section>
+						<h3>Adding Middleware</h3>
+						<p>Let's add CORS support for RESTful interfaces.</p>
+						<pre class="fragment"><strong>server/index.js</strong><code data-trim>
+...
+...
+app.use(methodOverride('X-HTTP-Method-Override'));
+
+// CORS Support
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+mongoose.connect('mongodb://localhost/meanapp');
+...
+...
+						</code></pre>
+					</section>
+					<section>
+						<h3>Using app.use for content routes</h3>
+						<pre class="fragment"><strong>server/index.js</strong><code data-trim>
+...
+...
+app.use('/hello', function(req, res, next) {
+  res.send('Hello World!');
+  next();
+});
+...
+...
+						</code></pre>
+						<p class="fragment">Now go to http://localhost:3000/hello in your browser.</p>
+						<p class="fragment">This is the fundamental idea at registering REST endpoints at certain paths.</p>
+					</section>
+					<section>
+						<h3>Creating a Model</h3>
+						<pre class="fragment"><strong>New file @ server/models/Movie.js</strong><code class="fragment">
+var mongoose = require('mongoose');
+</code><code class="fragment">
+// Create the MovieSchema.
+var MovieSchema = new mongoose.Schema({</code><code class="fragment">  title: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
+    required: true
+  }
+});</code><code class="fragment">
+// Export the model.
+module.exports = mongoose.model('movie', MovieSchema);</code></pre>
+					</section>
+					<section>
+						<h3>Index of Models</h3>
+						<pre class="fragment"><strong>New file @ server/models/index.js</strong><code class="fragment">
+module.exports = {
+  movie: require('./Movie')
+};</code></pre>
+						<h3 class="fragment">Loading the Models</h3>
+						<pre class="fragment"><strong>server/index.js</strong><code class="fragment">
+...
+...
+mongoose.connection.once('open', function() {
+
+  // Load the models.
+  app.models = require('./models/index');
+
+...
+...</code></pre>
+					</section>
+					<section>
+						<h3>Creating a Controller</h3>
+						<pre class="fragment"><strong>New file @ server/controllers/MovieController.js</strong><code class="fragment">
+var Resource = require('resourcejs');</code><code class="fragment">
+module.exports = function(app, route) {</code><code class="fragment">
+  // Setup the controller for REST
+  Resource(app, '', route, app.models.movie).rest();</code><code class="fragment">
+  // Return middleware.
+  return function(req, res, next) {
+    next();
+  };
+};</code></pre>
+					</section>
+					<section>
+						<h3>Creating the routes</h3>
+						<pre class="fragment"><strong>New file @ server/routes.js</strong><code class="fragment">
+module.exports = {
+  'movie': require('./controllers/MovieController')
+};</code></pre>
+						<h3 class="fragment">Registering the routes</h3>
+						<pre class="fragment"><strong>server/index.js</strong><code class="fragment">
+...
+...
+
+app.models = require('./models/index');
+
+// Load the routes.
+var routes = require('./routes');</code><code class="fragment">_.each(routes, function(controller, route) {</code><code class="fragment">  app.use(route, controller(app, route));
+});
+
+...
+...</code></pre>
+					</section>
+					<section>
+						<h3>Check your code</h3>
+						<p><a href="https://github.com/travist/meanapp/tree/resourcejs/server">https://github.com/travist/meanapp/tree/resourcejs/server</a></p>
+						<h3 class="fragment">Run the code</h3>
+						<pre class="fragment"><code>cd server
+node index.js</code></pre>
+						<h3 class="fragment">Use Postman to test</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Building the Client</h2>
+						<p>in AngularJS</p>
+					</section>
+					<section>
+						<h3>Bootstrapping the client with Yeoman</h3>
+						<img width="300px" src="https://blog.openshift.com/wp-content/uploads/imported/yeoman-logo.png" />
+						<p>http://yeoman.io/</p>
+						<pre class="fragment"><code>mkdir client</code><code class="fragment">cd client</code><code class="fragment">npm install -g yo</code><code class="fragment">npm install -g generator-angular</code><code class="fragment">yo angular</code></pre>
+					</section>
+					<section>
+						<h3>Generate the movies route</h3>
+						<pre class="fragment"><code>yo angular:route movies</code></pre>
+						<div class="fragment">
+							<h3>Add Movies to the navigation</h3>
+							<pre class="fragment"><strong>client/app/index.html</strong><code data-trim>
+<ul class="nav nav-pills pull-right">
+  <li class="active"><a ng-href="#">Home</a></li>
+  <li><a ng-href="#/movies">Movies</a></li>
+</ul>
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<h3>Create a table list of Movies</h3>
+						<pre class="fragment">app/views/movies.html<code>&lt;table class=&quot;table table-striped&quot;&gt;
+  &lt;thead&gt;
+    &lt;th&gt;Title&lt;/th&gt;
+    &lt;th&gt;URL&lt;/th&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;</code><code class="fragment">    &lt;tr ng-repeat=&quot;movie in movies&quot;&gt;</code><code class="fragment">      &lt;td&gt;{{ movie.title }}&lt;/td&gt;
+      &lt;td&gt;{{ movie.url }}&lt;/td&gt;</code><code class="fragment">    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+						</code></pre>
+					</section>
+					<section>
+						<h3>Add movies to the scope</h3>
+						<pre class="fragment"><strong>app/scripts/controllers/movies.js</strong><code data-trim>
+angular.module('clientApp')
+.controller('MoviesCtrl', function ($scope) {
+  $scope.movies = [
+    {
+      title: 'A New Hope',
+      url: 'http://youtube.com/embed/1g3_CFmnU7k'
+    },
+    {
+      title: 'The Empire Strikes Back',
+      url: 'http://youtube.com/embed/96v4XraJEPI'
+    },
+    {
+      title: 'Return of the Jedi',
+      url: 'http://youtube.com/embed/5UfA_aKBGMc'
+    }
+  ];
+});
+						</code></pre>
+					</section>
+					<section>
+						<p>Let's hook up <strong>$scope.movies</strong> with our server.</p>
+						<p>Use Bower to add Restangular to your project</p>
+						<pre class="fragment"><code>
+bower install --save restangular
+						</code></pre>
+						<p class="fragment">Verify it adds it to <strong>app/index.html</strong></p>
+						<pre class="fragment"><code>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Adding and Configuring Restangular</h3>
+						<pre class="fragment"><strong>app/scripts/app.js</strong><code>
+angular
+.module('clientApp', [
+  'ngRoute',
+  'restangular'
+])
+.config(function (
+  $routeProvider,</code><code class="fragment">  RestangularProvider
+) {</code><code class="fragment">
+  RestangularProvider.setBaseUrl('http://localhost:3000');
+  ...
+  ...</code></pre>
+					</section>
+					<section>
+						<h3>Adding Movie factories</h3>
+						<pre class="fragment">app/scripts/app.js<code class="fragment" data-trim>
+.factory('MovieRestangular', function(Restangular) {
+  return Restangular.withConfig(function(RestangularConfigurer) {
+    RestangularConfigurer.setRestangularFields({
+      id: '_id'
+    });
+  });
+})</code><code class="fragment" data-trim>
+.factory('Movie', function(MovieRestangular) {
+  return MovieRestangular.service('movie');
+})
+						</code></pre>
+					</section>
+					<section>
+						<h3>Query the list of movies</h3>
+						<pre class="fragment"><strong>app/controllers/movies.js</strong><code data-trim>
+.controller('MoviesCtrl', function (
+  $scope,
+  Movie
+) {
+  $scope.movies = Movie.getList().$object;
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Adding CRUD capabilities</h3>
+						<pre class="fragment"><code data-trim>
+yo angular:route movie-add --uri=create/movie</code><code class="fragment" data-trim>
+yo angular:route movie-view --uri=movie/:id</code><code class="fragment" data-trim>
+yo angular:route movie-delete --uri=movie/:id/delete</code><code class="fragment" data-trim>
+yo angular:route movie-edit --uri=movie/:id/edit
+						</code></pre>
+					</section>
+					<section>
+						<h3>CREATE</h3>
+						<pre class="fragment">app/views/movie-add.html<small class="fullwidth"><code data-trim>
+<form role="form">
+  <div class="form-group">
+    <label for="title" class="control-label">Title</label>
+    <input type="text" ng-model="movie.title" class="form-control" id="title" placeholder="Enter the movie title"/>
+  </div>
+  <div class="form-group">
+    <label for="title" class="control-label">URL</label>
+    <input type="text" ng-model="movie.url" class="form-control" id="title" placeholder="Enter the YouTube URL"/>
+  </div>
+  <input type="submit" class="btn btn-primary" ng-click="saveMovie()" value="Save"/>
+</form>
+						</code></small></pre>
+						<pre class="fragment">app/scripts/controllers/movie-add.js<code data-trim>
+.controller('MovieAddCtrl', function (
+  $scope,
+  Movie,
+  $location
+) {
+  $scope.movie = {};
+  $scope.saveMovie = function() {
+    Movie.post($scope.movie).then(function() {
+      $location.path('/movies');
+    });
+  };
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>READ</h3>
+						<pre class="fragment">app/views/movie-view.html<code data-trim>
+<h3>{{ movie.title }}</h3>
+<p>{{ movie.url }}</p>
+						</code></pre>
+						<pre class="fragment">app/scripts/controllers/movie-view.js<code data-trim>
+.controller('MovieViewCtrl', function (
+  $scope,
+  $routeParams,
+  Movie
+) {
+  $scope.viewMovie = true;
+  $scope.movie = Movie.one($routeParams.id).get().$object;
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>UPDATE</h3>
+						<pre class="fragment">app/views/movie-edit.html<code data-trim>
+<ng-include src="'views/movie-add.html'"></ng-include>
+						</code></pre>
+						<pre class="fragment">app/scripts/controllers/movie-edit.js<code data-trim>
+.controller('MovieEditCtrl', function (
+  $scope,
+  $routeParams,
+  Movie,
+  $location
+) {
+  $scope.editMovie = true;
+  $scope.movie = {};
+  Movie.one($routeParams.id).get().then(function(movie) {
+    $scope.movie = movie;
+    $scope.saveMovie = function() {
+      $scope.movie.save().then(function() {
+        $location.path('/movie/' + $routeParams.id);
+      });
+    };
+  });
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>DELETE</h3>
+						<pre class="fragment">app/views/movie-delete.html<small class="fullwidth"><code data-trim>
+<form role="form">
+  <p>Are you sure you wish to delete the movie {{ movie.title }}?</p>
+  <div class="form-group">
+    <input type="submit" class="btn btn-danger" ng-click="deleteMovie()" value="Yes"/>
+    <button ng-click="back()" type="button" class="btn btn-default">No</button>
+  </div>
+</form>
+						</code></small></pre>
+						<pre class="fragment">app/scripts/controllers/movie-delete.js<code data-trim>
+.controller('MovieDeleteCtrl', function (
+  $scope,
+  $routeParams,
+  Movie,
+  $location
+) {
+  $scope.movie = Movie.one($routeParams.id).get().$object;
+  $scope.deleteMovie = function() {
+    $scope.movie.remove().then(function() {
+      $location.path('/movies');
+    });
+  };
+  $scope.back = function() {
+    $location.path('/movie/' + $routeParams.id);
+  };
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Creating a navigation tabs</h3>
+						<pre class="fragment">Create: app/views/movie-nav.html<small class="fullwidth"><code data-trim>
+<ul class="nav nav-tabs">
+  <li role="presentation" ng-class="{active: viewMovie}"><a ng-href="/#/movie/{{ movie._id }}">View</a></li>
+  <li role="presentation" ng-class="{active: editMovie}"><a ng-href="/#/movie/{{ movie._id }}/edit">Edit</a></li>
+</ul>
+						</code></small></pre>
+						<pre class="fragment">app/views/movie-view.html<code data-trim>
+<ng-include src="'views/movie-nav.html'"></ng-include>
+<h3>{{ movie.title }}</h3>
+<p>{{ movie.url }}</p>
+						</code></pre>
+						<pre class="fragment">app/views/movie-edit.html<code data-trim>
+<ng-include src="'views/movie-nav.html'"></ng-include>
+<ng-include src="'views/movie-add.html'"></ng-include>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Adding links to the movies page.</h3>
+						<pre class="fragment">app/views/movies.html<small class="fullwidth"><code data-trim>
+<a class="btn btn-primary" href="/#/create/movie"><span class="glyphicon glyphicon-plus"></span> Create Movie</a>
+<br/>
+<table class="table table-striped">
+  <thead>
+    <th>Title</th>
+    <th>URL</th>
+    <th>Operations</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="movie in movies">
+      <td><a ng-href="/#/movie/{{ movie._id }}">{{ movie.title }}</a></td>
+      <td>{{ movie.url }}</td>
+      <td>
+        <div class="button-group">
+          <a ng-href="/#/movie/{{ movie._id }}/edit" class="btn btn-default">
+            <span class="glyphicon glyphicon-edit"></span>
+          </a>
+          <a ng-href="/#/movie/{{ movie._id }}/delete" class="btn btn-danger">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+          </a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+						</code></small></pre>
+					</section>
+					<section>
+						<h3>Adding a YouTube Player directive</h3>
+						<pre class="fragment">app/scripts/app.js<code>
+.directive('youtube', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      src: '='
+    },
+    templateUrl: 'views/youtube.html'
+  };
+})</code><code class="fragment">.filter('trusted', function ($sce) {
+  return function(url) {
+    return $sce.trustAsResourceUrl(url);
+  };
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Adding a YouTube Player directive</h3>
+						<pre class="fragment">app/views/youtube.html<code>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="{{ src | trusted }}"></iframe>
+</div>
+						</code></pre>
+						<pre class="fragment">app/views/movie-view.html<code>
+<ng-include src="'views/movie-nav.html'"></ng-include>
+<h3>{{ movie.title }}</h3></code><code class="fragment"><youtube src="movie.url"></youtube>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Amazing!</h3>
+						<img src="images/youtube-view.png" width="80%" />
+					</section>
+				</section>
+				<section>
+					<h3>THANK YOU!</h3>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
