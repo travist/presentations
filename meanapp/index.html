@@ -99,12 +99,13 @@
 				<section>
 					<h3>Getting Started</h3>
 					<small><ul>
-						<li class="fragment">Install Homebrew<pre class="fullwidth"><code>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></pre></li>
-						<li class="fragment">Install NodeJS<pre class="fullwidth"><code>brew install node</code></pre></li>
-						<li class="fragment">Install MongoDB<pre class="fullwidth"><code>brew install mongodb</code></pre></li>
-						<li class="fragment">Install GruntCLI<pre class="fullwidth"><code>npm install -g grunt-cli</code></pre></li>
-						<li class="fragment">Install Bower<pre class="fullwidth"><code>npm install -g bower</code></pre></li>
-						<li class="fragment">Run MongoDB<pre class="fullwidth"><code>mongod</code></pre></li>
+						<li class="fragment">Install Homebrew<pre class="fullwidth" style="margin:10px auto;"><code>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></pre></li>
+						<li class="fragment">Install NodeJS<pre class="fullwidth" style="margin:10px auto;"><code>brew install node</code></pre></li>
+						<li class="fragment">Install MongoDB<pre class="fullwidth" style="margin:10px auto;"><code>brew install mongodb</code></pre></li>
+						<li class="fragment">Install GruntCLI<pre class="fullwidth" style="margin:10px auto;"><code>npm install -g grunt-cli</code></pre></li>
+						<li class="fragment">Install Bower<pre class="fullwidth" style="margin:10px auto;"><code>npm install -g bower</code></pre></li>
+						<li class="fragment">Install Compass<pre class="fullwidth" style="margin:10px auto;"><code>gem install compass</code></pre></li>
+						<li class="fragment">Run MongoDB<pre class="fullwidth" style="margin:10px auto;"><code>mongod</code></pre></li>
 					</ul></small>
 				</section>
 
@@ -330,6 +331,16 @@ node index.js</code></pre>
 						</div>
 					</section>
 					<section>
+						<p>Remove <strong><code>controllerAs</code></strong> statements</p>
+						<p>These are only needed for nested views.</p>
+						<pre><strong>app/app.js</strong><code data-trim>
+.when('/movies', {
+  templateUrl: 'views/movies.html',
+  controller: 'MoviesCtrl',
+})
+						</code></pre>
+					</section>
+					<section>
 						<h3>Create a table list of Movies</h3>
 						<pre class="fragment">app/views/movies.html<code>&lt;table class=&quot;table table-striped&quot;&gt;
   &lt;thead&gt;
@@ -408,10 +419,7 @@ angular
 					<section>
 						<h3>Query the list of movies</h3>
 						<pre class="fragment"><strong>app/controllers/movies.js</strong><code data-trim>
-.controller('MoviesCtrl', function (
-  $scope,
-  Movie
-) {
+.controller('MoviesCtrl', function ($scope, Movie) {
   $scope.movies = Movie.getList().$object;
 });
 						</code></pre>
@@ -426,26 +434,44 @@ yo angular:route movie-edit --uri=movie/:id/edit
 						</code></pre>
 					</section>
 					<section>
+						<p>Remove <strong><code>controllerAs</code></strong> statements</p>
+						<p>These are only needed for nested views.</p>
+						<pre><strong>app/app.js</strong><code data-trim>
+.when('/create/movie', {
+  templateUrl: 'views/movie-add.html',
+  controller: 'MovieAddCtrl'
+})
+.when('/movie/:id', {
+  templateUrl: 'views/movie-view.html',
+  controller: 'MovieViewCtrl'
+})
+.when('/movie/:id/delete', {
+  templateUrl: 'views/movie-delete.html',
+  controller: 'MovieDeleteCtrl'
+})
+.when('/movie/:id/edit', {
+  templateUrl: 'views/movie-edit.html',
+  controller: 'MovieEditCtrl'
+})
+						</code></pre>
+					</section>
+					<section>
 						<h3>CREATE</h3>
 						<pre class="fragment">app/views/movie-add.html<small class="fullwidth"><code data-trim>
 <form role="form">
   <div class="form-group">
     <label for="title" class="control-label">Title</label>
-    <input type="text" ng-model="movie.title" class="form-control" id="title" placeholder="Enter the movie title"/>
+    <input type="text" ng-model="movie.title" class="form-control" id="title" placeholder="Enter the movie title">
   </div>
   <div class="form-group">
     <label for="title" class="control-label">URL</label>
-    <input type="text" ng-model="movie.url" class="form-control" id="title" placeholder="Enter the YouTube URL"/>
+    <input type="text" ng-model="movie.url" class="form-control" id="title" placeholder="Enter the YouTube URL">
   </div>
-  <input type="submit" class="btn btn-primary" ng-click="saveMovie()" value="Save"/>
+  <input type="submit" class="btn btn-primary" ng-click="saveMovie()" value="Save">
 </form>
 						</code></small></pre>
 						<pre class="fragment">app/scripts/controllers/movie-add.js<code data-trim>
-.controller('MovieAddCtrl', function (
-  $scope,
-  Movie,
-  $location
-) {
+.controller('MovieAddCtrl', function ($scope, Movie, $location) {
   $scope.movie = {};
   $scope.saveMovie = function() {
     Movie.post($scope.movie).then(function() {
@@ -461,7 +487,7 @@ yo angular:route movie-edit --uri=movie/:id/edit
 <h3>{{ movie.title }}</h3>
 <p>{{ movie.url }}</p>
 						</code></pre>
-						<pre class="fragment">app/scripts/controllers/movie-add.js<code data-trim>
+						<pre class="fragment">app/scripts/controllers/movie-view.js<code data-trim>
 .controller('MovieViewCtrl', function (
   $scope,
   $routeParams,
