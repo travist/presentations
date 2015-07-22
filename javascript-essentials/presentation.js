@@ -28,14 +28,12 @@
 
 
 
-
 /**
  * Patterns are just as important as Syntax.
  *
  *  - http://bit.ly/1de5qfT
  *  - http://bit.ly/1atTe8t
  */
-
 
 
 
@@ -131,6 +129,7 @@
 
 
 
+
 /**
  * Understanding 'this'
  *
@@ -166,6 +165,8 @@
 
 
 
+
+
 /**
  * Object Oriented JavaScript
  *
@@ -176,6 +177,21 @@
  *  - You can create jQuery plugins using jQuery.fn and point to your class.
  *  - "Module Classes" combine Module pattern with OOP pattern.
  */
+
+var Person = (function() {
+    var numPersons = 0;
+
+    var Person = function() {
+
+    };
+
+    Person.findOne = function() {
+
+    };
+
+    return Person;
+})();
+
 
 
 

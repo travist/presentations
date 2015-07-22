@@ -146,7 +146,7 @@ About to write to /Users/travistidwell/Documents/projects/meanapp/server/package
 						<pre class="fullwidth fragment"><code data-trim>
 							npm install --save express</code><code class="fragment" data-trim>
 npm install --save mongoose</code><code class="fragment" data-trim>
-npm install --save node-restful</code><code class="fragment" data-trim>
+npm install --save resourcejs</code><code class="fragment" data-trim>
 npm install --save method-override</code><code class="fragment" data-trim>
 npm install --save body-parser</code><code class="fragment" data-trim>
 npm install --save lodash</code></pre>
@@ -233,8 +233,8 @@ var MovieSchema = new mongoose.Schema({</code><code class="fragment">  title: {
     required: true
   }
 });</code><code class="fragment">
-// Export the model schema.
-module.exports = MovieSchema;</code></pre>
+// Export the model.
+module.exports = mongoose.model('movie', MovieSchema);</code></pre>
 					</section>
 					<section>
 						<h3>Index of Models</h3>
@@ -257,15 +257,10 @@ mongoose.connection.once('open', function() {
 					<section>
 						<h3>Creating a Controller</h3>
 						<pre class="fragment"><strong>New file @ server/controllers/MovieController.js</strong><code class="fragment">
-var restful = require('node-restful');</code><code class="fragment">
+var Resource = require('resourcejs');</code><code class="fragment">
 module.exports = function(app, route) {</code><code class="fragment">
-  // Setup the controller for REST.
-  var rest = restful.model(
-    'movie',
-    app.models.movie
-  ).methods(['get', 'put', 'post', 'delete']);</code><code class="fragment">
-  // Register this endpoint with the application.
-  rest.register(app, route);</code><code class="fragment">
+  // Setup the controller for REST;
+  Resource(app, '', route, app.models.movie).rest();</code><code class="fragment">
   // Return middleware.
   return function(req, res, next) {
     next();
@@ -294,7 +289,7 @@ var routes = require('./routes');</code><code class="fragment">_.each(routes, fu
 					</section>
 					<section>
 						<h3>Check your code</h3>
-						<p><a href="https://github.com/travist/meanapp/tree/master/server">https://github.com/travist/meanapp/tree/master/server</a></p>
+						<p><a href="https://github.com/travist/meanapp/tree/master/server">https://github.com/travist/meanapp/tree/resourcejs/server</a></p>
 						<h3 class="fragment">Run the code</h3>
 						<pre class="fragment"><code>cd server
 node index.js</code></pre>
@@ -458,7 +453,7 @@ yo angular:route movie-edit --uri=movie/:id/edit
 <h3>{{ movie.title }}</h3>
 <p>{{ movie.url }}</p>
 						</code></pre>
-						<pre class="fragment">app/scripts/controllers/movie-view.js<code data-trim>
+						<pre class="fragment">app/scripts/controllers/movie-add.js<code data-trim>
 .controller('MovieViewCtrl', function (
   $scope,
   $routeParams,
