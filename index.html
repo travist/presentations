@@ -38,6 +38,8 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+		<link rel="stylesheet" href="css/custom.css">
 	</head>
 
 	<body>
@@ -51,13 +53,19 @@
 					<small>
 						<ul>
 							<li>by <a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+							<li>CTO @ <a href="https://form.io">https://form.io</a></li>
 							<li><a href="http://www.travistidwell.com">http://travistidwell.com</a></li>
 							<li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
 							<li><a ref="https://github.com/travist">https://github.com/travist</a></li>
 						</ul>
 					</small>
 				</section>
-
+				<section>
+					<img class="trans-image" style="height: 10em; margin-top: -1em;" src="images/formio-tree.png" /><br/>
+					<img class="trans-image" style="width: 10em; margin-top: -0.4em;" src="images/formio-logo-full.png" />
+					<p style="margin-top: -0.4em;"><a target="_blank" href="https://form.io">https://form.io</a></p>
+					<p style="color:#ddd;">&lt;<span style="color: #127abe">form</span>.<span style="color:#6eb246">io</span>&gt; provides developers an easy drag & drop interface that creates both forms and the REST API's in one easy step!</p>
+				</section>
 				<section>
 					<h2>Presentation Materials</h2>
 					<p>
@@ -271,7 +279,7 @@ module.exports = function(app, route) {</code><code class="fragment">
 						<h3>Creating the routes</h3>
 						<pre class="fragment"><strong>New file @ server/routes.js</strong><code class="fragment">
 module.exports = {
-  '/movie': require('./controllers/MovieController')
+  'movie': require('./controllers/MovieController')
 };</code></pre>
 						<h3 class="fragment">Registering the routes</h3>
 						<pre class="fragment"><strong>server/index.js</strong><code class="fragment">
