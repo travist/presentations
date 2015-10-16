@@ -11,14 +11,16 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #1c1e20;
-  background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, #1c1e20));
-  background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: -o-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: -ms-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background: radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
-  background-color: #2b2b2b; }
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0985ce+0,333333+100 */
+  background: #0985ce; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #0985ce 0%, #333333 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#0985ce), color-stop(100%,#333333)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, #0985ce 0%,#333333 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, #0985ce 0%,#333333 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, #0985ce 0%,#333333 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center, #0985ce 0%,#333333 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0985ce', endColorstr='#333333',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
 
 .reveal {
   font-family: 'Lato', sans-serif;

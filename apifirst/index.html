@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The rise of API fist applications</title>
+		<meta name="description" content="The rise of API fist applications">
+		<meta name="author" content="Travis Tidwell">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link href='fonts/comfortaa.css' rel='stylesheet' type='text/css'>
+
+		<style type="text/css">
+			.reveal div.listsmall {
+				margin-left: 10px;
+				display: inline-block;
+				font-size: 0.6em;
+			}
+			.reveal .fullwidth, .reveal .fullwidth code {
+				width: 100%;
+			}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="images/background-7.jpg">
+					<h3>The rise of API first applications</h3>
+					<small>
+						<ul>
+							<li>by <a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+							<li>CTO | <a href="https://form.io">https://form.io</a></li>
+							<li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
+							<li><a href="https://github.com/travist">https://github.com/travist</a></li>
+						</ul>
+					</small>
+				</section>
+				<section data-background-video="images/presentation-intro.mp4" data-background-video-loop></section>
+				<section data-background="images/background-1.jpg">
+					<h2>Presentation Materials</h2>
+					<p>
+						<ul>
+							<li><a href="http://travistidwell.com/presentations/mean">http://travistidwell.com/presentations/apifirst</a></li>
+							<li><a href="https://www.youtube.com/user/travist349">https://www.youtube.com/user/travist349</a></li>
+							<li><a href="http://travistidwell.com">http://travistidwell.com</a></li>
+						</ul>
+					</p>
+				</section>
+				<section data-background="images/background-4.jpg">
+					<strong>A paradigm shift is occurring...</strong>
+				</section>
+				<section data-background="images/background-6.jpg">
+					<p><img class="trans-image" width="48%" style="float:left;margin-right:1em;" src="images/iot-trend.png" /></p>
+					<p><img class="trans-image" width="48%" style="float:left;" src="images/angular-trend.png" /></p>
+					<p><img class="trans-image" width="48%" style="float:left;margin-right:1em;" src="images/mean-trend.png" /></p>
+					<p><img class="trans-image" width="48%" style="float:left;" src="images/rest-trend.png" /></p>
+				</section>
+				<section data-background="images/background-9.jpg">
+					<strong>The web is seeing a new "inflection point"</strong>
+					<img style="height:15em;" src="images/inflection-point.gif" />
+				</section>
+				<section>
+					<strong>The web has seen 3 inflection points</strong>
+					<p class="fragment"><em>we have given them version numbers</em></p>
+				</section>
+				<section>
+					<h2>Web 1.0</h2>
+					<small>The static web</small><br/>
+					<img class="trans-image" src="images/web1.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>The dynamic web</small><br/>
+					<img class="trans-image" style="width: 20em;" src="images/web2.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>The rise of the CMS</small><br/>
+					<img class="trans-image" style="width: 20em;" src="images/cms-web2.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>The smart phone was introduced</small>
+					<img class="trans-image" style="width: 20em;" src="images/mobile-web2.svg" />
+				</section>
+				<section>
+					<h2>"Mobile First"</h2>
+					<img class="trans-image" src="images/mobile-first.png" />
+				</section>
+				<section>
+					<h2>Mobile First</h2>
+					<small>The server still provides the interface.</small>
+					<img class="trans-image" src="images/mobilefirst-web2.svg" />
+				</section>
+				<section>
+					<strong>Then this started happening</strong>
+					<img class="trans-image" style="height:13em;" src="images/mobilefirst-devices.svg" />
+				</section>
+				<section>
+					<h2>Web 3.0</h2>
+					<small>The rise of the machines</small><br/>
+				</section>
+				<section>
+					<h2>Developer Mandates</h2>
+					<p>Applications must be made differently.</p>
+					<em class="fragment">"Mobile first" is no longer good enough</em>
+				</section>
+				<section>
+					<h2>"API first" Development</h2>
+					<ul>
+						<li class="fragment">Build your REST platform first.</li>
+						<li class="fragment">REST platform must be "stateless"</li>
+						<li class="fragment">Your first "app" should be the API test.</li>
+						<li class="fragment">Build your app or website on top of those API's.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Why "API-first"?</h3>
+					<p class="fragment" style="font-size:0.9em;">Forces us to develop <u>websites</u> like <u>web applications</u>.</p>
+				</section>
+				<section>
+					<h3>Next generation web application</h3>
+					<img class="trans-image" style="height: 15em;" src="images/angular-web3.svg" />
+				</section>
+				<section>
+					<h3>Web 3.0 App Requests</h3>
+					<img class="trans-image" src="images/web3-requests.svg" />
+				</section>
+				<section>
+					<p><strong>How is this better?</strong></p>
+					<img class="trans-image" src="images/web3-multiple-request.svg" />
+				</section>
+				<section>
+					<h3>Web 2.0 Request</h3>
+					<img class="trans-image" style="height: 15em;" src="images/webrequest.svg" />
+				</section>
+				<section>
+					<h3>Web 3.0 Request</h3>
+					<img class="trans-image" style="height: 15em;" src="images/webrequest-web3.svg" />
+				</section>
+				<section>
+					<h3>"Stateless" REST API</h3>
+					<p><small>Use tokens (JWT) to maintain state in client.</small></p>
+					<img class="trans-image" style="height: 13em;" src="images/stateless-api.svg" />
+				</section>
+				<section>
+					<h3>Front end architectures</h3>
+				</section>
+				<section>
+					<h3>Frameworks are your friend</h3>
+					<img class="trans-image" src="images/front-frameworks.svg" />
+				</section>
+				<section>
+					<h3>Single Page Application</h3>
+					<img class="trans-image" src="images/spa-home.svg" />
+				</section>
+				<section>
+					<h3>Single Page Application</h3>
+					<img class="trans-image" src="images/spa-about.svg" />
+				</section>
+				<section>
+					<p style="margin-top: -0.5em;">Multi-Service Applications</p>
+					<img class="trans-image" style="height: 14em;" src="images/spa-multiservice.svg" />
+				</section>
+				<section>
+					<p><strong>Helping us go from this...</strong></p>
+					<img class="trans-image" style="height: 14em;" src="images/legacyapps.svg"/>
+				</section>
+				<section>
+					<p><strong>To this...</strong></p>
+					<p style="margin-top: -0.5em;">Micro-service architecture</p>
+					<img class="trans-image" style="height: 14em;" src="images/microserviceapp.svg"/>
+				</section>
+				<section>
+					<strong>Where is this going?</strong>
+				</section>
+				<section>
+					<img class="trans-image" style="height: 18em;" src="images/deployable-apps.svg"/>
+				</section>
+				<section>
+					<p>A community of "application sharing"</p>
+					<img class="trans-image" style="height: 16em;" src="images/Octocat.png"/>
+				</section>
+				<section>
+					<h3>THANK YOU!</h3>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
