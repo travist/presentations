@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Dynamic JSON Powered Forms in Angular.js and React.js</title>
+		<meta name="description" content="A presentation about dynamic JSON powered forms using Angular.js and React.js">
+		<meta name="author" content="Travis Tidwell">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body ng-app="jsonForms">
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3>DYNAMIC JSON POWERED FORMS</h3>
+					<p>in</p>
+					<h2>Angular.js and React.js</h2>
+					<small>
+						<ul>
+							<li>by <a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+							<li>CTO | <a href="https://form.io">https://form.io</a></li>
+							<li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
+							<li><a href="https://github.com/travist">https://github.com/travist</a></li>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<h3>Follow along @</h3>
+					<p>http://travistidwell.com/presentations/jsonforms</p>
+				</section>
+				<section style="width:1300px; margin-left: -200px;">
+					<h3>About <img class="trans-image inline-logo" src="images/formio-logo-lg.png" /></h3>
+					<p><img class="trans-image" style="width: 100%;" src='images/formio-overview.png' /></p>
+				</section>
+				<section>
+					<h3>The constant evolution of Webforms</h3>
+				</section>
+				<section>
+					<h3>Webforms 1.0</h3>
+					<p>circa 1995 - 2000</p>
+				</section>
+				<section>
+					<h3>Webforms 1.0</h3>
+					<p>Built within static HTML pages.</p>
+					<iframe width="100%" height="500" src="//jsfiddle.net/travistidwell/e3uh9xrd/1/embedded/html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+				</section>
+				<section>
+					<h3>Webforms 1.0</h3>
+					<img class="trans-image" src="images/webform1.png" />
+				</section>
+				<section>
+					<p>The rise of backend templating languages</p>
+					<img class="trans-image" src="images/webform1php.png" />
+				</section>
+				<section>
+					<h3>Webforms 2.0</h3>
+					<p>circa 2000 - today</h3>
+				</section>
+				<section>
+					<h3>Webforms 2.0</h3>
+					<p>The rise of frameworks</p>
+					<img class="trans-image" style="height: 12em;" src="images/webform2.png" />
+				</section>
+				<section>
+					<h3>Backend Form Structures</h3>
+					<p>Like <a href="https://www.drupal.org/node/2117411">Drupal's Form API</a></p>
+					<pre><code data-trim data-noescape>
+/**
+ * Returns the render array for the form.
+ */
+function my_module_my_form($form, &$form_state) {
+  $form['name'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Name'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['name']['first'] = array(
+    '#type' => 'textfield',
+    '#title' => t('First name'),
+    '#required' => TRUE,
+    '#default_value' => "First name",
+    '#description' => "Please enter your first name.",
+    '#size' => 20,
+    '#maxlength' => 20,
+  );
+  $form['name']['last'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Last name'),
+    '#required' => TRUE,
+  );
+  $form['year_of_birth'] = array(
+    '#type' => 'textfield',
+    '#title' => "Year of birth",
+    '#description' => 'Format is "YYYY"',
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Life was good</h3>
+				</section>
+				<section>
+					<h3>Then this happened</h3>
+					<img src="images/apple-original-iphone.jpg" />
+				</section>
+				<section>
+					<h3>"Mobile First"</h3>
+					<img class="trans-image" src="images/mobile-first.png" />
+				</section>
+				<section>
+					<h3>Mobile First</h3>
+					<p>The server still provides the forms.</p>
+					<img class="trans-image" style="height: 12em;" src="images/webform-mobile-first.png" />
+				</section>
+				<section>
+					<h3>Life was good</h3>
+				</section>
+				<section>
+					<h3>Then this happened</h3>
+					<img class="trans-image" src="images/webform-devices.png" />
+				</section>
+				<section>
+					<h3>Webforms 3.0</h3>
+					<p>circa - The future</p>
+				</section>
+				<section>
+					<h3>Developer Mandates</h3>
+					<p>Applications must be made differently</p>
+					<p class="fragment"><em>"Mobile first" is no longer good enough</em></p>
+				</section>
+				<section>
+					<h2>"API first" Development</h2>
+					<ul>
+						<li class="fragment">Build your REST platform first.</li>
+						<li class="fragment">REST platform must be "stateless"</li>
+						<li class="fragment">Your first "app" should be the API test.</li>
+						<li class="fragment">Application must ONLY use those API's. Including Forms.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Why "API first"?</h3>
+					<p class="fragment">Forces us to develop <u>websites</u> like <u>web applications</u>.</p>
+				</section>
+				<section>
+					<h3>Platforms that are "API-first"</h3>
+					<img class="trans-image" src="images/front-frameworks.png" />
+				</section>
+				<section>
+					<h3>Problem</h3>
+					<p>This makes webforms HARD!</p>
+				</section>
+				<section>
+					<h3>Dynamic JSON Powered Forms</h3>
+					<p>The next generation of webforms.</p>
+				</section>
+				<section>
+					<h3>Dynamic Form Rendering</h3>
+					<ul>
+						<li class="fragment">Uses a JSON schema to define a form.</li>
+						<li class="fragment">That schema is provided to the application via API.</li>
+						<li class="fragment">A frontend JavaScript library dynamically renders the form on the page.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>How it works</h3>
+					<p>Uses a JSON schema to define a form.</p>
+					<pre><code data-trim>{
+  components: [
+    {
+      type: 'textfield',
+      label: 'First Name',
+      key: 'firstName',
+      placeholder: 'Enter your first name.',
+      defaultValue: 'Travis',
+      validate: {
+        maxLength: '',
+        minLength: '',
+        required:true
+      }
+    },
+    {
+      type: 'textfield',
+      label: 'Last Name',
+      key: 'lastName',
+      placeholder: 'Enter your last name.',
+      defaultValue: 'Tidwell',
+      validate: {
+        maxLength: '',
+        minLength: '',
+        required: true
+      }
+    },
+    {
+      type: 'button',
+      label: 'Submit',
+      key: 'submit',
+      action: 'submit'
+    }
+  ]
+}</code></pre>
+				</section>
+				<section>
+					<h3>Dynamic Form Rendering</h3>
+					<p>The schema is then rendered dynamically using JavaScript</p>
+					<iframe width="100%" height="300" src="//jsfiddle.net/travistidwell/3ox713fo/5/embedded/html,js,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+					<strong class="text-center">https://jsfiddle.net/travistidwell/3ox713fo/5/</strong>
+				</section>
+				<section>
+					<blockquote>Ok, this is great... but now I have to build that JSON schema, which is a pain.</blockquote> - Everyone
+				</section>
+				<section>
+					<h3><img src="images/formio-logo-lg.png" class="inline-logo" /> Form Builder</h3>
+					<small style="margin-top: -0.8em;">Creates the JSON schema for the form.</small>
+					<img style="margin-top: -0.5em;" src="images/formio-form-builder.png" />
+				</section>
+				<section>
+					<h3><img src="images/formio-logo-lg.png" class="inline-logo" /> Automatic REST API</h3>
+					<small>Constructs a REST api for both the Form JSON schema and the submission data handling.</small>
+					<img src="images/formio-form-api.png" />
+				</section>
+				<section>
+					<h3>Dynamic Form Rendering via API</h3>
+					<p>Loads the schema via REST API</p>
+					<iframe width="100%" height="300" src="//jsfiddle.net/travistidwell/Lhc2rdoy/1/embedded/html,js,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+					<strong class="text-center">https://jsfiddle.net/travistidwell/Lhc2rdoy/1/</strong>
+				</section>
+				<section>
+					<h3>Advanced Features</h3>
+					<p>Data Binding</p>
+					<iframe width="100%" height="300" src="//jsfiddle.net/travistidwell/u00fdhop/5/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+					<strong class="text-center">https://jsfiddle.net/travistidwell/u00fdhop/5/</strong>
+				</section>
+				<section>
+					<h3>Advanced Features</h3>
+					<p>Submission Handling</p>
+					<iframe width="100%" height="300" src="//jsfiddle.net/travistidwell/z39b8074/2/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+					<strong class="text-center">https://jsfiddle.net/travistidwell/z39b8074/2/</strong>
+				</section>
+				<section>
+					<h3>Form Embedding</h3>
+					<img class="trans-image" style="height:15em;" src="images/formio-screens.png" />
+				</section>
+				<section>
+					<h4>There are two ways to embed a dynamic form.</h4>
+					<ul>
+						<li>iFrame Embedding</li>
+						<li>Component Embedding</li>
+					</ul>
+				</section>
+				<section>
+					<h3>iFrame Embedding</h3>
+					<div class="row">
+						<div class="col-sm-6" style="border-right: 2px solid #eee; padding: 0 10px;">
+							<h4>The goods</h4>
+							<ul style="height: 13em;">
+								<li class="fragment">Easy to embed. Usually a single line of code.</li>
+								<li class="fragment">Sandboxed functionality</li>
+							</ul>
+						</div>
+						<div class="col-sm-6" style="padding: 0 10px;">
+							<h4>The bads</h4>
+							<ul style="height: 13em;">
+								<li class="fragment">No dynamic resizing</li>
+								<li class="fragment">Cannot modify CSS</li>
+								<li class="fragment">No JavaScript control</li>
+								<li class="fragment">Some browsers block functionality</li>
+								<li class="fragment">Nested navigation</li>
+								<li class="fragment">Slow Loading</li>
+								<li class="fragment">Cross Origin Nightmares</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Component Embedding</h3>
+					<div class="row">
+						<div class="col-sm-6" style="border-right: 2px solid #eee; padding: 0 10px;">
+							<h4>The goods</h4>
+							<ul style="height: 13em;">
+								<li class="fragment">Direct DOM injection</li>
+								<li class="fragment">Full CSS Control</li>
+								<li class="fragment">Full JavaScript Control</li>
+								<li class="fragment">Much faster loading</li>
+								<li class="fragment">Direct API access</li>
+							</ul>
+						</div>
+						<div class="col-sm-6" style="padding: 0 10px;">
+							<h4>The bads</h4>
+							<ul style="height: 13em;">
+								<li class="fragment">Harder to embed</li>
+								<li class="fragment">Requires dependency alignment</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3><img src="images/formio-logo-lg.png" class="inline-logo" /> Component Embedding</h3>
+					<h5>for Angular.js</h5>
+					<pre style="width:100%;font-size:0.4em;" class="fragment"><code data-trim>
+&lt;script src="https://rawgit.com/formio/ngFormio/develop/dist/formio-full.js"&gt;&lt;/script&gt;
+					</code></pre>
+					<pre style="width:100%;font-size:0.4em;" class="fragment"><code data-trim>
+app.module('myApp', ['formio']);
+					</code></pre>
+					<pre style="width:100%;font-size:0.4em;" class="fragment"><code data-trim>
+&lt;formio src="'https://examples.form.io/simple'"&gt;&lt;/formio&gt;
+					</code></pre>
+				</section>
+				<section>
+					<h3><img src="images/formio-logo-lg.png" class="inline-logo" /> Component Embedding</h3>
+					<h5>for React.js</h5>
+					<pre style="width:100%;font-size:0.4em;" class="fragment"><code data-trim>
+&lt;script src="https://rawgit.com/formio/ngFormio/develop/dist/formio-full.js"&gt;&lt;/script&gt;
+&lt;script src="https://rawgit.com/formio/react-formio/master/dist/build/Formio.min.js"&gt;&lt;/script&gt;
+					</code></pre>
+					<pre style="width:100%;font-size:0.4em;" class="fragment"><code data-trim>
+<script type="text/javascript">
+ReactDOM.render(
+  <Formio src="https://example.formio/example" />
+  , document.getElementById('example')
+);
+</script>
+					</code></pre>
+				</section>
+				<section>
+					<h3>A Dynamic JSON Powered Form</h3>
+					<p>using <img src="images/formio-logo-lg.png" class="inline-logo" /> </p>
+					<div style="height:12em">
+						<formio src="'https://examples.form.io/contact'"></formio>
+					</div>
+				</section>
+				<section>
+					<h3>Thank you!</h3>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="https://rawgit.com/formio/ngFormio/develop/dist/formio-full.js"></script>
+		<script>
+			angular.module('jsonForms', ['formio']);
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
