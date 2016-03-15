@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Generate, Build, and Deploy</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/main.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Generate, Build, and Deploy</h2>
+					<h4>with Yeoman, Form.io, Gulp, and Amazon S3</h4>
+					<small>
+						<ul>
+							<li>by <a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+							<li>CTO | <a href="https://form.io">https://form.io</a></li>
+							<li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
+							<li><a href="https://github.com/travist">https://github.com/travist</a></li>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<h3>Follow along @</h3>
+					<p><a href="http://bit.ly/1TGDVUQ">http://bit.ly/1TGDVUQ</a></p>
+				</section>
+				<section>
+					<h3>About <img class="trans-image inline-logo" src="images/formio-logo-lg.png" /></h3>
+					<p><img class="trans-image" style="width: 100%;" src='images/formio-overview.png' /></p>
+				</section>
+				<section>
+					<h3>Let's build something amazing!</h3>
+					<img src="images/group-selfie.jpg" />
+					<a href="https://github.com/travist/groupselfie">https://github.com/travist/groupselfie</a>
+				</section>
+				<section>
+					<h3>Getting started with Yeoman</h3>
+					<pre style="text-align: center;"><code>npm install -g yo</code></pre>
+					<img class="trans-image" style="height: 12em;" src="images/yeoman-home.png" />
+				</section>
+				<section>
+					<h3>Angular.js + Gulp Yeoman Generator</h3>
+					<pre style="text-align: center;"><a href="https://github.com/Swiip/generator-gulp-angular">https://github.com/Swiip/generator-gulp-angular</a></pre>
+					<img class="trans-image" style="height: 13em;" src="images/generator-gulp-angular.png" />
+				</section>
+				<section>
+					<h3>Installing and Running Generator</h3>
+					<pre><code data-trim>
+npm install -g gulp bower generator-gulp-angular
+mkdir myapp && cd $_
+yo gulp-angular
+					</code></pre>
+					<img class="trans-image" src="images/gulp-angular-yeoman.png" />
+				</section>
+				<section>
+					<h3>Serving Application</h3>
+					<pre style="text-align: center;"><code>gulp serve</code></pre>
+					<img class="trans-image" src="images/running-app.png" />
+				</section>
+				<section>
+					<h3>Upgrade to Angular 1.5</h3>
+					<pre><code data-trim>
+bower install --save angular
+bower install --save angular-sanitize
+bower install --save angular-messages
+bower install --save angular-aria</code></pre>
+				</section>
+				<section>
+					<h3>Install Bootswatch, Font Awesome, and Form.io</h3>
+					<pre><code data-trim>
+bower install --save bootswatch
+bower install --save font-awesome
+bower install --save ng-formio
+bower install --save ng-formio-helper</code></pre>
+				</section>
+				<section>
+					<h3>Add dependencies</h3>
+					<pre>/src/app/index.module.js<code data-trim>
+(function() {
+  'use strict';
+  angular.module('groupselfie', [
+    'ngSanitize',
+    'ngMessages',
+    'ngAria',
+    'ui.router',
+    'ui.bootstrap',
+    'toastr',
+    'formio',
+    'ngFormioHelper'
+  ]);
+})();
+					</code></pre>
+				</section>
+				<section>
+					<h3>Changes: Part 1</h3>
+					<p>Delete "overrides" from <strong>bower.json</strong> file</p>
+					<img class="trans-image" src="images/bowerjson.png" />
+				</section>
+				<section>
+					<h3>Changes: Part 2</h3>
+					<p>Don't exclude bootstrap.js</p>
+					<pre>/gulp/conf.js<code data-trim>
+exports.wiredep = {
+  exclude: [/\/bootstrap-sass\/.*\.js/, /\/bootstrap\.css/],
+  directory: 'bower_components'
+};
+					</code></pre>
+				</section>
+				<section>
+					<h3>Changes: Part 3</h3>
+					<p>Change <strong>/app/index.scss</strong> to the following</p>
+					<img class="trans-image" src="images/indexscss.png" />
+				</section>
+				<section>
+					<h3>You can modify variables with the following.</h3>
+					<img class="trans-image" src="images/modifyindex.png" />
+				</section>
+				<section>
+					<h3>Changes: Part 4</h3>
+					<p>Modify the fonts gulp task.</p>
+					<pre>/gulp/build.js<code data-trim>
+gulp.task('fonts', function () {
+  return gulp.src([
+    'bower_components/bootstrap-sass/assets/fonts/**/*',
+    'bower_components/font-awesome/fonts/*',
+  ])
+  .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
+  .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
+});
+					</code></pre>
+				</section>
+				<section>
+					<h3>Changes: Part 5</h3>
+					<p>Add the following routes to <strong>gulp/server.js</strong></p>
+					<img class="trans-image" src="images/routes.png" />
+				</section>
+				<section>
+					<h3>Changes: Part 6</h3>
+					<p>Add the navbar in <strong>index.html</strong></p>
+					<small>and add "container" to ui-view</small>
+					<img class="trans-image" src="images/navbarindex.png" />
+				</section>
+				<section>
+					<h3>Move views to "views" folder.</h3>
+					<small>including <strong>main.html</strong></small>
+					<img class="trans-image" src="images/views.png" />
+				</section>
+				<section>
+					<h3>Create a gulp task to move "views" to dist.</h3>
+					<pre>/gulp/build.js<code data-trim>
+gulp.task('views', function() {
+  return gulp.src([
+    path.join(conf.paths.src, '/views/**/*')
+  ]).pipe(gulp.dest(path.join(conf.paths.dist, '/views/')));
+});
+
+gulp.task('build', ['html', 'fonts', 'views', 'other']);
+					</code></pre>
+				</section>
+				<section>
+					<h3>User Authentication</h3>
+					<p>using Form.io</p>
+				</section>
+				<section>
+					<h3>Create a Form.io project</h3>
+					<small>Using the <strong>Default</strong> template</small>
+					<img class="trans-image" src="images/formioproject.png" />
+				</section>
+				<section>
+					<h3>Create "auth" page.</h3>
+					<pre>/src/views/user/auth.html</pre>
+					<img class="trans-image" src="images/authpage.png" />
+				</section>
+				<section>
+					<h3>Create "login" page</h3>
+					<pre>/src/views/user/login.html</pre>
+					<img class="trans-image" src="images/loginpage.png" />
+				</section>
+				<section>
+					<h3>Create "register" page</h3>
+					<pre>/src/views/user/register.html</pre>
+					<img class="trans-image" src="images/registerpage.png" />
+				</section>
+				<section>
+					<h3>Register the FormioAuth provider</h3>
+					<pre>/src/app/index.config.js</pre>
+					<img class="trans-image" src="images/formioauthregister.png" />
+				</section>
+				<section>
+					<h3>Initialize the FormioAuth provider</h3>
+					<pre>/src/app/index.run.js<code data-trim>
+(function() {
+  'use strict';
+
+  angular.module('groupselfie').run(runBlock);
+
+  /** @ngInject */
+  function runBlock(FormioAuth) {
+    FormioAuth.init();
+  }
+})();
+					</code></pre>
+				</section>
+				<section>
+					<h3>You now have user Authentication!</h3>
+					<img class="trans-image" src="images/loginregister.png" />
+				</section>
+				<section>
+					<h3>Amazon S3</h3>
+					<small>@ https://aws.amazon.com</small>
+				</section>
+				<section>
+					<h3>We will create 2 buckets</h3>
+					<ul>
+						<li><strong>groupselfie.us</strong> - Will host our application.</li>
+						<li><strong>files.groupselfie.us</strong> - Will host our files.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Go to Identity & Access Management (IAM)</h3>
+					<img class="trans-image" src="images/iam.png" />
+				</section>
+				<section>
+					<h3>Go to IAM Users section</h3>
+					<img class="trans-image" src="images/iamusers.png" />
+				</section>
+				<section>
+					<h3>Create a user for S3</h3>
+					<img class="trans-iamge" src="images/groupselfiefiles.png" />
+				</section>
+				<section>
+					<h3>Take note of the security credentials</h3>
+					<img class="trans-image" src="images/groupselfiefilescred.png" />
+				</section>
+				<section>
+					<h3>Attach Policy to this user</h3>
+					<img class="trans-image" src="images/attachpolicy.png" />
+				</section>
+				<section>
+					<h3>Give this user full S3 Access</h3>
+					<img class="trans-image" src="images/fulls3access.png" />
+				</section>
+				<section>
+					<h3>Create a user for uploading</h3>
+					<img class="trans-iamge" src="images/createuser.png" />
+				</section>
+				<section>
+					<h3>Take note of the security credentials</h3>
+					<img class="trans-image" src="images/creds.png" />
+				</section>
+				<section>
+					<h3>Copy User ARN</h3>
+					<small>Click on this user within Users to get to this page.</small>
+					<img class="trans-image" src="images/iampolicy.png" />
+				</section>
+				<section>
+					<h3>Create application S3 bucket</h3>
+					<p>Note: Your bucket will need to be called something else.</p>
+					<img class="trans-image" src="images/createbucket.png" />
+				</section>
+				<section>
+					<h3>Configure bucket for Static Web Hosting</h3>
+					<img class="trans-image" src="images/staticsite.png" />
+				</section>
+				<section>
+					<h3>Create files S3 bucket</h3>
+					<img class="trans-image" src="images/filesbucket.png" />
+				</section>
+				<section>
+					<h3>Configure properties for files bucket</h3>
+					<img class="trans-image" src="images/fileprops.png" />
+				</section>
+				<section>
+					<h3>Add the following bucket policy.</h3>
+					<small>You must change the ARN & bucket names to match yours.</small>
+					<pre><code data-trim>
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "UploadFile",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::551091399009:user/GroupSelfieUpload"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObjectAcl",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::files.groupselfie.us/*"
+    },
+    {
+      "Sid": "AllowPublicRead",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::files.groupselfie.us/*"
+    },
+    {
+      "Sid": "crossdomainAccess",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::files.groupselfie.us/crossdomain.xml"
+    }
+  ]
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Add CORS Configuration</h3>
+					<img class="trans-image" src="images/addcors.png" />
+				</section>
+				<section>
+					<h3>Add the following CORS</h3>
+					<small>Replace the domain name with yours.</small>
+					<pre><code data-trim>
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <CORSRule>
+    <AllowedOrigin>http://groupselfie.us</AllowedOrigin>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>HEAD</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+    <AllowedHeader>*</AllowedHeader>
+  </CORSRule>
+</CORSConfiguration>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Configure Form.io for S3</h3>
+					<img class="trans-image" src="images/formios3.png" />
+				</section>
+				<section>
+					<h3>Adding Resources</h3>
+				</section>
+				<section>
+					<h3>Create "Group" Resource</h3>
+					<small>within your Form.io project</small>
+					<img class="trans-image" src="images/groupresource.png" style="height:12em;" />
+				</section>
+				<section>
+					<h3>Create "Selfie" Resource</h3>
+					<img class="trans-image" src="images/formioselfie.png" />
+				</section>
+				<section>
+					<h3>Add FormioResourceProvider for "Group"</h3>
+					<pre class="filepath">/src/app/index.config.js</pre>
+					<img class="trans-image" src="images/groupresourcecode.png" style="height:12em;" />
+				</section>
+				<section>
+					<h3>Add FormioResourceProvider for "Selfie"</h3>
+					<pre>/src/index.confg.js</pre>
+					<img class="trans-image" src="images/selfieresource.png" />
+				</section>
+				<section>
+					<h3>Adding the views</h3>
+				</section>
+				<section>
+					<h3>The "main" view</h3>
+					<pre class="filepath">/src/views/main.html</pre>
+					<img class="trans-image" src="images/mainpageview.png" />
+				</section>
+				<section>
+					<h3>The "main" view code</h3>
+					<pre class="filepath">/src/app/index.route.js</pre>
+					<img class="trans-image" src="images/maincode.png" />
+				</section>
+				<section>
+					<h3>Finding groups</h3>
+					<pre class="filepath">/src/views/group/find.html</pre>
+					<img class="trans-image" src="images/groupfindview.png" />
+				</section>
+				<section>
+					<h3>Finding groups code</h3>
+					<pre class="filepath">/src/app/index.route.js</pre>
+					<img class="trans-image" src="images/findgroupcode.png" />
+				</section>
+				<section>
+					<h3>Deployment</h3>
+				</section>
+				<section>
+					<h3>Install Gulp S3</h3>
+					<pre style="text-align: center;"><code data-trim>npm install --save gulp-s3</code></pre>
+				</section>
+				<section>
+					<h3>Add a new Deploy task</h3>
+					<small>which will build before it deploys</small>
+					<pre><code data-trim>
+var s3 = require("gulp-s3");
+gulp.task('deploy', ['build'], function () {
+  return gulp.src('./dist/**/*').pipe(s3(require('./aws.json')));
+});
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create an aws.json file</h3>
+					<pre><code data-trim>
+{
+  "key": "-- THE KEY FOR THE USER THAT HAS FULL S3 ACCESS --",
+  "secret": "-- THE SECRET FOR THE USER THAT HAS FULL S3 ACCESS --",
+  "bucket": "groupselfie.us",
+  "region": "us-east-1"
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Add aws.json to .gitignore</h3>
+					<small>to help keep this information safe</small>
+					<pre>.gitignore<code data-trim>
+aws.json
+node_modules/
+bower_components/
+coverage/
+.sass-cache/
+.idea/
+.tmp/
+dist/
+					</code></pre>
+				</section>
+				<section>
+					<h3>Deploy your app!</h3>
+					<pre style="text-align: center;"><code data-trim>gulp deploy</code></pre>
+					<img class="trans-image" src="images/deploy.png" />
+				</section>
+				<section>
+					<h3>Have Fun!</h3>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
