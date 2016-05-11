@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>JSON Powered forms in Drupal</title>
+		<meta name="description" content="A presentation about dynamic JSON powered forms using Angular.js and React.js">
+		<meta name="author" content="Travis Tidwell">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body ng-app="jsonForms">
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>JSON POWERED FORMS</h2>
+					<h3>in Drupal</h3>
+					<p></p>
+					<small>
+						<ul style="text-align:center;list-style-type: none;">
+							<li>by <a href="http://www.travistidwell.com" target="_blank">Travis Tidwell</a> and <a href="https://github.com/randallknutson" target="_blank">Randall Knutson</a></li>
+							<li><a href="https://form.io" target="_blank">https://form.io</a></li>
+							<li><a href="http://twitter.com/form_io" target="_blank">@form_io</a></li>
+							<li><a href="https://github.com/formio" target="_blank">https://github.com/formio</a></li>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<p><img src="images/HerosJourney.png" class="trans-image" style="height:16em" /></p>
+				</section>
+				<section>
+					<h3>Follow along @</h3>
+					<p>http://bit.ly/1OkWNSE</p>
+				</section>
+				<section>
+					<h3>About <img class="trans-image inline-logo" src="images/formio-logo-lg.png" /></h3>
+					<p><img class="trans-image" style="width: 100%;" src='images/formio-overview.png' /></p>
+				</section>
+				<section>
+					<h4>This is a Headless Drupal talk...</h4>
+					<img src="images/headless-drupal-hot.jpg" style="height: 12em;" />
+					<p class="fragment">...but a different approach</p>
+				</section>
+				<section>
+					<h3>Benefits of a separated architecture</h3>
+				</section>
+				<section>
+					<h3>Benefits of a separated architecture</h3>
+					<h4>Websites now work as web applications</h4>
+					<img src="images/headless-drupal8-angular-web3.png" style="height:12em;" />
+				</section>
+				<section>
+					<h3>Benefits of a separated architecture</h3>
+					<h4>Serve any display or device</h4>
+					<img src="images/drupal8-web3.png" class="trans-image" style="height:12em;" />
+				</section>
+				<section>
+					<h3>Benefits of a separated architecture</h3>
+					<h4>Applications are deployable anywhere</h4>
+					<img src="images/deployments.png" class="trans-image" style="height:12em;" />
+				</section>
+				<section>
+					<img src="images/captain-obvious.jpg" style="height: 14em;" />
+				</section>
+				<section>
+					<h3>But... there's a problem</h3>
+					<p class="fragment">Drupal was not built to work like this.</p>
+				</section>
+				<section>
+					<h3>The source of the problem</h3>
+					<img src="images/php-rendering.png" style="height: 14em;" />
+				</section>
+				<section>
+					<h3>Example: Drupal Form API</h3>
+					<p>Generates a frontend form using backend PHP structures</p>
+					<pre><code data-trim data-noescape>
+/**
+ * Returns the render array for the form.
+ */
+function my_module_my_form($form, &$form_state) {
+  $form['name'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Name'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['name']['first'] = array(
+    '#type' => 'textfield',
+    '#title' => t('First name'),
+    '#required' => TRUE,
+    '#default_value' => "First name",
+    '#description' => "Please enter your first name.",
+    '#size' => 20,
+    '#maxlength' => 20,
+  );
+  $form['name']['last'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Last name'),
+    '#required' => TRUE,
+  );
+  $form['year_of_birth'] = array(
+    '#type' => 'textfield',
+    '#title' => "Year of birth",
+    '#description' => 'Format is "YYYY"',
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Webforms 1.0</h3>
+					<p>circa 1995 - 2000</p>
+					<img class="trans-image" src="images/webform1.png" style="height: 12em;" />
+				</section>
+				<section>
+					<p>The rise of backend templating languages</p>
+					<img class="trans-image" src="images/webform1php.png" />
+				</section>
+				<section>
+					<h3>Webforms 2.0</h3>
+					<p>circa 2000 - today</h3>
+					<img class="trans-image" style="height: 12em;" src="images/webform2.png" />
+				</section>
+				<section>
+					<h3>Life was good</h3>
+				</section>
+				<section>
+					<h3>Then this happened</h3>
+					<img src="images/apple-original-iphone.jpg" />
+				</section>
+				<section>
+					<h3>"Mobile First"</h3>
+					<img class="trans-image" src="images/mobile-first.png" />
+				</section>
+				<section>
+					<h3>Mobile First</h3>
+					<p>The server still provides the forms.</p>
+					<img class="trans-image" style="height: 12em;" src="images/webform-mobile-first.png" />
+				</section>
+				<section>
+					<h3>Life was good</h3>
+				</section>
+				<section>
+					<h3>Then this happened</h3>
+					<img class="trans-image" src="images/webform-devices.png" />
+				</section>
+				<section>
+					<h1>(╯°□°)╯︵ ┻━┻</h1>
+				</section>
+				<section>
+					<h3>We can get the best of both worlds!</h3>
+					<img style="height: 12em;" src="images/best-both-worlds.jpg" />
+				</section>
+				<section>
+					<h3>JSON Powered Forms</h3>
+					<p>The next generation of webforms.</p>
+				</section>
+				<section data-background="images/background-6.jpg">
+					<h3>There is an obvious trend</h3>
+					<p><img class="trans-image" width="48%" style="float:left;margin-right:1em;" src="images/iot-trend.png" /></p>
+					<p><img class="trans-image" width="48%" style="float:left;" src="images/angular-trend.png" /></p>
+					<p><img class="trans-image" width="48%" style="float:left;margin-right:1em;" src="images/mean-trend.png" /></p>
+					<p><img class="trans-image" width="48%" style="float:left;" src="images/rest-trend.png" /></p>
+				</section>
+				<section>
+					<img src="images/driesnote.png" style="height:11em;" />
+					<blockquote cite="https://youtu.be/Ksp5JVFryEg?t=14m25s" style="width:100%; font-size:0.7em;">
+						<p>"The frameworks... They have moved up, but will always be for bespoke solutions."</p>
+					</blockquote><small>— Dries Buyteart, Keynote - DrupalCon New Orleans 2016</small>
+				</section>
+				<section>
+					<h3>JSON Powered Forms</h3>
+					<h4>How it works</h4>
+					<ul>
+						<li class="fragment">A form builder is used to create a JSON Schema.</li>
+						<li class="fragment">That JSON schema implements both the form and coresponding REST API.</li>
+						<li class="fragment">That schema is provided to the application via API.</li>
+						<li class="fragment">A frontend JavaScript library dynamically renders the form on the page.</li>
+					</ul>
+				</section>
+				<section>
+					<h1><img src="images/formio-logo-lg.png" class="inline-logo" /></h1>
+					<p>Form Building and Rendering Demo</p>
+					<p><a target="_blank" href="http://bit.ly/1WZdUA9">http://bit.ly/1WZdUA9</a></p>
+				</section>
+				<section>
+					<h4>Benefits of JSON Powered Forms</h4>
+				</section>
+				<section>
+					<p>One language to rule them all</p>
+					<img class="trans-image" src="images/onering.png" style="height:13em;" />
+				</section>
+				<section>
+					<p>Deploy your forms anywhere</p>
+					<pre style="text-align:center; width:100%;"><code data-trim>
+						&lt;formio src="'https://myproject.form.io/myform'"&gt;&lt;/formio&gt;
+					</code></pre>
+					<img src="images/formio-devices.png" class="trans-image" style="height: 13em;" />
+				</section>
+				<section>
+					<p>Advanced Offline Mode</p>
+					<img src="images/offline-usage.jpg" />
+				</section>
+				<section>
+					<p>Generate other things using the Schema</p>
+					<p>Like an congruent REST API!</p>
+					<img src="images/formio-form-api.png" style="height:10em;" />
+				</section>
+				<section>
+					<h4>DEMO</h4>
+				</section>
+				<section>
+					<h4>Where do we go from here?</h4>
+				</section>
+				<section>
+					<p>What we currently have...</p>
+					<pre><code>GET:    /api/article</code></pre>
+					<pre><code>POST:   /api/article</code></pre>
+					<pre><code>GET:    /api/article/:articleId</code></pre>
+					<pre><code>PUT:    /api/article/:articleId</code></pre>
+					<pre><code>DELETE: /api/article/:articleId</code></pre>
+					<pre></pre>
+					<div class="fragment">
+						<p>What we need...</p>
+						<pre><code>GET:    /api/article/form</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>JSON Powered Forms in Drupal</h3>
+					<pre><code>GET:    /api/article/form</code></pre>
+					<pre><code data-trim>{
+  components: [
+    {
+      type: 'textfield',
+      label: 'First Name',
+      key: 'firstName',
+      placeholder: 'Enter your first name.',
+      defaultValue: 'Travis',
+      validate: {
+        maxLength: '',
+        minLength: '',
+        required:true
+      }
+    },
+    {
+      type: 'textfield',
+      label: 'Last Name',
+      key: 'lastName',
+      placeholder: 'Enter your last name.',
+      defaultValue: 'Tidwell',
+      validate: {
+        maxLength: '',
+        minLength: '',
+        required: true
+      }
+    },
+    {
+      type: 'button',
+      label: 'Submit',
+      key: 'submit',
+      action: 'submit'
+    }
+  ]
+}</code></pre>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Thank you!</h3>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
