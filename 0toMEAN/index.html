@@ -1,0 +1,459 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>0 to M.E.A.N</h2>
+					<h6>in 30 minutes</h6>
+					<p>
+						<small>by <a href="http://travistidwell.com">Travis Tidwell</a> | <a href="https://form.io">https://form.io</a><br/>
+						<a href="http://twitter.com/softwaregnome">@softwaregnome</a> | <a href="https://github.com/travist">travist</a></small>
+					</p>
+				</section>
+				<section>
+					<p>Follow along @ <a href="https://travistidwell.com/presentations/0toMEAN">https://travistidwell.com/presentations/0toMEAN</a></p>
+				</section>
+				<section>
+					<p>We are going to build</p>
+					<p>A complete Event Registration System</p>
+					<small class="fragment">yes... in 30 minutes</small>
+				</section>
+				<section>
+					<h3>The structure of M.E.A.N Apps</h3>
+					<img src="images/MEANStructure.png" style="width:22em;" />
+				</section>
+				<section>
+					<h3>Pre-requisites</h3>
+					<ul>
+						<li><a href="https://nodejs.org/en/download/">Install Node.js</a></li>
+						<li><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Install GIT</a></li>
+						<li><a href="https://docs.mongodb.com/manual/administration/install-community/">Install MongoDB Community Edition</a></li>
+					</ul>
+				</section>
+				<section>
+					<h3>Start MongoDB Server</h3>
+					<pre style="text-align:center"><code data-trim>
+						mongod
+					</code></pre>
+				</section>
+				<section>
+					<h3>API First</h3>
+					<p class="fragment">
+						Open Source Form.io API Platform<br/>
+						<a href="https://github.com/formio/formio">https://github.com/formio/formio</a>
+					</p>
+				</section>
+				<section>
+					<h3>Setup Form.io</h3>
+					<pre><code data-trim>
+						git clone https://github.com/formio/formio --depth=1
+						cd formio
+						npm install
+						node main
+					</code></pre>
+				</section>
+				<section>
+					<img src="images/formioinstall.png" />
+				</section>
+				<section>
+					<p>@ http://localhost:3001</p>
+					<img src="images/formioclient.png" />
+				</section>
+				<section>
+					<p>The API Platform</p>
+					<p>@ http://localhost:3001/user</p>
+					<img src="images/formioapi.png" style="height:10em;" />
+				</section>
+				<section>
+					<p>Build out the API by creating...</p>
+					<ul>
+						<li>An Event resource</li>
+						<li>An EventUser resource</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Building the Application</h3>
+					<img class="trans-image" src="images/angular.svg" style="height:10em" />
+				</section>
+				<section>
+					<p>Fountain.js - A Yeoman Generator</p>
+					<p><a href="http://fountainjs.io/">http://fountainjs.io</a></p>
+					<img class="trans-image" src="images/fountainjs-logo6-machine.png" />
+				</section>
+				<section>
+					<h3>Installing Fountain</h3>
+					<pre><code data-trim>
+						npm install -g yo generator-fountain-webapp
+						mkdir meanapp && cd meanapp
+						yo fountain-webapp
+					</code></pre>
+					<img src="images/fountaininstall.png" />
+				</section>
+				<section>
+					<h3>Running our app</h3>
+					<pre><code data-trim>
+						npm run serve
+					</code></pre>
+					<img src="images/fountainapp.png" />
+				</section>
+				<section>
+					<h3>Installing Modules</h3>
+					<pre><code data-trim>
+						npm install --save ng2-formio
+						npm install --save bootstrap-sass
+						npm install --save bootswatch
+						npm install --save lodash
+						npm install --save-dev file-loader
+						npm install --save-dev angular2-load-children-loader
+						npm install --save-dev es6-promise-loader
+					</code></pre>
+				</section>
+				<section>
+					<h3>Adding additional Webpack Loaders</h3>
+					<pre>config/webpack.conf.js<br/>config/webpack-dist.conf.js<br/>config/webpack-test.conf.js<code>{
+  test: /\.ts$/,
+  exclude: /node_modules/,
+  loaders: ['ts-loader', 'angular2-load-children-loader']
+},
+{
+  test: /\.(woff2?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+  loader: "file-loader?name=fonts/[name].[ext]"
+}</code></pre>
+				</section>
+				<section>
+					<h3>Setting up Bootstrap</h3>
+					<pre>src/app/index.scss<code data-trim>
+						$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+						@import "../node_modules/bootswatch/yeti/_variables.scss";
+						@import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+						@import "../node_modules/bootswatch/yeti/_bootswatch.scss";
+
+						.footer {
+						  text-align: center;
+						  padding: 3em;
+						  color: #777;
+						  border-top: .05rem solid #e5e5e5;
+						  margin-top: 20px;
+						}
+					</code></pre>
+				</section>
+				<section>
+					<p>Changing the Navbar</p>
+					<pre>src/app/header.html<code data-trim>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Event Manager</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+					</code></pre>
+				</section>
+				<section>
+					<p>Changing Main Content</p>
+					<pre>src/app/main.html<code data-trim>
+<div class="main-container">
+  <fountain-header></fountain-header>
+  <main class="container">
+    <router-outlet></router-outlet>
+  </main>
+  <fountain-footer></fountain-footer>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<p>Adding a Home Page</p>
+					<pre>src/app/home.html<code data-trim>
+					<div class="jumbotron">
+					   <h1>Welcome to the Event Manager!</h1>
+					</div>
+					</code></pre>
+					<pre>src/app/home.ts<code data-trim>
+						import { Component } from '@angular/core';
+						@Component({
+						   template: require('./home.html')
+						})
+						export class HomeComponent {}
+					</code></pre>
+				</section>
+				<section>
+					<p>Changing the route structure</p>
+					<pre>src/index.html<code data-trim>
+						<fountain-app>Loading...</fountain-app>
+					</code></pre>
+					<pre>src/app/index.ts<code data-trim>
+					  import {HomeComponent} from './home';
+					  ...
+					  declarations: [
+					     HomeComponent,
+					     ...
+					  ],
+					  bootstrap: [MainComponent]
+					</code></pre>
+					<pre>src/app/routes.ts<code data-trim>
+						import {HomeComponent} from './home';
+						export const routes: Routes = [{
+						   path: '',
+						   component: HomeComponent
+						}];
+					</code></pre>
+				</section>
+				<section>
+					<p>User Authentication</p>
+				</section>
+				<section>
+					<p>Create a Configuration File</p>
+					<pre>src/app/config.ts<code data-trim>
+import { FormioAppConfig } from 'ng2-formio';
+import { FormioAuthConfig } from 'ng2-formio/auth';
+
+export const AppConfig: FormioAppConfig = {
+  appUrl: 'http://localhost:3001',
+  apiUrl: 'http://localhost:3001'
+};
+
+export const AuthConfig: FormioAuthConfig = {
+  app: AppConfig,
+  login: {
+    form: 'user/login'
+  },
+  register: {
+    form: 'user/register'
+  }
+};
+					</code></pre>
+				</section>
+				<section>
+					<p>Provide the FormioAuthService</p>
+					<pre>src/app/index.ts<code data-trim>
+				import { FormioAuthService, FormioAuthConfig } from 'ng2-formio/auth';
+				import { AuthConfig } from './config';
+				...
+				@NgModule({
+				   ...
+				   providers: [
+				      FormioAuthService,
+				      {provide: FormioAuthConfig, useValue: AuthConfig}
+				   ]
+				})
+					</code></pre>
+				</section>
+				<section>
+					<p>Create the Authentication Module</p>
+					<pre>src/app/auth.module.ts<code data-trim>
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormioAuth, FormioAuthRoutes } from 'ng2-formio/auth';
+@NgModule({
+  imports: [
+    FormioAuth,
+    RouterModule.forChild(FormioAuthRoutes())
+  ]
+})
+export class AuthModule {}
+					</code></pre>
+					<pre>src/app/routes.ts<code data-trim>
+{
+  path: 'auth',
+  loadChildren: 'es6-promise-loader?,[name]!./auth.module#AuthModule'
+}
+					</code></pre>
+				</section>
+				<section>
+					<p>Adding Navigation Bar</p>
+					<pre>src/app/header.html<code data-trim>
+<div id="navbar" class="navbar-collapse collapse">
+  ...
+  <ul class="nav navbar-nav navbar-right">
+    <li routerLinkActive="active" *ngIf="!auth.authenticated"><a routerLink="auth">Login | Register</a></li>
+    <li *ngIf="auth.authenticated"><a routerLink="home" (click)="auth.logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+  </ul>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<p>Redirect to Home after login</p>
+					<pre>src/app/main.ts<code data-trim>
+import { Router } from '@angular/router';
+import { FormioAuthService } from 'ng2-formio/auth';
+
+...
+export class MainComponent {
+  constructor(private auth: FormioAuthService, private router: Router) {
+    this.auth.onLogin.subscribe(() => {
+      this.router.navigate(['/']);
+    });
+
+    this.auth.onLogout.subscribe(() => {
+      this.router.navigate(['/']);
+    });
+
+    this.auth.onRegister.subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
+}
+
+					</code></pre>
+				</section>
+				<section>
+					<h3>Event Resource</h3>
+				</section>
+				<section>
+					<p>Create a Resource Module</p>
+					<pre>src/app/event.module.ts<code data-trim>
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResourceService } from 'ng2-formio/resource';
+import { AppConfig } from './config';
+
+@NgModule({
+  imports: [
+    FormioResource,
+    RouterModule.forChild(FormioResourceRoutes())
+  ],
+  providers: [
+    FormioResourceService,
+    {provide: FormioResourceConfig, useValue: {
+      app: AppConfig,
+      name: 'event',
+      form: 'event'
+    }}
+  ]
+})
+export class EventResource {}
+					</code></pre>
+				</section>
+				<section>
+					<p>Mount the Resource to the routes</p>
+					<pre>src/app/routes.ts<code data-trim>
+export const routes: Routes = [
+  ...
+  {
+    path: 'event',
+    loadChildren: 'es6-promise-loader?,[name]!./event.module#EventResource'
+  }
+];
+					</code></pre>
+				</section>
+				<section>
+					<p>We now have all of the available Routes!</p>
+					<ul>
+						<li><strong>event</strong> - Index of events</li>
+						<li><strong>event/new</strong> - Create a new event</li>
+						<li><strong>event/:id/view</strong> - View an event</li>
+						<li><strong>event/:id/edit</strong> - Edit an event</li>
+						<li><strong>event/:id/delete</strong> - Delete an event</li>
+					</ul>
+				</section>
+				<section>
+					<p>Override the Event View Component</p>
+					<pre>src/app/event.module.ts<code data-trim>
+import { NgModule, Component } from '@angular/core';
+...
+import { ..., FormioResourceViewComponent } from 'ng2-formio/resource';
+@Component({
+  template: require('./event.html')
+})
+export class EventViewComponent extends FormioResourceViewComponent {
+  constructor(service: FormioResourceService) {
+    super(service);
+  }
+}
+
+@NgModule({
+  imports: [
+    FormioResource,
+    RouterModule.forChild(FormioResourceRoutes({
+      view: EventViewComponent
+    }))
+  ],
+  declarations: [
+    EventViewComponent
+  ],
+  ...
+})
+export class EventResource {}
+					</code></pre>
+				</section>
+				<section>
+					<p>Create the Event View Template</p>
+					<pre>src/app/event.html<code data-trim>
+<h3>{{ service.resource?.data.title }}</h3>
+<p>{{ service.resource?.data.description }}</p>
+<ul>
+  <li><strong>Start:</strong> {{ service.resource?.data.start }}</li>
+  <li><strong>End:</strong> {{ service.resource?.data.end }}</li>
+</ul>
+
+					</code></pre>
+				</section>
+				<section>
+					<p>Add a link to the header</p>
+					<pre><code data-trim>
+<ul class="nav navbar-nav">
+   <li routerLinkActive="active"><a routerLink="home"><span class="glyphicon glyphicon-home"></span></a></li>
+   <li routerLinkActive="event" *ngIf="auth.authenticated"><a routerLink="event"><span class="glyphicon glyphicon-calendar"></span> Events</a></li>
+</ul>
+					</code></pre>
+				</section>
+				<section>
+					<p>We have an Event Management System!</p>
+					<img src="images/eventapp.png" />
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
