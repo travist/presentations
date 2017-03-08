@@ -4,3 +4,7 @@
     background: rgba(255,255,255,0);
     box-shadow: none;
 }
+
+html.faded .slide-background {
+    opacity: 0.08 !important;
+}
