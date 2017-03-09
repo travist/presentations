@@ -19,9 +19,6 @@ export class EventViewComponent extends FormioResourceViewComponent {
       view: EventViewComponent
     }))
   ],
-  declarations: [
-    EventViewComponent
-  ],
   providers: [
     FormioResourceService,
     {provide: FormioResourceConfig, useValue: {
@@ -29,6 +26,9 @@ export class EventViewComponent extends FormioResourceViewComponent {
       name: 'event',
       form: 'event'
     }}
+  ],
+  declarations: [
+    EventViewComponent
   ]
 })
 export class EventResource {}

@@ -89,11 +89,8 @@
 					<img src="images/formioapi.png" style="height:10em;" />
 				</section>
 				<section>
-					<p>Build out the API by creating...</p>
-					<ul>
-						<li>An Event resource</li>
-						<li>An EventUser resource</li>
-					</ul>
+					<p>Build out the API by creating an Event Resource</p>
+					<img src="images/eventresource.png" style="height: 11em;" />
 				</section>
 				<section>
 					<h3>Building the Application</h3>
@@ -177,7 +174,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a routerLink="/"><span class="glyphicon glyphicon-home"></span></a></li>
       </ul>
     </div>
   </div>
@@ -217,7 +214,7 @@
 						<fountain-app>Loading...</fountain-app>
 					</code></pre>
 					<pre>src/app/index.ts<code data-trim>
-					  import {HomeComponent} from './home';
+					  import { HomeComponent } from './home';
 					  ...
 					  declarations: [
 					     HomeComponent,
@@ -301,9 +298,17 @@ export class AuthModule {}
   ...
   <ul class="nav navbar-nav navbar-right">
     <li routerLinkActive="active" *ngIf="!auth.authenticated"><a routerLink="auth">Login | Register</a></li>
-    <li *ngIf="auth.authenticated"><a routerLink="home" (click)="auth.logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+    <li *ngIf="auth.authenticated"><a routerLink="/" (click)="auth.logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
   </ul>
 </div>
+					</code></pre>
+					<pre>src/app/header.ts<code data-trim>
+import { FormioAuthService } from 'ng2-formio/auth';
+
+...
+export class HeaderComponent {
+  constructor(private auth: FormioAuthService) {}
+}
 					</code></pre>
 				</section>
 				<section>
@@ -427,7 +432,7 @@ export class EventResource {}
 					<p>Add a link to the header</p>
 					<pre><code data-trim>
 <ul class="nav navbar-nav">
-   <li routerLinkActive="active"><a routerLink="home"><span class="glyphicon glyphicon-home"></span></a></li>
+   <li routerLinkActive="active"><a  routerLink="/"><span class="glyphicon glyphicon-home"></span></a></li>
    <li routerLinkActive="event" *ngIf="auth.authenticated"><a routerLink="event"><span class="glyphicon glyphicon-calendar"></span> Events</a></li>
 </ul>
 					</code></pre>
@@ -435,6 +440,16 @@ export class EventResource {}
 				<section>
 					<p>We have an Event Management System!</p>
 					<img src="images/eventapp.png" />
+				</section>
+				<section>
+					<p>Building your application</p>
+					<pre><code data-trim>npm run build</code></pre>
+					<p class="fragment">This creates a new build in the <strong>dist</strong> folder.</p>
+				</section>
+				<section>
+					<p>Commit to Github Pages</p>
+					<pre><code data-trim>git push origin master:gh-pages</code></pre>
+					<p><a href="http://travistidwell.com/presentations/0toMEAN/app/dist">http://travistidwell.com/presentations/0toMEAN/app/dist</a></p>
 				</section>
 				<section>
 					<p>Thank you</p>

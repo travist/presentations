@@ -1,12 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home';
-
-@Component({
-  template: '<div class="row"><div class="col-md-6 col-md-offset-3"><router-outlet></router-outlet></div></div>'
-})
-export class AuthContainerComponent {}
-
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home';
 export const routes: Routes = [
   {
     path: '',
@@ -14,7 +7,6 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthContainerComponent,
     loadChildren: 'es6-promise-loader?,[name]!./auth.module#AuthModule'
   },
   {
