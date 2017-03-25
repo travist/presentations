@@ -248,7 +248,6 @@ export const AppConfig: FormioAppConfig = {
 };
 
 export const AuthConfig: FormioAuthConfig = {
-  app: AppConfig,
   login: {
     form: 'user/login'
   },
@@ -261,14 +260,16 @@ export const AuthConfig: FormioAuthConfig = {
 				<section>
 					<p>Provide the FormioAuthService</p>
 					<pre>src/app/index.ts<code data-trim>
+				import { FormioAppConfig } from 'ng2-formio';
 				import { FormioAuthService, FormioAuthConfig } from 'ng2-formio/auth';
-				import { AuthConfig } from './config';
+				import { AuthConfig, AppConfig } from './config';
 				...
 				@NgModule({
 				   ...
 				   providers: [
-				      FormioAuthService,
-				      {provide: FormioAuthConfig, useValue: AuthConfig}
+					  FormioAuthService,
+					  {provide: FormioAuthConfig, useValue: AuthConfig},
+					  {provide: FormioAppConfig, useValue: AppConfig}
 				   ]
 				})
 					</code></pre>
@@ -348,7 +349,6 @@ export class MainComponent {
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResourceService } from 'ng2-formio/resource';
-import { AppConfig } from './config';
 
 @NgModule({
   imports: [
@@ -358,7 +358,6 @@ import { AppConfig } from './config';
   providers: [
     FormioResourceService,
     {provide: FormioResourceConfig, useValue: {
-      app: AppConfig,
       name: 'event',
       form: 'event'
     }}
