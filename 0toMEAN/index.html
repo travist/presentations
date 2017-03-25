@@ -260,18 +260,18 @@ export const AuthConfig: FormioAuthConfig = {
 				<section>
 					<p>Provide the FormioAuthService</p>
 					<pre>src/app/index.ts<code data-trim>
-				import { FormioAppConfig } from 'ng2-formio';
-				import { FormioAuthService, FormioAuthConfig } from 'ng2-formio/auth';
-				import { AuthConfig, AppConfig } from './config';
-				...
-				@NgModule({
-				   ...
-				   providers: [
-					  FormioAuthService,
-					  {provide: FormioAuthConfig, useValue: AuthConfig},
-					  {provide: FormioAppConfig, useValue: AppConfig}
-				   ]
-				})
+import { FormioAppConfig } from 'ng2-formio';
+import { FormioAuthService, FormioAuthConfig } from 'ng2-formio/auth';
+import { AuthConfig, AppConfig } from './config';
+...
+@NgModule({
+   ...
+   providers: [
+      FormioAuthService,
+      {provide: FormioAuthConfig, useValue: AuthConfig},
+      {provide: FormioAppConfig, useValue: AppConfig}
+   ]
+})
 					</code></pre>
 				</section>
 				<section>
