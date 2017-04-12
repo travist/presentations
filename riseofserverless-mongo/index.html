@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>The rise of Serverless Applications</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="images/background-7.jpg">
+					<h3>The rise of Serverless Applications</h3>
+					<small>
+						<ul>
+							<li>by <a href="http://www.travistidwell.com">Travis Tidwell</a></li>
+							<li>CTO | <a href="https://form.io">https://form.io</a></li>
+							<li><a href="http://twitter.com/softwaregnome">@softwaregnome</a></li>
+							<li><a href="https://github.com/travist">https://github.com/travist</a></li>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<h3>A MongoDB Case Story</h3>
+				</section>
+				<section data-background-video="images/presentation-intro.mp4" data-background-video-loop></section>
+				<section>
+					<h3>Form.io <span style="color:red">&hearts;</span> MongoDB</h3>
+					<ul>
+						<li class="fragment">Build a form (drag-and-drop)</li>
+						<li class="fragment">... which generates a JSON schema</li>
+						<li class="fragment">... which generates a REST API</li>
+						<li class="fragment">... which defines a data model in MongoDB..</li>
+					</ul>
+					<p class="fragment">Build MongoDB models using a Form Builder</p>
+				</section>
+				<section data-background="images/background-4.jpg">
+					<strong>A paradigm shift has occurred...</strong>
+				</section>
+				<section data-background="images/background-6.jpg">
+					<p><img class="trans-image" width="45%" style="float:left;margin-right:1em;height:5.5em;" src="images/serverless-trend.png" /></p>
+					<p><img class="trans-image" width="45%" style="float:left;height:5.5em;" src="images/react-trend.png" /></p>
+					<p><img class="trans-image" width="45%" style="float:left;margin-right:1em;height:5.5em;" src="images/mean-trend.png" /></p>
+					<p><img class="trans-image" width="45%" style="float:left;height:5.5em;" src="images/rest-trend.png" /></p>
+				</section>
+				<section data-background="images/background-6.jpg">
+					<h3>MongoDB</h3>
+					<p><img class="trans-image" src="images/mongotrends.png" /></p>
+				</section>
+				<section>
+					<strong>The web has seen 3 major paradigm shifts</strong>
+					<p class="fragment"><em>... and we gave version numbers</em></p>
+				</section>
+				<section>
+					<h2>Web 1.0</h2>
+					<small>The static web</small><br/>
+					<img class="trans-image" src="images/web1.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>The dynamic web</small><br/>
+					<img class="trans-image" style="width: 15em;" src="images/web2.svg" />
+				</section>
+				<section>
+					<h2>Web 2.0</h2>
+					<small>The rise of the CMS</small><br/>
+					<img class="trans-image" style="width: 15em;" src="images/cms-web2.svg" />
+				</section>
+				<section>
+					<h3>Life was good</h3>
+				</section>
+				<section>
+					<h3>Then this happened</h3>
+					<img src="images/apple-original-iphone.jpg" />
+				</section>
+				<section>
+					<h2>"Mobile First"</h2>
+					<img class="trans-image" src="images/mobile-first.png" />
+				</section>
+				<section>
+					<h2>Mobile First</h2>
+					<small>The server still provides the interface.</small>
+					<img class="trans-image" src="images/mobilefirst-web2.svg" />
+				</section>
+				<section>
+					<h3>Life was good</h3>
+				</section>
+				<section>
+					<h3>Then this happened</h3>
+					<img class="trans-image" src="images/mobilefirstnogo.png" />
+				</section>
+				<section>
+					<h2>The "Serverless" Movement</h2>
+					<img src="images/serverless-hot.jpg" style="height: 11em;" />
+				</section>
+				<section>
+					<h3>A "Serverless" application</h3>
+					<img class="trans-image" style="height: 12em;" src="images/angular-web3.svg" />
+				</section>
+				<section>
+					<p>Why the name "Serverless"?</p>
+					<small>Doesn't the app still use a server?</small>
+					<blockquote class="fragment">
+						&ldquo;Serverless does not mean your application does not need a server.<br/>It means your application has been LIBERATED from the server.&rdquo;
+					</blockquote>
+				</section>
+				<section>
+					<blockquote>&ldquo;My app is MOBILE FIRST.<br/>Am I SERVERLESS?&rdquo;</blockquote>
+					<p class="fragment"><em>No.</em></p>
+					<p class="fragment"><em>"Mobile first" is no longer good enough</em></p>
+				</section>
+				<section>
+					<h2>Mobile First</h2>
+					<small>The server still provides the interface.</small>
+					<img class="trans-image" src="images/mobilefirst-web2.svg" />
+				</section>
+				<section>
+					<h2>"API first"</h2>
+					<ul>
+						<li class="fragment">Take care of your REST platform first.</li>
+						<li class="fragment">REST platform must be "stateless"</li>
+						<li class="fragment">Your first "app" should be the API test.</li>
+						<li class="fragment">Build your "Serverless" app on those API's.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Why "Serverless"?</h3>
+					<p class="fragment" style="font-size:0.9em;">Forces us to develop <u>websites</u> like <u>web applications</u>.</p>
+				</section>
+				<section>
+					<h3>Benefits of "Serverless"</h3>
+				</section>
+				<section>
+					<p>Separation of Concerns</p>
+					<img src="images/structure.png" style="background-color:#eee; width:20em;" />
+				</section>
+				<section>
+					<p>Scalability</p>
+					<img src="images/scaleability.png" style="height: 10em;" />
+				</section>
+				<section>
+					<p>Deployability</p>
+					<img src="images/deployments.png" style="height: 11em" />
+				</section>
+				<section>
+					<p>Offline Mode</p>
+					<img src="images/offline-usage.jpg" />
+				</section>
+				<section>
+					<p>How "Serverless" works</p>
+				</section>
+				<section>
+					<h3>Serverless App Requests</h3>
+					<img class="trans-image" src="images/web3-requests.svg" />
+				</section>
+				<section>
+					<p><strong>How is this better?</strong></p>
+					<img class="trans-image" src="images/web3-multiple-request.svg" />
+				</section>
+				<section>
+					<h3>Web 2.0 Request</h3>
+					<img class="trans-image" style="height: 12em;" src="images/webrequest.svg" />
+				</section>
+				<section>
+					<h3>Serverless Request</h3>
+					<img class="trans-image" style="height: 12em;" src="images/webrequest-web3.svg" />
+				</section>
+				<section>
+					<h3>"Stateless" REST API</h3>
+					<p><small>Use tokens (JWT) to maintain state in client.</small></p>
+					<img class="trans-image" style="height: 10em;" src="images/stateless-api.svg" />
+				</section>
+				<section>
+					<h3>"Serverless" App Frameworks</h3>
+					<img class="trans-image" style="height: 12em;" src="images/frameworks.png" />
+				</section>
+				<section>
+					<h3>Single Page Application</h3>
+					<img class="trans-image" src="images/spa-home.svg" />
+				</section>
+				<section>
+					<h3>Single Page Application</h3>
+					<img class="trans-image" src="images/spa-about.svg" />
+				</section>
+				<section>
+					<p style="margin-top: -0.5em;">Micro-Services</p>
+					<img class="trans-image" style="height: 14em;" src="images/spa-multiservice.svg" />
+				</section>
+				<section>
+					<p><strong>Helping us go from this...</strong></p>
+					<img class="trans-image" style="height: 12em;" src="images/legacyapps.svg"/>
+				</section>
+				<section>
+					<p><strong>To this...</strong></p>
+					<p style="margin-top: -0.5em;">Micro-service architecture</p>
+					<img class="trans-image" style="height: 10em;" src="images/microserviceapp.svg"/>
+				</section>
+				<section>
+					<strong>The web is now back where it started</strong>
+					<small class="fragment">Where it was intended to be all along...</small>
+				</section>
+				<section>
+					<h3>THANK YOU!</h3>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
