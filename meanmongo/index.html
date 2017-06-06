@@ -1,0 +1,575 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>How to build a M.E.A.N Application</title>
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="images/supermanangular.png" data-state="faded">
+					<h2>How to build a <img src="images/meanlogo.png" style="height:2em;margin:0 0 0 0.3em;padding:0;position: relative;top:0.3em" class="trans-image" /></h2>
+					<h3>Application</h3>
+					<p>
+						<small>by <a href="http://travistidwell.com">Travis Tidwell</a> | <a href="https://form.io">https://form.io</a><br/>
+						<a href="http://twitter.com/softwaregnome">@softwaregnome</a> | <a href="https://github.com/travist">travist</a></small>
+					</p>
+				</section>
+				<section data-background="images/supermanangular.png" data-state="faded">
+					<p>Follow along @ <p>
+					<p><a href="http://travistidwell.com/presentations/meanmongo">http://travistidwell.com/presentations/meanmongo</a></p>
+					<p><a href="http://travistidwell.com/zerotomean">http://travistidwell.com/zerotomean</a></p>
+					<p><a href="https://github.com/travist/zerotomean">https://github.com/travist/zerotomean</a></p>
+				</section>
+				<section data-background="images/supermanangular.png" data-state="faded">
+					<p>We are going to build</p>
+					<p>A complete Event Management System</p>
+					<small class="fragment">...in about 30 minutes</small>
+				</section>
+				<section>
+					<h3>The structure of M.E.A.N Apps</h3>
+					<img src="images/MEANStructure.png" style="width:22em;" />
+				</section>
+				<section>
+					<h3>The model driven web</h3>
+					<p class="fragment">JSON schemas to create model driven applications.</p>
+				</section>
+				<section>
+					<h4>The "stack" of JSON models</h4>
+					<img src="images/modelapp1.png" style="height:13em;" class="trans-image" />
+				</section>
+				<section>
+					<h3>It all starts with MongoDB</h3>
+					<p>An amazing model driven database.</p>
+					<pre><code data-trim>
+						db.people.insert({
+						  firstName: 'Travis',
+						  lastName: 'Tidwell',
+						  email: 'travis@form.io',
+						  twitter: 'softwaregnome',
+						  github: 'travist'
+						});
+					</code></pre>
+				</section>
+				<section>
+					<h4>Mongoose ORM</h4>
+					<a href="http://mongoosejs.com" target="_blank">http://mongoosejs.com</a>
+					<img src="images/modelapp2.png" style="height:12em;" class="trans-image" />
+				</section>
+				<section>
+					<h3>Mongoose</h3>
+					<p>Create structured JSON schemas for MongoDB</p>
+					<pre><small style="width:100%"><code data-trim>
+						let mongoose = require('mongoose');
+						let PeopleSchema = new mongoose.Schema({
+						  firstName: {
+						    type: String,
+						    description: 'The first name of the person.',
+						    required: true
+						  },
+						  lastName: {
+						    type: String,
+						    description: 'The last name of the person.',
+						    required: true
+						  },
+						  email: {
+						    type: String,
+						    description: 'The email of the person.',
+						    required: true,
+						    index: true
+						  }
+						});
+					</code></small></pre>
+				</section>
+				<section>
+					<h3>Mongoose - Creating records</h3>
+					<pre><code data-trim>
+						let PeopleSchema = new mongoose.Schema({...});
+						let People = mongoose.model('people', PeopleSchema);
+
+						let travis = new People({
+						  firstName: 'Travis',
+						  lastName: 'Tidwell',
+						  email: 'travis@form.io'
+						});
+					</code></pre>
+				</section>
+				<section>
+					<h4>Resource.js</h4>
+					<a href="https://github.com/travist/resourcejs" target="_blank">https://github.com/travist/resourcejs</a>
+					<img src="images/modelapp3.png" style="height:12em;" class="trans-image" />
+				</section>
+				<section>
+					<h4>Resource.js</h4>
+					<p>Reflects Mongoose Models as REST API's</p>
+					<pre><code data-trim>
+						let PeopleSchema = new mongoose.Schema({...});
+						let PeopleModel = mongoose.model('people', PeopleSchema);
+
+						let travis = new PeopleModel({
+						  firstName: 'Travis',
+						  lastName: 'Tidwell',
+						  email: 'travis@form.io'
+						});
+
+						// Reflect this model as a REST API.
+						Resource(app, '', 'people', PeopleModel).rest();
+					</code></pre>
+				</section>
+				<section>
+					<h4>Resource.js</h4>
+					<p>Generates the following CRUDI API</p>
+					<pre><code data-trim>
+						/people - (GET) - List all people.
+						/people - (POST) - Create a new person.
+						/people/:id - (GET) - Get a specific person.
+						/people/:id - (PUT) - Replaces an existing person.
+						/people/:id - (PATCH) - Updates an existing person.
+						/people/:id - (DELETE) - Deletes an existing person.
+					</code></pre>
+				</section>
+				<section>
+					<h2>Building a M.E.A.N web app</h2>
+				</section>
+				<section>
+					<h3>Pre-requisites</h3>
+					<ul>
+						<li><a href="https://nodejs.org/en/download/">Install Node.js</a></li>
+						<li><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Install GIT</a></li>
+						<li><a href="https://docs.mongodb.com/manual/administration/install-community/">Install MongoDB Community Edition</a></li>
+					</ul>
+				</section>
+				<section>
+					<h3>Start MongoDB Server</h3>
+					<pre style="text-align:center"><code data-trim>
+						mongod
+					</code></pre>
+				</section>
+				<section>
+					<h3>API First</h3>
+					<p class="fragment">
+						Open Source Form.io API Platform<br/>
+						<a href="https://github.com/formio/formio">https://github.com/formio/formio</a>
+					</p>
+					<p class="fragment">
+						<small>pssst... you can also use <a href="https://form.io">https://form.io</a> for free</small>
+					</p>
+				</section>
+				<section>
+					<h3>Setup Form.io</h3>
+					<pre><code data-trim>
+						git clone https://github.com/formio/formio --depth=1
+						cd formio
+						npm install
+						node main
+					</code></pre>
+				</section>
+				<section>
+					<img src="images/formioinstall.png" />
+				</section>
+				<section>
+					<p>@ http://localhost:3001</p>
+					<img src="images/formioclient.png" />
+				</section>
+				<section>
+					<p>The API Platform</p>
+					<p>@ http://localhost:3001/user</p>
+					<img src="images/formioapi.png" style="height:10em;" />
+				</section>
+				<section>
+					<p>Build out the API by creating an Event Resource</p>
+					<img src="images/eventresource.png" style="height: 11em;" />
+				</section>
+				<section>
+					<h3>Building the Application</h3>
+					<img class="trans-image" src="images/angular.svg" style="height:10em" />
+				</section>
+				<section>
+					<h3>Installing Angular CLI</h3>
+					<pre style="text-align:center;"><code data-trim>
+						npm install -g @angular/cli
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create a new application</h3>
+					<pre><code data-trim>
+						ng new meanapp --style=sass
+						cd meanapp
+						ng serve
+					</code></pre>
+				</section>
+				<section>
+					<h3>Add Bootstrap & Bootswatch</h3>
+					<pre><code data-trim>
+						npm install --save bootstrap-sass
+						npm install --save bootswatch
+					</code></pre>
+					<pre>/src/styles.sass<code data-trim>
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+@import "../node_modules/bootswatch/yeti/_variables.scss";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../node_modules/bootswatch/yeti/_bootswatch.scss";
+
+#main { margin-top: ($navbar-height + 10); }
+					</code></pre>
+				</section>
+				<section>
+					<h3>Creating a home page</h3>
+					<pre><code data-trim>
+						ng g component home
+					</code></pre>
+					<pre>/src/home/home.component.html<code data-trim>
+<div class="jumbotron">
+  <h3>Welcome to the Event Manager!</h3>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Adding routes for home page</h3>
+					<pre>/src/app/app.module.ts<code data-trim>
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+...
+@NgModule({
+  ...
+  imports: [
+    ...
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: '/home',
+		pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        component: HomeComponent
+      }
+    ])
+  ],
+  ...
+})
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create main page content</h3>
+					<pre>/src/app/app.component.html<code data-trim>
+<div class="container" id="main">
+  <router-outlet></router-outlet>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Adding <img src="images/formio-white.png" style="height:1.2em;margin:0;padding:0;position:relative;top:0.3em;" class="trans-image" /></h3>
+					<pre style="text-align:center;"><code data-trim>
+						npm install --save ng2-formio
+					</code></pre>
+				</section>
+				<section>
+					<p>User Authentication</p>
+				</section>
+				<section>
+					<p>Create a Configuration File</p>
+					<pre>/src/config.ts<code data-trim>
+import { FormioAppConfig } from 'ng2-formio';
+import { FormioAuthConfig } from 'ng2-formio/auth';
+
+export const AppConfig: FormioAppConfig = {
+  appUrl: 'http://localhost:3001',
+  apiUrl: 'http://localhost:3001'
+};
+
+export const AuthConfig: FormioAuthConfig = {
+  login: {
+    form: 'user/login'
+  },
+  register: {
+    form: 'user/register'
+  }
+};
+					</code></pre>
+				</section>
+				<section>
+					<p>Create the Authentication Module</p>
+					<pre style="text-align:center;"><code data-trim>
+						ng g module auth
+					</code></pre>
+					<pre>/src/app/auth/auth.module.ts<code data-trim>
+...
+import { RouterModule } from '@angular/router';
+import { FormioAuth, FormioAuthRoutes } from 'ng2-formio/auth';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormioAuth,
+    RouterModule.forChild(FormioAuthRoutes())
+  ],
+  declarations: []
+})
+export class AuthModule { }
+					</code></pre>
+				</section>
+				<section>
+					<p>Include the Auth Service + Auth Module</p>
+					<pre>/src/app/app.module.ts<code data-trim>
+...
+import { FormioAppConfig } from 'ng2-formio';
+import { FormioAuthService, FormioAuthConfig } from 'ng2-formio/auth';
+import { AuthConfig, AppConfig } from '../config';
+import { AuthModule } from './auth/auth.module';
+...
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AuthModule,
+    RouterModule.forRoot([
+	  ...
+      {
+        path: 'auth',
+        loadChildren: './auth/auth.module#AuthModule'
+      }
+    ])
+  ],
+  providers: [
+    FormioAuthService,
+    {provide: FormioAuthConfig, useValue: AuthConfig},
+    {provide: FormioAppConfig, useValue: AppConfig}
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+					</code></pre>
+				</section>
+				<section>
+					<p>Adding Header Component</p>
+					<pre style="text-align: center;"><code data-trim>
+						ng g component header
+					</code></pre>
+				</section>
+				<section>
+					<p>Adding Navigation Bar</p>
+					<pre>src/app/header/header.component.html<small style="width:100%;"><code data-trim>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Event Manager</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive="active" *ngIf="!auth.authenticated"><a routerLink="auth">Login | Register</a></li>
+        <li *ngIf="auth.authenticated"><a routerLink="/" (click)="auth.logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+					</code></small></pre>
+					<pre>src/app/header/header.component.ts<small style="width:100%;"><code data-trim>
+import { FormioAuthService } from 'ng2-formio/auth';
+...
+export class HeaderComponent implements OnInit {
+
+  constructor(private auth: FormioAuthService) { }
+  ...
+}
+					</code></small></pre>
+				</section>
+				<section>
+					<h3>Include Header Component</h3>
+					<pre>/src/app/app.component.html<code data-trim>
+<app-header></app-header>
+<div class="container" id="main">
+  <router-outlet></router-outlet>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<p>Redirect to Home after login</p>
+					<pre>src/app/app.component.ts<code data-trim>
+import { Router } from '@angular/router';
+import { FormioAuthService } from 'ng2-formio/auth';
+
+...
+export class AppComponent {
+  ...
+  constructor(private auth: FormioAuthService, private router: Router) {
+    this.auth.onLogin.subscribe(() => {
+      this.router.navigate(['/home']);
+    });
+
+    this.auth.onLogout.subscribe(() => {
+      this.router.navigate(['/auth/login']);
+    });
+
+    this.auth.onRegister.subscribe(() => {
+      this.router.navigate(['/home']);
+    });
+  }
+}
+
+					</code></pre>
+				</section>
+				<section>
+					<h3>Event Resource</h3>
+					<pre style="text-align:center;"><code data-trim>
+						ng g module event
+					</code></pre>
+				</section>
+				<section>
+					<p>Add the Resource Providers</p>
+					<pre>/src/app/event/event.module.ts<code data-trim>
+import { RouterModule } from '@angular/router';
+import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResourceService } from 'ng2-formio/resource';
+
+@NgModule({
+  imports: [
+    FormioResource,
+    RouterModule.forChild(FormioResourceRoutes())
+  ],
+  providers: [
+    FormioResourceService,
+    {provide: FormioResourceConfig, useValue: {
+      name: 'event',
+      form: 'event'
+    }}
+  ]
+})
+export class EventModule {}
+					</code></pre>
+				</section>
+				<section>
+					<p>Mount the Resource to the routes</p>
+					<pre>/src/app/app.module.ts<code data-trim>
+@NgModule({
+  ...
+  imports: [
+    ...
+    RouterModule.forRoot([
+      ...
+      {
+        path: 'event',
+        loadChildren: './event/event.module#EventModule'
+      }
+    ])
+  ],
+  ...
+})
+					</code></pre>
+				</section>
+				<section>
+					<p>We now have all of the available Routes!</p>
+					<ul>
+						<li><strong>event</strong> - Index of events</li>
+						<li><strong>event/new</strong> - Create a new event</li>
+						<li><strong>event/:id/view</strong> - View an event</li>
+						<li><strong>event/:id/edit</strong> - Edit an event</li>
+						<li><strong>event/:id/delete</strong> - Delete an event</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Create custom Event view</h3>
+					<pre style="text-align: center;"><code data-trim>
+						ng g component event/event-view
+					</code></pre>
+				</section>
+				<section>
+					<p>Extend the ResourceViewComponent</p>
+					<pre>/src/app/event/event-view/event-view.component.ts<code data-trim>
+import { Component, OnInit } from '@angular/core';
+import { FormioResourceConfig, FormioResourceService, FormioResourceViewComponent } from 'ng2-formio/resource';
+
+@Component({
+  selector: 'app-event-view',
+  templateUrl: './event-view.component.html',
+  styleUrls: ['./event-view.component.sass']
+})
+export class EventViewComponent extends FormioResourceViewComponent {
+  constructor(service: FormioResourceService, config: FormioResourceConfig) {
+    super(service, config);
+  }
+}
+					</code></pre>
+				</section>
+				<section>
+					<p>Edit the Event View Template</p>
+					<pre>/src/app/event/event-view/event-view.component.html<code data-trim>
+<h3>{{ service.resource?.data.title }}</h3>
+<p>{{ service.resource?.data.description }}</p>
+<ul>
+  <li><strong>Start:</strong> {{ service.resource?.data.start }}</li>
+  <li><strong>End:</strong> {{ service.resource?.data.end }}</li>
+</ul>
+					</code></pre>
+				</section>
+				<section>
+					<p>Add a link to the header</p>
+					<pre>/src/app/header/header.component.html<code data-trim>
+<ul class="nav navbar-nav">
+   <li routerLinkActive="event" *ngIf="auth.authenticated"><a routerLink="event"><span class="glyphicon glyphicon-calendar"></span> Events</a></li>
+</ul>
+					</code></pre>
+				</section>
+				<section>
+					<p>We have an Event Management System!</p>
+					<img src="images/eventapp.png" />
+				</section>
+				<section>
+					<p>Building your application</p>
+					<pre style="text-align:center;"><code data-trim>npm run build</code></pre>
+					<p class="fragment">This creates a new build in the <strong>dist</strong> folder.</p>
+				</section>
+				<section>
+					<p>Commit to Github Pages</p>
+					<pre style="text-align:center;"><code data-trim>git push origin master:gh-pages</code></pre>
+				</section>
+				<section>
+					<p>Thank you!</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
