@@ -22,33 +22,35 @@
 	</head>
 	<body>
 		<div class="reveal">
+			<img src="images/mongoworld.png" class="trans-image" style="height:1.5em;opacity:0.4;bottom:1em;left:1em;position:absolute;" />
 			<div class="slides">
 				<section data-background="images/supermanangular.png" data-state="faded">
 					<h2>How to build a <img src="images/meanlogo.png" style="height:2em;margin:0 0 0 0.3em;padding:0;position: relative;top:0.3em" class="trans-image" /></h2>
-					<h3>Application</h3>
+					<h3>Web Application</h3>
 					<p>
 						<small>by <a href="http://travistidwell.com">Travis Tidwell</a> | <a href="https://form.io">https://form.io</a><br/>
 						<a href="http://twitter.com/softwaregnome">@softwaregnome</a> | <a href="https://github.com/travist">travist</a></small>
 					</p>
+					<img src="images/mongoworld.png" class="trans-image" style="height:2em;" />
 				</section>
 				<section data-background="images/supermanangular.png" data-state="faded">
 					<p>Follow along @ <p>
 					<p><a href="http://travistidwell.com/presentations/meanmongo">http://travistidwell.com/presentations/meanmongo</a></p>
-					<p><a href="http://travistidwell.com/zerotomean">http://travistidwell.com/zerotomean</a></p>
-					<p><a href="https://github.com/travist/zerotomean">https://github.com/travist/zerotomean</a></p>
+					<p><a href="http://travistidwell.com/meanmongo">http://travistidwell.com/meanmongo</a></p>
+					<p><a href="https://github.com/travist/meanmongo">https://github.com/travist/meanmongo</a></p>
 				</section>
 				<section data-background="images/supermanangular.png" data-state="faded">
 					<p>We are going to build</p>
 					<p>A complete Event Management System</p>
-					<small class="fragment">...in about 30 minutes</small>
+					<small class="fragment">...in about an hour</small>
 				</section>
 				<section>
 					<h3>The structure of M.E.A.N Apps</h3>
 					<img src="images/MEANStructure.png" style="width:22em;" />
 				</section>
 				<section>
-					<h3>The model driven web</h3>
-					<p class="fragment">JSON schemas to create model driven applications.</p>
+					<h3>A different approach</h3>
+					<p class="fragment">Model Driven Applications</p>
 				</section>
 				<section>
 					<h4>The "stack" of JSON models</h4>
@@ -144,6 +146,46 @@
 						/people/:id - (DELETE) - Deletes an existing person.
 					</code></pre>
 				</section>
+				<section>
+					<h4>Something is missing...</h4>
+					<img src="images/modelapp3.png" style="height:12em;" class="trans-image" />
+				</section>
+				<section>
+					<h4>Model Driven Forms</h4>
+					<img src="images/modeldrivenforms.png" style="height:12em;" class="trans-image" />
+				</section>
+				<section>
+					<h4>Model Driven Forms</h4>
+					<pre>Example Form JSON<code data-trim>
+{
+  title: 'Registration',
+  components: [
+    {
+      type: 'textfield',
+      label: 'First Name',
+      required: true
+    },
+    {
+      type: 'textfield',
+      label: 'Last Name',
+      required: true
+    },
+    {
+      type: 'email',
+      label: 'Email',
+      required: true
+    }
+  ]
+}
+					</code></pre>
+				</section>
+				<section>
+					<img src="images/idea.png" class="trans-image" style="height:13em;" />
+				</section>
+				<section>
+					<img src="images/modelformio.png" class="trans-image" style="height:13em" />
+				</section>
+				<section data-background-video="images/presentation-intro.mp4" data-background-video-loop></section>
 				<section>
 					<h2>Building a M.E.A.N web app</h2>
 				</section>
@@ -243,8 +285,7 @@ $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 				<section>
 					<h3>Adding routes for home page</h3>
 					<pre>/src/app/app.module.ts<code data-trim>
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+...
 import { RouterModule } from '@angular/router';
 ...
 @NgModule({
@@ -333,16 +374,12 @@ export class AuthModule { }
 import { FormioAppConfig } from 'ng2-formio';
 import { FormioAuthService, FormioAuthConfig } from 'ng2-formio/auth';
 import { AuthConfig, AppConfig } from '../config';
-import { AuthModule } from './auth/auth.module';
 ...
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  ...
   imports: [
-    BrowserModule,
-    AuthModule,
+    ...
     RouterModule.forRoot([
 	  ...
       {
@@ -444,6 +481,7 @@ export class AppComponent {
 				<section>
 					<p>Add the Resource Providers</p>
 					<pre>/src/app/event/event.module.ts<code data-trim>
+...
 import { RouterModule } from '@angular/router';
 import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResourceService } from 'ng2-formio/resource';
 
@@ -452,6 +490,7 @@ import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResou
     FormioResource,
     RouterModule.forChild(FormioResourceRoutes())
   ],
+  ...
   providers: [
     FormioResourceService,
     {provide: FormioResourceConfig, useValue: {
@@ -501,18 +540,18 @@ export class EventModule {}
 				<section>
 					<p>Extend the ResourceViewComponent</p>
 					<pre>/src/app/event/event-view/event-view.component.ts<code data-trim>
-import { Component, OnInit } from '@angular/core';
+...
 import { FormioResourceConfig, FormioResourceService, FormioResourceViewComponent } from 'ng2-formio/resource';
 
 @Component({
-  selector: 'app-event-view',
-  templateUrl: './event-view.component.html',
-  styleUrls: ['./event-view.component.sass']
+  ...
 })
-export class EventViewComponent extends FormioResourceViewComponent {
+export class EventViewComponent extends FormioResourceViewComponent implements OnInit {
   constructor(service: FormioResourceService, config: FormioResourceConfig) {
     super(service, config);
   }
+
+  ...
 }
 					</code></pre>
 				</section>
@@ -525,6 +564,20 @@ export class EventViewComponent extends FormioResourceViewComponent {
   <li><strong>Start:</strong> {{ service.resource?.data.start }}</li>
   <li><strong>End:</strong> {{ service.resource?.data.end }}</li>
 </ul>
+					</code></pre>
+				</section>
+				<section>
+					<p>Register the extended view with FormioResourceRoutes</p>
+					<pre>/src/app/event/event.module.ts<code data-trim>
+@NgModule({
+  imports: [
+    ...
+    RouterModule.forChild(FormioResourceRoutes({
+      view: EventViewComponent
+    }))
+  ],
+  ...
+})
 					</code></pre>
 				</section>
 				<section>
