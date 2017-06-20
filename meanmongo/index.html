@@ -41,7 +41,7 @@
 				</section>
 				<section data-background="images/supermanangular.png" data-state="faded">
 					<p>We are going to build</p>
-					<p>A complete Event Management System</p>
+					<p>A complete Event Registration System</p>
 					<small class="fragment">...in about an hour</small>
 				</section>
 				<section>
@@ -487,6 +487,7 @@ import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResou
 
 @NgModule({
   imports: [
+    ...
     FormioResource,
     RouterModule.forChild(FormioResourceRoutes())
   ],
@@ -593,13 +594,137 @@ export class EventViewComponent extends FormioResourceViewComponent implements O
 					<img src="images/eventapp.png" />
 				</section>
 				<section>
-					<p>Building your application</p>
-					<pre style="text-align:center;"><code data-trim>ng build</code></pre>
-					<p class="fragment">This creates a new build in the <strong>dist</strong> folder.</p>
+					<p>Creating a Registration System</p>
 				</section>
 				<section>
-					<p>Commit to Github Pages</p>
-					<pre style="text-align:center;"><code data-trim>git push origin master:gh-pages</code></pre>
+					<h3>Allow all users to Read All Events</h3>
+					<img src="images/event-perms.png" style="height: 10em;" />
+				</section>
+				<section>
+					<h3>Create Registration Resource</h3>
+					<img src="images/event-register-resource.png" style="height: 12em;" />
+				</section>
+				<section>
+					<h3>Add a Registration Resource</h3>
+					<pre style="text-align:center;"><code data-trim>
+						ng g module event/registration
+					</code></pre>
+				</section>
+				<section>
+					<p>Add the Resource Providers</p>
+					<pre>/src/app/event/registration/registration.module.ts<code data-trim>
+...
+import { RouterModule } from '@angular/router';
+import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResourceService } from 'ng2-formio/resource';
+
+@NgModule({
+  imports: [
+    ...
+    FormioResource,
+    RouterModule.forChild(FormioResourceRoutes())
+  ],
+  ...
+  providers: [
+    FormioResourceService,
+    {provide: FormioResourceConfig, useValue: {
+      name: 'register',
+      form: 'register',
+      parents: ['event']
+    }}
+  ]
+})
+export class EventModule {}
+					</code></pre>
+				</section>
+				<section>
+					<p>Include the FormioResources service</p>
+					<pre>/src/app/app.module.ts<code data-trim>
+...
+import { FormioResources } from 'ng2-formio/resource';
+
+...
+...
+@NgModule({
+  ...
+  ...
+  providers: [
+    FormioResources,
+    ...
+  ],
+  ...
+})
+
+					</code></pre>
+				</section>
+				<section>
+					<h3>Extend the Event Resource view</h3>
+					<pre style="text-align: center;"><code data-trim>
+						ng g component event/event-resource
+					</code></pre>
+				</section>
+				<section>
+					<p>Extend the ResourceComponent</p>
+					<pre>/src/app/event/event-resource/event-resource.component.ts<code data-trim>
+...
+import { ActivatedRoute } from '@angular/router';
+import { FormioResourceService, FormioResourceComponent } from 'ng2-formio/resource';
+
+@Component({
+  ...
+})
+export class EventViewComponent extends FormioResourceComponent implements OnInit {
+  constructor(public service: FormioResourceService, public route: ActivatedRoute) {
+    super(service, route);
+  }
+
+  ...
+}
+					</code></pre>
+				</section>
+				<section>
+					<p>Edit the Event Resource View</p>
+					<pre>/src/app/event/event-resource/event-resource.component.html<code data-trim>
+<ul class="nav nav-tabs" style="margin-bottom:20px;">
+  <a routerLink="../" class="pull-left"><span class="glyphicon glyphicon-chevron-left resource-back-icon"></span></a>
+  <li role="presentation" routerLinkActive="active"><a routerLink="view">View</a></li>
+  <li role="presentation" routerLinkActive="active"><a routerLink="register">Registrations</a></li>
+  <li role="presentation" routerLinkActive="active"><a routerLink="edit">Edit</a></li>
+  <li role="presentation pull-right" routerLinkActive="active"><a routerLink="delete"><span class="glyphicon glyphicon-trash"></span></a></li>
+</ul>
+<router-outlet></router-outlet>
+					</code></pre>
+				</section>
+				<section>
+					<p>Include in the Event routes</p>
+					<pre>/src/app/event/event.module.ts<code data-trim>
+const eventResourceRoutes: Routes = FormioResourceRoutes({
+  view: EventViewComponent,
+  resource: EventResourceComponent
+});
+
+eventResourceRoutes[2].children.push({
+  path: 'register',
+  loadChildren: './registration/registration.module#RegistrationModule'
+});
+
+@NgModule({
+  imports: [
+    ...
+    RouterModule.forChild(eventResourceRoutes)
+  ],
+  ...
+})
+					</code></pre>
+				</section>
+				<section>
+					<p>Add a link to your Event page</p>
+					<pre>/src/app/event/event-view/event-view.component.html<code data-trim>
+<a routerLink="../register/new" class="btn btn-success">Register Now!</a>
+					</code></pre>
+				</section>
+				<section>
+					<p>We now have an Event Registration System!</p>
+					<img src="images/eventapp.png" />
 				</section>
 				<section>
 					<p>Thank you!</p>
