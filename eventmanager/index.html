@@ -1,0 +1,690 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>How to build a M.E.A.N Application</title>
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="images/supermanangular.png" data-state="faded">
+					<h4>Build a Serverless Event Management System</h4>
+					<h5>with Angular 5, Bootstrap 4, and Form.io</h5>
+					<p>
+						<small>by <a href="http://travistidwell.com">Travis Tidwell</a> | <a href="https://form.io">https://form.io</a><br/>
+						<a href="http://twitter.com/softwaregnome">@softwaregnome</a> | <a href="https://github.com/travist">travist</a></small>
+					</p>
+				</section>
+				<section data-background="images/supermanangular.png" data-state="faded">
+					<p>Follow along @ <p>
+					<p><a href="http://travistidwell.com/presentations/eventmanager">http://travistidwell.com/presentations/eventmanager</a></p>
+				</section>
+				<section>
+					<h3>Installing Angular CLI</h3>
+					<pre style="text-align:center;"><code data-trim>
+						npm install -g @angular/cli
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create a new application</h3>
+					<pre><code data-trim>
+						ng new eventmanager --style=sass
+						cd eventmanager
+						ng serve
+					</code></pre>
+				</section>
+				<section>
+					<h3>Add Bootstrap & Bootswatch</h3>
+					<pre><code data-trim>
+						npm install --save bootstrap@4.0.0-beta.3
+						npm install --save bootswatch
+					</code></pre>
+					<pre>src/styles.scss<code data-trim>
+@import "~bootswatch/dist/yeti/_variables.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootswatch/dist/yeti/_bootswatch.scss";
+					</code></pre>
+				</section>
+				<section>
+					<h3>Adding Font-Awesome</h3>
+					<pre><code data-trim>
+						npm install --save font-awesome
+					</code></pre>
+					<pre>.angular-cli.json<code data-trim>
+{
+  "apps": {
+    "styles": [
+      "styles.scss",
+      "../node_modules/font-awesome/scss/font-awesome.scss"
+    ],
+    "addons": [
+      "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
+    ]
+  }
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Creating a home page</h3>
+					<pre><code data-trim>
+						ng g component home
+					</code></pre>
+					<pre>/src/app/home/home.component.html<code data-trim>
+<div class="jumbotron">
+  <h3>Welcome to the Event Manager!</h3>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Adding routes for home page</h3>
+					<pre>/src/app/app.module.ts<code data-trim>
+...
+import { RouterModule } from '@angular/router';
+...
+@NgModule({
+  ...
+  imports: [
+    ...
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        component: HomeComponent
+      }
+    ])
+  ],
+  ...
+})
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create main page content</h3>
+					<pre>/src/app/app.component.html<code data-trim>
+<div class="container" style="margin-top: 10px;">
+  <router-outlet></router-outlet>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Adding <img src="images/formio-white.png" style="height:1.2em;margin:0;padding:0;position:relative;top:0.3em;" class="trans-image" /></h3>
+					<pre style="text-align:center;"><code data-trim>
+						npm install --save angular-formio
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create a New Project on Form.io</h3>
+					<img src="images/create-project.png" />
+				</section>
+				<section>
+					<p>User Authentication</p>
+				</section>
+				<section>
+					<p>Create a Configuration File</p>
+					<pre>/src/config.ts<code data-trim>
+import { FormioAppConfig } from 'angular-formio';
+import { FormioAuthConfig } from 'angular-formio/auth';
+
+export const AppConfig: FormioAppConfig = {
+  appUrl: 'https://[YOUR_PROJECT].form.io',
+  apiUrl: 'https://api.form.io',
+  icons: 'fontawesome'
+};
+
+export const AuthConfig: FormioAuthConfig = {
+  login: {
+    form: 'user/login'
+  },
+  register: {
+    form: 'user/register'
+  }
+};
+
+					</code></pre>
+				</section>
+				<section>
+					<p>Create the Authentication Module</p>
+					<pre style="text-align:center;"><code data-trim>
+						ng g module auth
+					</code></pre>
+					<pre>/src/app/auth/auth.module.ts<code data-trim>
+...
+import { RouterModule } from '@angular/router';
+import { FormioAuth, FormioAuthRoutes } from 'angular-formio/auth';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormioAuth,
+    RouterModule.forChild(FormioAuthRoutes())
+  ],
+  declarations: []
+})
+export class AuthModule { }
+					</code></pre>
+				</section>
+				<section>
+					<p>Include the Auth Service + Auth Module</p>
+					<pre>/src/app/app.module.ts<code data-trim>
+...
+import { FormioAppConfig } from 'angular-formio';
+import { FormioAuthService, FormioAuthConfig } from 'angular-formio/auth';
+import { AuthConfig, AppConfig } from '../config';
+import { AuthModule } from './auth/auth.module';
+...
+
+@NgModule({
+  ...
+  imports: [
+    ...
+    RouterModule.forRoot([
+	  ...
+      {
+        path: 'auth',
+        loadChildren: () => AuthModule
+      }
+    ])
+  ],
+  providers: [
+    FormioAuthService,
+    {provide: FormioAuthConfig, useValue: AuthConfig},
+    {provide: FormioAppConfig, useValue: AppConfig}
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+					</code></pre>
+				</section>
+				<section>
+					<p>Adding Header Component</p>
+					<pre style="text-align: center;"><code data-trim>
+						ng g component header
+					</code></pre>
+				</section>
+				<section>
+					<p>Adding Navigation Bar</p>
+					<pre>src/app/header/header.component.html<small style="width:100%;"><code data-trim>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img style="height:1.8em;" src="https://form.io/assets/images/formio-logo.png" /></a>
+    <ul class="nav navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="home"><i class="fa fa-home"></i></a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item" routerLinkActive="active" *ngIf="!auth.authenticated">
+        <a class="nav-link" routerLink="auth">Login | Register</a>
+      </li>
+      <li class="nav-item" *ngIf="auth.authenticated">
+        <a class="nav-link" routerLink="home" (click)="auth.logout()"><span class="fa fa-power-off"></span> Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+					</code></small></pre>
+					<pre>src/app/header/header.component.ts<small style="width:100%;"><code data-trim>
+import { FormioAuthService } from 'angular-formio/auth';
+...
+export class HeaderComponent implements OnInit {
+
+  constructor(private auth: FormioAuthService) { }
+  ...
+}
+					</code></small></pre>
+				</section>
+				<section>
+					<h3>Include Header Component</h3>
+					<pre>/src/app/app.component.html<code data-trim>
+<app-header></app-header>
+<div class="container" style="margin-top: 10px;">
+  <router-outlet></router-outlet>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<p>Redirect to Home after login</p>
+					<pre>src/app/app.component.ts<code data-trim>
+import { Router } from '@angular/router';
+import { FormioAuthService } from 'angular-formio/auth';
+
+...
+export class AppComponent {
+  ...
+  constructor(private auth: FormioAuthService, private router: Router) {
+    this.auth.onLogin.subscribe(() => {
+      this.router.navigate(['/home']);
+    });
+
+    this.auth.onLogout.subscribe(() => {
+      this.router.navigate(['/auth/login']);
+    });
+
+    this.auth.onRegister.subscribe(() => {
+      this.router.navigate(['/home']);
+    });
+  }
+}
+
+					</code></pre>
+				</section>
+				<section>
+					<h3>Event Resource</h3>
+					<pre style="text-align:center;"><code data-trim>
+						ng g module event
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create Event Form.io Resource</h3>
+					<img src="images/eventresource.png" style="height:13em;" />
+				</section>
+				<section>
+					<p>Add the Resource Providers</p>
+					<pre>/src/app/event/event.module.ts<code data-trim>
+...
+import { RouterModule, Routes } from '@angular/router';
+import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResourceService } from 'angular-formio/resource';
+
+@NgModule({
+  imports: [
+    ...
+    FormioResource,
+    RouterModule.forChild(FormioResourceRoutes())
+  ],
+  ...
+  providers: [
+    FormioResourceService,
+    {provide: FormioResourceConfig, useValue: {
+      name: 'event',
+      form: 'event'
+    }}
+  ]
+})
+export class EventModule {}
+					</code></pre>
+				</section>
+				<section>
+					<p>Mount the Resource to the routes</p>
+					<pre>/src/app/app.module.ts<code data-trim>
+...
+import { EventModule } from './event/event.module';
+...
+
+@NgModule({
+  ...
+  imports: [
+    ...
+    RouterModule.forRoot([
+      ...
+      {
+        path: 'event',
+        loadChildren: () => EventModule
+      }
+    ])
+  ],
+  ...
+})
+					</code></pre>
+				</section>
+				<section>
+					<p>Add a link to the header</p>
+					<pre>/src/app/header/header.component.html<code data-trim>
+<li class="nav-item" routerLinkActive="event" *ngIf="auth.authenticated">
+  <a class="nav-link" routerLink="event">Events</a>
+</li>
+					</code></pre>
+				</section>
+				<section>
+					<p>We now have all of the available Routes!</p>
+					<ul>
+						<li><strong>event</strong> - Index of events</li>
+						<li><strong>event/new</strong> - Create a new event</li>
+						<li><strong>event/:id/view</strong> - View an event</li>
+						<li><strong>event/:id/edit</strong> - Edit an event</li>
+						<li><strong>event/:id/delete</strong> - Delete an event</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Event Participant Resource</h3>
+					<pre style="text-align:center;"><code data-trim>
+						ng g module event/participant
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create Registration Form</h3>
+					<img src="images/register-form.png" style="height:13em;" />
+				</section>
+				<section>
+					<h3>Create Participant Resource</h3>
+					<img src="images/participant.png" style="height: 13em;" />
+				</section>
+				<section>
+					<p>Add the Resource Providers</p>
+					<pre>/src/app/event/participant/participant.module.ts<code data-trim>
+...
+import { RouterModule } from '@angular/router';
+import { FormioResource, FormioResourceRoutes, FormioResourceConfig, FormioResourceService } from 'angular-formio/resource';
+
+@NgModule({
+  imports: [
+    ...
+    FormioResource,
+    RouterModule.forChild(FormioResourceRoutes())
+  ],
+  ...
+  providers: [
+    FormioResourceService,
+    {provide: FormioResourceConfig, useValue: {
+      name: 'participant',
+      form: 'participant',
+      parents: ['event']
+    }}
+  ]
+})
+export class ParticipantModule {}
+					</code></pre>
+				</section>
+				<section>
+					<p>Include the FormioResources service</p>
+					<pre>/src/app/app.module.ts<code data-trim>
+...
+import { FormioResources } from 'angular-formio/resource';
+
+...
+...
+@NgModule({
+  ...
+  ...
+  providers: [
+    FormioResources,
+    ...
+  ],
+  ...
+})
+					</code></pre>
+				</section>
+				<section>
+					<p>Include in the Event routes</p>
+					<pre>/src/app/event/event.module.ts<code data-trim>
+import { ParticipantModule } from './participant/participant.module';
+
+const eventResourceRoutes: Routes = FormioResourceRoutes({});
+
+eventResourceRoutes[2].children.push({
+  path: 'participant',
+  loadChildren: () => ParticipantModule
+});
+
+@NgModule({
+  imports: [
+    ...
+    RouterModule.forChild(eventResourceRoutes)
+  ],
+  ...
+})
+					</code></pre>
+				</section>
+				<section>
+					<h3>Extend the Event Resource view</h3>
+					<pre style="text-align: center;"><code data-trim>
+						ng g component event/event-resource
+					</code></pre>
+				</section>
+				<section>
+					<p>Extend the ResourceComponent</p>
+					<pre>/src/app/event/event-resource/event-resource.component.ts<code data-trim>
+...
+import { ActivatedRoute } from '@angular/router';
+import { FormioResourceService, FormioResourceComponent } from 'angular-formio/resource';
+
+@Component({
+  ...
+})
+export class EventViewComponent extends FormioResourceComponent implements OnInit {
+  constructor(public service: FormioResourceService, public route: ActivatedRoute) {
+    super(service, route);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+  }
+}
+					</code></pre>
+				</section>
+				<section>
+					<p>Edit the Event Resource View</p>
+					<pre>/src/app/event/event-resource/event-resource.component.html<code data-trim>
+<ul class="nav nav-tabs" style="margin-bottom: 20px;">
+  <li class="nav-item"><a class="nav-link" routerLink="../"><i class="fa fa-chevron-left"></i></a></li>
+  <li class="nav-item"><a class="nav-link" routerLink="view" routerLinkActive="active">View</a></li>
+  <li class="nav-item"><a class="nav-link" routerLink="participant" routerLinkActive="active">Participants</a></li>
+  <li class="nav-item"><a class="nav-link" routerLink="edit" routerLinkActive="active">Edit</a></li>
+  <li class="nav-item"><a class="nav-link" routerLink="delete" routerLinkActive="active"><span class="fa fa-trash"></span></a></li>
+</ul>
+<router-outlet></router-outlet>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Create custom Event view</h3>
+					<pre style="text-align: center;"><code data-trim>
+						ng g component event/event-view
+					</code></pre>
+				</section>
+				<section>
+					<p>Extend the ResourceViewComponent</p>
+					<pre>/src/app/event/event-view/event-view.component.ts<code data-trim>
+...
+import { FormioResourceConfig, FormioResourceService, FormioResourceViewComponent } from 'angular-formio/resource';
+
+@Component({
+  ...
+})
+export class EventViewComponent extends FormioResourceViewComponent implements OnInit {
+  constructor(service: FormioResourceService, config: FormioResourceConfig) {
+    super(service, config);
+  }
+
+  ...
+}
+					</code></pre>
+				</section>
+				<section>
+					<p>Edit the Event View Template</p>
+					<pre>/src/app/event/event-view/event-view.component.html<code data-trim>
+<div class="row">
+  <div class="col col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        {{ service.resource?.data.start | date }} to {{ service.resource?.data.end | date }}
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">{{ service.resource?.data.title }}</h3>
+        <p class="card-text" [innerHTML]="service.resource?.data.description"></p>
+      </div>
+    </div>
+  </div>
+  <div class="col col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Registration</h3>
+      </div>
+      <div class="card-body">
+        <a routerLink="../participant/new" class="btn btn-primary btn-block">Register Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+					</code></pre>
+				</section>
+				<section>
+					<p>Register the extended views with FormioResourceRoutes</p>
+					<pre>/src/app/event/event.module.ts<code data-trim>
+const eventResourceRoutes: Routes = FormioResourceRoutes({
+  view: EventViewComponent,
+  resource: EventResourceComponent
+});
+					</code></pre>
+				</section>
+				<section>
+					<p>We have an Event Registration System!</p>
+				</section>
+				<section>
+					<h3>Advanced Enhancements</h3>
+				</section>
+				<section>
+					<h3>Dynamic Registration Form</h3>
+					<pre style="text-align: center;"><code data-trim>
+						ng g component event/participant/participant-create
+					</code></pre>
+					<pre>/src/app/event/participant/participant.module.ts<code data-trim>
+RouterModule.forChild(FormioResourceRoutes({
+  create: ParticipantCreateComponent
+}))
+					</code></pre>
+				</section>
+				<section>
+					<h3>Dynamic Registration Form</h3>
+					<pre>/src/app/event/participant/participant-create/participant-create.component.html<code data-trim>
+<h3 *ngIf="service.form" style="margin-top:0;"><a routerLink="../" class="back-button"><i class="fa fa-chevron-left"></i></a> | New {{ service.form.title }}</h3>
+<formio
+		[form]="service.form"
+		[submission]="service.resource"
+		[refresh]="service.refresh"
+		[hideComponents]="config.parents"
+		[error]="onError"
+		[success]="onSuccess"
+		(submit)="onSubmit($event)"
+></formio>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Dynamic Registration Form</h3>
+					<pre>/src/app/event/participant/participant-create/participant-create.component.ts<code data-trim>
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import {
+  FormioResourceCreateComponent,
+  FormioResourceService,
+  FormioResourceConfig
+} from 'angular-formio/resource';
+
+const FormioUtils = require('formiojs/utils');
+
+@Component({
+  selector: 'app-participant-create',
+  templateUrl: './participant-create.component.html',
+  styleUrls: ['./participant-create.component.scss']
+})
+export class ParticipantCreateComponent extends FormioResourceCreateComponent implements OnInit {
+  constructor(
+    public service: FormioResourceService,
+    public route: ActivatedRoute,
+    public router: Router,
+    public config: FormioResourceConfig
+  ) {
+    super(service, route, router, config);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+
+    // Wait for the parent event to be loaded.
+    this.service.resources['event'].resourceLoaded.then((event) => {
+
+      // Wait for the participant form to load.
+      this.service.formLoaded.then((form) => {
+
+        // If they wish to have a custom registration form.
+        if (event.data.registrationForm) {
+          const registerForm = FormioUtils.getComponent(form.components, 'registration', true);
+          registerForm.src = this.service.formFormio.projectUrl + '/' + event.data.registrationForm;
+        }
+      });
+    });
+  }
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Auto User Data Population</h3>
+					<pre>/src/app/event/participant/participant-create/participant-create.component.ts<code data-trim>
+...
+import { FormioAuthService } from 'angular-formio/auth';
+
+@Component({
+  ...
+})
+export class ParticipantCreateComponent extends FormioResourceCreateComponent implements OnInit {
+  constructor(
+    ...,
+    public auth: FormioAuthService
+  ) {
+    super(service, route, router, config);
+  }
+
+  ngOnInit() {
+    this.service.resources['event'].resourceLoaded.then((event) => {
+      this.service.formLoaded.then((form) => {
+        ...
+
+        // Wait for the current user to be loaded.
+        this.auth.userReady.then((user) => {
+
+          // Default the user data inside of the registration form.
+          this.service.resource.data.registration = {data: user.data};
+
+          // Tell our form to re-render the submission.
+          this.service.refresh.emit({
+            property: 'submission',
+            value: this.service.resource
+          });
+        });
+      });
+    });
+  }
+					</code></pre>
+				</section>
+				<section>
+					<p>Thank you!</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
