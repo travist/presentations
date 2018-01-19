@@ -28,7 +28,7 @@
 					<p><a href="http://travistidwell.com/presentations/eventmanager">http://travistidwell.com/presentations/eventmanager</a></p>
 					<pre><code data-trim>
 						npm install -g @angular/cli
-						ng new eventmanager --style=sass
+						ng new eventmanager --style=scss
 						cd eventmanager
 						npm install --save bootstrap@4.0.0-beta.3
 						npm install --save bootswatch
@@ -57,7 +57,7 @@
 				<section>
 					<h3>Create a new application</h3>
 					<pre><code data-trim>
-						ng new eventmanager --style=sass
+						ng new eventmanager --style=scss
 						cd eventmanager
 						ng serve
 					</code></pre>
@@ -472,7 +472,7 @@ import { FormioResourceService, FormioResourceComponent } from 'angular-formio/r
 @Component({
   ...
 })
-export class EventViewComponent extends FormioResourceComponent implements OnInit {
+export class EventResourceComponent extends FormioResourceComponent implements OnInit {
   constructor(public service: FormioResourceService, public route: ActivatedRoute) {
     super(service, route);
   }
