@@ -63,6 +63,12 @@
 					</code></pre>
 				</section>
 				<section>
+					<h3>Add Globals to polyfills.ts</h3>
+					<pre>/src/polyfills.ts (end of file)<code data-trim>
+						(window as any).global = window;
+					</code></pre>
+				</section>
+				<section>
 					<h3>Add Bootstrap & Bootswatch</h3>
 					<pre><code data-trim>
 						npm install --save bootstrap
@@ -72,25 +78,8 @@
 @import "~bootswatch/dist/yeti/_variables.scss";
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~bootswatch/dist/yeti/_bootswatch.scss";
-					</code></pre>
-				</section>
-				<section>
-					<h3>Adding Font-Awesome</h3>
-					<pre><code data-trim>
-						npm install --save font-awesome
-					</code></pre>
-					<pre>.angular-cli.json<code data-trim>
-{
-  "apps": {
-    "styles": [
-      "styles.scss",
-      "../node_modules/font-awesome/scss/font-awesome.scss"
-    ],
-    "addons": [
-      "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
-    ]
-  }
-}
+$fa-font-path: '../node_modules/font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
 					</code></pre>
 				</section>
 				<section>
@@ -202,7 +191,6 @@ export class AuthModule { }
 import { FormioAppConfig } from 'angular-formio';
 import { FormioAuthService, FormioAuthConfig } from 'angular-formio/auth';
 import { AuthConfig, AppConfig } from '../config';
-import { AuthModule } from './auth/auth.module';
 ...
 
 @NgModule({
@@ -213,7 +201,7 @@ import { AuthModule } from './auth/auth.module';
 	  ...
       {
         path: 'auth',
-        loadChildren: () => AuthModule
+        loadChildren: './auth/auth.module#AuthModule'
       }
     ])
   ],
